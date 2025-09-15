@@ -14,23 +14,40 @@ var dir = "down"
 @onready var p_l_idle_p = $p_l_p
 @onready var p_r_idle_p = $p_r_p
 
+
 func setDir(direction: String, pickup: bool) -> void:
+	var slot = $ItemSlot
+	
 	for sprite in [p_u_idle, p_d_idle, p_l_idle, p_r_idle,
 				   p_u_idle_p, p_d_idle_p, p_l_idle_p, p_r_idle_p]:
 		sprite.visible = false
-
+	
 	if pickup:
+		slot.visible = true
 		match direction:
-			"up": p_u_idle_p.visible = true
-			"down": p_d_idle_p.visible = true
-			"left": p_l_idle_p.visible = true
-			"right": p_r_idle_p.visible = true
+			"up": 
+				p_u_idle_p.visible = true
+				slot.visible = false
+			"down":
+				self.move_child($ItemSlot, self.get_child_count() - 1)
+				p_d_idle_p.visible = true
+				slot.position = Vector2(0,10)
+			"left":
+				self.move_child($ItemSlot, 0)
+				p_l_idle_p.visible = true
+				slot.position = Vector2(-10,0)
+			"right":
+				self.move_child($ItemSlot, 0)
+				p_r_idle_p.visible = true
+				slot.position = Vector2(10,0)
 	else:
+		slot.visible = false
 		match direction:
 			"up": p_u_idle.visible = true
 			"down": p_d_idle.visible = true
 			"left": p_l_idle.visible = true
 			"right": p_r_idle.visible = true
+	
 
 
 func _physics_process(delta: float) -> void:
@@ -59,9 +76,18 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event):
+	var slot = $ItemSlot
+	if $ItemSlot.get_children().size() > 0:
+		PICKUP = true
+		setDir(dir, PICKUP)
 	if event.is_action_pressed("player_pickup"):
-		PICKUP = !PICKUP
-		Globals.log("[PLAYER] Pickup triggered: " + str(PICKUP))
+		if $ItemSlot.get_children().size() > 0:
+			PICKUP = true
+			setDir(dir, PICKUP)
+			Globals.log("[PLAYER] Pickup not possible since carrying item: " + str(PICKUP))
+		else:
+			PICKUP = !PICKUP
+			Globals.log("[PLAYER] Pickup triggered: " + str(PICKUP))
 
 func _on_area_player_body_entered(body: Node2D) -> void:
 	if body.get_meta("type") == "player":

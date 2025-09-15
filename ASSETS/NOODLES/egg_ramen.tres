@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Noodle" load_steps=3 format=3 uid="uid://brr0vi45edndn"]
+
+[ext_resource type="Script" uid="uid://chwj6d0hbk3pd" path="res://SCRIPTS/NOODLES/Noodle.gd" id="1_0hyud"]
+[ext_resource type="Texture2D" uid="uid://coewscq8x86d0" path="res://ASSETS/TEXTURES/FOOD/NOODLES/egg_ramen.png" id="2_17pjh"]
+
+[resource]
+script = ExtResource("1_0hyud")
+name = "Egg Ramen"
+price = 2
+texture = ExtResource("2_17pjh")
+metadata/_custom_type_script = "uid://chwj6d0hbk3pd"

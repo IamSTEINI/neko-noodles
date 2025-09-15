@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://btdy4yx2urpem"]
+
+[ext_resource type="Script" uid="uid://dcm1ho5lasu12" path="res://SCRIPTS/NOODLES/NoodleItem.gd" id="1_dmpbm"]
+
+[node name="NoodleItem" type="Node2D"]
+script = ExtResource("1_dmpbm")
+metadata/type = "item"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -1)
+scale = Vector2(0.5, 0.5)

@@ -14,17 +14,16 @@ config/name="Neko Noodles"
 config/version="0.0.1 ALPHA"
 run/main_scene="res://NN-TEST.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dn7d656jhjsj"
 
 [autoload]
 
-Globals="*res://globals.gd"
+Globals="*res://SCRIPTS/globals.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
 window/size/resizable=false
 window/size/borderless=true
 
