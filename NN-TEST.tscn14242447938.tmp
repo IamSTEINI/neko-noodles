@@ -142,12 +142,12 @@ size = Vector2(74.5, 75.5)
 size = Vector2(33.5, 18.5)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1lwkd"]
-vertices = PackedVector2Array(-1280.84, 197.867, -737.93, 1179.04, -1853.41, 1181.97, -1800.49, 251.93, -1433.84, 207.852, 210.461, 231.141, 381.023, 1189.83, -684.547, 1175.17, -143, 198.594, -26, 205.992, -26, 140.953, -143, 135.992, -1435.18, 132.938, -1284.64, 137.008, -1774.2, 134.938, -1790.78, -673.953, 346.922, -665.039, 341.07, 142.938)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(10, 9, 8, 11), PackedInt32Array(0, 4, 12, 13), PackedInt32Array(14, 15, 16, 12), PackedInt32Array(13, 12, 16, 11), PackedInt32Array(11, 16, 17, 10)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1801, -684, -1784, 145, -1445, 143, -1444, 199, -1810, 243, -1864, 1192, -721, 1189, -1271, 195, -1274, 147, -153, 146, -153, 196, -701.414, 1184.94, 393, 1200, 219, 222, -16, 197, -16, 151, 351, 153, 357, -675)])
+vertices = PackedVector2Array(347, 304.031, -1792.97, 310.961, -1791.01, -674, 347, -674.992)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1801, -684, -1803, 321, 357, 314, 357, -685)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lwkd"]
-size = Vector2(966.5, 650.5)
+size = Vector2(2930, 664)
 
 [node name="TEST" type="Node2D"]
 script = ExtResource("1_poxlg")
@@ -260,38 +260,6 @@ collision_layer = 2
 position = Vector2(3.75, 0.25)
 shape = SubResource("RectangleShape2D_pg7jh")
 
-[node name="Area2D SERVE2" type="Area2D" parent="TABLES"]
-position = Vector2(185, 1612)
-script = ExtResource("16_1lqi7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE2"]
-offset_left = -31.0
-offset_top = -33.0
-offset_right = 68.0
-offset_bottom = 58.0
-text = "TRIGGER NOODLE SERVE"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE2"]
-scale = Vector2(6.145, 6.145)
-shape = SubResource("CircleShape2D_v67a4")
-debug_color = Color(0.952387, 0, 0.248016, 0.42)
-
-[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE2"]
-texture_filter = 1
-position = Vector2(1, -12)
-scale = Vector2(4, 4)
-texture = ExtResource("19_pg7jh")
-
-[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE2"]
-position = Vector2(-2, -17)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE2"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE2/StaticBody2D"]
-position = Vector2(3.75, 0.25)
-shape = SubResource("RectangleShape2D_pg7jh")
-
 [node name="PLAYER" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(112, 142)
@@ -385,7 +353,6 @@ focus_mode = 0
 text = "BUILD MODE"
 
 [node name="Spawn NPC" type="Button" parent="PLAYER/CanvasLayer/Control"]
-layout_mode = 0
 offset_left = -127.0
 offset_right = -19.0
 offset_bottom = 31.0
@@ -397,7 +364,6 @@ text = "SPAWN NPC
 position = Vector2(0, 7)
 
 [node name="MAPLIGHT" type="PointLight2D" parent="."]
-z_index = 4096
 position = Vector2(148, 150)
 scale = Vector2(2, 2)
 color = Color(0.112079, 0.090729, 0.0867688, 1)
@@ -421,7 +387,7 @@ position = Vector2(-455, 1033)
 position = Vector2(-792, 712)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(902, 849)
+position = Vector2(906, 835)
 navigation_polygon = SubResource("NavigationPolygon_1lwkd")
 
 [node name="SPAWNRANGE" type="Node2D" parent="." node_paths=PackedStringArray("Tables", "Entry", "Entry2", "SpawnRanges")]
@@ -432,22 +398,14 @@ Entry = NodePath("../ENTRY1")
 Entry2 = NodePath("../ENTRY2")
 SpawnRanges = NodePath(".")
 
-[node name="Area2D2" type="Area2D" parent="SPAWNRANGE"]
-position = Vector2(1745, 1597)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SPAWNRANGE/Area2D2"]
-position = Vector2(-675.75, 92)
-shape = SubResource("RectangleShape2D_1lwkd")
-
 [node name="Area2D" type="Area2D" parent="SPAWNRANGE"]
 position = Vector2(0, 1613)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPAWNRANGE/Area2D"]
-position = Vector2(-674, 98.25)
+position = Vector2(244, 107)
 shape = SubResource("RectangleShape2D_1lwkd")
 
 [connection signal="body_entered" from="Area2D PICKUP" to="Area2D PICKUP" method="_on_body_entered"]
 [connection signal="body_entered" from="TABLES/Area2D SERVE" to="TABLES/Area2D SERVE" method="_on_body_entered"]
-[connection signal="body_entered" from="TABLES/Area2D SERVE2" to="TABLES/Area2D SERVE2" method="_on_body_entered"]
 [connection signal="pressed" from="PLAYER/CanvasLayer/Control/Button" to="BuildingMode" method="_on_button_pressed"]
 [connection signal="pressed" from="PLAYER/CanvasLayer/Control/Spawn NPC" to="SPAWNRANGE" method="_on_spawn_npc_pressed"]
