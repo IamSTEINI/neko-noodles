@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnd7e1bhoe6dy" path="res://ASSETS/TEXTURES/PLAYER/npc_f_idle.png" id="2_kh24r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ae7ip"]
-radius = 29.2746
+radius = 45.0111
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxcha"]
 bg_color = Color(0.103744, 0.103744, 0.103744, 1)
@@ -29,12 +29,13 @@ scale = Vector2(2.2, 2.2)
 texture = ExtResource("2_kh24r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 48)
+position = Vector2(0, 41)
 shape = SubResource("CircleShape2D_ae7ip")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
-debug_enabled = true
+avoidance_enabled = true
+radius = 30.0
 
 [node name="TEXTBOX" type="Control" parent="."]
 z_index = 105

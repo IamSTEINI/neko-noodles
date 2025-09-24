@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=61 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Texture2D" uid="uid://b7sbm1nqn00ou" path="res://ASSETS/TEXTURES/GROUND/Testplate.png" id="1_la36t"]
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://GAME.gd" id="1_poxlg"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://on0gdv6lubsv" path="res://npc.tscn" id="22_1lwkd"]
 [ext_resource type="Script" uid="uid://bx4ph4uwwm16t" path="res://CoinStatusBar.gd" id="22_w141s"]
 [ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="26_3o1xr"]
+[ext_resource type="AudioStream" uid="uid://8vkva5751s0k" path="res://CatSoundTrack.mp3" id="26_vtvs4"]
+[ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://REMOVEITSELF.gd" id="27_5h51l"]
 [ext_resource type="Script" uid="uid://c0lrkgnvaywgt" path="res://kitchen_door.gd" id="29_177q0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmdhu"]
@@ -205,9 +207,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pg7jh"]
-size = Vector2(74.5, 75.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgsgj"]
 size = Vector2(33.5, 18.5)
 
@@ -228,10 +227,22 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w141s"]
+bg_color = Color(0, 0, 0, 0.45098)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pg7jh"]
+size = Vector2(74.5, 75.5)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1lwkd"]
-vertices = PackedVector2Array(-1280.84, 197.867, -737.93, 1179.04, -1853.41, 1181.97, -1800.49, 251.93, -1433.84, 207.852, 210.461, 231.141, 381.023, 1189.83, -684.547, 1175.17, -143, 198.594, -26, 205.992, -26, 140.953, -143, 135.992, -1435.18, 132.938, -1284.64, 137.008, -1774.2, 134.938, -1790.78, -673.953, 346.922, -665.039, 341.07, 142.938)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(10, 9, 8, 11), PackedInt32Array(0, 4, 12, 13), PackedInt32Array(14, 15, 16, 12), PackedInt32Array(13, 12, 16, 11), PackedInt32Array(11, 16, 17, 10)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1801, -684, -1784, 145, -1445, 143, -1444, 199, -1810, 243, -1864, 1192, -721, 1189, -1271, 195, -1274, 147, -153, 146, -153, 196, -701.414, 1184.94, 393, 1200, 219, 222, -16, 197, -16, 151, 351, 153, 357, -675)])
+vertices = PackedVector2Array(-1271, 195, -721, 1189, -1864, 1192, -1810, 243, -1444, 199, 219, 222, 393, 1200, -701.414, 1184.94, -256, 392, -16, 197, -153, 196, -16, 151, -1641, 154, -1784, 145, -1801, -684, 357, -675, -1450, 148, -153, 146, 351, 153, -1266, 153)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(9, 8, 10, 11), PackedInt32Array(12, 13, 14, 15, 16), PackedInt32Array(11, 10, 17, 15), PackedInt32Array(15, 18, 11), PackedInt32Array(0, 4, 16, 19), PackedInt32Array(19, 16, 15, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1801, -684, -1784, 145, -1641, 154, -1450, 148, -1444, 199, -1810, 243, -1864, 1192, -721, 1189, -1271, 195, -1266, 153, -153, 146, -153, 196, -256, 392, -701.414, 1184.94, 393, 1200, 219, 222, -16, 197, -16, 151, 351, 153, 357, -675)])
+parsed_geometry_type = 1
+agent_radius = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lwkd"]
 size = Vector2(951.5, 645.25)
@@ -457,201 +468,6 @@ script = ExtResource("12_g7kua")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_g7kua")
 
-[node name="TABLES" type="Node2D" parent="."]
-position = Vector2(-976, -749)
-
-[node name="Area2D SERVE" type="Area2D" parent="TABLES"]
-position = Vector2(185, 1462)
-script = ExtResource("16_1lqi7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE"]
-offset_left = -31.0
-offset_top = -33.0
-offset_right = 68.0
-offset_bottom = 58.0
-text = "TRIGGER NOODLE SERVE"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE"]
-scale = Vector2(6.145, 6.145)
-shape = SubResource("CircleShape2D_v67a4")
-debug_color = Color(0.952387, 0, 0.248016, 0.42)
-
-[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE"]
-texture_filter = 1
-position = Vector2(1, -12)
-scale = Vector2(4, 4)
-texture = ExtResource("19_pg7jh")
-
-[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE"]
-position = Vector2(-2, -17)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE/StaticBody2D"]
-position = Vector2(3.75, 0.25)
-shape = SubResource("RectangleShape2D_pg7jh")
-
-[node name="Area2D SERVE2" type="Area2D" parent="TABLES"]
-position = Vector2(185, 1612)
-script = ExtResource("16_1lqi7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE2"]
-offset_left = -31.0
-offset_top = -33.0
-offset_right = 68.0
-offset_bottom = 58.0
-text = "TRIGGER NOODLE SERVE"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE2"]
-scale = Vector2(6.145, 6.145)
-shape = SubResource("CircleShape2D_v67a4")
-debug_color = Color(0.952387, 0, 0.248016, 0.42)
-
-[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE2"]
-texture_filter = 1
-position = Vector2(1, -12)
-scale = Vector2(4, 4)
-texture = ExtResource("19_pg7jh")
-
-[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE2"]
-position = Vector2(-2, -17)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE2"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE2/StaticBody2D"]
-position = Vector2(3.75, 0.25)
-shape = SubResource("RectangleShape2D_pg7jh")
-
-[node name="Area2D SERVE3" type="Area2D" parent="TABLES"]
-position = Vector2(335, 1461)
-script = ExtResource("16_1lqi7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE3"]
-offset_left = -31.0
-offset_top = -33.0
-offset_right = 68.0
-offset_bottom = 58.0
-text = "TRIGGER NOODLE SERVE"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE3"]
-scale = Vector2(6.145, 6.145)
-shape = SubResource("CircleShape2D_v67a4")
-debug_color = Color(0.952387, 0, 0.248016, 0.42)
-
-[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE3"]
-texture_filter = 1
-position = Vector2(1, -12)
-scale = Vector2(4, 4)
-texture = ExtResource("19_pg7jh")
-
-[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE3"]
-position = Vector2(-2, -17)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE3"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE3/StaticBody2D"]
-position = Vector2(3.75, 0.25)
-shape = SubResource("RectangleShape2D_pg7jh")
-
-[node name="Area2D SERVE4" type="Area2D" parent="TABLES"]
-position = Vector2(335, 1611)
-script = ExtResource("16_1lqi7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE4"]
-offset_left = -31.0
-offset_top = -33.0
-offset_right = 68.0
-offset_bottom = 58.0
-text = "TRIGGER NOODLE SERVE"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE4"]
-scale = Vector2(6.145, 6.145)
-shape = SubResource("CircleShape2D_v67a4")
-debug_color = Color(0.952387, 0, 0.248016, 0.42)
-
-[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE4"]
-texture_filter = 1
-position = Vector2(1, -12)
-scale = Vector2(4, 4)
-texture = ExtResource("19_pg7jh")
-
-[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE4"]
-position = Vector2(-2, -17)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE4"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE4/StaticBody2D"]
-position = Vector2(3.75, 0.25)
-shape = SubResource("RectangleShape2D_pg7jh")
-
-[node name="Area2D SERVE5" type="Area2D" parent="TABLES"]
-position = Vector2(485, 1461)
-script = ExtResource("16_1lqi7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE5"]
-offset_left = -31.0
-offset_top = -33.0
-offset_right = 68.0
-offset_bottom = 58.0
-text = "TRIGGER NOODLE SERVE"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE5"]
-scale = Vector2(6.145, 6.145)
-shape = SubResource("CircleShape2D_v67a4")
-debug_color = Color(0.952387, 0, 0.248016, 0.42)
-
-[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE5"]
-texture_filter = 1
-position = Vector2(1, -12)
-scale = Vector2(4, 4)
-texture = ExtResource("19_pg7jh")
-
-[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE5"]
-position = Vector2(-2, -17)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE5"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE5/StaticBody2D"]
-position = Vector2(3.75, 0.25)
-shape = SubResource("RectangleShape2D_pg7jh")
-
-[node name="Area2D SERVE6" type="Area2D" parent="TABLES"]
-position = Vector2(485, 1611)
-script = ExtResource("16_1lqi7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE6"]
-offset_left = -31.0
-offset_top = -33.0
-offset_right = 68.0
-offset_bottom = 58.0
-text = "TRIGGER NOODLE SERVE"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE6"]
-scale = Vector2(6.145, 6.145)
-shape = SubResource("CircleShape2D_v67a4")
-debug_color = Color(0.952387, 0, 0.248016, 0.42)
-
-[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE6"]
-texture_filter = 1
-position = Vector2(1, -12)
-scale = Vector2(4, 4)
-texture = ExtResource("19_pg7jh")
-
-[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE6"]
-position = Vector2(-2, -17)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE6"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE6/StaticBody2D"]
-position = Vector2(3.75, 0.25)
-shape = SubResource("RectangleShape2D_pg7jh")
-
 [node name="PLAYER" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
@@ -818,6 +634,7 @@ shortcut_keys_enabled = false
 vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="PLAYER/CanvasLayer"]
+visible = false
 offset_right = 850.0
 offset_bottom = 250.0
 
@@ -836,6 +653,7 @@ script = ExtResource("4_e1bgx")
 metadata/_edit_use_anchors_ = true
 
 [node name="DEV" type="Control" parent="PLAYER/CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -847,7 +665,6 @@ offset_bottom = 295.0
 grow_horizontal = 0
 
 [node name="BUILD MODE" type="Button" parent="PLAYER/CanvasLayer/DEV"]
-visible = false
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
@@ -863,8 +680,36 @@ focus_mode = 0
 text = "SPAWN NPC
 "
 
+[node name="Panel2" type="Panel" parent="PLAYER/CanvasLayer"]
+offset_left = 1414.0
+offset_top = 925.0
+offset_right = 1910.06
+offset_bottom = 1064.35
+theme_override_styles/panel = SubResource("StyleBoxFlat_w141s")
+script = ExtResource("27_5h51l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PLAYER/CanvasLayer/Panel2"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 482.28
+offset_bottom = 134.76
+text = "ALPHA VERSION: Right now, your job is to distribute noodles to customers. A few devlogs later, there will be different types of noodles and customers will have special orders. Guests will appear automatically. Ramen are in the Kitchen.
+Please feel free to suggest improvements and give feedback."
+fit_content = true
+scroll_active = false
+
 [node name="ItemSlot" type="Marker2D" parent="PLAYER"]
 position = Vector2(0, 7)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PLAYER"]
+position = Vector2(394, 353.5)
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("26_vtvs4")
+autoplay = true
+max_distance = 20910.0
+attenuation = 1e-05
+panning_strength = 0.0
 
 [node name="TRASH" type="PointLight2D" parent="."]
 position = Vector2(-638, -551)
@@ -937,9 +782,607 @@ position = Vector2(-455, 1033)
 [node name="GOAL" type="Node2D" parent="."]
 position = Vector2(-792, 712)
 
+[node name="TABLES" type="Node2D" parent="."]
+position = Vector2(-976, -749)
+
+[node name="Area2D SERVE" type="Area2D" parent="TABLES"]
+position = Vector2(185, 1462)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE2" type="Area2D" parent="TABLES"]
+position = Vector2(410, 1462)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE2"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE2"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE2"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE2"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE2"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE2/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE3" type="Area2D" parent="TABLES"]
+position = Vector2(634, 1462)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE3"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE3"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE3"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE3"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE3"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE3/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE4" type="Area2D" parent="TABLES"]
+position = Vector2(859, 1462)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE4"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE4"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE4"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE4"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE4"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE4/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE5" type="Area2D" parent="TABLES"]
+position = Vector2(1085, 1462)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE5"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE5"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE5"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE5"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE5"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE5/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE6" type="Area2D" parent="TABLES"]
+position = Vector2(1310, 1462)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE6"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE6"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE6"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE6"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE6"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE6/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE7" type="Area2D" parent="TABLES"]
+position = Vector2(1535, 1461)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE7"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE7"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE7"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE7"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE7"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE7/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE8" type="Area2D" parent="TABLES"]
+position = Vector2(1760, 1461)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE8"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE8"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE8"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE8"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE8"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE8/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE9" type="Area2D" parent="TABLES"]
+position = Vector2(1985, 1461)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE9"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE9"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE9"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE9"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE9"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE9/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE10" type="Area2D" parent="TABLES"]
+position = Vector2(186, 1237)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE10"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE10"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE10"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE10"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE10"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE10/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE11" type="Area2D" parent="TABLES"]
+position = Vector2(411, 1237)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE11"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE11"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE11"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE11"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE11"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE11/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE12" type="Area2D" parent="TABLES"]
+position = Vector2(635, 1237)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE12"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE12"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE12"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE12"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE12"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE12/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE13" type="Area2D" parent="TABLES"]
+position = Vector2(860, 1237)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE13"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE13"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE13"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE13"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE13"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE13/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE14" type="Area2D" parent="TABLES"]
+position = Vector2(1086, 1237)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE14"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE14"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE14"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE14"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE14"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE14/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE15" type="Area2D" parent="TABLES"]
+position = Vector2(1311, 1237)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE15"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE15"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE15"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE15"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE15"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE15/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE16" type="Area2D" parent="TABLES"]
+position = Vector2(1536, 1236)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE16"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE16"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE16"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE16"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE16"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE16/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE17" type="Area2D" parent="TABLES"]
+position = Vector2(1761, 1236)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE17"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE17"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE17"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE17"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE17"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE17/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
+[node name="Area2D SERVE18" type="Area2D" parent="TABLES"]
+position = Vector2(1986, 1236)
+script = ExtResource("16_1lqi7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TABLES/Area2D SERVE18"]
+visible = false
+offset_left = -31.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 58.0
+text = "TRIGGER NOODLE SERVE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE18"]
+scale = Vector2(6.145, 6.145)
+shape = SubResource("CircleShape2D_v67a4")
+debug_color = Color(0.952387, 0, 0.248016, 0.42)
+
+[node name="Table1" type="Sprite2D" parent="TABLES/Area2D SERVE18"]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(4, 4)
+texture = ExtResource("19_pg7jh")
+
+[node name="ItemSlot" type="Marker2D" parent="TABLES/Area2D SERVE18"]
+position = Vector2(-2, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TABLES/Area2D SERVE18"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TABLES/Area2D SERVE18/StaticBody2D"]
+position = Vector2(3.75, 0.25)
+shape = SubResource("RectangleShape2D_pg7jh")
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(902, 849)
+position = Vector2(902, 847)
 navigation_polygon = SubResource("NavigationPolygon_1lwkd")
+use_edge_connections = false
 
 [node name="SPAWNRANGE" type="Node2D" parent="." node_paths=PackedStringArray("Tables", "Entry", "Entry2", "SpawnRanges")]
 script = ExtResource("21_ae7ip")
@@ -1002,13 +1445,25 @@ animation = &"DOOR RIGHT CLOSE"
 [connection signal="body_entered" from="Area2D PICKUP" to="Area2D PICKUP" method="_on_body_entered"]
 [connection signal="body_entered" from="KITCHEN/StaticBody2D/TRASH" to="KITCHEN/StaticBody2D/TRASH" method="_on_body_entered"]
 [connection signal="body_entered" from="KITCHEN/StaticBody2D/TRASH2" to="KITCHEN/StaticBody2D/TRASH2" method="_on_body_entered"]
+[connection signal="pressed" from="PLAYER/CanvasLayer/DEV/BUILD MODE" to="BuildingMode" method="_on_button_pressed"]
+[connection signal="pressed" from="PLAYER/CanvasLayer/DEV/Spawn NPC" to="SPAWNRANGE" method="_on_spawn_npc_pressed"]
 [connection signal="body_entered" from="TABLES/Area2D SERVE" to="TABLES/Area2D SERVE" method="_on_body_entered"]
 [connection signal="body_entered" from="TABLES/Area2D SERVE2" to="TABLES/Area2D SERVE2" method="_on_body_entered"]
 [connection signal="body_entered" from="TABLES/Area2D SERVE3" to="TABLES/Area2D SERVE3" method="_on_body_entered"]
 [connection signal="body_entered" from="TABLES/Area2D SERVE4" to="TABLES/Area2D SERVE4" method="_on_body_entered"]
 [connection signal="body_entered" from="TABLES/Area2D SERVE5" to="TABLES/Area2D SERVE5" method="_on_body_entered"]
 [connection signal="body_entered" from="TABLES/Area2D SERVE6" to="TABLES/Area2D SERVE6" method="_on_body_entered"]
-[connection signal="pressed" from="PLAYER/CanvasLayer/DEV/BUILD MODE" to="BuildingMode" method="_on_button_pressed"]
-[connection signal="pressed" from="PLAYER/CanvasLayer/DEV/Spawn NPC" to="SPAWNRANGE" method="_on_spawn_npc_pressed"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE7" to="TABLES/Area2D SERVE7" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE8" to="TABLES/Area2D SERVE8" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE9" to="TABLES/Area2D SERVE9" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE10" to="TABLES/Area2D SERVE10" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE11" to="TABLES/Area2D SERVE11" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE12" to="TABLES/Area2D SERVE12" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE13" to="TABLES/Area2D SERVE13" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE14" to="TABLES/Area2D SERVE14" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE15" to="TABLES/Area2D SERVE15" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE16" to="TABLES/Area2D SERVE16" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE17" to="TABLES/Area2D SERVE17" method="_on_body_entered"]
+[connection signal="body_entered" from="TABLES/Area2D SERVE18" to="TABLES/Area2D SERVE18" method="_on_body_entered"]
 [connection signal="body_entered" from="KitchenDoor/Area2D" to="KitchenDoor" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="KitchenDoor/Area2D" to="KitchenDoor" method="_on_area_2d_body_exited"]
