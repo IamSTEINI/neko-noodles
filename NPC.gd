@@ -17,6 +17,8 @@ var reached_table := false
 var got_order := false
 var chosen_table: Node2D = null
 var SPAWN_LOC = null
+var wait_time: float = 0.0
+const NPC_MAX_WAITING_TIME: float = 10.0
 @export var leaving = true
 
 func _ready() -> void:
@@ -74,7 +76,7 @@ func leave() -> void:
 	queue_free()
 	
 func _physics_process(delta: float) -> void:
-	if !$NavigationAgent2D.is_target_reached():
+	if not $NavigationAgent2D.is_target_reached():
 		var nav_point_dir = to_local($NavigationAgent2D.get_next_path_position()).normalized()
 		velocity = nav_point_dir * speed * delta
 		move_and_slide()
@@ -92,13 +94,30 @@ func _physics_process(delta: float) -> void:
 				leave()
 		elif reached_entry and not reached_table and chosen_table != null:
 			Globals.log("Table claimed: " + str(chosen_table.name))
-			say("I want to order!")
 			reached_table = true
+			wait_time = 0.0
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
-			await get_tree().create_timer(4.0).timeout # Simulating ordering
-			got_order = true
-		elif reached_entry and reached_entry and got_order:
-			Globals.log("NPC FINISHED FOR ORDER AT TABLE: " + str(chosen_table.name))
+			await get_tree().create_timer(1.5).timeout
+			if !got_order: say("I want to order!")
+		elif reached_table and not got_order:
+			wait_time += delta
+			if chosen_table.get_node("ItemSlot").get_child_count() > 0:
+				got_order = true
+				Globals.log("NPC GOT ORDER AT TABLE: " + str(chosen_table.name))
+			
+			elif wait_time >= NPC_MAX_WAITING_TIME:
+				say("Too slow! I'm leaving >:(")
+				Globals.log("NPC LEFT ANGRY (timeout) at table: " + str(chosen_table.name))
+				chosen_table.tableClaimed = false
+				leave()
+		
+		elif got_order:
+			Globals.log("NPC FINISHED ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_table.tableClaimed = false
+			for child in chosen_table.get_node("ItemSlot").get_children():
+				Globals.log("NPC PAID: " + str(child.Price))
+				Globals.money += child.Price
+				child.queue_free()
+			
 			say("Yummy. Thank you!")
 			leave()

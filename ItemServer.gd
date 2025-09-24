@@ -4,6 +4,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.get_meta("type") == "player":
+		body.PICKUP = false
 		var slot = body.get_node("ItemSlot")
 		if slot.get_child_count() > 0:
 			var noodle = slot.get_child(0)

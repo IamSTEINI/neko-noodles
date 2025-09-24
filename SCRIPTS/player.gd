@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 450
-var PICKUP = false
+@export var PICKUP = false
 var dir = "down"
 
 @onready var p_u_idle = $p_u
