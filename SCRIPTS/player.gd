@@ -2,52 +2,55 @@ extends CharacterBody2D
 
 const SPEED = 450
 @export var PICKUP = false
+@export var Tables: Node2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 var dir = "down"
 
-@onready var p_u_idle = $p_u
-@onready var p_d_idle = $p_d
-@onready var p_l_idle = $p_l
-@onready var p_r_idle = $p_r
+func _ready() -> void:
+	$CanvasLayer/StatusBar/Control/VISITORSTATUSBAR.Tables = Tables
 
-@onready var p_u_idle_p = $p_u_p
-@onready var p_d_idle_p = $p_d_p
-@onready var p_l_idle_p = $p_l_p
-@onready var p_r_idle_p = $p_r_p
-
-
-func setDir(direction: String, pickup: bool) -> void:
+func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 	var slot = $ItemSlot
-	
-	for sprite in [p_u_idle, p_d_idle, p_l_idle, p_r_idle,
-				   p_u_idle_p, p_d_idle_p, p_l_idle_p, p_r_idle_p]:
-		sprite.visible = false
-	
+
 	if pickup:
 		slot.visible = true
-		match direction:
-			"up": 
-				p_u_idle_p.visible = true
-				slot.visible = false
-			"down":
-				self.move_child($ItemSlot, self.get_child_count() - 1)
-				p_d_idle_p.visible = true
-				slot.position = Vector2(0,10)
-			"left":
-				self.move_child($ItemSlot, 0)
-				p_l_idle_p.visible = true
-				slot.position = Vector2(-10,0)
-			"right":
-				self.move_child($ItemSlot, 0)
-				p_r_idle_p.visible = true
-				slot.position = Vector2(10,0)
 	else:
 		slot.visible = false
-		match direction:
-			"up": p_u_idle.visible = true
-			"down": p_d_idle.visible = true
-			"left": p_l_idle.visible = true
-			"right": p_r_idle.visible = true
-	
+
+	match direction:
+		"up":
+			if moving:
+				animated_sprite_2d.play("WALK_UP")
+			else:
+				animated_sprite_2d.play("IDLE_UP")
+			slot.visible = false
+
+		"down":
+			self.move_child($ItemSlot, self.get_child_count() - 1)
+			if moving:
+				animated_sprite_2d.play("WALK_DOWN")
+			else:
+				animated_sprite_2d.play("IDLE_DOWN")
+			slot.position = Vector2(0,10)
+
+		"left":
+			animated_sprite_2d.flip_h = true
+			if moving:
+				animated_sprite_2d.play("WALK_SIDE")
+			else:
+				animated_sprite_2d.play("IDLE_SIDE")
+			self.move_child($ItemSlot, 0)
+			slot.position = Vector2(-3,10)
+
+		"right":
+			animated_sprite_2d.flip_h = false
+			if moving:
+				animated_sprite_2d.play("WALK_SIDE")
+			else:
+				animated_sprite_2d.play("IDLE_SIDE")
+			self.move_child($ItemSlot, 0)
+			slot.position = Vector2(3,10)
 
 
 func _physics_process(delta: float) -> void:
@@ -59,20 +62,22 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("player_move_down"):
 		input_vec.y += 1
 		dir = "down"
-	elif Input.is_action_pressed("player_move_right"):
+	if Input.is_action_pressed("player_move_right"):
 		input_vec.x += 1
 		dir = "right"
-	elif Input.is_action_pressed("player_move_left"):
+	if Input.is_action_pressed("player_move_left"):
 		input_vec.x -= 1
 		dir = "left"
 
 	if input_vec != Vector2.ZERO:
 		input_vec = input_vec.normalized() * SPEED
-
-	velocity = input_vec
-	if(!Globals.buildMode):
-		move_and_slide()
-		setDir(dir, PICKUP)
+		velocity = input_vec
+		if !Globals.buildMode:
+			move_and_slide()
+			setDir(dir, PICKUP, true)
+	else:
+		velocity = Vector2.ZERO
+		setDir(dir, PICKUP, false)
 
 
 func _input(event):
@@ -88,6 +93,7 @@ func _input(event):
 		else:
 			PICKUP = !PICKUP
 			Globals.log("[PLAYER] Pickup triggered: " + str(PICKUP))
+
 
 func _on_area_player_body_entered(body: Node2D) -> void:
 	if body.get_meta("type") == "player":

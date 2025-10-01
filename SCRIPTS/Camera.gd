@@ -6,6 +6,6 @@ func _process(delta: float) -> void:
 		zoom = Vector2(0.5, 0.5)
 		position = %BuildingPos.position
 	else:
-		reparent(%PLAYER)
+		reparent($"..")
 		zoom = Vector2(1, 1)
 		position = Vector2(0,0)

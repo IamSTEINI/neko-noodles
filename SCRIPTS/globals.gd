@@ -8,7 +8,7 @@ var day: int = 0
 var ingtime: String = "12:00 AM"
 @export var money: int = 3000
 var time_accumulator: float = 0.0
-var npc_spawn_rate: float = 0.0001 # 0,001 % EACH MINUTE
+var npc_spawn_rate: float = 0.0003 # 0,001 % EACH MINUTE
 signal npc_spawn
 
 func spawn_event():
@@ -21,6 +21,8 @@ func log(msg: String):
 
 func _ready() -> void:
 	update_time()
+	emit_signal("npc_spawn")
+	emit_signal("npc_spawn")
 	Globals.log("DAY: " + str(day))
 
 func _process(delta: float) -> void:

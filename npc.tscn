@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnd7e1bhoe6dy" path="res://ASSETS/TEXTURES/PLAYER/npc_f_idle.png" id="2_kh24r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ae7ip"]
-radius = 45.0111
+radius = 28.0179
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxcha"]
 bg_color = Color(0.103744, 0.103744, 0.103744, 1)
@@ -16,6 +16,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 2
 
 [node name="NPC" type="CharacterBody2D" node_paths=PackedStringArray("Text", "TextBox")]
+collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_xxcha")
 speed = 5000.0
@@ -34,11 +35,12 @@ shape = SubResource("CircleShape2D_ae7ip")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
-avoidance_enabled = true
+simplify_path = true
+simplify_epsilon = 0.357
 radius = 30.0
 
 [node name="TEXTBOX" type="Control" parent="."]
-z_index = 105
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://pe74xpdh5ymt"]
+
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://Interactable.tscn" id="1_2sdc1"]
+[ext_resource type="Script" uid="uid://datmtggct7nhv" path="res://Table.gd" id="1_561jp"]
+[ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="2_muxx0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_muxx0"]
+radius = 47.0956
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_561jp"]
+radius = 109.041
+
+[node name="TABLE" type="Node2D" node_paths=PackedStringArray("food_slots")]
+script = ExtResource("1_561jp")
+food_slots = [null]
+
+[node name="INTERACTABLE" parent="." instance=ExtResource("1_2sdc1")]
+text = "SERVE FOOD"
+border_color = Color(0, 0.645547, 0.236471, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_muxx0")
+region_enabled = true
+region_rect = Rect2(300, 50, 50, 50)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_muxx0")
+
+[node name="PLAYERCHECK" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PLAYERCHECK"]
+shape = SubResource("CircleShape2D_561jp")
+
+[node name="CAPACITY" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 30.0
+offset_bottom = 48.0
+scale = Vector2(0.525, 0.525)
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
+[connection signal="body_entered" from="PLAYERCHECK" to="." method="_on_playercheck_body_entered"]
+[connection signal="body_exited" from="PLAYERCHECK" to="." method="_on_playercheck_body_exited"]

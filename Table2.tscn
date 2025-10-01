@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://smjjt1loro0"]
+
+[ext_resource type="Script" uid="uid://datmtggct7nhv" path="res://Table.gd" id="1_p07j1"]
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://Interactable.tscn" id="2_jqr7b"]
+[ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="3_xn8rw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p07j1"]
+radius = 32.0
+height = 178.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_561jp"]
+radius = 109.041
+
+[node name="TABLE" type="Node2D"]
+script = ExtResource("1_p07j1")
+
+[node name="INTERACTABLE" parent="." instance=ExtResource("2_jqr7b")]
+text = "SERVE FOOD"
+border_color = Color(0, 0.645547, 0.236471, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-50, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_xn8rw")
+region_enabled = true
+region_rect = Rect2(350, 50, 50, 50)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(50, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_xn8rw")
+region_enabled = true
+region_rect = Rect2(400, 50, 50, 50)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p07j1")
+
+[node name="PLAYERCHECK" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PLAYERCHECK"]
+shape = SubResource("CircleShape2D_561jp")
+
+[node name="CAPACITY" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 30.0
+offset_bottom = 48.0
+scale = Vector2(0.525, 0.525)
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
+[connection signal="body_entered" from="PLAYERCHECK" to="." method="_on_playercheck_body_entered"]
+[connection signal="body_exited" from="PLAYERCHECK" to="." method="_on_playercheck_body_exited"]
