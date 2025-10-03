@@ -4,11 +4,11 @@ var console: RichTextLabel = null
 var buildMode: bool = false
 var tmultiplier: float = 480.0
 var intime_seconds: int = 17 * 3600
-var day: int = 0
+var day: int = 1
 var ingtime: String = "12:00 AM"
 @export var money: int = 3000
 var time_accumulator: float = 0.0
-var npc_spawn_rate: float = 0.0003 # 0,001 % EACH MINUTE
+var npc_spawn_rate: float = day * 2.5/10000 # 0,00day % EACH MINUTE
 signal npc_spawn
 
 func spawn_event():

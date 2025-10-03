@@ -16,6 +16,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 2
 
 [node name="NPC" type="CharacterBody2D" node_paths=PackedStringArray("Text", "TextBox")]
+z_index = 91
 collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_xxcha")
