@@ -18,6 +18,7 @@ var chosen_table: Node2D = null
 var SPAWN_LOC = null
 var wait_time: float = 0.0
 var food_slot = null
+var is_speaking: bool = false
 const NPC_MAX_WAITING_TIME: float = 10.0
 var chosen_character: AnimatedSprite2D
 @export var leaving = true
@@ -68,13 +69,26 @@ func find_empty_slot(food_slots) -> Marker2D:
 	return null
 
 func say(text: String) -> void:
+	await wait_say()
+
+	is_speaking = true
 	TextBox.show()
+	$Talking.play()
 	Text.text = ""
+
 	for i in range(text.length()):
 		Text.text += text[i]
 		await get_tree().create_timer(type_speed).timeout
+
 	await get_tree().create_timer(show_duration).timeout
 	TextBox.hide()
+	$Talking.stop()
+	is_speaking = false
+
+
+func wait_say() -> void:
+	while is_speaking:
+		await get_tree().process_frame
 	
 func leave() -> void:
 	reached_table = false
@@ -122,7 +136,6 @@ func _physics_process(delta: float) -> void:
 			wait_time = 0.0
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_character.play("IDLE_UP")
-			await get_tree().create_timer(1.5).timeout
 			if !got_order: say("I want to order!")
 		elif reached_table and not got_order:
 			wait_time += delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=91 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
 [ext_resource type="AudioStream" uid="uid://8vkva5751s0k" path="res://SOUNDS/CatSoundTrack.mp3" id="10_0xe60"]
+[ext_resource type="Script" uid="uid://dedpsgw5mui1f" path="res://SCRIPTS/Audio.gd" id="12_0k08p"]
+[ext_resource type="AudioStream" uid="uid://bdpkaiohiqcaj" path="res://SOUNDS/footprint.mp3" id="13_yovmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
 atlas = ExtResource("1_5qx4t")
@@ -833,7 +835,7 @@ text = "THIS BAR SHOWS
 fit_content = true
 scroll_active = false
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="MUSIC" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(394, 353.5)
 scale = Vector2(0.5, 0.5)
 stream = ExtResource("10_0xe60")
@@ -841,3 +843,10 @@ autoplay = true
 max_distance = 20910.0
 attenuation = 1e-05
 panning_strength = 0.0
+script = ExtResource("12_0k08p")
+
+[node name="FOOTSTEP" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_yovmp")
+pitch_scale = 1.4
+attenuation = 0.0018866
+script = ExtResource("12_0k08p")

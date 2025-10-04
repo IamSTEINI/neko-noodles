@@ -57,18 +57,28 @@ func _physics_process(delta: float) -> void:
 	var input_vec = Vector2.ZERO
 	
 	if Input.is_action_pressed("player_move_up"):
+		if not $FOOTSTEP.playing:
+			$FOOTSTEP.play()
 		input_vec.y -= 1
 		dir = "up"
 	elif Input.is_action_pressed("player_move_down"):
+		if not $FOOTSTEP.playing:
+			$FOOTSTEP.play()
 		input_vec.y += 1
 		dir = "down"
 	if Input.is_action_pressed("player_move_right"):
+		if not $FOOTSTEP.playing:
+			$FOOTSTEP.play()
 		input_vec.x += 1
 		dir = "right"
 	if Input.is_action_pressed("player_move_left"):
+		if not $FOOTSTEP.playing:
+			$FOOTSTEP.play()
 		input_vec.x -= 1
 		dir = "left"
-
+	
+	if input_vec == Vector2.ZERO and $FOOTSTEP.playing:
+		$FOOTSTEP.stop()
 	if input_vec != Vector2.ZERO:
 		input_vec = input_vec.normalized() * SPEED
 		velocity = input_vec

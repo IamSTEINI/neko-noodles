@@ -1,7 +1,8 @@
-[gd_scene load_steps=127 format=3 uid="uid://on0gdv6lubsv"]
+[gd_scene load_steps=128 format=3 uid="uid://on0gdv6lubsv"]
 
 [ext_resource type="Script" uid="uid://cu54hei6jm4cw" path="res://SCRIPTS/NPC.gd" id="1_xxcha"]
 [ext_resource type="Texture2D" uid="uid://bctb3q1rfg0l0" path="res://ASSETS/TEXTURES/PLAYER/NPCS.png" id="2_abqhh"]
+[ext_resource type="AudioStream" uid="uid://b2bvyjrqfg7dv" path="res://SOUNDS/cat_talking.mp3" id="3_rv78h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ae7ip"]
 radius = 28.0
@@ -969,3 +970,8 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_abqhh")
 animation = &"IDLE_UP"
 frame_progress = 0.227695
+
+[node name="Talking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rv78h")
+volume_db = 12.0
+max_distance = 1097.0

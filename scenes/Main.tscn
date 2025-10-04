@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=23 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
@@ -215,9 +215,9 @@ size = Vector2(3247, 296.5)
 size = Vector2(202.5, 3271.5)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_n2y55"]
-vertices = PackedVector2Array(351.492, -70.6484, 360.742, -16.0938, 357.906, -16.0938, 247.547, -70.9688, 239.094, -11.0938, 237.438, -11.0938, -298.313, -246.023, 1331.61, -255.789, 1328.2, -45.5391, -56.0078, 883.906, -59.7578, 206.094, 239.094, 206.094, 895.438, 883.906, 357.906, 205.094, 1049.78, 205.094, 1046.98, 874.938, -100.75, -57.0313, -175.461, -45.4375, -278.313, 363.008, -141.398, 1394.76, -987.023, 1440.08, -993.789, 366.008, -309.641, 1446.88)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2), PackedInt32Array(6, 7, 8, 0), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 14, 15, 12, 11), PackedInt32Array(13, 11, 4, 2), PackedInt32Array(6, 0, 3), PackedInt32Array(6, 3, 16), PackedInt32Array(6, 16, 17), PackedInt32Array(18, 6, 17, 19), PackedInt32Array(20, 21, 18, 19, 22)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-317, -264, -297, 345, -1012, 348, -1005, 1458, -307, 1465, -123, 1408, -157, -30, -99, -39, 226, -52, 186, 185, -78, 180, -74, 902, 896, 902, 1065, 892, 1068, 173, 412, 178, 373, -52, 1346, -27, 1350, -274)])
+vertices = PackedVector2Array(-226.219, 351, -142.18, 103.172, -160.391, 865.789, -230.094, 365.391, -331.148, -805.906, 1403.93, -805.906, 1970.5, -607.43, 774.273, -599.969, 717.539, -606.969, -230.094, 336.609, -240.609, 375.906, -318.258, 785.109, -980.867, 1516.81, -977.953, -297.219, -666.711, -135.344, -709.492, 623.648, -810.727, 1466.77, -703.883, 897.883, -623.797, 716.203, -595.969, 772.531, -255, 379.781, -319, 711.828, -240.609, 326.094, -380.75, -556.133, 357.906, -16.0938, 239.094, -11.0938, 234.328, -11.0938, 240.852, -53.6484, 362.539, -52.9219, 367.523, -16.0938, 705.578, -100.063, 794.273, -28.7266, 451.953, -22.1875, 381.727, -65.4063, -56.0078, 883.906, -59.7578, 206.094, 239.094, 206.094, 895.438, 883.906, 357.906, 205.094, 1049.78, 205.094, 1046.98, 874.938, -269.391, 375.906, -255, 322.219, -190.148, 9.38281, -269.391, 326.094, -314.008, -302.969, -279.906, 365.391, -125.773, -79.7578, -279.906, 336.609, -283.781, 351)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(1, 0, 9), PackedInt32Array(10, 3, 2, 11), PackedInt32Array(12, 13, 14, 15, 16), PackedInt32Array(17, 16, 15), PackedInt32Array(17, 15, 18, 19), PackedInt32Array(20, 10, 11, 21), PackedInt32Array(19, 18, 21, 11), PackedInt32Array(1, 9, 22), PackedInt32Array(8, 23, 4), PackedInt32Array(24, 25, 26, 27, 28), PackedInt32Array(28, 29, 24), PackedInt32Array(30, 8, 7, 31), PackedInt32Array(30, 31, 32, 33), PackedInt32Array(34, 35, 36, 37), PackedInt32Array(38, 39, 40, 37, 36), PackedInt32Array(38, 36, 25, 24), PackedInt32Array(41, 20, 21), PackedInt32Array(1, 22, 42, 43), PackedInt32Array(43, 42, 44, 45), PackedInt32Array(46, 41, 21), PackedInt32Array(45, 30, 33), PackedInt32Array(45, 33, 28, 27, 47), PackedInt32Array(45, 47, 43), PackedInt32Array(45, 44, 48), PackedInt32Array(49, 46, 21), PackedInt32Array(49, 21, 45), PackedInt32Array(45, 48, 49)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-346, -824, -403, -537, 699, -588, 688, -122, -332, -325, -337, 694, -616, 698, -691, 617, -648, -146, -996, -327, -999, 1541, -795, 1481, -687, 906, -588, 791, -323, 803, -143, 895, -124, 99, -169, 11, -117, -61, 220, -37, 186, 185, -78, 180, -74, 902, 896, 902, 1065, 892, 1068, 173, 412, 178, 382, -44, 447, -4, 813, -11, 793, -582, 2075, -590, 1407, -824)])
 parsed_geometry_type = 1
 cell_size = 8.0
 agent_radius = 18.09
@@ -234,6 +234,9 @@ radius = 6.08276
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7kua"]
 size = Vector2(727.5, 185)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lhr70"]
+radius = 10.0499
+
 [node name="TEST" type="Node2D"]
 script = ExtResource("1_lhr70")
 
@@ -246,11 +249,11 @@ tile_set = SubResource("TileSet_rstr5")
 [node name="GROUND-2" type="TileMapLayer" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAhACEAAAAAAAIAAADs/yUAAAAAAAIAAADm/yUAAAAAAAIAAADq/woAAAAAAAIAAADl/woAAAAAAAIAAADo/xcAAAAAAAIAAAApAPn/AAAAAAIAAAAkAP//AAAAAAIAAAArAAoAAAAAAAIAAAAoABwAAAAAAAIAAAAqAB8AAAAAAAIAAAAqACQAAAAAAAIAAAAaACUAAAAAAAIAAAAPACMAAAAAAAIAAAABACUAAAAAAAIAAAACACcAAAAAAAIAAADq/ycAAAAAAAIAAADo/x4AAAABAAIAAADx/yQAAAABAAIAAAD3/wMAAAAEAAIAABD9/wMAAAAEAAIAAAD/////AAAEAAIAAAD3/wIAAAADAAIAABD9/wIAAAADAAIAAAD///7/AAADAAIAAAA=")
+tile_map_data = PackedByteArray("AAAhACEAAAAAAAIAAADs/yUAAAAAAAIAAADm/yUAAAAAAAIAAADq/woAAAAAAAIAAADl/woAAAAAAAIAAADo/xcAAAAAAAIAAAApAPn/AAAAAAIAAAAkAP//AAAAAAIAAAArAAoAAAAAAAIAAAAoABwAAAAAAAIAAAAqAB8AAAAAAAIAAAAqACQAAAAAAAIAAAAaACUAAAAAAAIAAAAPACMAAAAAAAIAAAABACUAAAAAAAIAAAACACcAAAAAAAIAAADq/ycAAAAAAAIAAADo/x4AAAABAAIAAADx/yQAAAABAAIAAAD3/wMAAAAEAAIAABD9/wMAAAAEAAIAAAD/////AAAEAAIAAAD3/wIAAAADAAIAABD9/wIAAAADAAIAAAD///7/AAADAAIAAAD8/wcAAAADAAAAAAD4/wcAAAADAAAAADD5/wcAAAACAAAAAAD6/wcAAAACAAAAAAD7/wcAAAACAAAAAAAHAPr/AAADAAAAAGAHAP7/AAADAAAAAFAHAP3/AAACAAAAAGAHAPz/AAACAAAAAGAHAPv/AAACAAAAAGA=")
 tile_set = SubResource("TileSet_rstr5")
 
 [node name="GROUND-DECO" type="TileMapLayer" parent="."]
-z_index = 3
+z_index = 95
 texture_filter = 1
 material = SubResource("ShaderMaterial_wp0k4")
 scale = Vector2(2, 2)
@@ -410,6 +413,14 @@ debug_color = Color(0.676794, 0, 0.311111, 0.42)
 position = Vector2(739.75, 94.5)
 shape = SubResource("RectangleShape2D_g7kua")
 debug_color = Color(0.676794, 0, 0.311111, 0.42)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(-255, 351)
+shape = SubResource("CircleShape2D_lhr70")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(1052, -49)
+shape = SubResource("CircleShape2D_lhr70")
 
 [node name="PLAYER" parent="." node_paths=PackedStringArray("Tables") instance=ExtResource("9_bb450")]
 z_index = 91
