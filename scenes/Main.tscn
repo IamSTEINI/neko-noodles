@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=20 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://byc7apj6gk76s" path="res://SCRIPTS/NPCSPAWNER.gd" id="7_cvmbd"]
 [ext_resource type="PackedScene" uid="uid://on0gdv6lubsv" path="res://scenes/npc.tscn" id="8_ft6cd"]
 [ext_resource type="PackedScene" uid="uid://cq2ikcgppht16" path="res://scenes/PLAYER.tscn" id="9_bb450"]
-[ext_resource type="PackedScene" uid="uid://ckx7ll1bsgulx" path="res://scenes/Door.tscn" id="10_nfivy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1wui"]
 texture = ExtResource("2_wp0k4")
@@ -207,9 +206,9 @@ size = Vector2(3247, 296.5)
 size = Vector2(202.5, 3271.5)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_n2y55"]
-vertices = PackedVector2Array(-141.398, 1394.76, -289.023, 1440.49, -296.82, -195.43, -175.461, -45.4375, 1338.01, -243.344, 1328.73, -45.1172, 369.883, -47.1328, -56.0078, 883.906, -59.7969, 198.438, 201.859, 203.391, 895.438, 883.906, 395.742, 196.211, 1049.83, 191.219, 1046.98, 874.938, 233.453, -41.1328, -99.9609, -57.1563)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 12, 13, 10, 9), PackedInt32Array(11, 9, 14, 6), PackedInt32Array(2, 6, 14, 15), PackedInt32Array(2, 15, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-315, -213, -307, 1465, -123, 1408, -157, -30, -99, -39, 213, -24, 186, 185, -78, 180, -74, 902, 896, 902, 1065, 892, 1068, 173, 412, 178, 390, -29, 1346, -27, 1357, -262)])
+vertices = PackedVector2Array(-141.398, 1394.76, -289.047, 1440.5, -298.797, -221.07, -175.461, -45.4375, 351.492, -70.6484, 360.742, -16.0938, 357.906, -16.0938, 247.547, -70.9688, 239.094, -11.0938, 237.438, -11.0938, 1334.33, -235.742, 1328.47, -45.5391, -56.0078, 883.906, -59.7578, 206.094, 239.094, 206.094, 895.438, 883.906, 357.906, 205.094, 1049.78, 205.094, 1046.98, 874.938, -100.75, -57.0313)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 7, 6), PackedInt32Array(2, 10, 11, 4), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 15, 14), PackedInt32Array(16, 14, 8, 6), PackedInt32Array(2, 4, 7), PackedInt32Array(2, 7, 19), PackedInt32Array(2, 19, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-317, -239, -307, 1465, -123, 1408, -157, -30, -99, -39, 226, -52, 186, 185, -78, 180, -74, 902, 896, 902, 1065, 892, 1068, 173, 412, 178, 373, -52, 1346, -27, 1353, -254)])
 parsed_geometry_type = 1
 cell_size = 8.0
 agent_radius = 18.09
@@ -218,13 +217,13 @@ agent_radius = 18.09
 size = Vector2(6, 1478.38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v67a4"]
-size = Vector2(287.5, 6.34375)
+size = Vector2(315, 181)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2y55"]
 radius = 6.08276
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7kua"]
-size = Vector2(703, 20)
+size = Vector2(727.5, 185)
 
 [node name="TEST" type="Node2D"]
 script = ExtResource("1_lhr70")
@@ -374,6 +373,7 @@ position = Vector2(0, -18)
 
 [node name="TABLE2" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("6_3p2gp")]
 position = Vector2(1903, 1026)
+capacity = 2
 food_slots = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE2"]
@@ -415,7 +415,7 @@ shape = SubResource("RectangleShape2D_in37l")
 debug_color = Color(0.676794, 0, 0.311111, 0.42)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
-position = Vector2(49.75, 10.1719)
+position = Vector2(63.5, 97.5)
 shape = SubResource("RectangleShape2D_v67a4")
 debug_color = Color(0.676794, 0, 0.311111, 0.42)
 
@@ -425,7 +425,7 @@ shape = SubResource("CircleShape2D_n2y55")
 debug_color = Color(0.676794, 0, 0.311111, 0.42)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
-position = Vector2(752, 12)
+position = Vector2(739.75, 94.5)
 shape = SubResource("RectangleShape2D_g7kua")
 debug_color = Color(0.676794, 0, 0.311111, 0.42)
 
@@ -433,12 +433,6 @@ debug_color = Color(0.676794, 0, 0.311111, 0.42)
 z_index = 91
 position = Vector2(667, 1318)
 Tables = NodePath("../TABLES")
-
-[node name="DOOR2" parent="." instance=ExtResource("10_nfivy")]
-position = Vector2(300, 999)
-
-[node name="DOOR3" parent="." instance=ExtResource("10_nfivy")]
-position = Vector2(300, 111)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.369564, 0.346215, 0.445095, 1)

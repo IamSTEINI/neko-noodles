@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=89 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3e3btw00bf3v" path="res://ASSETS/TEXTURES/ICONS/ICONS.png" id="4_4logd"]
 [ext_resource type="Script" uid="uid://dhd5bry7fsr4e" path="res://SCRIPTS/TimeStatusBar.gd" id="5_0xe60"]
 [ext_resource type="Script" uid="uid://p5dg5snkhyph" path="res://SCRIPTS/VisitorStatusBar.gd" id="6_xi7vv"]
+[ext_resource type="Script" uid="uid://bfrm3bj1achr7" path="res://scenes/daystatusbar.gd" id="7_54cwh"]
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
 [ext_resource type="AudioStream" uid="uid://8vkva5751s0k" path="res://SOUNDS/CatSoundTrack.mp3" id="10_0xe60"]
@@ -678,12 +679,44 @@ tab_size = 0
 shortcut_keys_enabled = false
 vertical_alignment = 1
 
+[node name="DAYSTATUSBAR" type="Panel" parent="CanvasLayer/StatusBar/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1560.0
+offset_top = 5.0
+offset_right = 1630.0
+offset_bottom = 45.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_75h50")
+script = ExtResource("7_54cwh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/DAYSTATUSBAR"]
+texture_filter = 1
+position = Vector2(16, 20)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_4logd")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/Control/DAYSTATUSBAR"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 7.0
+offset_right = 65.0
+offset_bottom = 32.0
+text = "1"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="VISITORSTATUSBAR" type="Panel" parent="CanvasLayer/StatusBar/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 1510.0
+offset_left = 1470.0
 offset_top = 5.0
-offset_right = 1630.0
+offset_right = 1540.0
 offset_bottom = 45.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_75h50")
 script = ExtResource("6_xi7vv")
@@ -700,7 +733,7 @@ region_rect = Rect2(32, 0, 16, 16)
 layout_mode = 0
 offset_left = 30.0
 offset_top = 7.0
-offset_right = 115.0
+offset_right = 63.0
 offset_bottom = 32.0
 text = "10
 "
@@ -766,6 +799,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_yqncw")
 script = ExtResource("8_73ffy")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel2"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 9.0
 offset_top = 10.0
@@ -773,6 +807,29 @@ offset_right = 482.28
 offset_bottom = 134.76
 text = "ALPHA VERSION: Right now, your job is to distribute noodles to customers. A few devlogs later, there will be different types of noodles and customers will have special orders. Guests will appear automatically. Ramen are in the Kitchen.
 Please feel free to suggest improvements and give feedback."
+fit_content = true
+scroll_active = false
+
+[node name="Panel3" type="Panel" parent="CanvasLayer"]
+offset_left = 1414.0
+offset_top = 60.0
+offset_right = 1910.06
+offset_bottom = 199.35
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqncw")
+script = ExtResource("8_73ffy")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel3"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 482.28
+offset_bottom = 134.76
+text = "THIS BAR SHOWS
+- TOTAL VISITOR AMOUNT FOR TODAY
+- CALENDAR DAY
+- TIME
+- AMOUNT OF YOUR COINS"
 fit_content = true
 scroll_active = false
 

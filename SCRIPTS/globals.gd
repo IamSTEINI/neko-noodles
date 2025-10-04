@@ -8,12 +8,12 @@ var day: int = 1
 var ingtime: String = "12:00 AM"
 @export var money: int = 3000
 var time_accumulator: float = 0.0
-var npc_spawn_rate: float = day * 2.5/10000 # 0,00day % EACH MINUTE
+var npc_spawn_count := int(10 + sqrt(day) * 5.0)
+var npc_spawned := 0
+var spawn_interval := 0.0
+var spawn_accumulator := 0.0
 signal npc_spawn
 
-func spawn_event():
-	emit_signal("npc_spawn")
-	
 func log(msg: String):
 	if console:
 		console.append_text(msg + "\n")
@@ -21,15 +21,20 @@ func log(msg: String):
 
 func _ready() -> void:
 	update_time()
-	emit_signal("npc_spawn")
-	emit_signal("npc_spawn")
 	Globals.log("DAY: " + str(day))
+	calculate_spawn_interval()
 
 func _process(delta: float) -> void:
 	time_accumulator += delta * tmultiplier
 	while time_accumulator >= 1.0:
 		time_accumulator -= 1.0
 		update_time()
+	
+	spawn_accumulator += delta * tmultiplier
+	while spawn_accumulator >= spawn_interval:
+		spawn_accumulator -= spawn_interval
+		emit_signal("npc_spawn")
+		npc_spawned += 1
 
 func update_time() -> void:
 	intime_seconds += 1
@@ -56,9 +61,12 @@ func update_time() -> void:
 
 	ingtime = "%02d:%02d %s" % [hours_12, minutes, am_pm]
 	
-	if randf() < npc_spawn_rate:
-		Globals.log("NPC SPAWNED")
-		Globals.spawn_event()
+func calculate_spawn_interval():
+	var virtual_day_seconds = 24 * 3600
+	spawn_interval = virtual_day_seconds / max(npc_spawn_count, 1)
+	spawn_accumulator = 0.0
+	npc_spawned = 0
+	
 func get_ingame_time_formatted() -> String:
 	return ingtime
 

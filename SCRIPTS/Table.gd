@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var occupied: bool = false
+@export var capacity: int = 1;
+@export var customers: int = 0;
 @export var food_slots: Array[Marker2D] = []
 
 func update_capacity_text() -> void:
@@ -49,7 +50,7 @@ func _ready() -> void:
 func _on_playercheck_body_entered(body: Node2D) -> void:
 	update_capacity_text()
 	if body.get_meta("type") == "player":
-		if body.get_node("ItemSlot").get_child_count() > 0 && occupied:
+		if body.get_node("ItemSlot").get_child_count() > 0 && capacity <= customers:
 			$INTERACTABLE.can_interact = true
 		else:
 			$INTERACTABLE.can_interact = false
@@ -58,7 +59,7 @@ func _on_playercheck_body_entered(body: Node2D) -> void:
 func _on_playercheck_body_exited(body: Node2D) -> void:
 	update_capacity_text()
 	if body.get_meta("type") == "player":
-		if body.get_node("ItemSlot").get_child_count() > 0 && occupied:
+		if body.get_node("ItemSlot").get_child_count() > 0 && capacity <= customers:
 			$INTERACTABLE.can_interact = true
 		else:
 			$INTERACTABLE.can_interact = false

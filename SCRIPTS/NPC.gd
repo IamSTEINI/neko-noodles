@@ -48,7 +48,7 @@ func getRandomTable() -> Node2D:
 		return null
 	var available_tables = []
 	for table in children:
-		if !table.occupied:
+		if table.capacity > table.customers:
 			available_tables.append(table)
 	if available_tables.size() == 0:
 		return null
@@ -83,9 +83,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		if not reached_entry:
 			chosen_table = getRandomTable()
-			food_slot = find_empty_slot(chosen_table.food_slots)
 			if chosen_table != null:
-				chosen_table.occupied = true
+				food_slot = find_empty_slot(chosen_table.food_slots)
+				chosen_table.customers += 1
 				Globals.log("Table chosen: " + str(chosen_table.name))
 				$NavigationAgent2D.target_position = chosen_table.global_position
 				reached_entry = true
@@ -109,12 +109,12 @@ func _physics_process(delta: float) -> void:
 			elif wait_time >= NPC_MAX_WAITING_TIME:
 				say("Too slow! I'm leaving >:(")
 				Globals.log("NPC LEFT ANGRY (timeout) at table: " + str(chosen_table.name))
-				chosen_table.occupied = false
+				chosen_table.customers -= 1
 				leave()
 		
 		elif got_order:
 			Globals.log("NPC FINISHED ORDER AT TABLE: " + str(chosen_table.name))
-			chosen_table.occupied = false
+			chosen_table.customers -= 1
 			for child in food_slot.get_children():
 				Globals.log("NPC PAID: " + str(child.Price))
 				Globals.money += child.Price
