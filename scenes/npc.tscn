@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://on0gdv6lubsv"]
 
-[ext_resource type="Script" uid="uid://cu54hei6jm4cw" path="res://NPC.gd" id="1_xxcha"]
+[ext_resource type="Script" uid="uid://cu54hei6jm4cw" path="res://SCRIPTS/NPC.gd" id="1_xxcha"]
 [ext_resource type="Texture2D" uid="uid://bnd7e1bhoe6dy" path="res://ASSETS/TEXTURES/PLAYER/npc_f_idle.png" id="2_kh24r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ae7ip"]

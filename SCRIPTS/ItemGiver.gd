@@ -1,6 +1,6 @@
 extends Area2D
 
-var noodle_item_scene = preload("res://NoodleItem.tscn")
+var noodle_item_scene = preload("res://scenes/NoodleItem.tscn")
 
 func _on_body_entered(body: Node2D) -> void:
 	var slot = body.get_node("ItemSlot")

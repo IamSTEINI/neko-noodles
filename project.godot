@@ -12,13 +12,14 @@ config_version=5
 
 config/name="Neko Noodles"
 config/version="0.0.1 ALPHA"
-run/main_scene="res://NN-TEST.tscn"
+run/main_scene="uid://cld5xtwr1yq5i"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://dn7d656jhjsj"
 
 [autoload]
 
 Globals="*res://SCRIPTS/globals.gd"
+Scenemanager="*res://scenes/scenemanager.tscn"
 
 [display]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="1_551nn"]
-[ext_resource type="Script" uid="uid://b1utbtali1r3f" path="res://ItemGiver.gd" id="4_1oedi"]
+[ext_resource type="Script" uid="uid://b1utbtali1r3f" path="res://SCRIPTS/ItemGiver.gd" id="4_1oedi"]
 [ext_resource type="Texture2D" uid="uid://dad641m8euv03" path="res://ASSETS/TEXTURES/LIGHT/LIGHT_SQUARE.png" id="4_pwytl"]
 [ext_resource type="Texture2D" uid="uid://coewscq8x86d0" path="res://ASSETS/TEXTURES/FOOD/NOODLES/egg_ramen.png" id="5_vepkb"]
 
