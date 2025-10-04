@@ -5,6 +5,7 @@ var buildMode: bool = false
 var tmultiplier: float = 480.0
 var intime_seconds: int = 17 * 3600
 var day: int = 1
+var volume: int = 100
 var ingtime: String = "12:00 AM"
 @export var money: int = 3000
 var time_accumulator: float = 0.0

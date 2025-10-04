@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cld5xtwr1yq5i"]
+[gd_scene load_steps=47 format=3 uid="uid://cld5xtwr1yq5i"]
 
 [ext_resource type="Script" uid="uid://bul7fr50u68xc" path="res://SCRIPTS/MAIN_MENU.gd" id="1_v0qjw"]
 [ext_resource type="Shader" uid="uid://by0usr4bq3vcl" path="res://Shader/gaussian_glow.gdshader" id="2_7260r"]
@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://oqy587xryi4r" path="res://ASSETS/TEXTURES/ICONS/BANNER.png" id="5_kiw3d"]
 [ext_resource type="Texture2D" uid="uid://cxmpgdgq7lq10" path="res://ASSETS/TEXTURES/ICONS/BUTTONS.png" id="6_8wqjl"]
 [ext_resource type="AudioStream" uid="uid://c2d0kx2d56sbd" path="res://SOUNDS/NN-MAIN_MENU.mp3" id="7_73mli"]
+[ext_resource type="Script" uid="uid://dedpsgw5mui1f" path="res://SCRIPTS/Audio.gd" id="8_l3124"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="8_skpiv"]
 [ext_resource type="Script" uid="uid://bgvlsw3pcmv1r" path="res://SCRIPTS/Main_menu_player.gd" id="9_mwmg2"]
+[ext_resource type="Texture2D" uid="uid://cjrgfvtcn6hom" path="res://ASSETS/TEXTURES/ICONS/UI.png" id="10_7260r"]
+[ext_resource type="Texture2D" uid="uid://cqhddm1yhpbfm" path="res://ASSETS/TEXTURES/PLAYER/p_f_idle_holding.png" id="12_kiw3d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5cvai"]
 shader = ExtResource("2_7260r")
@@ -155,6 +158,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_7260r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/Sprite2D:material:shader_parameter/BLOOM_INTENSITY")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D/Sprite2D2:material:shader_parameter/BLOOM_INTENSITY")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.12]
+}
+
 [sub_resource type="Animation" id="Animation_v0qjw"]
 resource_name = "background"
 length = 2.0
@@ -183,38 +213,50 @@ tracks/1/keys = {
 "values": [8.12, 5.0, 8.12]
 }
 
-[sub_resource type="Animation" id="Animation_7260r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D/Sprite2D:material:shader_parameter/BLOOM_INTENSITY")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D/Sprite2D2:material:shader_parameter/BLOOM_INTENSITY")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [8.12]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7260r"]
 _data = {
 &"RESET": SubResource("Animation_7260r"),
 &"background": SubResource("Animation_v0qjw")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecnfn"]
+atlas = ExtResource("10_7260r")
+region = Rect2(0, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3124"]
+atlas = ExtResource("12_kiw3d")
+region = Rect2(8, 4, 32, 26)
+
+[sub_resource type="ImageTexture" id="ImageTexture_ecnfn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3124"]
+bg_color = Color(0.805704, 0.437946, 0.809482, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 10
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 2.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecnfn"]
+bg_color = Color(0.575011, 0.34106, 0.503147, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_bottom = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wqjl"]
+atlas = ExtResource("10_7260r")
+region = Rect2(200.005, 0, 30.8733, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiw3d"]
+atlas = ExtResource("10_7260r")
+region = Rect2(200, 50, 32, 31)
+filter_clip = true
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -294,6 +336,7 @@ stream = ExtResource("7_73mli")
 autoplay = true
 max_distance = 4096.0
 attenuation = 0.00120229
+script = ExtResource("8_l3124")
 
 [node name="PLAYER" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -308,4 +351,69 @@ libraries = {
 &"": SubResource("AnimationLibrary_7260r")
 }
 
+[node name="SETTINGS" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 271.0
+offset_top = 50.0
+offset_right = 1021.0
+offset_bottom = 500.0
+texture = SubResource("AtlasTexture_ecnfn")
+
+[node name="HSlider" type="HSlider" parent="SETTINGS"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 27.0
+offset_top = 95.0
+offset_right = 377.0
+offset_bottom = 121.0
+theme_override_constants/grabber_offset = 8
+theme_override_icons/grabber = SubResource("AtlasTexture_l3124")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_l3124")
+theme_override_icons/tick = SubResource("ImageTexture_ecnfn")
+theme_override_styles/slider = SubResource("StyleBoxFlat_l3124")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ecnfn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ecnfn")
+max_value = 50.0
+step = 10.0
+value = 50.0
+scrollable = false
+tick_count = 10
+ticks_on_borders = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SETTINGS/HSlider"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 350.0
+offset_right = 390.0
+offset_bottom = 40.0
+text = "00"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SETTINGS"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 65.0
+offset_right = 123.0
+offset_bottom = 115.0
+theme_override_font_sizes/normal_font_size = 18
+text = "MUSIC"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="SETTINGS"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 17.0
+offset_right = 77.0
+offset_bottom = 67.0
+texture_normal = SubResource("AtlasTexture_8wqjl")
+texture_pressed = SubResource("AtlasTexture_kiw3d")
+stretch_mode = 0
+
 [connection signal="pressed" from="Camera2D/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Camera2D/TextureButton2" to="." method="_on_settings_button_pressed"]
+[connection signal="drag_ended" from="SETTINGS/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="pressed" from="SETTINGS/TextureButton" to="." method="_on_settings_closed_button_pressed"]

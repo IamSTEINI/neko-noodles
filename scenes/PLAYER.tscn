@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3e3btw00bf3v" path="res://ASSETS/TEXTURES/ICONS/ICONS.png" id="4_4logd"]
 [ext_resource type="Script" uid="uid://dhd5bry7fsr4e" path="res://SCRIPTS/TimeStatusBar.gd" id="5_0xe60"]
 [ext_resource type="Script" uid="uid://p5dg5snkhyph" path="res://SCRIPTS/VisitorStatusBar.gd" id="6_xi7vv"]
-[ext_resource type="Script" uid="uid://bfrm3bj1achr7" path="res://scenes/daystatusbar.gd" id="7_54cwh"]
+[ext_resource type="Script" uid="uid://bfrm3bj1achr7" path="res://SCRIPTS/daystatusbar.gd" id="7_54cwh"]
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
 [ext_resource type="AudioStream" uid="uid://8vkva5751s0k" path="res://SOUNDS/CatSoundTrack.mp3" id="10_0xe60"]
