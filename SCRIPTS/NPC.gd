@@ -19,10 +19,16 @@ var SPAWN_LOC = null
 var wait_time: float = 0.0
 var food_slot = null
 const NPC_MAX_WAITING_TIME: float = 10.0
+var chosen_character: AnimatedSprite2D
 @export var leaving = true
 
 func _ready() -> void:
 	randomize()
+	if randi() % 2 == 0:
+		chosen_character = $BROWN_CAT
+	else:
+		chosen_character = $WHITE_CAT
+	chosen_character.show()
 	TextBox.hide()
 	var spawn_areas = SpawnRanges.get_children()
 	var chosen_area = spawn_areas[randi() % spawn_areas.size()]
@@ -71,6 +77,7 @@ func say(text: String) -> void:
 	TextBox.hide()
 	
 func leave() -> void:
+	reached_table = false
 	$NavigationAgent2D.target_position = SPAWN_LOC
 	await get_tree().create_timer(10.0).timeout
 	queue_free()
@@ -79,6 +86,22 @@ func _physics_process(delta: float) -> void:
 	if not $NavigationAgent2D.is_target_reached():
 		var nav_point_dir = to_local($NavigationAgent2D.get_next_path_position()).normalized()
 		velocity = nav_point_dir * speed * delta
+		if !reached_table:
+			if nav_point_dir.length() > 0.1:
+				if abs(nav_point_dir.x) > abs(nav_point_dir.y):
+					if nav_point_dir.x > 0:
+						chosen_character.flip_h = false
+						chosen_character.play("WALK_SIDEWAYS")
+					else:
+						chosen_character.flip_h = true
+						chosen_character.play("WALK_SIDEWAYS")
+				else:
+					if nav_point_dir.y > 0:
+						chosen_character.play("WALK_DOWN")
+					else:
+						chosen_character.play("WALK_UP")
+			else:
+				chosen_character.play("IDLE_DOWN")
 		move_and_slide()
 	else:
 		if not reached_entry:
@@ -98,6 +121,7 @@ func _physics_process(delta: float) -> void:
 			reached_table = true
 			wait_time = 0.0
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
+			chosen_character.play("IDLE_UP")
 			await get_tree().create_timer(1.5).timeout
 			if !got_order: say("I want to order!")
 		elif reached_table and not got_order:
@@ -107,7 +131,7 @@ func _physics_process(delta: float) -> void:
 				Globals.log("NPC GOT ORDER AT TABLE: " + str(chosen_table.name))
 			
 			elif wait_time >= NPC_MAX_WAITING_TIME:
-				say("Too slow! I'm leaving >:(")
+				say("GRRR! I'm leaving!")
 				Globals.log("NPC LEFT ANGRY (timeout) at table: " + str(chosen_table.name))
 				chosen_table.customers -= 1
 				leave()

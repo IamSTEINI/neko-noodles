@@ -4,9 +4,8 @@
 [ext_resource type="Script" uid="uid://datmtggct7nhv" path="res://SCRIPTS/Table.gd" id="1_561jp"]
 [ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="2_muxx0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1euqw"]
-radius = 15.0
-height = 82.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_1euqw"]
+radius = 19.105
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_561jp"]
 radius = 109.041
@@ -33,7 +32,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -11)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_1euqw")
+shape = SubResource("CircleShape2D_1euqw")
 
 [node name="PLAYERCHECK" type="Area2D" parent="."]
 

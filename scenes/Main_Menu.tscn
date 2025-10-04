@@ -321,10 +321,10 @@ texture_pressed = SubResource("AtlasTexture_dnfjo")
 texture_hover = SubResource("AtlasTexture_gtid3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D"]
-offset_left = -1093.0
-offset_top = 468.0
-offset_right = -893.0
-offset_bottom = 560.0
+offset_left = -998.0
+offset_top = 441.0
+offset_right = -798.0
+offset_bottom = 533.0
 text = "ALPHA VERSION"
 fit_content = true
 scroll_active = false

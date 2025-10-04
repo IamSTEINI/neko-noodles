@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=22 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
 [ext_resource type="PackedScene" uid="uid://c76lcwmwgvfdx" path="res://Shader/Restaurant.tscn" id="3_bjd11"]
+[ext_resource type="Shader" uid="uid://by0usr4bq3vcl" path="res://Shader/gaussian_glow.gdshader" id="3_lhr70"]
 [ext_resource type="Script" uid="uid://dn34u5gvtieql" path="res://SCRIPTS/buildingMode.gd" id="4_qmy6f"]
 [ext_resource type="PackedScene" uid="uid://pe74xpdh5ymt" path="res://scenes/Table.tscn" id="5_mwfav"]
 [ext_resource type="PackedScene" uid="uid://smjjt1loro0" path="res://scenes/Table2.tscn" id="6_3p2gp"]
@@ -187,6 +188,14 @@ texture_region_size = Vector2i(50, 50)
 tile_size = Vector2i(50, 50)
 sources/0 = SubResource("TileSetAtlasSource_s1wui")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wp0k4"]
+shader = ExtResource("3_lhr70")
+shader_parameter/BLOOM_THRESHOLD = 0.85
+shader_parameter/BLOOM_INTENSITY = 6.07
+shader_parameter/BLUR_ITERATIONS = 118
+shader_parameter/BLUR_SIZE = 0.015
+shader_parameter/BLUR_SUBDIVISIONS = 17
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7kua"]
 bg_color = Color(0, 0, 0, 0.25098)
 border_width_left = 2
@@ -206,9 +215,9 @@ size = Vector2(3247, 296.5)
 size = Vector2(202.5, 3271.5)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_n2y55"]
-vertices = PackedVector2Array(-141.398, 1394.76, -289.047, 1440.5, -298.797, -221.07, -175.461, -45.4375, 351.492, -70.6484, 360.742, -16.0938, 357.906, -16.0938, 247.547, -70.9688, 239.094, -11.0938, 237.438, -11.0938, 1334.33, -235.742, 1328.47, -45.5391, -56.0078, 883.906, -59.7578, 206.094, 239.094, 206.094, 895.438, 883.906, 357.906, 205.094, 1049.78, 205.094, 1046.98, 874.938, -100.75, -57.0313)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 7, 6), PackedInt32Array(2, 10, 11, 4), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 15, 14), PackedInt32Array(16, 14, 8, 6), PackedInt32Array(2, 4, 7), PackedInt32Array(2, 7, 19), PackedInt32Array(2, 19, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-317, -239, -307, 1465, -123, 1408, -157, -30, -99, -39, 226, -52, 186, 185, -78, 180, -74, 902, 896, 902, 1065, 892, 1068, 173, 412, 178, 373, -52, 1346, -27, 1353, -254)])
+vertices = PackedVector2Array(351.492, -70.6484, 360.742, -16.0938, 357.906, -16.0938, 247.547, -70.9688, 239.094, -11.0938, 237.438, -11.0938, -298.313, -246.023, 1331.61, -255.789, 1328.2, -45.5391, -56.0078, 883.906, -59.7578, 206.094, 239.094, 206.094, 895.438, 883.906, 357.906, 205.094, 1049.78, 205.094, 1046.98, 874.938, -100.75, -57.0313, -175.461, -45.4375, -278.313, 363.008, -141.398, 1394.76, -987.023, 1440.08, -993.789, 366.008, -309.641, 1446.88)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2), PackedInt32Array(6, 7, 8, 0), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 14, 15, 12, 11), PackedInt32Array(13, 11, 4, 2), PackedInt32Array(6, 0, 3), PackedInt32Array(6, 3, 16), PackedInt32Array(6, 16, 17), PackedInt32Array(18, 6, 17, 19), PackedInt32Array(20, 21, 18, 19, 22)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-317, -264, -297, 345, -1012, 348, -1005, 1458, -307, 1465, -123, 1408, -157, -30, -99, -39, 226, -52, 186, 185, -78, 180, -74, 902, 896, 902, 1065, 892, 1068, 173, 412, 178, 373, -52, 1346, -27, 1350, -274)])
 parsed_geometry_type = 1
 cell_size = 8.0
 agent_radius = 18.09
@@ -243,6 +252,7 @@ tile_set = SubResource("TileSet_rstr5")
 [node name="GROUND-DECO" type="TileMapLayer" parent="."]
 z_index = 3
 texture_filter = 1
+material = SubResource("ShaderMaterial_wp0k4")
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAD1//f/AAACAAQAAAD3/xkAAAADAAIAABD3/xMAAAAAAAIAAAD3/woAAAAAAAIAAAD3////AAAAAAIAAAADAPj/AAAAAAIAAAAQAPj/AAAAAAIAAAAUAPn/AAAAAAIAAAAhAPv/AAAAAAIAAAAgAAMAAAAEAAIAAAAgABwAAAAAAAIAAAAgAB0AAAAAAAIAAAAhACEAAAAAAAIAAADu/x0AAAAAAAIAAADv/x0AAAAAAAIAAADs/yUAAAAAAAIAAADm/yUAAAAAAAIAAADw/wAAAAAAAAIAAADq/woAAAAAAAIAAADw/xYAAAAAAAIAAADt/xcAAAAAAAIAAADs/wkAAAAAAAIAAADr/wwAAAAAAAIAAADl/woAAAAAAAIAAADx/w8AAAAAAAIAAADr/xMAAAAAAAIAAADo/xcAAAAAAAIAAADw//r/AAAAAAIAAADr//X/AAAAAAIAAAApAPn/AAAAAAIAAAAkAP//AAAAAAIAAAArAAoAAAAAAAIAAAAoABwAAAAAAAIAAAAqAB8AAAAAAAIAAAAqACQAAAAAAAIAAAAaACUAAAAAAAIAAAAPACMAAAAAAAIAAAABACUAAAAAAAIAAAACACcAAAAAAAIAAADq/ycAAAAAAAIAAAD3/wYAAAABAAIAAAD3/xwAAAABAAIAAADo/x4AAAABAAIAAADx/yQAAAABAAIAAAAgAAsAAAABAAIAAAAVAP//AAABAAIAAAACAPn/AAABAAIAAAD9/xAAAAAEAAIAAAD3/xAAAAAEAAIAABD9/w8AAAADAAIAAAD3/w8AAAADAAIAABD3/w4AAAACAAIAABD9/w4AAAACAAIAAAD3/xoAAAAEAAIAABD9/xoAAAAEAAIAAAD9/xkAAAADAAIAAAD9/xgAAAACAAIAAAD3/xgAAAACAAIAABD9/wEAAAACAAIAAAD3/wEAAAACAAIAABAaABAAAAAEAAIAABAgABAAAAAEAAIAAAAgAA8AAAADAAIAAAAgAA4AAAACAAIAAAAaAA8AAAADAAIAABAaAA4AAAACAAIAABAaAAMAAAAEAAIAABAgAAIAAAADAAIAAAAaAAIAAAADAAIAABAgAAEAAAACAAIAAAAaAAEAAAACAAIAABAKAP//AAAEAAIAAAAKAPn/AAAEAAIAAAAKAPj/AAADAAIAAAAKAP7/AAADAAIAAAAKAPf/AAACAAIAAAAKAP3/AAACAAIAAAAWAP//AAAEAAIAAAAWAPn/AAAEAAIAAAAWAP7/AAADAAIAAAAWAPj/AAADAAIAAAAWAPf/AAACAAIAAAAWAP3/AAACAAIAAAD///n/AAAEAAIAAAD///j/AAADAAIAAAD///3/AAACAAIAAAD///f/AAACAAIAAAD9/wwAAAAAAAIAAAD9/wQAAAAAAAIAAAAGAP//AAAAAAIAAAA=")
 tile_set = SubResource("TileSet_rstr5")
@@ -287,13 +297,6 @@ food_slots = [NodePath("Marker2D")]
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE4"]
 position = Vector2(0, -18)
 
-[node name="TABLE5" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1040, 1594)
-food_slots = [NodePath("Marker2D")]
-
-[node name="Marker2D" type="Marker2D" parent="TABLES/TABLE5"]
-position = Vector2(0, -18)
-
 [node name="TABLE6" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
 position = Vector2(1463, 1026)
 food_slots = [NodePath("Marker2D")]
@@ -313,13 +316,6 @@ position = Vector2(1463, 1384)
 food_slots = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE8"]
-position = Vector2(0, -18)
-
-[node name="TABLE9" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1463, 1576)
-food_slots = [NodePath("Marker2D")]
-
-[node name="Marker2D" type="Marker2D" parent="TABLES/TABLE9"]
 position = Vector2(0, -18)
 
 [node name="TABLE10" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
@@ -343,13 +339,6 @@ food_slots = [NodePath("Marker2D")]
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE12"]
 position = Vector2(0, -18)
 
-[node name="TABLE13" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1678, 1576)
-food_slots = [NodePath("Marker2D")]
-
-[node name="Marker2D" type="Marker2D" parent="TABLES/TABLE13"]
-position = Vector2(0, -18)
-
 [node name="TABLE14" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
 position = Vector2(1892, 1201)
 food_slots = [NodePath("Marker2D")]
@@ -364,15 +353,8 @@ food_slots = [NodePath("Marker2D")]
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE15"]
 position = Vector2(0, -18)
 
-[node name="TABLE16" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1892, 1576)
-food_slots = [NodePath("Marker2D")]
-
-[node name="Marker2D" type="Marker2D" parent="TABLES/TABLE16"]
-position = Vector2(0, -18)
-
 [node name="TABLE2" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("6_3p2gp")]
-position = Vector2(1903, 1026)
+position = Vector2(1903, 1030)
 capacity = 2
 food_slots = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
