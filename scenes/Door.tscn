@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://ckx7ll1bsgulx"]
+[gd_scene load_steps=31 format=3 uid="uid://ckx7ll1bsgulx"]
 
 [ext_resource type="Texture2D" uid="uid://drsmms261icpm" path="res://ASSETS/TEXTURES/GROUND/DOORS.png" id="1_1vvux"]
 [ext_resource type="Script" uid="uid://b3refbf2abe3f" path="res://SCRIPTS/door.gd" id="1_iu8q0"]
 [ext_resource type="AudioStream" uid="uid://dhgq7yfcahgcq" path="res://SOUNDS/DOOR_CLOSE.mp3" id="3_mg2as"]
+[ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="4_1ebfc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vvux"]
 atlas = ExtResource("1_1vvux")
@@ -209,6 +210,7 @@ debug_color = Color(0.665292, 0.511862, 0, 0.42)
 
 [node name="DOOR_SOUND" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_mg2as")
+script = ExtResource("4_1ebfc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

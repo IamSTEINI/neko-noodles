@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var TextBox: Control = null
 @export var type_speed := 0.05
 @export var show_duration := 2.0
+@export var coin_scene: PackedScene
 
 var reached_entry := false
 var reached_table := false
@@ -48,6 +49,12 @@ func _ready() -> void:
 	var pos1 = Entry.global_position
 
 	$NavigationAgent2D.target_position = pos1
+	
+func pay(amount:int, table: Node2D) -> void:
+	var coin = coin_scene.instantiate()
+	coin.amount = amount
+	coin.position = table.global_position
+	get_tree().current_scene.add_child(coin)
 
 func getRandomTable() -> Node2D:
 	var children = Tables.get_children()
@@ -154,8 +161,8 @@ func _physics_process(delta: float) -> void:
 			chosen_table.customers -= 1
 			for child in food_slot.get_children():
 				Globals.log("NPC PAID: " + str(child.Price))
-				Globals.money += child.Price
+				pay(child.Price, chosen_table)
 				child.queue_free()
-			
+				
 			say("Yummy. Thank you!")
 			leave()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=92 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -11,8 +11,9 @@
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
 [ext_resource type="AudioStream" uid="uid://8vkva5751s0k" path="res://SOUNDS/CatSoundTrack.mp3" id="10_0xe60"]
-[ext_resource type="Script" uid="uid://dedpsgw5mui1f" path="res://SCRIPTS/Audio.gd" id="12_0k08p"]
+[ext_resource type="Script" uid="uid://dedpsgw5mui1f" path="res://SCRIPTS/Audio_music.gd" id="12_0k08p"]
 [ext_resource type="AudioStream" uid="uid://bdpkaiohiqcaj" path="res://SOUNDS/footprint.mp3" id="13_yovmp"]
+[ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="14_u2uwr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
 atlas = ExtResource("1_5qx4t")
@@ -849,4 +850,4 @@ script = ExtResource("12_0k08p")
 stream = ExtResource("13_yovmp")
 pitch_scale = 1.4
 attenuation = 0.0018866
-script = ExtResource("12_0k08p")
+script = ExtResource("14_u2uwr")

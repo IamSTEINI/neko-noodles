@@ -1,5 +1,6 @@
 extends Node
 @export var npc_scene: PackedScene
+@export var coin_scene: PackedScene
 
 @export var Tables: Node = null
 @export var Entry: Node = null
@@ -16,5 +17,6 @@ func spawn_npc():
 	var npc = npc_scene.instantiate()
 	npc.Tables = Tables
 	npc.Entry = Entry
+	npc.coin_scene = coin_scene
 	npc.SpawnRanges = SpawnRanges
 	get_tree().current_scene.add_child(npc)

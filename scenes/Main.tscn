@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=24 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://byc7apj6gk76s" path="res://SCRIPTS/NPCSPAWNER.gd" id="7_cvmbd"]
 [ext_resource type="PackedScene" uid="uid://on0gdv6lubsv" path="res://scenes/npc.tscn" id="8_ft6cd"]
 [ext_resource type="PackedScene" uid="uid://cq2ikcgppht16" path="res://scenes/PLAYER.tscn" id="9_bb450"]
+[ext_resource type="PackedScene" uid="uid://dok4r4o5fsqtf" path="res://scenes/Coin.tscn" id="11_wp0k4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1wui"]
 texture = ExtResource("2_wp0k4")
@@ -383,6 +384,7 @@ shape = SubResource("RectangleShape2D_n2y55")
 [node name="NPCSPAWNER" type="Node" parent="." node_paths=PackedStringArray("Tables", "Entry", "SpawnRanges")]
 script = ExtResource("7_cvmbd")
 npc_scene = ExtResource("8_ft6cd")
+coin_scene = ExtResource("11_wp0k4")
 Tables = NodePath("../TABLES")
 Entry = NodePath("../ENTRY")
 SpawnRanges = NodePath("../NPC_SPAWN")

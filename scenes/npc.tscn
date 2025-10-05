@@ -867,7 +867,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_r7jdb")
 }],
 "loop": true,
-"name": &"WALK_SIDEWAYY",
+"name": &"WALK_SIDEWAYS",
 "speed": 6.0
 }, {
 "frames": [{
@@ -968,8 +968,7 @@ visible = false
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_abqhh")
-animation = &"IDLE_UP"
-frame_progress = 0.227695
+animation = &"WALK_SIDEWAYS"
 
 [node name="Talking" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_rv78h")
