@@ -132,10 +132,11 @@ position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_xif08")
 
 [node name="INTERACTABLE" parent="." instance=ExtResource("2_q28g8")]
-position = Vector2(0, 17)
+position = Vector2(0, 21)
 text = "Cut Noodles"
 border_color = Color(0.452271, 0.447891, 1, 1)
 can_interact = false
+interaction_range = 40
 
 [node name="Product" type="Marker2D" parent="."]
 position = Vector2(0, 21)

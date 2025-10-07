@@ -21,7 +21,6 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				$INTERACTABLE.can_interact = true
 				NoodleCooked.global_position = $Product.global_position
 				NoodleCooked.NoodleType = current_noodle_type
-				NoodleCooked.show()
 				$INTERACTABLE.text = "Collect Noodles"
 				finished = true
 		else:

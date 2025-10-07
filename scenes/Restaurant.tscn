@@ -141,6 +141,13 @@ NoodleRaw = NodePath("RawNoodleItem")
 [node name="RawNoodleItem" parent="MACHINE-NoodleMaker" instance=ExtResource("7_g484w")]
 position = Vector2(0, 21)
 
+[node name="MACHINE-NoodleMaker2" parent="." node_paths=PackedStringArray("NoodleRaw") instance=ExtResource("5_08he2")]
+position = Vector2(700, 1098)
+NoodleRaw = NodePath("RawNoodleItem")
+
+[node name="RawNoodleItem" parent="MACHINE-NoodleMaker2" instance=ExtResource("7_g484w")]
+position = Vector2(0, 21)
+
 [node name="INTERACTABLE" parent="." instance=ExtResource("6_46urj")]
 position = Vector2(295, 177)
 text = "Enter supermarket"

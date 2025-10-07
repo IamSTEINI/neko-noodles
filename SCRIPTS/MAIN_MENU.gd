@@ -12,6 +12,7 @@ func _ready() -> void:
 		#await anim.animation_finished
 		
 func _on_texture_button_pressed() -> void:
+	MusicManager.call_sound_with_fade("Main Theme")
 	Scenemanager.change_scene($".", "Main")
 
 

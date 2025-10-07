@@ -4,6 +4,8 @@ extends Node2D
 @export var interact_key: Key = KEY_E
 @export var border_color: Color = Color("#FF0000")
 @export var can_interact: bool = true
+@export var interaction_range: int = 100
+@onready var collision_shape = $Area2D/CollisionShape2D
 var start_pos = null
 var key_was_pressed = false
 var player_body = null
@@ -36,6 +38,8 @@ func _process(delta: float) -> void:
 		key_was_pressed = key_is_pressed
 
 func _ready() -> void:
+	collision_shape.shape = CircleShape2D.new()
+	collision_shape.shape.radius = interaction_range
 	$RichTextLabel.visible = false
 	start_pos = $RichTextLabel.position
 	var stylebox = StyleBoxFlat.new()

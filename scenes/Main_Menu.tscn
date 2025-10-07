@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cld5xtwr1yq5i"]
+[gd_scene load_steps=42 format=3 uid="uid://cld5xtwr1yq5i"]
 
 [ext_resource type="Script" uid="uid://bul7fr50u68xc" path="res://SCRIPTS/MAIN_MENU.gd" id="1_v0qjw"]
 [ext_resource type="Shader" uid="uid://by0usr4bq3vcl" path="res://Shader/gaussian_glow.gdshader" id="2_7260r"]
@@ -6,8 +6,6 @@
 [ext_resource type="Shader" uid="uid://4b40sxylb46j" path="res://Shader/Vignette.gdshader" id="4_ecnfn"]
 [ext_resource type="Texture2D" uid="uid://oqy587xryi4r" path="res://ASSETS/TEXTURES/ICONS/BANNER.png" id="5_kiw3d"]
 [ext_resource type="Texture2D" uid="uid://cxmpgdgq7lq10" path="res://ASSETS/TEXTURES/ICONS/BUTTONS.png" id="6_8wqjl"]
-[ext_resource type="AudioStream" uid="uid://c2d0kx2d56sbd" path="res://SOUNDS/NN-MAIN_MENU.mp3" id="7_73mli"]
-[ext_resource type="Script" uid="uid://dedpsgw5mui1f" path="res://SCRIPTS/Audio_music.gd" id="8_l3124"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="8_skpiv"]
 [ext_resource type="Script" uid="uid://bgvlsw3pcmv1r" path="res://SCRIPTS/Main_menu_player.gd" id="9_mwmg2"]
 [ext_resource type="Texture2D" uid="uid://cjrgfvtcn6hom" path="res://ASSETS/TEXTURES/ICONS/UI.png" id="10_7260r"]
@@ -269,13 +267,6 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
-stream = ExtResource("7_73mli")
-autoplay = true
-max_distance = 4096.0
-attenuation = 0.00120229
-script = ExtResource("8_l3124")
 
 [node name="PLAYER" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://yvks84cwd5vw" path="res://SCRIPTS/Interactable.gd" id="1_msfch"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_msfch"]
-radius = 100.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6f01"]
+radius = 94.02127
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msfch"]
 bg_color = Color(0, 0, 0, 0.403922)
@@ -19,7 +19,7 @@ script = ExtResource("1_msfch")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_msfch")
+shape = SubResource("CircleShape2D_c6f01")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 111

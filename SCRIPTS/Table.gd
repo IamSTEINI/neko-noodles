@@ -28,7 +28,7 @@ func _on_interactable_interacted(body) -> void:
 				else:
 					Globals.log("SERVING TO "+self.name+":" + noodle.name)
 					player_food_slot.remove_child(player_food_slot.get_node("NoodleItem"))
-					noodle.scale = Vector2(2, 2)
+					noodle.scale = Vector2(5, 5)
 					empty_slot.add_child(noodle)
 					update_capacity_text()
 		else:

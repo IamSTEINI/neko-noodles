@@ -8,6 +8,6 @@ func _ready() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.get_meta("type") == "player":
+	if body.get_meta("type") == "player" && item != null && body.has_node("ItemSlot"):
 		item.reparent(body.get_node("ItemSlot"))
 		item.global_position = body.get_node("ItemSlot").global_position

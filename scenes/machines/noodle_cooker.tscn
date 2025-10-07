@@ -114,7 +114,7 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_skj5r")
 animation = &"Cook"
-frame_progress = 0.12755264
+frame_progress = 0.0142094605
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -125,9 +125,10 @@ position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_ey27u")
 
 [node name="INTERACTABLE" parent="." instance=ExtResource("2_o54bq")]
-position = Vector2(0, 17)
+position = Vector2(0, 21)
 text = "Cook Noodles"
 border_color = Color(0.452271, 0.447891, 1, 1)
+interaction_range = 40
 
 [node name="Product" type="Marker2D" parent="."]
 position = Vector2(0, 21)
