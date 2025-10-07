@@ -13,9 +13,10 @@ region = Rect2(82.367, 4.112, 11.783, 16)
 radius = 62.5859
 
 [sub_resource type="SystemFont" id="SystemFont_bedda"]
+subpixel_positioning = 0
 
 [node name="Coins" type="Node2D"]
-z_index = 106
+z_index = 90
 script = ExtResource("1_5twpi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -27,6 +27,8 @@ void fragment() {
         cell_mask = 1.0 - cell_mask;
     }
     
-    COLOR = base_color;
+   	COLOR = base_color;
     COLOR.a *= cell_mask;
+	
+	COLOR.rgb *= COLOR.a;
 }

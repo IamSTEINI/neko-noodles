@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmnbm4sbe1vq"]
+
+[ext_resource type="Texture2D" uid="uid://buibdhli31ywj" path="res://ASSETS/TEXTURES/FOOD/FOOD.png" id="1_kjbgj"]
+[ext_resource type="Script" uid="uid://cf637c5xwet6l" path="res://SCRIPTS/raw_noodle_item.gd" id="1_nlm3b"]
+
+[node name="RawNoodleItem" type="Node2D"]
+script = ExtResource("1_nlm3b")
+metadata/type = "RawNoodle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
+texture = ExtResource("1_kjbgj")
+region_enabled = true
+region_rect = Rect2(48, 0, 24, 24)

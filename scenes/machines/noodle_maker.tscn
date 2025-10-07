@@ -1,0 +1,144 @@
+[gd_scene load_steps=20 format=3 uid="uid://dr5pljjtjbjxm"]
+
+[ext_resource type="Script" uid="uid://dia0ctqf6rrrt" path="res://scenes/machines/noodle_maker.gd" id="1_wmyro"]
+[ext_resource type="Texture2D" uid="uid://bxih7virswboy" path="res://ASSETS/TEXTURES/FURNITURE/MACHINES.png" id="1_xif08"]
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_q28g8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q28g8"]
+atlas = ExtResource("1_xif08")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmyro"]
+atlas = ExtResource("1_xif08")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rw86"]
+atlas = ExtResource("1_xif08")
+region = Rect2(300, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1gyo"]
+atlas = ExtResource("1_xif08")
+region = Rect2(450, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7ucy"]
+atlas = ExtResource("1_xif08")
+region = Rect2(600, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptfic"]
+atlas = ExtResource("1_xif08")
+region = Rect2(750, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc6mu"]
+atlas = ExtResource("1_xif08")
+region = Rect2(900, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0xw6"]
+atlas = ExtResource("1_xif08")
+region = Rect2(1050, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5eup"]
+atlas = ExtResource("1_xif08")
+region = Rect2(1200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_661a7"]
+atlas = ExtResource("1_xif08")
+region = Rect2(1350, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1x6l"]
+atlas = ExtResource("1_xif08")
+region = Rect2(1500, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf1uy"]
+atlas = ExtResource("1_xif08")
+region = Rect2(1650, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tnbm"]
+atlas = ExtResource("1_xif08")
+region = Rect2(1800, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikyj1"]
+atlas = ExtResource("1_xif08")
+region = Rect2(1950, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ru01s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q28g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmyro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rw86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1gyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7ucy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptfic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc6mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0xw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5eup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_661a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1x6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf1uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tnbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikyj1")
+}],
+"loop": true,
+"name": &"Cut",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xif08"]
+size = Vector2(98, 88)
+
+[node name="MACHINE-NoodleMaker" type="Node2D"]
+script = ExtResource("1_wmyro")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ru01s")
+animation = &"Cut"
+frame_progress = 0.510232
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_xif08")
+
+[node name="INTERACTABLE" parent="." instance=ExtResource("2_q28g8")]
+position = Vector2(0, 17)
+text = "Cut Noodles"
+border_color = Color(0.452271, 0.447891, 1, 1)
+can_interact = false
+
+[node name="Product" type="Marker2D" parent="."]
+position = Vector2(0, 21)
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
+[connection signal="player_entered" from="INTERACTABLE" to="." method="_on_interactable_player_entered"]

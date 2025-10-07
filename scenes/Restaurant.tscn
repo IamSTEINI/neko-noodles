@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=4 uid="uid://c76lcwmwgvfdx"]
+[gd_scene load_steps=18 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="1_551nn"]
-[ext_resource type="Script" uid="uid://b1utbtali1r3f" path="res://SCRIPTS/ItemGiver.gd" id="4_1oedi"]
+[ext_resource type="Script" uid="uid://da1c5xwmi3o06" path="res://SCRIPTS/restaurant.gd" id="1_mo5rl"]
 [ext_resource type="Texture2D" uid="uid://dad641m8euv03" path="res://ASSETS/TEXTURES/LIGHT/LIGHT_SQUARE.png" id="4_pwytl"]
+[ext_resource type="PackedScene" uid="uid://dr5pljjtjbjxm" path="res://scenes/machines/noodle_maker.tscn" id="5_08he2"]
 [ext_resource type="PackedScene" uid="uid://ckx7ll1bsgulx" path="res://scenes/Door.tscn" id="5_l5eli"]
-[ext_resource type="Texture2D" uid="uid://coewscq8x86d0" path="res://ASSETS/TEXTURES/FOOD/NOODLES/egg_ramen.png" id="5_vepkb"]
 [ext_resource type="Texture2D" uid="uid://blhu67kexv6uh" path="res://ASSETS/TEXTURES/FURNITURE/IMAGE_CAT.png" id="6_8rxlq"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_v67a4"]
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="6_46urj"]
+[ext_resource type="PackedScene" uid="uid://dmnbm4sbe1vq" path="res://scenes/raw_noodle_item.tscn" id="7_g484w"]
+[ext_resource type="PackedScene" uid="uid://boox5333jwes8" path="res://scenes/machines/noodle_cooker.tscn" id="9_ndmpn"]
+[ext_resource type="PackedScene" uid="uid://btdy4yx2urpem" path="res://scenes/NoodleItem.tscn" id="10_0lfbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_biadm"]
 size = Vector2(1174, 180)
@@ -30,13 +32,8 @@ size = Vector2(25.5, 412)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mx7hw"]
 size = Vector2(948, 26)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqyy4"]
-size = Vector2(499, 101)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktf0v"]
-size = Vector2(398, 100)
-
 [node name="RESTAURANT" type="Node2D"]
+script = ExtResource("1_mo5rl")
 
 [node name="RESTAURANT-BASE" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -59,7 +56,7 @@ tile_set = ExtResource("1_551nn")
 [node name="RESTAURANT-FURNITURE" type="TileMapLayer" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAIAA0AAAAAAAQAAAAIAAwAAAAAAAQAAAAIAAsAAAAAAAQAAAD//wsAAAAAAAQAADD//wwAAAAAAAQAADD//w0AAAAAAAQAADAAAAwAAAACAAQAAAAAAA0AAgAFAAAAAAACAA0AAgAFAAAAAAAEAA0AAgAFAAAAAAAFAA0AAAACAAQAAAAHAAwAAAACAAQAAAAGAAwAAAACAAQAAAAFAAwAAAACAAQAAAAEAAwAAAACAAQAAAADAAwAAAACAAQAAAACAAwAAAACAAQAAAABAAwAAAACAAQAAAAAAAsAAAACAAQAAAABAAsAAAACAAQAAAACAAsAAAACAAQAAAADAAsAAAACAAQAAAAEAAsAAgAFAAAAAAAGAAsAAgAFAAAAAAAHAAsAAgAFAAAAAAD//w4AAAAEAAQAADAIAA4AAAABAAQAAAAHAA4AAAADAAQAAGAFAA4AAAADAAQAAGAEAA4AAAADAAQAAGADAA4AAAADAAQAAGACAA4AAAADAAQAAGABAA4AAAADAAQAAGAAAA4AAAADAAQAAGD//wkAAAAAAAIAAAAAAAkAAAABAAIAAAABAAkAAAABAAIAAAAEAAkAAAABAAIAAAAFAAkAAAABAAIAAAAGAAkAAAABAAIAAAAHAAkAAAABAAIAAAAIAAkAAAACAAIAAAAIAAoAAAAFAAAAAAAGAA0AAAACAAQAAAAGAA4AAAADAAQAAGD//woAAAAEAAEAAAAAAAoAAAAFAAEAAAABAAoAAAAFAAEAAAAEAAoAAAAFAAEAAAAFAAoAAAAFAAEAAAAGAAoAAAAFAAEAAAAHAAoAAAAFAAEAAAABAA0AAgAAAAAAAAAFAAsAAgAAAAAAAAADAA0AAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAIAA0AAAAAAAQAAAAIAAwAAAAAAAQAAAAIAAsAAAAAAAQAAAD//wsAAAAAAAQAADD//wwAAAAAAAQAADD//w0AAAAAAAQAADAAAAwAAAACAAQAAAAFAA0AAAACAAQAAAAHAAwAAAACAAQAAAAGAAwAAAACAAQAAAAFAAwAAAACAAQAAAAEAAwAAAACAAQAAAADAAwAAAACAAQAAAACAAwAAAACAAQAAAABAAwAAAACAAQAAAAAAAsAAAACAAQAAAABAAsAAAACAAQAAAACAAsAAAACAAQAAAADAAsAAAACAAQAAAD//w4AAAAEAAQAADAIAA4AAAABAAQAAAAHAA4AAAADAAQAAGAFAA4AAAADAAQAAGAEAA4AAAADAAQAAGADAA4AAAADAAQAAGACAA4AAAADAAQAAGABAA4AAAADAAQAAGAAAA4AAAADAAQAAGD//wkAAAAAAAIAAAAAAAkAAAABAAIAAAABAAkAAAABAAIAAAAEAAkAAAABAAIAAAAFAAkAAAABAAIAAAAGAAkAAAABAAIAAAAHAAkAAAABAAIAAAAIAAkAAAACAAIAAAAIAAoAAAAFAAAAAAAGAA0AAAACAAQAAAAGAA4AAAADAAQAAGD//woAAAAEAAEAAAAAAAoAAAAFAAEAAAABAAoAAAAFAAEAAAAEAAoAAAAFAAEAAAAFAAoAAAAFAAEAAAAGAAoAAAAFAAEAAAAHAAoAAAAFAAEAAAA=")
 tile_set = ExtResource("1_551nn")
 
 [node name="RESTAURANT-ABOVE-PLAYER" type="TileMapLayer" parent="."]
@@ -78,33 +75,6 @@ offset_bottom = 255.0
 text = "Wait for NPCs"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Area2D PICKUP" type="Area2D" parent="."]
-z_index = 1
-position = Vector2(49, 1333)
-scale = Vector2(1.345, 1.345)
-script = ExtResource("4_1oedi")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Area2D PICKUP"]
-texture_filter = 1
-offset_left = -47.5836
-offset_top = -92.9368
-offset_right = 51.4164
-offset_bottom = -1.9368
-text = "PICKUP RAMEN"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D PICKUP"]
-scale = Vector2(6.145, 6.145)
-shape = SubResource("CircleShape2D_v67a4")
-debug_color = Color(0.823406, 0.000658236, 0.845763, 0.42)
-
-[node name="EggRamen" type="Sprite2D" parent="Area2D PICKUP"]
-texture_filter = 1
-position = Vector2(1, 1)
-scale = Vector2(0.49, 0.49)
-texture = ExtResource("5_vepkb")
 
 [node name="RestaurantCollisions" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -142,14 +112,6 @@ shape = SubResource("RectangleShape2D_v7psm")
 position = Vector2(400, 1487)
 shape = SubResource("RectangleShape2D_mx7hw")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="RestaurantCollisions"]
-position = Vector2(250.5, 1349.5)
-shape = SubResource("RectangleShape2D_hqyy4")
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="RestaurantCollisions"]
-position = Vector2(600, 1151)
-shape = SubResource("RectangleShape2D_ktf0v")
-
 [node name="RESTAURANT2" type="PointLight2D" parent="."]
 texture_filter = 1
 position = Vector2(498, 751)
@@ -172,4 +134,24 @@ rotation = 0.142156
 scale = Vector2(0.123, 0.123)
 texture = ExtResource("6_8rxlq")
 
-[connection signal="body_entered" from="Area2D PICKUP" to="Area2D PICKUP" method="_on_body_entered"]
+[node name="MACHINE-NoodleMaker" parent="." node_paths=PackedStringArray("NoodleRaw") instance=ExtResource("5_08he2")]
+position = Vector2(800, 1098)
+NoodleRaw = NodePath("RawNoodleItem")
+
+[node name="RawNoodleItem" parent="MACHINE-NoodleMaker" instance=ExtResource("7_g484w")]
+position = Vector2(0, 21)
+
+[node name="INTERACTABLE" parent="." instance=ExtResource("6_46urj")]
+position = Vector2(295, 177)
+text = "Enter supermarket"
+border_color = Color(0.618513, 0.367543, 0.973214, 1)
+
+[node name="MACHINE-NoodleCooker" parent="." node_paths=PackedStringArray("NoodleCooked") instance=ExtResource("9_ndmpn")]
+position = Vector2(600, 1098)
+cookingDuration = 6
+NoodleCooked = NodePath("NoodleItem")
+
+[node name="NoodleItem" parent="MACHINE-NoodleCooker" instance=ExtResource("10_0lfbe")]
+position = Vector2(-3.8146973e-06, -5)
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]

@@ -20,9 +20,15 @@ var SPAWN_LOC = null
 var wait_time: float = 0.0
 var food_slot = null
 var is_speaking: bool = false
-const NPC_MAX_WAITING_TIME: float = 10.0
+const NPC_MAX_WAITING_TIME: float = 60.0
 var chosen_character: AnimatedSprite2D
 @export var leaving = true
+var generated_order: Array[int]
+
+func generate_noodle() -> Array[int]:
+	# var noodle_index: int = (randi() % (Globals.noodle_types.size() - 1)) + 1
+	# var topping_index: int = (randi() % (Globals.noodle_toppings.size() - 1)) + 1
+	return [7, 0] # Returning 0 for topping for now
 
 func _ready() -> void:
 	randomize()
@@ -36,12 +42,12 @@ func _ready() -> void:
 	var chosen_area = spawn_areas[randi() % spawn_areas.size()]
 	var shape = chosen_area.shape as RectangleShape2D
 	var extents = shape.extents
-	
+	generated_order = generate_noodle()
 	var local_spawn_pos = Vector2(
 		randf_range(-extents.x, extents.x),
 		randf_range(-extents.y, extents.y)
 	)
-	
+	$Order.hide()
 	SPAWN_LOC = chosen_area.global_position + local_spawn_pos
 	
 	global_position = chosen_area.global_position + local_spawn_pos
@@ -99,6 +105,7 @@ func wait_say() -> void:
 	
 func leave() -> void:
 	reached_table = false
+	$Order.hide()
 	$NavigationAgent2D.target_position = SPAWN_LOC
 	await get_tree().create_timer(10.0).timeout
 	queue_free()
@@ -143,13 +150,24 @@ func _physics_process(delta: float) -> void:
 			wait_time = 0.0
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_character.play("IDLE_UP")
-			if !got_order: say("I want to order!")
+			if !got_order: 
+				say("I want to order!")
+				$Order/OrderNoodle.NoodleType = generated_order[0]
+				$Order/OrderNoodle.NoodleTopping = generated_order[1]
+				$Order.show()
 		elif reached_table and not got_order:
 			wait_time += delta
+			$Order/Progress.size = Vector2( ( (NPC_MAX_WAITING_TIME - wait_time) / NPC_MAX_WAITING_TIME ) * 50, 5 )
 			if food_slot.get_child_count() > 0:
-				got_order = true
-				Globals.log("NPC GOT ORDER AT TABLE: " + str(chosen_table.name))
-			
+				for food in food_slot.get_children():
+					if food.NoodleType == generated_order[0] && food.NoodleTopping == generated_order[1]:
+						Globals.log("NPC GOT ORDER AT TABLE: " + str(chosen_table.name))
+						food.chopsticks = true
+						await get_tree().create_timer(3).timeout # Simulating eating
+						got_order = true
+					else:
+						say("GRRR! That's not what I ordered")
+						leave()
 			elif wait_time >= NPC_MAX_WAITING_TIME:
 				say("GRRR! I'm leaving!")
 				Globals.log("NPC LEFT ANGRY (timeout) at table: " + str(chosen_table.name))

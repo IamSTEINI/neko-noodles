@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bio7x6ic1c73c"]
+
+[ext_resource type="Script" uid="uid://bjws2d0m21m5r" path="res://SCRIPTS/item_giver.gd" id="1_2w3e0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2w3e0"]
+radius = 39.8121
+
+[node name="ItemGiver" type="Node2D"]
+script = ExtResource("1_2w3e0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2w3e0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -49.0
+offset_top = -20.0
+offset_right = 51.0
+offset_bottom = 20.0
+text = "ITEMGIVER"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

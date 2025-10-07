@@ -19,4 +19,5 @@ func spawn_npc():
 	npc.Entry = Entry
 	npc.coin_scene = coin_scene
 	npc.SpawnRanges = SpawnRanges
+	npc.set_meta("type", "NPC")
 	get_tree().current_scene.add_child(npc)

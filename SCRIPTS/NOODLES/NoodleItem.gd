@@ -1,10 +1,25 @@
 extends Node2D
 
-@export var noodle: Noodle
 @export var Price: int
-@onready var sprite: Sprite2D = $Sprite2D
+@export var NoodleType: int
+@export var NoodleTopping: int
+@export var chopsticks: bool
 
-func _ready():
-	if noodle:
-		sprite.texture = noodle.texture
-		Price = noodle.price
+
+func _process(delta: float) -> void:
+	if(chopsticks):
+		$CHOPSTICKS.show()
+	else:
+		$CHOPSTICKS.hide()
+		
+	if(NoodleType == 0):
+		$NOODLE.hide()
+	else:
+		$NOODLE.show()
+		$NOODLE.region_rect = Rect2(Globals.noodle_types[NoodleType]["id"] * 24,0,24,24)
+		
+	if(NoodleTopping == 0):
+		$TOPPING.hide()
+	else:
+		$TOPPING.show()
+		$TOPPING.region_rect = Rect2(Globals.noodle_toppings[NoodleTopping]["id"] * 24 + 192 ,0,24,24)

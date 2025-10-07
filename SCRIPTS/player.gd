@@ -88,8 +88,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 		setDir(dir, PICKUP, false)
-
-
+		
 func _input(event):
 	var slot = $ItemSlot
 	if $ItemSlot.get_children().size() > 0:

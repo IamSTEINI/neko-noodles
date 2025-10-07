@@ -1,0 +1,136 @@
+[gd_scene load_steps=19 format=3 uid="uid://boox5333jwes8"]
+
+[ext_resource type="Texture2D" uid="uid://bxih7virswboy" path="res://ASSETS/TEXTURES/FURNITURE/MACHINES.png" id="1_05xag"]
+[ext_resource type="Script" uid="uid://bq7wgq10lybmn" path="res://scenes/machines/noodle_cooker.gd" id="1_o54bq"]
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_o54bq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05xag"]
+atlas = ExtResource("1_05xag")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o54bq"]
+atlas = ExtResource("1_05xag")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7eqik"]
+atlas = ExtResource("1_05xag")
+region = Rect2(400, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey27u"]
+atlas = ExtResource("1_05xag")
+region = Rect2(550, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hauqm"]
+atlas = ExtResource("1_05xag")
+region = Rect2(700, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3op7e"]
+atlas = ExtResource("1_05xag")
+region = Rect2(850, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxjn7"]
+atlas = ExtResource("1_05xag")
+region = Rect2(1000, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50t3x"]
+atlas = ExtResource("1_05xag")
+region = Rect2(1300, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paq2q"]
+atlas = ExtResource("1_05xag")
+region = Rect2(1450, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liwaf"]
+atlas = ExtResource("1_05xag")
+region = Rect2(1600, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxuxu"]
+atlas = ExtResource("1_05xag")
+region = Rect2(1750, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj4k5"]
+atlas = ExtResource("1_05xag")
+region = Rect2(1900, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdej7"]
+atlas = ExtResource("1_05xag")
+region = Rect2(2050, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skj5r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05xag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o54bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7eqik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey27u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hauqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3op7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxjn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50t3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paq2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liwaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxuxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj4k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdej7")
+}],
+"loop": true,
+"name": &"Cook",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey27u"]
+size = Vector2(98, 88)
+
+[node name="MACHINE-NoodleCooker" type="Node2D"]
+script = ExtResource("1_o54bq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_skj5r")
+animation = &"Cook"
+frame_progress = 0.12755264
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_ey27u")
+
+[node name="INTERACTABLE" parent="." instance=ExtResource("2_o54bq")]
+position = Vector2(0, 17)
+text = "Cook Noodles"
+border_color = Color(0.452271, 0.447891, 1, 1)
+
+[node name="Product" type="Marker2D" parent="."]
+position = Vector2(0, 21)
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
+[connection signal="player_entered" from="INTERACTABLE" to="." method="_on_interactable_player_entered"]

@@ -8,7 +8,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var slot = body.get_node("ItemSlot")
 		if slot.get_child_count() > 0:
 			var noodle = slot.get_child(0)
-			if noodle.get_meta("type") == "item":
+			if noodle.get_meta("type") == "Noodle":
 				if self.get_node("ItemSlot").get_child_count() > 0:
 					Globals.log("SERVING NOT POSSIBLE: SLOT IS FULL")
 				else:

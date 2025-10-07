@@ -1,10 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://btdy4yx2urpem"]
+[gd_scene load_steps=5 format=3 uid="uid://btdy4yx2urpem"]
 
 [ext_resource type="Script" uid="uid://dcm1ho5lasu12" path="res://SCRIPTS/NOODLES/NoodleItem.gd" id="1_dmpbm"]
+[ext_resource type="Texture2D" uid="uid://buibdhli31ywj" path="res://ASSETS/TEXTURES/FOOD/FOOD.png" id="2_omqyi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbajn"]
+atlas = ExtResource("2_omqyi")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omqyi"]
+atlas = ExtResource("2_omqyi")
+region = Rect2(24, 0, 24, 24)
 
 [node name="NoodleItem" type="Node2D"]
+scale = Vector2(5, 5)
 script = ExtResource("1_dmpbm")
-metadata/type = "item"
+metadata/type = "Noodle"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BASE" type="Sprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(0.35, 0.35)
+texture = SubResource("AtlasTexture_xbajn")
+
+[node name="CHOPSTICKS" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+scale = Vector2(0.35, 0.35)
+texture = SubResource("AtlasTexture_omqyi")
+
+[node name="NOODLE" type="Sprite2D" parent="."]
+z_index = 2
+texture_filter = 1
+position = Vector2(2.98023e-08, 0)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_omqyi")
+region_enabled = true
+region_rect = Rect2(220, 0, 24, 24)
+
+[node name="TOPPING" type="Sprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_omqyi")
+region_enabled = true
+region_rect = Rect2(313.015, 0, 24, 24)

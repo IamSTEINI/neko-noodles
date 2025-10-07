@@ -22,7 +22,7 @@ func _on_interactable_interacted(body) -> void:
 		var player_food_slot = body.get_node("ItemSlot")
 		if player_food_slot.get_child_count() > 0:
 			var noodle = player_food_slot.get_child(0)
-			if noodle.get_meta("type") == "item":
+			if noodle.get_meta("type") == "Noodle":
 				if empty_slot.get_child_count() > 0:
 					Globals.log(self.name+" | foodslot is used")
 				else:
@@ -51,15 +51,12 @@ func _on_playercheck_body_entered(body: Node2D) -> void:
 	update_capacity_text()
 	if body.get_meta("type") == "player":
 		if body.get_node("ItemSlot").get_child_count() > 0 && capacity <= customers:
-			$INTERACTABLE.can_interact = true
+			if body.get_node("ItemSlot").get_child(0).get_meta("type") == "Noodle":
+				$INTERACTABLE.can_interact = true
 		else:
 			$INTERACTABLE.can_interact = false
 
 
 func _on_playercheck_body_exited(body: Node2D) -> void:
 	update_capacity_text()
-	if body.get_meta("type") == "player":
-		if body.get_node("ItemSlot").get_child_count() > 0 && capacity <= customers:
-			$INTERACTABLE.can_interact = true
-		else:
-			$INTERACTABLE.can_interact = false
+	$INTERACTABLE.can_interact = false

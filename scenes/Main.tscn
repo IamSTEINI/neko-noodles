@@ -1,8 +1,8 @@
-[gd_scene load_steps=24 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=26 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
-[ext_resource type="PackedScene" uid="uid://c76lcwmwgvfdx" path="res://Shader/Restaurant.tscn" id="3_bjd11"]
+[ext_resource type="PackedScene" uid="uid://c76lcwmwgvfdx" path="res://scenes/Restaurant.tscn" id="3_bjd11"]
 [ext_resource type="Shader" uid="uid://by0usr4bq3vcl" path="res://Shader/gaussian_glow.gdshader" id="3_lhr70"]
 [ext_resource type="Script" uid="uid://dn34u5gvtieql" path="res://SCRIPTS/buildingMode.gd" id="4_qmy6f"]
 [ext_resource type="PackedScene" uid="uid://pe74xpdh5ymt" path="res://scenes/Table.tscn" id="5_mwfav"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://on0gdv6lubsv" path="res://scenes/npc.tscn" id="8_ft6cd"]
 [ext_resource type="PackedScene" uid="uid://cq2ikcgppht16" path="res://scenes/PLAYER.tscn" id="9_bb450"]
 [ext_resource type="PackedScene" uid="uid://dok4r4o5fsqtf" path="res://scenes/Coin.tscn" id="11_wp0k4"]
+[ext_resource type="PackedScene" uid="uid://d0eicgcu1ovgc" path="res://scenes/dough_item.tscn" id="12_bjd11"]
+[ext_resource type="PackedScene" uid="uid://bio7x6ic1c73c" path="res://scenes/item_giver.tscn" id="12_qmy6f"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1wui"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0k4"]
 texture = ExtResource("2_wp0k4")
 texture_region_size = Vector2i(50, 50)
 0:0/0 = 0
@@ -187,7 +189,7 @@ texture_region_size = Vector2i(50, 50)
 
 [sub_resource type="TileSet" id="TileSet_rstr5"]
 tile_size = Vector2i(50, 50)
-sources/0 = SubResource("TileSetAtlasSource_s1wui")
+sources/0 = SubResource("TileSetAtlasSource_wp0k4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wp0k4"]
 shader = ExtResource("3_lhr70")
@@ -238,7 +240,7 @@ size = Vector2(727.5, 185)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhr70"]
 radius = 10.0499
 
-[node name="TEST" type="Node2D"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_lhr70")
 
 [node name="GROUND" type="TileMapLayer" parent="."]
@@ -281,14 +283,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_g7kua")
 position = Vector2(-976, -749)
 
 [node name="TABLE" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1040, 1044)
+position = Vector2(1043, 968)
 food_slots = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE"]
 position = Vector2(0, -18)
 
 [node name="TABLE3" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1040, 1219)
+position = Vector2(1040, 1187)
 food_slots = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE3"]
@@ -302,14 +304,14 @@ food_slots = [NodePath("Marker2D")]
 position = Vector2(0, -18)
 
 [node name="TABLE6" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1463, 1026)
+position = Vector2(1466, 950)
 food_slots = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE6"]
 position = Vector2(0, -18)
 
 [node name="TABLE7" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1463, 1201)
+position = Vector2(1463, 1169)
 food_slots = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE7"]
@@ -323,14 +325,14 @@ food_slots = [NodePath("Marker2D")]
 position = Vector2(0, -18)
 
 [node name="TABLE10" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1678, 1026)
+position = Vector2(1681, 950)
 food_slots = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE10"]
 position = Vector2(0, -18)
 
 [node name="TABLE11" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1678, 1201)
+position = Vector2(1678, 1169)
 food_slots = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE11"]
@@ -344,7 +346,7 @@ food_slots = [NodePath("Marker2D")]
 position = Vector2(0, -18)
 
 [node name="TABLE14" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("5_mwfav")]
-position = Vector2(1892, 1201)
+position = Vector2(1892, 1169)
 food_slots = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="TABLES/TABLE14"]
@@ -358,7 +360,7 @@ food_slots = [NodePath("Marker2D")]
 position = Vector2(0, -18)
 
 [node name="TABLE2" parent="TABLES" node_paths=PackedStringArray("food_slots") instance=ExtResource("6_3p2gp")]
-position = Vector2(1903, 1030)
+position = Vector2(1906, 954)
 capacity = 2
 food_slots = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
@@ -431,3 +433,52 @@ Tables = NodePath("../TABLES")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.369564, 0.346215, 0.445095, 1)
+
+[node name="ItemGiver" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
+position = Vector2(0, 1338)
+item = NodePath("DoughItem")
+
+[node name="DoughItem" parent="ItemGiver" instance=ExtResource("12_bjd11")]
+doughType = 2
+
+[node name="ItemGiver2" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
+position = Vector2(0, 1435)
+item = NodePath("DoughItem")
+
+[node name="DoughItem" parent="ItemGiver2" instance=ExtResource("12_bjd11")]
+doughType = 1
+
+[node name="ItemGiver3" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
+position = Vector2(0, 1252)
+item = NodePath("DoughItem")
+
+[node name="DoughItem" parent="ItemGiver3" instance=ExtResource("12_bjd11")]
+doughType = 3
+
+[node name="ItemGiver4" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
+position = Vector2(0, 1163)
+item = NodePath("DoughItem")
+
+[node name="DoughItem" parent="ItemGiver4" instance=ExtResource("12_bjd11")]
+doughType = 4
+
+[node name="ItemGiver5" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
+position = Vector2(111, 1435)
+item = NodePath("DoughItem")
+
+[node name="DoughItem" parent="ItemGiver5" instance=ExtResource("12_bjd11")]
+doughType = 5
+
+[node name="ItemGiver6" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
+position = Vector2(117, 1338)
+item = NodePath("DoughItem")
+
+[node name="DoughItem" parent="ItemGiver6" instance=ExtResource("12_bjd11")]
+doughType = 6
+
+[node name="ItemGiver7" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
+position = Vector2(120, 1252)
+item = NodePath("DoughItem")
+
+[node name="DoughItem" parent="ItemGiver7" instance=ExtResource("12_bjd11")]
+doughType = 7
