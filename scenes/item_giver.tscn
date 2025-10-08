@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bjws2d0m21m5r" path="res://SCRIPTS/item_giver.gd" id="1_2w3e0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2w3e0"]
-radius = 39.8121
+radius = 25.0
 
 [node name="ItemGiver" type="Node2D"]
 script = ExtResource("1_2w3e0")
@@ -14,10 +14,19 @@ script = ExtResource("1_2w3e0")
 shape = SubResource("CircleShape2D_2w3e0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -49.0
-offset_top = -20.0
-offset_right = 51.0
-offset_bottom = 20.0
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = 6.999996
+offset_right = 67.0
+offset_bottom = 46.999996
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.68, 0.68)
 text = "ITEMGIVER"
 scroll_active = false
 horizontal_alignment = 1

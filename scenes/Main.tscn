@@ -437,50 +437,57 @@ Tables = NodePath("../TABLES")
 color = Color(0.369564, 0.346215, 0.445095, 1)
 
 [node name="ItemGiver" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
-position = Vector2(0, 1338)
+position = Vector2(579, 1435)
 item = NodePath("DoughItem")
+text = "Soba"
 
 [node name="DoughItem" parent="ItemGiver" instance=ExtResource("12_bjd11")]
 doughType = 2
 
 [node name="ItemGiver2" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
-position = Vector2(0, 1435)
+position = Vector2(-24, 1435)
 item = NodePath("DoughItem")
+text = "Udon"
 
 [node name="DoughItem" parent="ItemGiver2" instance=ExtResource("12_bjd11")]
 doughType = 1
 
 [node name="ItemGiver3" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
-position = Vector2(0, 1252)
+position = Vector2(477, 1435)
 item = NodePath("DoughItem")
+text = "Somen"
 
 [node name="DoughItem" parent="ItemGiver3" instance=ExtResource("12_bjd11")]
 doughType = 3
 
 [node name="ItemGiver4" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
-position = Vector2(0, 1163)
+position = Vector2(176, 1435)
 item = NodePath("DoughItem")
+text = "Hiyamugi"
 
 [node name="DoughItem" parent="ItemGiver4" instance=ExtResource("12_bjd11")]
 doughType = 4
 
 [node name="ItemGiver5" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
-position = Vector2(111, 1435)
+position = Vector2(74, 1435)
 item = NodePath("DoughItem")
+text = "Shirataki"
 
 [node name="DoughItem" parent="ItemGiver5" instance=ExtResource("12_bjd11")]
 doughType = 5
 
 [node name="ItemGiver6" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
-position = Vector2(117, 1338)
+position = Vector2(276, 1435)
 item = NodePath("DoughItem")
+text = "Yakisoba"
 
 [node name="DoughItem" parent="ItemGiver6" instance=ExtResource("12_bjd11")]
 doughType = 6
 
 [node name="ItemGiver7" parent="." node_paths=PackedStringArray("item") instance=ExtResource("12_qmy6f")]
-position = Vector2(120, 1252)
+position = Vector2(376, 1435)
 item = NodePath("DoughItem")
+text = "Harusame"
 
 [node name="DoughItem" parent="ItemGiver7" instance=ExtResource("12_bjd11")]
 doughType = 7

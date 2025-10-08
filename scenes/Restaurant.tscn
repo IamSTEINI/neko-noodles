@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c76lcwmwgvfdx"]
+[gd_scene load_steps=19 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="1_551nn"]
 [ext_resource type="Script" uid="uid://da1c5xwmi3o06" path="res://SCRIPTS/restaurant.gd" id="1_mo5rl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dmnbm4sbe1vq" path="res://scenes/raw_noodle_item.tscn" id="7_g484w"]
 [ext_resource type="PackedScene" uid="uid://boox5333jwes8" path="res://scenes/machines/noodle_cooker.tscn" id="9_ndmpn"]
 [ext_resource type="PackedScene" uid="uid://btdy4yx2urpem" path="res://scenes/NoodleItem.tscn" id="10_0lfbe"]
+[ext_resource type="PackedScene" uid="uid://cqma2pcbcsnie" path="res://scenes/shelf.tscn" id="11_e03td"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_biadm"]
 size = Vector2(1174, 180)
@@ -150,7 +151,7 @@ position = Vector2(0, 21)
 
 [node name="INTERACTABLE" parent="." instance=ExtResource("6_46urj")]
 position = Vector2(295, 177)
-text = "Enter supermarket"
+text = "Go to supermarket"
 border_color = Color(0.618513, 0.367543, 0.973214, 1)
 
 [node name="MACHINE-NoodleCooker" parent="." node_paths=PackedStringArray("NoodleCooked") instance=ExtResource("9_ndmpn")]
@@ -160,5 +161,14 @@ NoodleCooked = NodePath("NoodleItem")
 
 [node name="NoodleItem" parent="MACHINE-NoodleCooker" instance=ExtResource("10_0lfbe")]
 position = Vector2(-3.8146973e-06, -5)
+
+[node name="Shelf" parent="." instance=ExtResource("11_e03td")]
+position = Vector2(500, 1098)
+
+[node name="Shelf2" parent="." instance=ExtResource("11_e03td")]
+position = Vector2(150, 1098)
+
+[node name="Shelf3" parent="." instance=ExtResource("11_e03td")]
+position = Vector2(50, 1098)
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]

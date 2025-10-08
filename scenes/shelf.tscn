@@ -1,0 +1,138 @@
+[gd_scene load_steps=15 format=3 uid="uid://cqma2pcbcsnie"]
+
+[ext_resource type="Texture2D" uid="uid://dlqaj47k0edsk" path="res://ASSETS/TEXTURES/FURNITURE/Utility.png" id="1_eyi4x"]
+[ext_resource type="Script" uid="uid://cwsupyn3qsq8i" path="res://SCRIPTS/shelf.gd" id="1_xj574"]
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="3_00mi8"]
+[ext_resource type="PackedScene" uid="uid://1h5mwjlljbea" path="res://scenes/shelf-slot.tscn" id="4_viw0s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj574"]
+atlas = ExtResource("1_eyi4x")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00mi8"]
+atlas = ExtResource("1_eyi4x")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viw0s"]
+atlas = ExtResource("1_eyi4x")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q781"]
+atlas = ExtResource("1_eyi4x")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw82s"]
+atlas = ExtResource("1_eyi4x")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyalq"]
+atlas = ExtResource("1_eyi4x")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrn4c"]
+atlas = ExtResource("1_eyi4x")
+region = Rect2(300, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n25ve"]
+atlas = ExtResource("1_eyi4x")
+region = Rect2(350, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5u3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj574")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00mi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viw0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q781")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw82s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyalq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrn4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n25ve")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyi4x"]
+size = Vector2(92, 86)
+
+[node name="Shelf" type="Node2D"]
+script = ExtResource("1_xj574")
+slot = ExtResource("4_viw0s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_x5u3a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_eyi4x")
+
+[node name="INTERACTABLE" parent="." instance=ExtResource("3_00mi8")]
+position = Vector2(0, 21)
+text = "Store item"
+border_color = Color(0.70940864, 0.2615305, 0.99999994, 1)
+can_interact = false
+interaction_range = 50
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 25.0
+offset_right = 68.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.65)
+text = "0/0"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryUi" type="CanvasGroup" parent="."]
+z_index = 50
+position = Vector2(0, -50)
+
+[node name="GridContainer" type="GridContainer" parent="InventoryUi"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.5
+offset_top = -25.0
+offset_right = 12.5
+grow_horizontal = 2
+grow_vertical = 0
+columns = 3
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
+[connection signal="player_entered" from="INTERACTABLE" to="." method="_on_interactable_player_entered"]
+[connection signal="player_exited" from="INTERACTABLE" to="." method="_on_interactable_player_exited"]

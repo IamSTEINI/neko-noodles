@@ -26,9 +26,15 @@ var chosen_character: AnimatedSprite2D
 var generated_order: Array[int]
 
 func generate_noodle() -> Array[int]:
-	# var noodle_index: int = (randi() % (Globals.noodle_types.size() - 1)) + 1
+	var noodle_index: int = (randi() % (Globals.noodle_types.size() - 1)) + 1
 	# var topping_index: int = (randi() % (Globals.noodle_toppings.size() - 1)) + 1
-	return [7, 0] # Returning 0 for topping for now
+	return [noodle_index, 0] # Returning 0 for topping for now
+	
+func toggle_collider(enable: bool) -> void:
+	if enable:
+		self.collision_mask |= 1 << 2
+	else:
+		self.collision_mask &= ~(1 << 2)
 
 func _ready() -> void:
 	randomize()
@@ -106,6 +112,7 @@ func wait_say() -> void:
 func leave() -> void:
 	reached_table = false
 	$Order.hide()
+	toggle_collider(false)
 	$NavigationAgent2D.target_position = SPAWN_LOC
 	await get_tree().create_timer(10.0).timeout
 	queue_free()
@@ -147,6 +154,7 @@ func _physics_process(delta: float) -> void:
 		elif reached_entry and not reached_table and chosen_table != null:
 			Globals.log("Table claimed: " + str(chosen_table.name))
 			reached_table = true
+			toggle_collider(true)
 			wait_time = 0.0
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_character.play("IDLE_UP")
