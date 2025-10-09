@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxi2a12ntqa10"]
+
+[ext_resource type="PackedScene" uid="uid://btdy4yx2urpem" path="res://scenes/NoodleItem.tscn" id="1_aean8"]
+[ext_resource type="Script" uid="uid://yldrscwhl1l4" path="res://scripts/ordermanager_order.gd" id="1_fxa0w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxa0w"]
+bg_color = Color(0, 0, 0, 0.5647059)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v500a"]
+bg_color = Color(0.43226767, 0.68532324, 0, 1)
+corner_radius_bottom_left = 4
+
+[node name="ORDER" type="Panel"]
+custom_minimum_size = Vector2(325, 50)
+theme_override_styles/panel = SubResource("StyleBoxFlat_fxa0w")
+script = ExtResource("1_fxa0w")
+
+[node name="NoodleItem" parent="." instance=ExtResource("1_aean8")]
+position = Vector2(30, 28)
+
+[node name="NoodleName" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 260.0
+offset_bottom = 50.0
+text = "Noodle name"
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="Time" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 12.0
+offset_right = 320.0
+offset_bottom = 37.665
+theme_override_colors/default_color = Color(0.50928617, 0.50928617, 0.50928617, 1)
+text = "56:50"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Progressbar" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 44.0
+offset_right = 325.0
+offset_bottom = 50.285
+theme_override_styles/panel = SubResource("StyleBoxFlat_v500a")

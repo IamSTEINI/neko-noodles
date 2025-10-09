@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=29 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
@@ -241,6 +241,9 @@ size = Vector2(727.5, 185)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhr70"]
 radius = 10.0499
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2gp"]
+size = Vector2(46, 63)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lhr70")
@@ -492,12 +495,20 @@ text = "Harusame"
 [node name="DoughItem" parent="ItemGiver7" instance=ExtResource("12_bjd11")]
 doughType = 7
 
-[node name="ItemRemover" parent="." instance=ExtResource("14_mwfav")]
+[node name="TRASH" parent="." instance=ExtResource("14_mwfav")]
 position = Vector2(800, 1415)
+metadata/tooltip = "Trash"
+metadata/description = "It is like the first version of my game."
 
-[node name="Sprite2D" type="Sprite2D" parent="ItemRemover"]
+[node name="Sprite2D" type="Sprite2D" parent="TRASH"]
 texture_filter = 1
 scale = Vector2(1.48, 1.48)
 texture = ExtResource("15_3p2gp")
 region_enabled = true
 region_rect = Rect2(1.0599365, 50.63266, 47.15735, 48.431877)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TRASH"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRASH/StaticBody2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_3p2gp")

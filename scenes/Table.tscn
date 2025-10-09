@@ -13,6 +13,8 @@ radius = 109.041
 [node name="TABLE" type="Node2D" node_paths=PackedStringArray("food_slots")]
 script = ExtResource("1_561jp")
 food_slots = [null]
+metadata/tooltip = "Table"
+metadata/description = "Customers will order and pay here"
 
 [node name="INTERACTABLE" parent="." instance=ExtResource("1_2sdc1")]
 text = "SERVE FOOD"

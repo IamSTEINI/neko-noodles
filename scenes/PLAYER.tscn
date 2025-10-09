@@ -796,10 +796,10 @@ text = "SPAWN NPC
 "
 
 [node name="Panel2" type="Panel" parent="CanvasLayer"]
-offset_left = 1414.0
-offset_top = 925.0
-offset_right = 1910.06
-offset_bottom = 1064.35
+offset_left = 40.0
+offset_top = 908.0
+offset_right = 536.06006
+offset_bottom = 1047.35
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqncw")
 script = ExtResource("8_73ffy")
 

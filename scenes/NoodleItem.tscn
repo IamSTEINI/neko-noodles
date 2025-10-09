@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://btdy4yx2urpem"]
+[gd_scene load_steps=6 format=3 uid="uid://btdy4yx2urpem"]
 
 [ext_resource type="Script" uid="uid://dcm1ho5lasu12" path="res://SCRIPTS/NOODLES/NoodleItem.gd" id="1_dmpbm"]
 [ext_resource type="Texture2D" uid="uid://buibdhli31ywj" path="res://ASSETS/TEXTURES/FOOD/FOOD.png" id="2_omqyi"]
@@ -10,6 +10,9 @@ region = Rect2(0, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_omqyi"]
 atlas = ExtResource("2_omqyi")
 region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omqyi"]
+size = Vector2(7.1000004, 5.4000006)
 
 [node name="NoodleItem" type="Node2D"]
 scale = Vector2(5, 5)
@@ -43,3 +46,10 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_omqyi")
 region_enabled = true
 region_rect = Rect2(313.015, 0, 24, 24)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.6)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_omqyi")

@@ -162,6 +162,7 @@ func _physics_process(delta: float) -> void:
 				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
+				OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"],generated_order[0], NPC_MAX_WAITING_TIME)
 				$Order.show()
 		elif reached_table and not got_order:
 			wait_time += delta

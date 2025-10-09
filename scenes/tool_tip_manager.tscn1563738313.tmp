@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dodj7w4pwmu3r"]
+
+[ext_resource type="Script" uid="uid://bllcfbu3ydytd" path="res://scripts/tool_tip_manager.gd" id="1_xirlj"]
+
+[node name="ToolTipManager" type="Node2D"]
+script = ExtResource("1_xirlj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 649.0
+offset_top = 476.0
+offset_right = 949.0
+offset_bottom = 526.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 299.68994
+offset_bottom = 50.0
+text = "TOOLTIP"
+scroll_active = false
+vertical_alignment = 1

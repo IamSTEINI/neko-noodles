@@ -4,7 +4,6 @@ extends Node2D
 @export var slot: PackedScene = null
 var player_body: Node2D = null
 
-
 func _ready() -> void:
 	$InventoryUi.hide()
 	update()

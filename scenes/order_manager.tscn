@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcigapqbapko4"]
+
+[ext_resource type="Script" uid="uid://bqvyn44muqxlc" path="res://scripts/order_manager.gd" id="1_hrvr2"]
+[ext_resource type="PackedScene" uid="uid://cxi2a12ntqa10" path="res://scenes/ordermanager-order.tscn" id="2_hrvr2"]
+
+[node name="OrderManager" type="Node2D"]
+script = ExtResource("1_hrvr2")
+order_object = ExtResource("2_hrvr2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 158.0
+offset_right = 365.0
+offset_bottom = 1072.0

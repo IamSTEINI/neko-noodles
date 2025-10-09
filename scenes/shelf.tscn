@@ -75,6 +75,8 @@ size = Vector2(92, 86)
 [node name="Shelf" type="Node2D"]
 script = ExtResource("1_xj574")
 slot = ExtResource("4_viw0s")
+metadata/tooltip = "Shelf"
+metadata/description = "Store your items here"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
