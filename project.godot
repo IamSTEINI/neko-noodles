@@ -14,6 +14,8 @@ config/name="Neko Noodles"
 config/version="0.0.1 ALPHA"
 run/main_scene="uid://cld5xtwr1yq5i"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.19176221, 0.10232947, 0.20013735, 1)
+boot_splash/image="uid://oqy587xryi4r"
 config/icon="uid://dn7d656jhjsj"
 
 [autoload]

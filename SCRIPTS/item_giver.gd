@@ -14,7 +14,6 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.get_meta("type") == "player" and item != null and body.has_node("ItemSlot"):
 		var item_slot = body.get_node("ItemSlot")
-
 		if item_slot.get_child_count() == 0:
 			var item_clone = item.duplicate()
 			get_tree().current_scene.add_child(item_clone)
