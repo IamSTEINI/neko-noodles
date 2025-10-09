@@ -746,11 +746,26 @@ tab_size = 0
 shortcut_keys_enabled = false
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_right = 850.0
-offset_bottom = 250.0
+[node name="DEV" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1917.0
+offset_top = 255.0
+offset_right = -1417.0
+offset_bottom = 295.0
+grow_horizontal = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel"]
+[node name="Panel" type="Panel" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -255.0
+offset_right = 847.0
+offset_bottom = -5.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/DEV/Panel"]
 texture_filter = 1
 layout_mode = 0
 offset_right = 850.0
@@ -763,17 +778,6 @@ autowrap_mode = 0
 vertical_alignment = 2
 script = ExtResource("7_uud0d")
 metadata/_edit_use_anchors_ = true
-
-[node name="DEV" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1917.0
-offset_top = 255.0
-offset_right = -1417.0
-offset_bottom = 295.0
-grow_horizontal = 0
 
 [node name="BUILD MODE" type="Button" parent="CanvasLayer/DEV"]
 layout_mode = 0

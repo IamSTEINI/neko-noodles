@@ -2,17 +2,17 @@ extends Node
 
 const next_day: int = 3
 const day_start: int = 17
-const early_time: float = 30.0 * 60.0
+const early_time: float = 40.0 * 60.0
 
 var console: RichTextLabel = null
 var buildMode: bool = false
-var tmultiplier: float = 60.0 * 5
+var tmultiplier: float = 60.0 * 2
 var intime_seconds: int = 17 * 3600
 var day: int = 1
 var music_volume: int = 0
 var sfx_volume: int = 0
 var ingtime: String = "12:00 AM"
-@export var money: int = 3000
+@export var money: int = 30
 
 var time_accumulator: float = 0.0
 
@@ -112,7 +112,7 @@ func update_time() -> void:
 	ingtime = "%02d:%02d %s" % [hours_12, minutes, am_pm]
 
 func _update_npc_count() -> void:
-	npc_spawn_count = int(15 + sqrt(day) * 5.0)
+	npc_spawn_count = int(10 + sqrt(day) * 5.0)
 	npc_spawned = 0
 
 func seconds_until_next_day() -> float:

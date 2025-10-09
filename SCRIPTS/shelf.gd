@@ -13,7 +13,7 @@ func update() -> void:
 	$RichTextLabel.text = str(inventory.size())+"/"+str(capacity)
 	var needed = inventory.size()
 	
-	# Remove excess slots immediately
+	# Remove excess slots immediately- fkin bug made me loose an hour
 	while $InventoryUi/GridContainer.get_child_count() > needed:
 		var last_child = $InventoryUi/GridContainer.get_child($InventoryUi/GridContainer.get_child_count() - 1)
 		$InventoryUi/GridContainer.remove_child(last_child)
@@ -54,8 +54,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 					inventory.append([item_name, item])
 					update()
 					$InventoryUi.show()
-					
-					
+
 func _on_interactable_player_entered(body: Node2D) -> void:
 	player_body = body
 	if body.get_meta("type") == "player":
@@ -65,8 +64,7 @@ func _on_interactable_player_entered(body: Node2D) -> void:
 				update()
 			else:
 				$InventoryUi.show()
-				
-				
+
 func _on_interactable_player_exited(body: Node2D) -> void:
 	player_body = body
 	if body.get_meta("type") == "player":

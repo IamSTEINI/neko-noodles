@@ -159,7 +159,7 @@ func _physics_process(delta: float) -> void:
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_character.play("IDLE_UP")
 			if !got_order: 
-				say("I want to order!")
+				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
 				$Order.show()
@@ -169,12 +169,13 @@ func _physics_process(delta: float) -> void:
 			if food_slot.get_child_count() > 0:
 				for food in food_slot.get_children():
 					if food.NoodleType == generated_order[0] && food.NoodleTopping == generated_order[1]:
+						$Order.hide()
 						Globals.log("NPC GOT ORDER AT TABLE: " + str(chosen_table.name))
 						food.chopsticks = true
-						await get_tree().create_timer(3).timeout # Simulating eating
 						got_order = true
 					else:
 						say("GRRR! That's not what I ordered")
+						(food as Node2D).queue_free()
 						leave()
 			elif wait_time >= NPC_MAX_WAITING_TIME:
 				say("GRRR! I'm leaving!")
@@ -183,6 +184,7 @@ func _physics_process(delta: float) -> void:
 				leave()
 		
 		elif got_order:
+			await get_tree().create_timer(3).timeout # Simulating eating
 			Globals.log("NPC FINISHED ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_table.customers -= 1
 			for child in food_slot.get_children():

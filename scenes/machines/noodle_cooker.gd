@@ -33,6 +33,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				new_noodle.scale = Vector2(2, 2)
 				new_noodle.show()
 				new_noodle.set("NoodleType", current_noodle_type)
+				new_noodle.set("Price", Globals.noodle_types[current_noodle_type]["price"])
 				Globals.log("Set noodletype to "+str(current_noodle_type))
 				finished = false
 				$INTERACTABLE.text = "Cook Noodles"

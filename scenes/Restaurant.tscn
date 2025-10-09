@@ -67,6 +67,16 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAACAAkAAAADAAIAAAACAAoAAAADAAMAAAADAAoAAAAEAAMAAAADAAkAAAAEAAIAAAACAAAAAAADAAIAAAADAAAAAAAEAAIAAAA=")
 tile_set = ExtResource("1_551nn")
 
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_top = 1139.0
+offset_right = 198.0
+offset_bottom = 1230.0
+text = "Click E to store and
+click on the item you want to get out."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 texture_filter = 1
 offset_left = 201.0
@@ -150,7 +160,8 @@ NoodleRaw = NodePath("RawNoodleItem")
 position = Vector2(0, 21)
 
 [node name="INTERACTABLE" parent="." instance=ExtResource("6_46urj")]
-position = Vector2(295, 177)
+visible = false
+position = Vector2(295, -141)
 text = "Go to supermarket"
 border_color = Color(0.618513, 0.367543, 0.973214, 1)
 
