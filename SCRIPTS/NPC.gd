@@ -22,8 +22,31 @@ var food_slot = null
 var is_speaking: bool = false
 const NPC_MAX_WAITING_TIME: float = 60.0
 var chosen_character: AnimatedSprite2D
+var order_id = null
 @export var leaving = true
 var generated_order: Array[int]
+
+var random_f_names = ["John", "Tim", "Jonathan", "Sinan", "Austin", "Simon", "Marcel", "Walter", "Jesse", "Thomas"]
+var random_l_names = ["Travolta", "Lee", "Fox", "Staydr", "McSoba", "Smith", "Eris", "White", "Blueman", "Noodlefield"]
+
+var random_lines = [
+	"I came for noodles, not character development.",
+	"Every bowl's a reminder I peaked years ago.",
+	"These noodles are the only stable thing in my life.",
+	"I'm starting to think the noodles are winning.",
+	"I told myself one bowl… now it's 47 later.",
+	"Your noodles fixed nothing, but I respect the effort.",
+	"Noodles's good. Still empty inside, though.",
+	"If I vanish, tell the noodles they were right.",
+	"At least the noodles don't judge me… out loud.",
+	"Do you ever look at a noodle and just… relate?"
+]
+
+func generate_name() -> String:
+	var fname_index: int = (randi() % (random_f_names.size() - 1)) + 1
+	var lname_index: int = (randi() % (random_l_names.size() - 1)) + 1
+	
+	return random_f_names[fname_index]+" "+random_l_names[lname_index]
 
 func generate_noodle() -> Array[int]:
 	var noodle_index: int = (randi() % (Globals.noodle_types.size() - 1)) + 1
@@ -43,6 +66,9 @@ func _ready() -> void:
 	else:
 		chosen_character = $WHITE_CAT
 	chosen_character.show()
+	var npc_name = generate_name()
+	self.set_meta("tooltip", npc_name)
+	self.set_meta("description", str(random_lines[(randi() % (random_lines.size() - 1)) + 1]))
 	TextBox.hide()
 	var spawn_areas = SpawnRanges.get_children()
 	var chosen_area = spawn_areas[randi() % spawn_areas.size()]
@@ -162,7 +188,7 @@ func _physics_process(delta: float) -> void:
 				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
-				OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"],generated_order[0], NPC_MAX_WAITING_TIME)
+				order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"],generated_order[0], NPC_MAX_WAITING_TIME)
 				$Order.show()
 		elif reached_table and not got_order:
 			wait_time += delta
@@ -176,9 +202,11 @@ func _physics_process(delta: float) -> void:
 						got_order = true
 					else:
 						say("GRRR! That's not what I ordered")
+						OrderManager.rem_order(order_id)
 						(food as Node2D).queue_free()
 						leave()
 			elif wait_time >= NPC_MAX_WAITING_TIME:
+				OrderManager.rem_order(order_id)
 				say("GRRR! I'm leaving!")
 				Globals.log("NPC LEFT ANGRY (timeout) at table: " + str(chosen_table.name))
 				chosen_table.customers -= 1

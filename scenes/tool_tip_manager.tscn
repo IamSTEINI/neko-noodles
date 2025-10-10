@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dodj7w4pwmu3r"]
 
-[ext_resource type="Script" uid="uid://bllcfbu3ydytd" path="res://scripts/tool_tip_manager.gd" id="1_xirlj"]
+[ext_resource type="Script" uid="uid://bllcfbu3ydytd" path="res://SCRIPTS/tool_tip_manager.gd" id="1_xirlj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xirlj"]
 bg_color = Color(0, 0, 0, 0.5647059)
@@ -43,8 +43,9 @@ layout_mode = 0
 offset_left = 7.0
 offset_top = 26.0
 offset_right = 302.69
-offset_bottom = 48.53
+offset_bottom = 52.0
 theme_override_colors/default_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+theme_override_font_sizes/normal_font_size = 12
 text = "Description"
 scroll_active = false
-vertical_alignment = 1
+autowrap_mode = 2

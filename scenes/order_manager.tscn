@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcigapqbapko4"]
 
-[ext_resource type="Script" uid="uid://bqvyn44muqxlc" path="res://scripts/order_manager.gd" id="1_hrvr2"]
+[ext_resource type="Script" uid="uid://bqvyn44muqxlc" path="res://SCRIPTS/order_manager.gd" id="1_hrvr2"]
 [ext_resource type="PackedScene" uid="uid://cxi2a12ntqa10" path="res://scenes/ordermanager-order.tscn" id="2_hrvr2"]
 
 [node name="OrderManager" type="Node2D"]
