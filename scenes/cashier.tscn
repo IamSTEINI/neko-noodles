@@ -1,0 +1,170 @@
+[gd_scene load_steps=23 format=4 uid="uid://bcdult63ey72v"]
+
+[ext_resource type="TileSet" uid="uid://dhopuw17uvtvq" path="res://TILESETS/supermarket.tres" id="1_qxk7m"]
+[ext_resource type="Script" uid="uid://d3dyjy00bc85m" path="res://scripts/cashier.gd" id="1_yvugg"]
+[ext_resource type="Texture2D" uid="uid://cu8weknbdhobi" path="res://ASSETS/TEXTURES/PLAYER/NPC_CASHIER.png" id="2_yvugg"]
+[ext_resource type="AudioStream" uid="uid://ct7uccsd824hx" path="res://SOUNDS/coin_collect.mp3" id="4_lbl8i"]
+[ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="5_x20w8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkob8"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c0dq"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(300, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu55y"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(550, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3obmj"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(800, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc56d"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(1050, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljydn"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(1300, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twprl"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(1550, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nq08"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(1800, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rikoi"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(2050, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecq8v"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(2300, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr14m"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(2550, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6apey"]
+atlas = ExtResource("2_yvugg")
+region = Rect2(2800, 50, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1g83a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkob8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c0dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu55y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3obmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc56d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljydn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twprl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nq08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rikoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecq8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr14m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6apey")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gc56d"]
+size = Vector2(193.5, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxk7m"]
+size = Vector2(181, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvugg"]
+size = Vector2(32, 100)
+
+[sub_resource type="SystemFont" id="SystemFont_yvugg"]
+subpixel_positioning = 0
+
+[node name="Cashier" type="Node2D"]
+script = ExtResource("1_yvugg")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+position = Vector2(-799, -898)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAIAAgAAAACAAUAAAAIAAkAAAACAAYAAAAIAAoAAAACAAcAAAAIAAsAAAACAAgAAAAJAAgAAAADAAUAAAAJAAkAAAADAAYAAAAJAAoAAAADAAcAAAAJAAsAAAADAAgAAAAKAAgAAAAEAAUAAAAKAAkAAAAEAAYAAAAKAAoAAAAEAAcAAAAKAAsAAAAEAAgAAAAGAAkAAAABAAYAAAA=")
+tile_set = ExtResource("1_qxk7m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(147, 39)
+scale = Vector2(-2, 2)
+sprite_frames = SubResource("SpriteFrames_1g83a")
+frame_progress = 0.4818861
+
+[node name="BUYTRIGGER" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BUYTRIGGER"]
+position = Vector2(-68.75, 63)
+shape = SubResource("RectangleShape2D_gc56d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(118.5, 110)
+shape = SubResource("RectangleShape2D_qxk7m")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-155, 52)
+shape = SubResource("RectangleShape2D_yvugg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+z_index = 111
+texture_filter = 1
+offset_left = 17.0
+offset_top = -24.0
+offset_right = 121.0
+offset_bottom = 16.0
+theme_override_colors/default_color = Color(0.8212138, 0, 0.20377329, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = SubResource("SystemFont_yvugg")
+theme_override_font_sizes/normal_font_size = 31
+text = "- 1000"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Collect_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lbl8i")
+volume_db = 1.335
+attenuation = 2.75041e-05
+script = ExtResource("5_x20w8")
+
+[connection signal="body_entered" from="BUYTRIGGER" to="." method="_on_buytrigger_body_entered"]

@@ -90,7 +90,7 @@ func _ready() -> void:
 	
 func pay(amount:int, table: Node2D) -> void:
 	var coin = coin_scene.instantiate()
-	coin.amount = amount
+	coin.amount = amount + randi_range(0, 6)
 	coin.position = table.global_position
 	get_tree().current_scene.add_child(coin)
 
@@ -189,6 +189,7 @@ func _physics_process(delta: float) -> void:
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
 				order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"],generated_order[0], NPC_MAX_WAITING_TIME)
+				Globals.log(str(order_id)+": "+Globals.noodle_types[generated_order[0]]["name"])
 				$Order.show()
 		elif reached_table and not got_order:
 			wait_time += delta

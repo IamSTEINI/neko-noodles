@@ -13,7 +13,7 @@ func _ready() -> void:
 		
 func _on_texture_button_pressed() -> void:
 	MusicManager.call_sound_with_fade("Main Theme")
-	Scenemanager.change_scene($".", "Main")
+	Scenemanager.change_scene(self, "Main")
 
 
 func _process(delta: float) -> void:

@@ -2,4 +2,15 @@ extends Node2D
 
 
 func _on_interactable_interacted(body: Variant) -> void:
-	Scenemanager.change_scene(get_tree().root, "Main")
+		if body.has_node("ItemSlot"):
+			if body.get_node("ItemSlot").get_child_count() > 0:
+				var price = body.get_node("ItemSlot").get_child(0).get_meta("buy_price")
+				if price == null:
+					Scenemanager.change_scene(self, "Main")
+					Globals.log("Player paid")
+				else:
+					# User didnt pay
+					Globals.log("Player didn't pay")
+			else:
+				Globals.log("Player hasn't bought anything")
+				Scenemanager.change_scene(self, "Main")

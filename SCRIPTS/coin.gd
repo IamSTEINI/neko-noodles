@@ -15,6 +15,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$RichTextLabel.visible = true
 		$Collect_Sound.play(0.07)
 		$Sprite2D.hide()
+		Globals.money += amount
 		var end_pos = start_pos - Vector2(0, 50)
 		var tween = create_tween()
 		tween.tween_property($RichTextLabel, "position", end_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -23,6 +24,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			$RichTextLabel.hide()
 			$RichTextLabel.position = start_pos
 			$RichTextLabel.modulate.a = 1.0
-			Globals.money += amount
 			queue_free()
 		)

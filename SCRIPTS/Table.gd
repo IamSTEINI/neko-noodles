@@ -48,6 +48,7 @@ func _ready() -> void:
 
 
 func _on_playercheck_body_entered(body: Node2D) -> void:
+	Globals.log(body.name) # Later check if NPC is AT the table
 	update_capacity_text()
 	if body.get_meta("type") == "player":
 		if body.get_node("ItemSlot").get_child_count() > 0 && capacity <= customers:

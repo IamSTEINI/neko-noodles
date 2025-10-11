@@ -747,7 +747,6 @@ shortcut_keys_enabled = false
 vertical_alignment = 1
 
 [node name="DEV" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0

@@ -19,6 +19,7 @@ metadata/description = "Customers will order and pay here"
 [node name="INTERACTABLE" parent="." instance=ExtResource("1_2sdc1")]
 text = "SERVE FOOD"
 border_color = Color(0, 0.645547, 0.236471, 1)
+can_interact = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

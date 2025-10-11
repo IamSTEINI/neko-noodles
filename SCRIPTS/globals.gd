@@ -6,7 +6,7 @@ const early_time: float = 40.0 * 60.0
 
 var console: RichTextLabel = null
 var buildMode: bool = false
-var tmultiplier: float = 60.0 * 2
+var tmultiplier: float = 60.0 * 6
 var intime_seconds: int = 17 * 3600
 var day: int = 1
 var music_volume: int = 0

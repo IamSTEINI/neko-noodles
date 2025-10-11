@@ -37,7 +37,6 @@ stream = ExtResource("3_bedda")
 volume_db = 1.335
 attenuation = 2.75041e-05
 script = ExtResource("3_2du1a")
-add = -10
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 visible = false

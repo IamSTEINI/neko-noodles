@@ -1,0 +1,56 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dhopuw17uvtvq"]
+
+[ext_resource type="Texture2D" uid="uid://ddufwphpmt7tf" path="res://ASSETS/TEXTURES/GROUND/SUPERMARKET.png" id="1_qc2ju"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2doy"]
+texture = ExtResource("1_qc2ju")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+1:4/0 = 0
+0:7/0 = 0
+0:6/0 = 0
+1:7/0 = 0
+1:6/0 = 0
+2:7/0 = 0
+2:6/0 = 0
+3:7/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+4:7/0 = 0
+4:5/0 = 0
+3:5/0 = 0
+2:5/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+
+[resource]
+tile_size = Vector2i(50, 50)
+sources/0 = SubResource("TileSetAtlasSource_h2doy")
