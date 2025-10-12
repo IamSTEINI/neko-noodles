@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dr5pljjtjbjxm"]
+[gd_scene load_steps=21 format=3 uid="uid://dr5pljjtjbjxm"]
 
 [ext_resource type="Script" uid="uid://dia0ctqf6rrrt" path="res://scenes/machines/noodle_maker.gd" id="1_wmyro"]
 [ext_resource type="Texture2D" uid="uid://bxih7virswboy" path="res://ASSETS/TEXTURES/FURNITURE/MACHINES.png" id="1_xif08"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_q28g8"]
+[ext_resource type="PackedScene" uid="uid://rjq5kilogbmu" path="res://SCRIPTS/progressbar.tscn" id="4_0rw86"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q28g8"]
 atlas = ExtResource("1_xif08")
@@ -142,6 +143,9 @@ interaction_range = 40
 
 [node name="Product" type="Marker2D" parent="."]
 position = Vector2(0, 21)
+
+[node name="Progressbar" parent="." instance=ExtResource("4_0rw86")]
+position = Vector2(0, -68)
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
 [connection signal="player_entered" from="INTERACTABLE" to="." method="_on_interactable_player_entered"]

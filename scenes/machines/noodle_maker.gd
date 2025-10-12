@@ -7,6 +7,20 @@ var finished = false
 
 func _ready() -> void:
 	NoodleRaw.hide()
+	$Progressbar.hide()
+	
+func animate_progress_bar_down(duration: float) -> void:
+	$Progressbar.show()
+	var steps := 50
+	var step_time := duration / steps
+	var value_step := 100 / steps
+
+	for i in range(steps):
+		$Progressbar.level = 100 - (i * value_step)
+		await get_tree().create_timer(step_time).timeout
+
+	$Progressbar.level = 0
+	$Progressbar.hide()
 
 func _on_interactable_interacted(body: Node2D) -> void:
 	if body.has_meta("type") && body.get_meta("type") == "player":
@@ -18,7 +32,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				current_noodle_type = itemslot.get_child(0).doughType
 				Globals.log("Current noodletype: "+str(current_noodle_type))
 				itemslot.get_child(0).queue_free()
-				await get_tree().create_timer(cuttingDuration).timeout
+				await animate_progress_bar_down(cuttingDuration)
 				$AnimatedSprite2D.stop()
 				$INTERACTABLE.can_interact = true
 				NoodleRaw.global_position = $Product.global_position
