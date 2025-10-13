@@ -234,13 +234,15 @@ func _physics_process(delta: float) -> void:
 			wait_time = 0.0
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_character.play("IDLE_UP")
-			if !got_order: 
+			if !got_order:
 				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
 				order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"],generated_order[0], NPC_MAX_WAITING_TIME)
 				Globals.log(str(order_id)+": "+Globals.noodle_types[generated_order[0]]["name"])
+				await get_tree().create_timer(2).timeout
 				$Order.show()
+
 		elif reached_table and not got_order:
 			wait_time += delta
 			$Order/Progress.size = Vector2( ( (NPC_MAX_WAITING_TIME - wait_time) / NPC_MAX_WAITING_TIME ) * 50, 5 )

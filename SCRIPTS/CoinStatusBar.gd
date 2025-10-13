@@ -1,4 +1,4 @@
-extends Panel
+extends TextureRect
 @onready var rich_text_label: RichTextLabel = $RichTextLabel
 
 func _process(delta: float) -> void:

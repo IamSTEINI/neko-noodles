@@ -1,4 +1,4 @@
-extends Panel
+extends TextureRect
 
 @export var Tables: Node2D
 

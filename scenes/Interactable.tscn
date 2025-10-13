@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://wd23pngx08lf"]
+[gd_scene load_steps=5 format=3 uid="uid://wd23pngx08lf"]
 
 [ext_resource type="Script" uid="uid://yvks84cwd5vw" path="res://SCRIPTS/Interactable.gd" id="1_msfch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6f01"]
 radius = 94.02127
 
+[sub_resource type="SystemFont" id="SystemFont_c6f01"]
+font_names = PackedStringArray("BoldPixels")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msfch"]
+content_margin_left = 5.0
 bg_color = Color(0, 0, 0, 0.403922)
 border_width_left = 2
 border_color = Color(0.537011, 0.537011, 0.537011, 1)
-corner_radius_top_left = 5
+corner_detail = 1
 
 [node name="INTERACTABLE" type="Node2D"]
 z_index = 101
@@ -28,11 +32,13 @@ offset_left = -91.0
 offset_top = -101.0
 offset_right = 109.0
 offset_bottom = -76.0
+theme_override_fonts/normal_font = SubResource("SystemFont_c6f01")
 theme_override_styles/normal = SubResource("StyleBoxFlat_msfch")
 text = "INTERACT
 "
 fit_content = true
 scroll_active = false
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

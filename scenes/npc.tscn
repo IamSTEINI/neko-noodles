@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://on0gdv6lubsv"]
+[gd_scene load_steps=131 format=3 uid="uid://on0gdv6lubsv"]
 
 [ext_resource type="Script" uid="uid://cu54hei6jm4cw" path="res://SCRIPTS/NPC.gd" id="1_xxcha"]
 [ext_resource type="Texture2D" uid="uid://bctb3q1rfg0l0" path="res://ASSETS/TEXTURES/PLAYER/NPCS.png" id="2_abqhh"]
@@ -8,14 +8,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ae7ip"]
 radius = 28.0
 
+[sub_resource type="SystemFont" id="SystemFont_7n8xq"]
+font_names = PackedStringArray("BoldPixels")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxcha"]
 bg_color = Color(0.103744, 0.103744, 0.103744, 1)
 border_width_left = 3
 border_color = Color(0.460975, 0.802037, 3.85046e-07, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rv78h"]
 atlas = ExtResource("2_abqhh")
@@ -916,8 +915,6 @@ animations = [{
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n8xq"]
 bg_color = Color(0, 0, 0, 0.588235)
 border_color = Color(0.627837, 0.526207, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
 
 [node name="NPC" type="CharacterBody2D" node_paths=PackedStringArray("Text", "TextBox")]
 z_index = 91
@@ -954,6 +951,7 @@ offset_left = -50.0
 offset_top = -100.0
 offset_right = 50.0
 offset_bottom = -73.0
+theme_override_fonts/normal_font = SubResource("SystemFont_7n8xq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xxcha")
 text = "TEXT"
 fit_content = true
@@ -989,9 +987,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -25.0
-offset_top = -136.0
+offset_top = -105.0
 offset_right = 25.0
-offset_bottom = -86.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_7n8xq")

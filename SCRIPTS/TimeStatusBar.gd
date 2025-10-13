@@ -1,4 +1,4 @@
-extends Panel
+extends TextureRect
 
 func _process(delta: float) -> void:
 	var fmtime: String = Globals.get_ingame_time_formatted()

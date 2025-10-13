@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var tooltip_text = $CanvasLayer/Panel/Title
-@onready var tooltip_desc = $CanvasLayer/Panel/Description
+@onready var tooltip_text = $CanvasLayer/TextureRect/Title
+@onready var tooltip_desc = $CanvasLayer/TextureRect/Description
 
 func _ready() -> void:
 	$CanvasLayer.hide()

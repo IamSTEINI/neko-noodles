@@ -46,7 +46,6 @@ func _ready() -> void:
 	stylebox.border_color = border_color
 	stylebox.border_width_left = 2
 	stylebox.bg_color = Color("#00000067")
-	stylebox.set_corner_radius_all(5)
 	$RichTextLabel.add_theme_stylebox_override("normal", stylebox)
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:

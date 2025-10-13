@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c76lcwmwgvfdx"]
+[gd_scene load_steps=21 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="1_551nn"]
 [ext_resource type="Script" uid="uid://da1c5xwmi3o06" path="res://SCRIPTS/restaurant.gd" id="1_mo5rl"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://boox5333jwes8" path="res://scenes/machines/noodle_cooker.tscn" id="9_ndmpn"]
 [ext_resource type="PackedScene" uid="uid://btdy4yx2urpem" path="res://scenes/NoodleItem.tscn" id="10_0lfbe"]
 [ext_resource type="PackedScene" uid="uid://cqma2pcbcsnie" path="res://scenes/shelf.tscn" id="11_e03td"]
+
+[sub_resource type="SystemFont" id="SystemFont_e03td"]
+font_names = PackedStringArray("BoldPixels")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_biadm"]
 size = Vector2(1174, 180)
@@ -72,9 +75,10 @@ tile_set = ExtResource("1_551nn")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 texture_filter = 1
-offset_top = 1139.0
+offset_top = 1149.0
 offset_right = 198.0
-offset_bottom = 1230.0
+offset_bottom = 1240.0
+theme_override_fonts/normal_font = SubResource("SystemFont_e03td")
 text = "Click E to store and
 click on the item you want to get out."
 horizontal_alignment = 1
@@ -83,9 +87,10 @@ vertical_alignment = 1
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 texture_filter = 1
 offset_left = 201.0
-offset_top = 184.0
+offset_top = 194.0
 offset_right = 399.0
-offset_bottom = 275.0
+offset_bottom = 285.0
+theme_override_fonts/normal_font = SubResource("SystemFont_e03td")
 text = "Wait for NPCs or
 Enter the Supermarket"
 horizontal_alignment = 1

@@ -1,16 +1,17 @@
-[gd_scene load_steps=92 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=97 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
 [ext_resource type="Script" uid="uid://cdgdn60o2xw0w" path="res://SCRIPTS/Camera.gd" id="2_x3g1t"]
 [ext_resource type="Script" uid="uid://bx4ph4uwwm16t" path="res://SCRIPTS/CoinStatusBar.gd" id="3_epph1"]
 [ext_resource type="Texture2D" uid="uid://c3e3btw00bf3v" path="res://ASSETS/TEXTURES/ICONS/ICONS.png" id="4_4logd"]
+[ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="4_4ufat"]
 [ext_resource type="Script" uid="uid://dhd5bry7fsr4e" path="res://SCRIPTS/TimeStatusBar.gd" id="5_0xe60"]
 [ext_resource type="Script" uid="uid://p5dg5snkhyph" path="res://SCRIPTS/VisitorStatusBar.gd" id="6_xi7vv"]
 [ext_resource type="Script" uid="uid://bfrm3bj1achr7" path="res://SCRIPTS/daystatusbar.gd" id="7_54cwh"]
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
-[ext_resource type="Script" uid="uid://dx0e3afmw43l3" path="res://scripts/dev_scripts.gd" id="9_u2uwr"]
+[ext_resource type="Script" uid="uid://dx0e3afmw43l3" path="res://SCRIPTS/dev_scripts.gd" id="9_u2uwr"]
 [ext_resource type="PackedScene" uid="uid://b6gmlrwn22rta" path="res://scenes/new_day_screen.tscn" id="11_4ufat"]
 [ext_resource type="AudioStream" uid="uid://bdpkaiohiqcaj" path="res://SOUNDS/footprint.mp3" id="13_yovmp"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="14_u2uwr"]
@@ -555,30 +556,33 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5qx4t"]
 radius = 13.5093
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vk6i0"]
-bg_color = Color(0, 0, 0, 0.639216)
-border_width_bottom = 1
-border_color = Color(0.00820287, 0.00960976, 0.029252, 0.752941)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ufat"]
+atlas = ExtResource("4_4ufat")
+region = Rect2(0, 0, 1920, 48)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75h50"]
-bg_color = Color(0.159464, 0.118799, 0.180431, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0687782, 0.0691462, 0.103553, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 9
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd1qt"]
+atlas = ExtResource("4_4ufat")
+region = Rect2(1568, 464, 112, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqncw"]
-bg_color = Color(0, 0, 0, 0.45098)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="SystemFont" id="SystemFont_4ufat"]
+font_names = PackedStringArray("BoldPixels")
+oversampling = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pmnk"]
+atlas = ExtResource("4_4ufat")
+region = Rect2(1568, 464, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib3ru"]
+atlas = ExtResource("4_4ufat")
+region = Rect2(1856, 464, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua83o"]
+atlas = ExtResource("4_4ufat")
+region = Rect2(1440, 208, 480, 160)
+
+[sub_resource type="SystemFont" id="SystemFont_dd1qt"]
+font_names = PackedStringArray("BoldPixels")
+oversampling = 8.0
 
 [node name="PLAYER" type="CharacterBody2D"]
 z_index = 93
@@ -610,41 +614,44 @@ script = ExtResource("2_x3g1t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StatusBar" type="Panel" parent="CanvasLayer"]
+[node name="StatusBar" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1
 offset_right = 1920.0
-offset_bottom = 50.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vk6i0")
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_4ufat")
 
 [node name="Control" type="Control" parent="CanvasLayer/StatusBar"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="COINSTATUSBAR" type="Panel" parent="CanvasLayer/StatusBar/Control"]
+[node name="MONEYSTATUSBAR" type="TextureRect" parent="CanvasLayer/StatusBar/Control"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 1790.0
-offset_top = 5.0
-offset_right = 1910.0
-offset_bottom = 45.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_75h50")
+offset_top = 3.0
+offset_right = 1910.895
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_dd1qt")
+stretch_mode = 1
 script = ExtResource("3_epph1")
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/COINSTATUSBAR"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/MONEYSTATUSBAR"]
 texture_filter = 1
-position = Vector2(16, 20)
+position = Vector2(17, 21)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_4logd")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/Control/COINSTATUSBAR"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/Control/MONEYSTATUSBAR"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 7.0
-offset_right = 115.0
-offset_bottom = 32.0
+offset_left = 31.0
+offset_top = 8.0
+offset_right = 116.0
+offset_bottom = 33.0
+theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
+theme_override_font_sizes/normal_font_size = 21
 text = "1.300.000"
 scroll_active = false
 autowrap_mode = 0
@@ -652,19 +659,18 @@ tab_size = 0
 shortcut_keys_enabled = false
 vertical_alignment = 1
 
-[node name="TIMESTATUSBAR" type="Panel" parent="CanvasLayer/StatusBar/Control"]
-texture_filter = 1
+[node name="TIMESTATUSBAR" type="TextureRect" parent="CanvasLayer/StatusBar/Control"]
 layout_mode = 0
-offset_left = 1650.0
-offset_top = 5.0
-offset_right = 1770.0
-offset_bottom = 45.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_75h50")
+offset_left = 1665.0
+offset_top = 3.0
+offset_right = 1777.0
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_0pmnk")
 script = ExtResource("5_0xe60")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/TIMESTATUSBAR"]
 texture_filter = 1
-position = Vector2(16, 20)
+position = Vector2(15, 20)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_4logd")
 region_enabled = true
@@ -672,10 +678,12 @@ region_rect = Rect2(16, 0, 16, 16)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/Control/TIMESTATUSBAR"]
 layout_mode = 0
-offset_left = 30.0
+offset_left = 29.0
 offset_top = 7.0
-offset_right = 115.0
+offset_right = 114.0
 offset_bottom = 32.0
+theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
+theme_override_font_sizes/normal_font_size = 19
 text = "00:00 PM"
 scroll_active = false
 autowrap_mode = 0
@@ -683,19 +691,18 @@ tab_size = 0
 shortcut_keys_enabled = false
 vertical_alignment = 1
 
-[node name="DAYSTATUSBAR" type="Panel" parent="CanvasLayer/StatusBar/Control"]
-texture_filter = 1
+[node name="DAYSTATUSBAR" type="TextureRect" parent="CanvasLayer/StatusBar/Control"]
 layout_mode = 0
-offset_left = 1560.0
-offset_top = 5.0
-offset_right = 1630.0
-offset_bottom = 45.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_75h50")
+offset_left = 1576.0
+offset_top = 3.0
+offset_right = 1652.475
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_ib3ru")
 script = ExtResource("7_54cwh")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/DAYSTATUSBAR"]
 texture_filter = 1
-position = Vector2(16, 20)
+position = Vector2(18, 20)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_4logd")
 region_enabled = true
@@ -703,31 +710,32 @@ region_rect = Rect2(64, 0, 16, 16)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/Control/DAYSTATUSBAR"]
 layout_mode = 0
-offset_left = 30.0
+offset_left = 32.0
 offset_top = 7.0
-offset_right = 65.0
+offset_right = 70.354996
 offset_bottom = 32.0
+theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
+theme_override_font_sizes/normal_font_size = 21
 text = "1"
 scroll_active = false
 autowrap_mode = 0
 tab_size = 0
 shortcut_keys_enabled = false
 horizontal_alignment = 2
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="VISITORSTATUSBAR" type="Panel" parent="CanvasLayer/StatusBar/Control"]
-texture_filter = 1
+[node name="VISITORSTATUSBAR" type="TextureRect" parent="CanvasLayer/StatusBar/Control"]
 layout_mode = 0
-offset_left = 1470.0
-offset_top = 5.0
-offset_right = 1540.0
-offset_bottom = 45.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_75h50")
+offset_left = 1486.0
+offset_top = 3.0
+offset_right = 1562.475
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_ib3ru")
 script = ExtResource("6_xi7vv")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/VISITORSTATUSBAR"]
 texture_filter = 1
-position = Vector2(16, 20)
+position = Vector2(17, 20)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_4logd")
 region_enabled = true
@@ -735,17 +743,20 @@ region_rect = Rect2(32, 0, 16, 16)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/Control/VISITORSTATUSBAR"]
 layout_mode = 0
-offset_left = 30.0
+offset_left = 31.0
 offset_top = 7.0
-offset_right = 63.0
+offset_right = 70.91
 offset_bottom = 32.0
+theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
+theme_override_font_sizes/normal_font_size = 21
 text = "10
 "
 scroll_active = false
 autowrap_mode = 0
 tab_size = 0
 shortcut_keys_enabled = false
-vertical_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="DEV" type="Control" parent="CanvasLayer"]
 visible = false
@@ -829,41 +840,52 @@ offset_bottom = 31.0
 focus_mode = 0
 text = "SAVE SHELVES"
 
-[node name="Panel2" type="Panel" parent="CanvasLayer"]
-offset_left = 40.0
-offset_top = 908.0
-offset_right = 536.06006
-offset_bottom = 1047.35
-theme_override_styles/panel = SubResource("StyleBoxFlat_yqncw")
+[node name="NEW DAY SCREEN" parent="CanvasLayer" instance=ExtResource("11_4ufat")]
+
+[node name="Card" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 32.0
+offset_top = 944.0
+offset_right = 512.0
+offset_bottom = 1104.0
+scale = Vector2(1, 0.625)
+texture = SubResource("AtlasTexture_ua83o")
 script = ExtResource("8_73ffy")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Card"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 9.0
-offset_top = 10.0
-offset_right = 482.28
-offset_bottom = 134.76
-text = "ALPHA VERSION: Right now, your job is to distribute noodles to customers. A few devlogs later, there will be different types of noodles and customers will have special orders. Guests will appear automatically. Ramen are in the Kitchen.
-Please feel free to suggest improvements and give feedback."
+offset_left = 10.0
+offset_top = 8.925
+offset_right = 475.395
+offset_bottom = 103.94673
+scale = Vector2(1, 1.465)
+theme_override_fonts/normal_font = SubResource("SystemFont_dd1qt")
+theme_override_font_sizes/normal_font_size = 18
+text = "ALPHA VERSION: Right now, your job is to distribute noodles to customers. Guests will appear automatically. Ramen are in the supermarket, after buying you have to cut and cook them. Please feel free to suggest improvements and give feedback."
 fit_content = true
 scroll_active = false
 
-[node name="Panel3" type="Panel" parent="CanvasLayer"]
+[node name="Card2" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
 offset_left = 1414.0
 offset_top = 60.0
-offset_right = 1910.06
-offset_bottom = 199.35
-theme_override_styles/panel = SubResource("StyleBoxFlat_yqncw")
+offset_right = 1894.0
+offset_bottom = 220.0
+scale = Vector2(1, 0.84)
+texture = SubResource("AtlasTexture_ua83o")
 script = ExtResource("8_73ffy")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel3"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/Card2"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 9.0
-offset_top = 10.0
+offset_top = 13.095238
 offset_right = 482.28
-offset_bottom = 134.76
+offset_bottom = 123.09524
+scale = Vector2(1, 1.195)
+theme_override_fonts/normal_font = SubResource("SystemFont_dd1qt")
+theme_override_font_sizes/normal_font_size = 21
 text = "THIS BAR SHOWS
 - TOTAL VISITOR AMOUNT FOR TODAY
 - CALENDAR DAY
@@ -871,8 +893,6 @@ text = "THIS BAR SHOWS
 - AMOUNT OF YOUR COINS"
 fit_content = true
 scroll_active = false
-
-[node name="NEW DAY SCREEN" parent="CanvasLayer" instance=ExtResource("11_4ufat")]
 
 [node name="FOOTSTEP" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_yovmp")

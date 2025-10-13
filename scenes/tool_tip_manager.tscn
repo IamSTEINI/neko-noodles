@@ -1,50 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://dodj7w4pwmu3r"]
+[gd_scene load_steps=6 format=3 uid="uid://dodj7w4pwmu3r"]
 
 [ext_resource type="Script" uid="uid://bllcfbu3ydytd" path="res://SCRIPTS/tool_tip_manager.gd" id="1_xirlj"]
+[ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="2_nfmcn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xirlj"]
-bg_color = Color(0, 0, 0, 0.5647059)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="AtlasTexture" id="AtlasTexture_xirlj"]
+atlas = ExtResource("2_nfmcn")
+region = Rect2(1728, 112, 192, 48)
+
+[sub_resource type="SystemFont" id="SystemFont_nfmcn"]
+font_names = PackedStringArray("BoldPixels")
+oversampling = 8.0
+
+[sub_resource type="SystemFont" id="SystemFont_4yguf"]
+font_names = PackedStringArray("BoldPixels")
+oversampling = 8.0
 
 [node name="ToolTipManager" type="Node2D"]
 script = ExtResource("1_xirlj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 641.0
-offset_top = 465.0
-offset_right = 946.15
-offset_bottom = 525.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xirlj")
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 1628.9999
+offset_top = 998.0
+offset_right = 1820.9999
+offset_bottom = 1046.0
+scale = Vector2(1.47, 1.47)
+texture = SubResource("AtlasTexture_xirlj")
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/Panel"]
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/TextureRect"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 7.0
-offset_top = 3.0
-offset_right = 302.69
-offset_bottom = 25.53
+offset_left = 6.1225576
+offset_top = 4.0816755
+offset_right = 291.14755
+offset_bottom = 29.876934
+scale = Vector2(0.625, 0.625)
+theme_override_fonts/normal_font = SubResource("SystemFont_nfmcn")
+theme_override_font_sizes/normal_font_size = 26
 text = "TOOLTIP"
 scroll_active = false
 vertical_alignment = 1
 
-[node name="Description" type="RichTextLabel" parent="CanvasLayer/Panel"]
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/TextureRect"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 26.0
-offset_right = 302.69
-offset_bottom = 58.01
+offset_left = 6.1225576
+offset_top = 20.408134
+offset_right = 184.35376
+offset_bottom = 44.217705
 theme_override_colors/default_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_4yguf")
 theme_override_font_sizes/normal_font_size = 12
 text = "Description"
 scroll_active = false

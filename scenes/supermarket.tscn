@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://qqwbl5phxpdw"]
+[gd_scene load_steps=21 format=4 uid="uid://qqwbl5phxpdw"]
 
 [ext_resource type="Script" uid="uid://d02er2tdb32s1" path="res://SCRIPTS/supermarket.gd" id="1_kls3s"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="1_vi15o"]
@@ -211,6 +211,9 @@ radius = 36.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc56d"]
 size = Vector2(108, 1111)
 
+[sub_resource type="SystemFont" id="SystemFont_2c0dq"]
+font_names = PackedStringArray("BoldPixels")
+
 [node name="Supermarket" type="Node2D"]
 script = ExtResource("1_kls3s")
 
@@ -393,6 +396,8 @@ offset_left = 100.0
 offset_top = 295.0
 offset_right = 298.0
 offset_bottom = 386.0
+theme_override_fonts/normal_font = SubResource("SystemFont_2c0dq")
+theme_override_font_sizes/normal_font_size = 21
 text = "Don't forget to pay at the checkout"
 horizontal_alignment = 1
 vertical_alignment = 1

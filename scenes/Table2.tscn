@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://smjjt1loro0"]
+[gd_scene load_steps=7 format=3 uid="uid://smjjt1loro0"]
 
 [ext_resource type="Script" uid="uid://datmtggct7nhv" path="res://SCRIPTS/Table.gd" id="1_p07j1"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_jqr7b"]
@@ -10,6 +10,10 @@ height = 168.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_561jp"]
 radius = 109.041
+
+[sub_resource type="SystemFont" id="SystemFont_t5vmc"]
+font_names = PackedStringArray("BoldPixels")
+oversampling = 8.0
 
 [node name="TABLE" type="Node2D"]
 script = ExtResource("1_p07j1")
@@ -53,11 +57,14 @@ shape = SubResource("CircleShape2D_561jp")
 
 [node name="CAPACITY" type="RichTextLabel" parent="."]
 texture_filter = 1
-offset_left = -10.0
-offset_top = 8.0
-offset_right = 30.0
-offset_bottom = 48.0
+offset_left = -14.999999
+offset_top = 43.0
+offset_right = 43.63
+offset_bottom = 83.0
 scale = Vector2(0.525, 0.525)
+theme_override_fonts/normal_font = SubResource("SystemFont_t5vmc")
+theme_override_font_sizes/normal_font_size = 21
+text = "0/0"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
