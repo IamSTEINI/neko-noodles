@@ -6,7 +6,9 @@ var player_body: Node2D = null
 
 func _ready() -> void:
 	$InventoryUi.hide()
+	ShelfSaver.shelves.append(self)
 	update()
+
 func update() -> void:
 	$AnimatedSprite2D.frame = inventory.size()
 	$RichTextLabel.text = str(inventory.size())+"/"+str(capacity)

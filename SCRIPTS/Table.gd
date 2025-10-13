@@ -51,9 +51,10 @@ func _on_playercheck_body_entered(body: Node2D) -> void:
 	Globals.log(body.name) # Later check if NPC is AT the table
 	update_capacity_text()
 	if body.get_meta("type") == "player":
-		if body.get_node("ItemSlot").get_child_count() > 0 && capacity <= customers:
-			if body.get_node("ItemSlot").get_child(0).get_meta("type") == "Noodle":
-				$INTERACTABLE.can_interact = true
+		var player_has_item = body.get_node("ItemSlot").get_child_count() > 0
+		var player_has_noodle = player_has_item and body.get_node("ItemSlot").get_child(0).get_meta("type") == "Noodle"
+		if player_has_noodle and customers > 0:
+			$INTERACTABLE.can_interact = true
 		else:
 			$INTERACTABLE.can_interact = false
 

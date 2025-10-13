@@ -27,6 +27,8 @@ Scenemanager="*res://scenes/scenemanager.tscn"
 MusicManager="*res://scenes/music_manager.tscn"
 ToolTipManager="*res://scenes/tool_tip_manager.tscn"
 OrderManager="*res://scenes/order_manager.tscn"
+Npcmanager="*res://scenes/npcmanager.tscn"
+ShelfSaver="*res://scenes/shelf_saver.tscn"
 
 [display]
 
@@ -39,7 +41,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [input]
 

@@ -10,6 +10,7 @@ func _ready():
 	
 func change_scene(from, to_scene: String) -> void:
 	show()
+	ShelfSaver.clear_shelves()
 	last_scene_name = from.name
 	animation.play("TRANSITION")
 	Globals.log(from.name)
@@ -30,6 +31,10 @@ func change_scene(from, to_scene: String) -> void:
 	get_tree().change_scene_to_file(path)
 	await get_tree().tree_changed
 	await get_tree().process_frame
+	if to_scene == "Main":
+		Npcmanager.restore_npc()
+		Npcmanager.restore_table_states()
+		ShelfSaver.restore_shelves()
 	animation.play_backwards("TRANSITION")
 	if transfer_item != null:
 		call_deferred("_restore_item")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccd71ml308p57"]
+
+[ext_resource type="Script" uid="uid://byc7apj6gk76s" path="res://SCRIPTS/NPCMANAGER.gd" id="1_4wa5r"]
+[ext_resource type="PackedScene" uid="uid://on0gdv6lubsv" path="res://scenes/npc.tscn" id="2_qw5sd"]
+[ext_resource type="PackedScene" uid="uid://dok4r4o5fsqtf" path="res://scenes/Coin.tscn" id="3_5p6gq"]
+
+[node name="NPCMANAGER" type="Node"]
+script = ExtResource("1_4wa5r")
+npc_scene = ExtResource("2_qw5sd")
+coin_scene = ExtResource("3_5p6gq")

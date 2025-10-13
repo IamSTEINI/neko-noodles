@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var speed = 1200.0
-
 @export var Tables: Node = null
 @export var Entry: Node = null
 @export var SpawnRanges: Node = null
@@ -12,19 +11,20 @@ extends CharacterBody2D
 @export var show_duration := 2.0
 @export var coin_scene: PackedScene
 
-var reached_entry := false
-var reached_table := false
-var got_order := false
-var chosen_table: Node2D = null
-var SPAWN_LOC = null
-var wait_time: float = 0.0
-var food_slot = null
+@export var reached_entry := false
+@export var reached_table := false
+@export var got_order := false
+@export var chosen_table: Node2D = null
+@export var SPAWN_LOC = null
+@export var wait_time: float = 0.0
+@export var food_slot = null
 var is_speaking: bool = false
+var restored: bool = false
 const NPC_MAX_WAITING_TIME: float = 60.0
-var chosen_character: AnimatedSprite2D
-var order_id = null
+@export var chosen_character: AnimatedSprite2D
+@export var order_id = null
 @export var leaving = true
-var generated_order: Array[int]
+@export var generated_order: Array[int]
 
 var random_f_names = ["John", "Tim", "Jonathan", "Sinan", "Austin", "Simon", "Marcel", "Walter", "Jesse", "Thomas"]
 var random_l_names = ["Travolta", "Lee", "Fox", "Staydr", "McSoba", "Smith", "Eris", "White", "Blueman", "Noodlefield"]
@@ -58,8 +58,53 @@ func toggle_collider(enable: bool) -> void:
 		self.collision_mask |= 1 << 2
 	else:
 		self.collision_mask &= ~(1 << 2)
+func apply_restore(state: Dictionary) -> void:
+	if state.get("reached_table", false):
+		toggle_collider(true)
+
+	if state.get("reached_table", false) and not state.get("got_order", false):
+		if state.get("generated_order", null):
+			$Order/OrderNoodle.NoodleType = state["generated_order"][0]
+			$Order/OrderNoodle.NoodleTopping = state["generated_order"][1]
+			$Order.show()
+			$Order/Progress.size = Vector2(((NPC_MAX_WAITING_TIME - state.get("wait_time", 0.0)) / NPC_MAX_WAITING_TIME) * 50, 5)
+
+	if state.get("got_order", false):
+		$Order.hide()
+
+	if reached_table:
+		$NavigationAgent2D.target_position = global_position
+	elif chosen_table:
+		set_target_position(chosen_table.global_position)
+	elif Entry:
+		set_target_position(Entry.global_position)
 
 func _ready() -> void:
+	if get_tree().current_scene.name != "Main":
+		self.queue_free()
+		return
+	if Entry == null:
+		Entry = get_tree().root.get_node("Main").get_node("ENTRY")
+	if SpawnRanges == null:
+		SpawnRanges = get_tree().root.get_node("Main").get_node("NPC_SPAWN")
+	if Tables == null:
+		Tables = get_tree().root.get_node("Main").get_node("TABLES")
+		
+	if restored:
+		TextBox.hide()
+		$Talking.stop()
+		if reached_table and not got_order:
+			if generated_order:
+				$Order/OrderNoodle.NoodleType = generated_order[0]
+				$Order/OrderNoodle.NoodleTopping = generated_order[1]
+				$Order.show()
+				$Order/Progress.size = Vector2(((NPC_MAX_WAITING_TIME - wait_time) / NPC_MAX_WAITING_TIME) * 50, 5)
+		return
+		
+	$Order.hide()
+	TextBox.hide()
+	if SPAWN_LOC != null:
+		return
 	randomize()
 	if randi() % 2 == 0:
 		chosen_character = $BROWN_CAT
@@ -67,9 +112,9 @@ func _ready() -> void:
 		chosen_character = $WHITE_CAT
 	chosen_character.show()
 	var npc_name = generate_name()
+	self.name = npc_name
 	self.set_meta("tooltip", npc_name)
 	self.set_meta("description", str(random_lines[(randi() % (random_lines.size() - 1)) + 1]))
-	TextBox.hide()
 	var spawn_areas = SpawnRanges.get_children()
 	var chosen_area = spawn_areas[randi() % spawn_areas.size()]
 	var shape = chosen_area.shape as RectangleShape2D
@@ -79,14 +124,17 @@ func _ready() -> void:
 		randf_range(-extents.x, extents.x),
 		randf_range(-extents.y, extents.y)
 	)
-	$Order.hide()
+	
 	SPAWN_LOC = chosen_area.global_position + local_spawn_pos
 	
 	global_position = chosen_area.global_position + local_spawn_pos
 
 	var pos1 = Entry.global_position
 
-	$NavigationAgent2D.target_position = pos1
+	set_target_position(pos1)
+
+func set_target_position(pos):
+	$NavigationAgent2D.target_position = pos
 	
 func pay(amount:int, table: Node2D) -> void:
 	var coin = coin_scene.instantiate()
@@ -95,6 +143,8 @@ func pay(amount:int, table: Node2D) -> void:
 	get_tree().current_scene.add_child(coin)
 
 func getRandomTable() -> Node2D:
+	if get_tree().current_scene.name != "Main":
+		return
 	var children = Tables.get_children()
 	if children.size() == 0:
 		return null
@@ -104,7 +154,7 @@ func getRandomTable() -> Node2D:
 			available_tables.append(table)
 	if available_tables.size() == 0:
 		return null
-	var chosen_table = available_tables[randi() % available_tables.size()] as Node2D
+	chosen_table = available_tables[randi() % available_tables.size()] as Node2D
 	return chosen_table
 
 func find_empty_slot(food_slots) -> Marker2D:
@@ -144,7 +194,7 @@ func leave() -> void:
 	queue_free()
 	
 func _physics_process(delta: float) -> void:
-	if not $NavigationAgent2D.is_target_reached():
+	if not $NavigationAgent2D.is_target_reached() && get_tree().current_scene.name == "Main":
 		var nav_point_dir = to_local($NavigationAgent2D.get_next_path_position()).normalized()
 		velocity = nav_point_dir * speed * delta
 		if !reached_table:
@@ -194,13 +244,14 @@ func _physics_process(delta: float) -> void:
 		elif reached_table and not got_order:
 			wait_time += delta
 			$Order/Progress.size = Vector2( ( (NPC_MAX_WAITING_TIME - wait_time) / NPC_MAX_WAITING_TIME ) * 50, 5 )
-			if food_slot.get_child_count() > 0:
+			if food_slot and food_slot.get_child_count() > 0:
 				for food in food_slot.get_children():
 					if food.NoodleType == generated_order[0] && food.NoodleTopping == generated_order[1]:
 						$Order.hide()
 						Globals.log("NPC GOT ORDER AT TABLE: " + str(chosen_table.name))
 						food.chopsticks = true
 						got_order = true
+						OrderManager.rem_order(order_id)
 					else:
 						say("GRRR! That's not what I ordered")
 						OrderManager.rem_order(order_id)
@@ -221,6 +272,5 @@ func _physics_process(delta: float) -> void:
 				Globals.log("NPC PAID: " + str(child.Price))
 				pay(child.Price, chosen_table)
 				child.queue_free()
-				
-			say("Yummy. Thank you!")
+				say("Yummy. Thank you!")
 			leave()

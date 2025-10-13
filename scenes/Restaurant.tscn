@@ -83,10 +83,11 @@ vertical_alignment = 1
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 texture_filter = 1
 offset_left = 201.0
-offset_top = 164.0
+offset_top = 184.0
 offset_right = 399.0
-offset_bottom = 255.0
-text = "Wait for NPCs"
+offset_bottom = 275.0
+text = "Wait for NPCs or
+Enter the Supermarket"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -184,7 +185,7 @@ NoodleCooked = NodePath("NoodleItem")
 position = Vector2(-3.8146973e-06, -5)
 
 [node name="Shelf" parent="." instance=ExtResource("11_e03td")]
-position = Vector2(500, 1098)
+position = Vector2(450, 1098)
 
 [node name="Shelf2" parent="." instance=ExtResource("11_e03td")]
 position = Vector2(150, 1098)

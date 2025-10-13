@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=92 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bfrm3bj1achr7" path="res://SCRIPTS/daystatusbar.gd" id="7_54cwh"]
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
+[ext_resource type="Script" uid="uid://dx0e3afmw43l3" path="res://scripts/dev_scripts.gd" id="9_u2uwr"]
 [ext_resource type="PackedScene" uid="uid://b6gmlrwn22rta" path="res://scenes/new_day_screen.tscn" id="11_4ufat"]
 [ext_resource type="AudioStream" uid="uid://bdpkaiohiqcaj" path="res://SOUNDS/footprint.mp3" id="13_yovmp"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="14_u2uwr"]
@@ -747,6 +748,7 @@ shortcut_keys_enabled = false
 vertical_alignment = 1
 
 [node name="DEV" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -756,6 +758,7 @@ offset_top = 255.0
 offset_right = -1417.0
 offset_bottom = 295.0
 grow_horizontal = 0
+script = ExtResource("9_u2uwr")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/DEV"]
 layout_mode = 0
@@ -793,6 +796,38 @@ offset_bottom = 31.0
 focus_mode = 0
 text = "SPAWN NPC
 "
+
+[node name="Clear NPCS" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 239.0
+offset_right = 347.0
+offset_bottom = 31.0
+focus_mode = 0
+text = "CLEAR NPCs"
+
+[node name="Restore NPCS" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 356.0
+offset_right = 464.0
+offset_bottom = 31.0
+focus_mode = 0
+text = "RESTORE NPCS"
+
+[node name="Save NPCS" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 489.0
+offset_right = 612.0
+offset_bottom = 31.0
+focus_mode = 0
+text = "SAVE NPCS"
+
+[node name="Save Shelves" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 622.0
+offset_right = 745.0
+offset_bottom = 31.0
+focus_mode = 0
+text = "SAVE SHELVES"
 
 [node name="Panel2" type="Panel" parent="CanvasLayer"]
 offset_left = 40.0
@@ -844,3 +879,8 @@ stream = ExtResource("13_yovmp")
 pitch_scale = 1.4
 attenuation = 0.0018866
 script = ExtResource("14_u2uwr")
+
+[connection signal="pressed" from="CanvasLayer/DEV/Clear NPCS" to="CanvasLayer/DEV" method="_on_clear_npcs_pressed"]
+[connection signal="pressed" from="CanvasLayer/DEV/Restore NPCS" to="CanvasLayer/DEV" method="_on_restore_npcs_pressed"]
+[connection signal="pressed" from="CanvasLayer/DEV/Save NPCS" to="CanvasLayer/DEV" method="_on_save_npcs_pressed"]
+[connection signal="pressed" from="CanvasLayer/DEV/Save Shelves" to="CanvasLayer/DEV" method="_on_save_shelves_pressed"]
