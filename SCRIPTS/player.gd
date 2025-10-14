@@ -5,6 +5,8 @@ const SPEED = 450
 @export var Tables: Node2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var active_tab: String = ""
+
 var dir = "down"
 
 func _ready() -> void:

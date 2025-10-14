@@ -29,6 +29,7 @@ ToolTipManager="*res://scenes/tool_tip_manager.tscn"
 OrderManager="*res://scenes/order_manager.tscn"
 Npcmanager="*res://scenes/npcmanager.tscn"
 ShelfSaver="*res://scenes/shelf_saver.tscn"
+Expenses="*res://SCRIPTS/expenses.gd"
 
 [display]
 

@@ -15,6 +15,7 @@ func _on_buytrigger_body_entered(body: Node2D) -> void:
 				$RichTextLabel.text = "- "+str(body.get_node("ItemSlot").get_child(0).get_meta("buy_price"))
 				$Collect_Sound.play(0.07)
 				Globals.money = Globals.money - price
+				Expenses.add_transaction("Shopping", -1*price)
 				var end_pos = start_pos - Vector2(0, 50)
 				var tween = create_tween()
 				tween.tween_property($RichTextLabel, "position", end_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

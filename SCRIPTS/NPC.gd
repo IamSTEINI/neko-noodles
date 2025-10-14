@@ -140,6 +140,7 @@ func pay(amount:int, table: Node2D) -> void:
 	var coin = coin_scene.instantiate()
 	coin.amount = amount + randi_range(0, 6)
 	coin.position = table.global_position
+	Expenses.add_transaction("Customers", coin.amount)
 	get_tree().current_scene.add_child(coin)
 
 func getRandomTable() -> Node2D:

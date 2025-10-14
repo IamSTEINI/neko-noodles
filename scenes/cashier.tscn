@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://bcdult63ey72v"]
+[gd_scene load_steps=24 format=4 uid="uid://bcdult63ey72v"]
 
 [ext_resource type="TileSet" uid="uid://dhopuw17uvtvq" path="res://TILESETS/supermarket.tres" id="1_qxk7m"]
-[ext_resource type="Script" uid="uid://d3dyjy00bc85m" path="res://scripts/cashier.gd" id="1_yvugg"]
+[ext_resource type="Script" uid="uid://d3dyjy00bc85m" path="res://SCRIPTS/cashier.gd" id="1_yvugg"]
 [ext_resource type="Texture2D" uid="uid://cu8weknbdhobi" path="res://ASSETS/TEXTURES/PLAYER/NPC_CASHIER.png" id="2_yvugg"]
 [ext_resource type="AudioStream" uid="uid://ct7uccsd824hx" path="res://SOUNDS/coin_collect.mp3" id="4_lbl8i"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="4_x20w8"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="5_x20w8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkob8"]
@@ -108,6 +109,7 @@ size = Vector2(181, 220)
 size = Vector2(32, 100)
 
 [sub_resource type="SystemFont" id="SystemFont_yvugg"]
+font_names = PackedStringArray("BoldPixels")
 subpixel_positioning = 0
 
 [node name="Cashier" type="Node2D"]
@@ -145,13 +147,13 @@ position = Vector2(-155, 52)
 shape = SubResource("RectangleShape2D_yvugg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
 z_index = 111
 texture_filter = 1
 offset_left = 17.0
 offset_top = -24.0
 offset_right = 121.0
 offset_bottom = 16.0
+theme = ExtResource("4_x20w8")
 theme_override_colors/default_color = Color(0.8212138, 0, 0.20377329, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("SystemFont_yvugg")

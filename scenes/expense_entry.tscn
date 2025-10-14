@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr63khp7f54cn"]
+
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="1_m72iw"]
+[ext_resource type="Script" uid="uid://mhl8omegopgh" path="res://scripts/expense_entry.gd" id="2_ri56w"]
+
+[node name="entry" type="RichTextLabel"]
+custom_minimum_size = Vector2(275, 0)
+theme = ExtResource("1_m72iw")
+theme_override_colors/default_color = Color(0.892238, 0, 0.19172645, 1)
+theme_override_font_sizes/normal_font_size = 16
+text = "- 420"
+fit_content = true
+scroll_active = false
+script = ExtResource("2_ri56w")
+
+[node name="reason" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 175.17517
+offset_right = 275.17517
+offset_bottom = 15.0
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+text = "Reason"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1

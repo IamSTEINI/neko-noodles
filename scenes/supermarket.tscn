@@ -213,6 +213,7 @@ size = Vector2(108, 1111)
 
 [sub_resource type="SystemFont" id="SystemFont_2c0dq"]
 font_names = PackedStringArray("BoldPixels")
+subpixel_positioning = 0
 
 [node name="Supermarket" type="Node2D"]
 script = ExtResource("1_kls3s")

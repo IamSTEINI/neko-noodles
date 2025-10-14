@@ -242,6 +242,7 @@ offset_right = -75.0
 offset_bottom = 77.0
 scale = Vector2(3, 3)
 shortcut = SubResource("Shortcut_gtid3")
+shortcut_in_tooltip = false
 texture_normal = SubResource("AtlasTexture_257up")
 texture_pressed = SubResource("AtlasTexture_3mro0")
 texture_hover = SubResource("AtlasTexture_tu7k8")
