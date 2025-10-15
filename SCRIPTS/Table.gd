@@ -48,7 +48,7 @@ func _ready() -> void:
 
 
 func _on_playercheck_body_entered(body: Node2D) -> void:
-	Globals.log(body.name) # Later check if NPC is AT the table
+	#Globals.log(body.name) # Later check if NPC is AT the table
 	update_capacity_text()
 	if body.get_meta("type") == "player":
 		var player_has_item = body.get_node("ItemSlot").get_child_count() > 0
@@ -59,6 +59,6 @@ func _on_playercheck_body_entered(body: Node2D) -> void:
 			$INTERACTABLE.can_interact = false
 
 
-func _on_playercheck_body_exited(body: Node2D) -> void:
+func _on_playercheck_body_exited(_body: Node2D) -> void:
 	update_capacity_text()
 	$INTERACTABLE.can_interact = false

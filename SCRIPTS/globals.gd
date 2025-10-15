@@ -4,6 +4,9 @@ const next_day: int = 3
 const day_start: int = 17
 const early_time: float = 40.0 * 60.0
 
+var restaurant_name = "Your restaurant"
+var noodle_base_price = 0
+
 var console: RichTextLabel = null
 var buildMode: bool = false
 var tmultiplier: float = 60.0 * 2
@@ -12,6 +15,7 @@ var day: int = 1
 var music_volume: int = 0
 var sfx_volume: int = 0
 var ingtime: String = "12:00 AM"
+var restaurant_rating: float = 5
 @export var money: int = 30
 
 var time_accumulator: float = 0.0
@@ -94,6 +98,11 @@ func update_time() -> void:
 
 	if hours_24 >= next_day and hours_24 < day_start:
 		day += 1
+		if day % 7 == 0:
+			# WEEKLY TRANSACTIONS
+			Expenses.add_transaction("Rent (weekly)", -25)
+			Globals.money = Globals.money - 25
+			
 		intime_seconds = day_start * 3600
 		kill_all_npcs()
 		Globals.log("DAY: " + str(day))

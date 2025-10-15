@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=116 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -12,13 +12,15 @@
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
 [ext_resource type="Script" uid="uid://dx0e3afmw43l3" path="res://SCRIPTS/dev_scripts.gd" id="9_u2uwr"]
+[ext_resource type="Script" uid="uid://dmjhgqovuf5xh" path="res://scripts/ratingstatus.gd" id="10_0hybe"]
 [ext_resource type="Script" uid="uid://b5os3pfa0wndd" path="res://SCRIPTS/tab.gd" id="10_dd1qt"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="11_0pmnk"]
 [ext_resource type="PackedScene" uid="uid://b6gmlrwn22rta" path="res://scenes/new_day_screen.tscn" id="11_4ufat"]
-[ext_resource type="Script" uid="uid://dwqg26r6iko0u" path="res://scripts/expense_manager.gd" id="12_ib3ru"]
+[ext_resource type="Script" uid="uid://dwqg26r6iko0u" path="res://SCRIPTS/expense_manager.gd" id="12_ib3ru"]
 [ext_resource type="PackedScene" uid="uid://dr63khp7f54cn" path="res://scenes/expense_entry.tscn" id="13_ua83o"]
 [ext_resource type="AudioStream" uid="uid://bdpkaiohiqcaj" path="res://SOUNDS/footprint.mp3" id="13_yovmp"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="14_u2uwr"]
+[ext_resource type="Script" uid="uid://idad5m0f3xjw" path="res://scripts/manage-restaurant.gd" id="15_n38qo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
 atlas = ExtResource("1_5qx4t")
@@ -596,6 +598,37 @@ margin = Rect2(0, 1.01, 0, 0)
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_0pmnk"]
 color = Color(1, 1, 1, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx5bl"]
+atlas = ExtResource("4_4logd")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtncy"]
+atlas = ExtResource("4_4logd")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hybe"]
+bg_color = Color(0, 0, 0, 0.49803922)
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.49803922)
+expand_margin_left = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hybe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i10kl"]
+atlas = ExtResource("4_4logd")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4asc"]
+atlas = ExtResource("4_4logd")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n38qo"]
+bg_color = Color(0, 0, 0, 0.49803922)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehigy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n38qo"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua83o"]
 atlas = ExtResource("4_4ufat")
 region = Rect2(1440, 208, 480, 160)
@@ -655,6 +688,8 @@ offset_bottom = 43.0
 texture = SubResource("AtlasTexture_dd1qt")
 stretch_mode = 1
 script = ExtResource("3_epph1")
+metadata/tooltip = "Money"
+metadata/description = "This shows your amount of money"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/MONEYSTATUSBAR"]
 texture_filter = 1
@@ -687,6 +722,8 @@ offset_right = 1777.0
 offset_bottom = 43.0
 texture = SubResource("AtlasTexture_0pmnk")
 script = ExtResource("5_0xe60")
+metadata/tooltip = "Time"
+metadata/description = "Shows current time"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/TIMESTATUSBAR"]
 texture_filter = 1
@@ -719,6 +756,8 @@ offset_right = 1652.475
 offset_bottom = 43.0
 texture = SubResource("AtlasTexture_ib3ru")
 script = ExtResource("7_54cwh")
+metadata/tooltip = "Day"
+metadata/description = "Shows current day"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/DAYSTATUSBAR"]
 texture_filter = 1
@@ -752,6 +791,8 @@ offset_right = 1562.475
 offset_bottom = 43.0
 texture = SubResource("AtlasTexture_ib3ru")
 script = ExtResource("6_xi7vv")
+metadata/tooltip = "Expected visitors"
+metadata/description = "Shows the amount of visitors still to come"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/VISITORSTATUSBAR"]
 texture_filter = 1
@@ -771,6 +812,41 @@ theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "10
 "
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="RATINGSTATUS" type="TextureRect" parent="CanvasLayer/StatusBar/Control"]
+layout_mode = 0
+offset_left = 1396.0
+offset_top = 3.0
+offset_right = 1472.475
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_ib3ru")
+script = ExtResource("10_0hybe")
+metadata/tooltip = "Restaurant rating"
+metadata/description = "This shows the rating of your restaurant. 5 is the best"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/Control/RATINGSTATUS"]
+texture_filter = 1
+position = Vector2(17, 20)
+scale = Vector2(1.825, 1.825)
+texture = ExtResource("4_4logd")
+region_enabled = true
+region_rect = Rect2(112, 0, 16, 16)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/Control/RATINGSTATUS"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 7.0
+offset_right = 70.91
+offset_bottom = 32.0
+theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
+theme_override_font_sizes/normal_font_size = 21
+text = "5"
 scroll_active = false
 autowrap_mode = 0
 tab_size = 0
@@ -798,6 +874,7 @@ metadata/tooltip = "Expenses"
 metadata/description = "Look at your weekly expenses"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/ExpensesTab"]
+visible = false
 anchors_preset = 0
 offset_left = 0.6666667
 offset_top = 18.0
@@ -822,7 +899,7 @@ offset_bottom = 32.788013
 scale = Vector2(1, 1.26)
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 31
-text = "EXPENSES DAY"
+text = "EXPENSES"
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -864,13 +941,220 @@ scroll_active = false
 layout_mode = 0
 offset_left = 175.17517
 offset_right = 275.17517
-offset_bottom = 15.0
+offset_bottom = 17.0
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 text = "Total amount"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="ManageTab" type="TextureButton" parent="CanvasLayer/StatusBar/TABS"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -6.0
+offset_right = 76.0
+offset_bottom = 10.0
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_lx5bl")
+texture_pressed = SubResource("AtlasTexture_lx5bl")
+texture_hover = SubResource("AtlasTexture_gtncy")
+script = ExtResource("10_dd1qt")
+metadata/tooltip = "Manage"
+metadata/description = "Manage your restaurant here"
+
+[node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/ManageTab"]
+visible = false
+anchors_preset = 0
+offset_left = 0.6666667
+offset_top = 18.0
+offset_right = 16.666666
+offset_bottom = 34.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab"]
+layout_mode = 0
+offset_left = 0.33333334
+offset_top = -2.666668
+offset_right = 293.33334
+offset_bottom = 391.33334
+scale = Vector2(0.333, 0.333)
+texture = SubResource("AtlasTexture_0hybe")
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 8.008012
+offset_right = 280.27798
+offset_bottom = 37.033012
+scale = Vector2(1, 1.26)
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 31
+text = "YOUR RESTAURANT"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 41.041046
+offset_right = 258.008
+offset_bottom = 57.291046
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+theme_override_font_sizes/normal_font_size = 16
+text = "Manage your restaurant here"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 14.014014
+offset_top = 67.06707
+offset_right = 289.014
+offset_bottom = 107.06707
+script = ExtResource("15_n38qo")
+
+[node name="restaurant_name" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+columns = 2
+
+[node name="name" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/restaurant_name"]
+custom_minimum_size = Vector2(108.205, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 26
+text = "Name"
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="INPUT" type="LineEdit" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/restaurant_name"]
+custom_minimum_size = Vector2(151, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_0hybe")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0hybe")
+placeholder_text = "Your restaurant"
+select_all_on_focus = true
+
+[node name="noodle_base_price" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+columns = 2
+
+[node name="name" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/noodle_base_price"]
+custom_minimum_size = Vector2(191.005, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 26
+text = "Base Price"
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="INPUT" type="LineEdit" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/noodle_base_price"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_0hybe")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0hybe")
+placeholder_text = "2"
+select_all_on_focus = true
+
+[node name="HelpTab" type="TextureButton" parent="CanvasLayer/StatusBar/TABS"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = -6.0
+offset_right = 131.0
+offset_bottom = 10.0
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_i10kl")
+texture_pressed = SubResource("AtlasTexture_i10kl")
+texture_hover = SubResource("AtlasTexture_s4asc")
+script = ExtResource("10_dd1qt")
+metadata/tooltip = "Manage"
+metadata/description = "Manage your restaurant here"
+
+[node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/HelpTab"]
+anchors_preset = 0
+offset_left = 0.6666667
+offset_top = 18.0
+offset_right = 16.666666
+offset_bottom = 34.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab"]
+layout_mode = 0
+offset_left = 0.33333334
+offset_top = -2.666668
+offset_right = 293.33334
+offset_bottom = 391.33334
+scale = Vector2(0.333, 0.333)
+texture = SubResource("AtlasTexture_0hybe")
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 8.008012
+offset_right = 280.27798
+offset_bottom = 33.753014
+scale = Vector2(1, 1.26)
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 31
+text = "TEXTBOOK"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 41.041046
+offset_right = 258.008
+offset_bottom = 57.291046
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+theme_override_font_sizes/normal_font_size = 16
+text = "Get help quick"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 67.06707
+offset_right = 283.008
+offset_bottom = 107.06707
+
+[node name="MenuBar" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Menu bar"
+
+[node name="Ratings" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Ratings"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Ratings"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "If you deliver no food or the wrong food to customers, your rating will drop, but so will it if the base price is too high."
+fit_content = true
+scroll_active = false
 
 [node name="DEV" type="Control" parent="CanvasLayer"]
 visible = false
@@ -1016,6 +1300,11 @@ script = ExtResource("14_u2uwr")
 
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ExpensesTab" to="CanvasLayer/StatusBar/TABS/ExpensesTab" method="_on_button_down"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ExpensesTab" to="CanvasLayer/StatusBar/TABS/ExpensesTab/Tab/TextureRect/GridContainer" method="_on_expenses_tab_button_down"]
+[connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ManageTab" to="CanvasLayer/StatusBar/TABS/ManageTab" method="_on_button_down"]
+[connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ManageTab" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_manage_tab_button_down"]
+[connection signal="text_changed" from="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/restaurant_name/INPUT" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_input_text_changed"]
+[connection signal="text_changed" from="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/noodle_base_price/INPUT" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_baseprice_input_text_changed"]
+[connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/DEV/Clear NPCS" to="CanvasLayer/DEV" method="_on_clear_npcs_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Restore NPCS" to="CanvasLayer/DEV" method="_on_restore_npcs_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Save NPCS" to="CanvasLayer/DEV" method="_on_save_npcs_pressed"]

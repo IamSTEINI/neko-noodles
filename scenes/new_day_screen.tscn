@@ -1,10 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6gmlrwn22rta"]
 
 [ext_resource type="Script" uid="uid://b5yqr3goj0hcy" path="res://SCRIPTS/new_day_handler.gd" id="1_31ivg"]
-
-[sub_resource type="SystemFont" id="SystemFont_isffg"]
-font_names = PackedStringArray("Franklin Gothic")
-subpixel_positioning = 0
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="2_eskku"]
 
 [sub_resource type="Animation" id="Animation_u2uwr"]
 resource_name = "NEW_DAY"
@@ -85,11 +82,12 @@ anchor_bottom = 0.5
 offset_left = -60.0
 offset_top = 612.0
 offset_right = 440.0
-offset_bottom = 1112.0
+offset_bottom = 1111.9995
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.44)
+theme = ExtResource("2_eskku")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_fonts/normal_font = SubResource("SystemFont_isffg")
 theme_override_font_sizes/normal_font_size = 350
 text = "0"
 scroll_active = false
@@ -109,6 +107,7 @@ offset_right = 500.0
 offset_bottom = -165.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_eskku")
 theme_override_font_sizes/normal_font_size = 100
 text = "DAY"
 scroll_active = false

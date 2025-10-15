@@ -8,4 +8,3 @@ func _on_button_down() -> void:
 		if child.name != self.name:
 			child.get_child(0).visible = false
 	$Tab.visible = !$Tab.visible
-	$Tab/TextureRect/Title.text = "EXPENSES DAY "+str(Globals.day)

@@ -138,7 +138,7 @@ func set_target_position(pos):
 	
 func pay(amount:int, table: Node2D) -> void:
 	var coin = coin_scene.instantiate()
-	coin.amount = amount + randi_range(0, 6)
+	coin.amount = amount + Globals.noodle_base_price + randi_range(0, 3)
 	coin.position = table.global_position
 	Expenses.add_transaction("Customers", coin.amount)
 	get_tree().current_scene.add_child(coin)
@@ -235,7 +235,7 @@ func _physics_process(delta: float) -> void:
 			wait_time = 0.0
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_character.play("IDLE_UP")
-			if !got_order:
+			if !got_order && !leaving:
 				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
@@ -257,12 +257,21 @@ func _physics_process(delta: float) -> void:
 						OrderManager.rem_order(order_id)
 					else:
 						say("GRRR! That's not what I ordered")
+						Globals.restaurant_rating = Globals.restaurant_rating - 0.1
 						OrderManager.rem_order(order_id)
 						(food as Node2D).queue_free()
 						leave()
+			elif Globals.noodle_base_price > randi_range(3, 10):
+				say("GOD it's expensive!")
+				if order_id:
+					OrderManager.rem_order(order_id)
+				Globals.restaurant_rating = Globals.restaurant_rating - 0.1
+				chosen_table.customers -= 1
+				leave()
 			elif wait_time >= NPC_MAX_WAITING_TIME:
 				OrderManager.rem_order(order_id)
 				say("GRRR! I'm leaving!")
+				Globals.restaurant_rating = Globals.restaurant_rating - 0.1
 				Globals.log("NPC LEFT ANGRY (timeout) at table: " + str(chosen_table.name))
 				chosen_table.customers -= 1
 				leave()
@@ -276,4 +285,6 @@ func _physics_process(delta: float) -> void:
 				pay(child.Price, chosen_table)
 				child.queue_free()
 				say("Yummy. Thank you!")
+				if Globals.restaurant_rating < 5:
+					Globals.restaurant_rating = Globals.restaurant_rating + 0.1
 			leave()

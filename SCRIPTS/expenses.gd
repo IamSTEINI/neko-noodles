@@ -1,7 +1,7 @@
 extends Node
 
 var transactions = [
-	{"reason": "Rent", "amount": -25}
+	
 ]
 
 func get_transactions() -> Array:
@@ -27,8 +27,3 @@ func remove_transaction(reason: String) -> void:
 			transactions.remove_at(i)
 			return
 	Globals.log("Reason not found: " + reason)
-	
-func execute_transactions() -> void:
-	for txn in transactions:
-		Globals.money += txn["amount"]
-		Globals.log("Applied " + str(txn["amount"]) + " for " + txn["reason"])
