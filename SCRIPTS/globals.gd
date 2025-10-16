@@ -59,6 +59,12 @@ func _ready() -> void:
 	_update_npc_count()
 	calculate_spawn_i()
 
+func tutorial():
+	Speaking.say("Hello, is that Timmy? I just wanted to wish you good luck again with the restaurant.")
+	Speaking.say("Ensure that guests are satisfied and get what they want for a good price!")
+	Speaking.say("Oh and... Thank you for buying the restaurant from my parents. I think it's better if someone younger does the work now.")
+	Speaking.say("But maybe you'll get rich with it, Timmy... Can't wait to come visit you! See you then!")
+	
 func _process(delta: float) -> void:
 	var is_main_scene := get_tree().current_scene.name == "Main"
 	if not is_main_scene:

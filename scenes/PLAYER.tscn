@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=126 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
 [ext_resource type="Script" uid="uid://dx0e3afmw43l3" path="res://SCRIPTS/dev_scripts.gd" id="9_u2uwr"]
-[ext_resource type="Script" uid="uid://dmjhgqovuf5xh" path="res://scripts/ratingstatus.gd" id="10_0hybe"]
+[ext_resource type="Script" uid="uid://dmjhgqovuf5xh" path="res://SCRIPTS/ratingstatus.gd" id="10_0hybe"]
 [ext_resource type="Script" uid="uid://b5os3pfa0wndd" path="res://SCRIPTS/tab.gd" id="10_dd1qt"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="11_0pmnk"]
 [ext_resource type="PackedScene" uid="uid://b6gmlrwn22rta" path="res://scenes/new_day_screen.tscn" id="11_4ufat"]
@@ -20,7 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://dr63khp7f54cn" path="res://scenes/expense_entry.tscn" id="13_ua83o"]
 [ext_resource type="AudioStream" uid="uid://bdpkaiohiqcaj" path="res://SOUNDS/footprint.mp3" id="13_yovmp"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="14_u2uwr"]
-[ext_resource type="Script" uid="uid://idad5m0f3xjw" path="res://scripts/manage-restaurant.gd" id="15_n38qo"]
+[ext_resource type="Script" uid="uid://idad5m0f3xjw" path="res://SCRIPTS/manage-restaurant.gd" id="15_n38qo"]
+[ext_resource type="Script" uid="uid://ckof7ja42mys6" path="res://scripts/textbook.gd" id="16_gtncy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
 atlas = ExtResource("1_5qx4t")
@@ -629,6 +630,25 @@ bg_color = Color(0, 0, 0, 0.49803922)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n38qo"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehigy"]
+bg_color = Color(0, 0, 0, 0.49803922)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vt2ka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gtncy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4asc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx5bl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2enu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i10kl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mmrk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1505x"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua83o"]
 atlas = ExtResource("4_4ufat")
 region = Rect2(1440, 208, 480, 160)
@@ -866,6 +886,7 @@ offset_top = -6.0
 offset_right = 21.0
 offset_bottom = 10.0
 scale = Vector2(3, 3)
+focus_mode = 1
 texture_normal = SubResource("AtlasTexture_n38qo")
 texture_pressed = SubResource("AtlasTexture_n38qo")
 texture_hover = SubResource("AtlasTexture_ehigy")
@@ -956,6 +977,7 @@ offset_top = -6.0
 offset_right = 76.0
 offset_bottom = 10.0
 scale = Vector2(3, 3)
+focus_mode = 1
 texture_normal = SubResource("AtlasTexture_lx5bl")
 texture_pressed = SubResource("AtlasTexture_lx5bl")
 texture_hover = SubResource("AtlasTexture_gtncy")
@@ -1070,12 +1092,13 @@ offset_top = -6.0
 offset_right = 131.0
 offset_bottom = 10.0
 scale = Vector2(3, 3)
+focus_mode = 0
 texture_normal = SubResource("AtlasTexture_i10kl")
 texture_pressed = SubResource("AtlasTexture_i10kl")
 texture_hover = SubResource("AtlasTexture_s4asc")
 script = ExtResource("10_dd1qt")
-metadata/tooltip = "Manage"
-metadata/description = "Manage your restaurant here"
+metadata/tooltip = "Texbook"
+metadata/description = "An ingame FAQ"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/HelpTab"]
 anchors_preset = 0
@@ -1126,6 +1149,7 @@ offset_left = 8.008008
 offset_top = 67.06707
 offset_right = 283.008
 offset_bottom = 107.06707
+script = ExtResource("16_gtncy")
 
 [node name="MenuBar" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
@@ -1156,16 +1180,34 @@ text = "If you deliver no food or the wrong food to customers, your rating will 
 fit_content = true
 scroll_active = false
 
+[node name="Tutorial" type="Button" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(0, 26.085)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ehigy")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_vt2ka")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gtncy")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_s4asc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lx5bl")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_r2enu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_i10kl")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_4mmrk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1505x")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Do tutorial"
+
 [node name="DEV" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1917.0
-offset_top = 255.0
-offset_right = -1417.0
-offset_bottom = 295.0
+offset_left = -1920.0
+offset_top = 1037.0
+offset_right = -1420.0
+offset_bottom = 1077.0
 grow_horizontal = 0
 script = ExtResource("9_u2uwr")
 
@@ -1305,6 +1347,7 @@ script = ExtResource("14_u2uwr")
 [connection signal="text_changed" from="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/restaurant_name/INPUT" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_input_text_changed"]
 [connection signal="text_changed" from="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/noodle_base_price/INPUT" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_baseprice_input_text_changed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Clear NPCS" to="CanvasLayer/DEV" method="_on_clear_npcs_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Restore NPCS" to="CanvasLayer/DEV" method="_on_restore_npcs_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Save NPCS" to="CanvasLayer/DEV" method="_on_save_npcs_pressed"]

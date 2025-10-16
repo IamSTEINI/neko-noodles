@@ -1,0 +1,152 @@
+[gd_scene load_steps=15 format=3 uid="uid://dgao84v33wejx"]
+
+[ext_resource type="Script" uid="uid://72h6uv0mv5fu" path="res://scripts/speaking.gd" id="1_ex73r"]
+[ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="1_yka5h"]
+[ext_resource type="Texture2D" uid="uid://b80b5blddsbj7" path="res://ASSETS/TEXTURES/ICONS/Talking_cat.png" id="2_ex73r"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_nqak2"]
+[ext_resource type="AudioStream" uid="uid://b2bvyjrqfg7dv" path="res://SOUNDS/cat_talking.mp3" id="5_nqak2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2enu"]
+atlas = ExtResource("1_yka5h")
+region = Rect2(1440, 208, 480, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt2ka"]
+atlas = ExtResource("2_ex73r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mmrk"]
+atlas = ExtResource("2_ex73r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1505x"]
+atlas = ExtResource("2_ex73r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbr4n"]
+atlas = ExtResource("2_ex73r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unvn8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt2ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mmrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt2ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1505x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mmrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbr4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mmrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1505x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ehigy"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_gtncy"]
+events = [SubResource("InputEventKey_ehigy")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unvn8"]
+atlas = ExtResource("1_yka5h")
+region = Rect2(1728, 112, 192, 48)
+
+[node name="Speaking" type="Node2D"]
+script = ExtResource("1_ex73r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Speakbubble" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 663.0
+offset_top = 809.0
+offset_right = 1143.001
+offset_bottom = 969.00037
+scale = Vector2(1.2, 1.2)
+texture = SubResource("AtlasTexture_r2enu")
+expand_mode = 5
+stretch_mode = 1
+
+[node name="EmmaNya" type="AnimatedSprite2D" parent="CanvasLayer/Speakbubble"]
+texture_filter = 1
+position = Vector2(57.46268, 59.70149)
+scale = Vector2(2.76, 2.76)
+sprite_frames = SubResource("SpriteFrames_unvn8")
+frame_progress = 0.73509496
+
+[node name="Name" type="RichTextLabel" parent="CanvasLayer/Speakbubble"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 104.000015
+offset_right = 148.815
+offset_bottom = 144.00002
+scale = Vector2(0.585, 0.585)
+theme = ExtResource("3_nqak2")
+theme_override_font_sizes/normal_font_size = 24
+text = "EMMA NYA"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/Speakbubble"]
+layout_mode = 0
+offset_left = 125.83335
+offset_top = 8.333314
+offset_right = 470.83334
+offset_bottom = 125.51331
+theme = ExtResource("3_nqak2")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+text = "..."
+scroll_active = false
+vertical_alignment = 1
+
+[node name="SKIP" type="TextureButton" parent="CanvasLayer/Speakbubble"]
+layout_mode = 0
+offset_left = 379.10446
+offset_top = 125.37313
+offset_right = 571.1045
+offset_bottom = 173.37314
+scale = Vector2(0.455, 0.455)
+action_mode = 0
+shortcut = SubResource("Shortcut_gtncy")
+texture_normal = SubResource("AtlasTexture_unvn8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Speakbubble/SKIP"]
+layout_mode = 0
+offset_left = 4.920452
+offset_right = 193.00046
+offset_bottom = 46.325
+theme = ExtResource("3_nqak2")
+theme_override_font_sizes/normal_font_size = 26
+text = "[SPACE] SKIP"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Talking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_nqak2")
+volume_db = 13.465
+max_distance = 4096.0
+attenuation = 1e-05
+
+[connection signal="pressed" from="CanvasLayer/Speakbubble/SKIP" to="." method="_on_skip_pressed"]

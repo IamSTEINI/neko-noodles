@@ -30,6 +30,7 @@ OrderManager="*res://scenes/order_manager.tscn"
 Npcmanager="*res://scenes/npcmanager.tscn"
 ShelfSaver="*res://scenes/shelf_saver.tscn"
 Expenses="*res://SCRIPTS/expenses.gd"
+Speaking="*res://scenes/speaking.tscn"
 
 [display]
 

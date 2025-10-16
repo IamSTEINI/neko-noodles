@@ -14,7 +14,8 @@ func _ready() -> void:
 func _on_texture_button_pressed() -> void:
 	MusicManager.call_sound_with_fade("Main Theme")
 	Scenemanager.change_scene(self, "Main")
-
+	await get_tree().create_timer(1).timeout
+	Globals.tutorial()
 
 func _process(delta: float) -> void:
 	Globals.music_volume = $SETTINGS/HSlider.value - 40

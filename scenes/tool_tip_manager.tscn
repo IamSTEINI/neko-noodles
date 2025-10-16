@@ -9,10 +9,12 @@ region = Rect2(1728, 112, 192, 48)
 
 [sub_resource type="SystemFont" id="SystemFont_nfmcn"]
 font_names = PackedStringArray("BoldPixels")
+subpixel_positioning = 0
 oversampling = 8.0
 
 [sub_resource type="SystemFont" id="SystemFont_4yguf"]
 font_names = PackedStringArray("BoldPixels")
+subpixel_positioning = 0
 oversampling = 8.0
 
 [node name="ToolTipManager" type="Node2D"]

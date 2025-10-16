@@ -10,6 +10,7 @@ radius = 28.0
 
 [sub_resource type="SystemFont" id="SystemFont_7n8xq"]
 font_names = PackedStringArray("BoldPixels")
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxcha"]
 bg_color = Color(0.103744, 0.103744, 0.103744, 1)
