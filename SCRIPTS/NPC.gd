@@ -26,7 +26,7 @@ const NPC_MAX_WAITING_TIME: float = 60.0
 @export var leaving = true
 @export var generated_order: Array[int]
 
-var random_f_names = ["John","Manav", "YI LUNG MA", "Tim", "Jonathan", "Sinan", "Austin", "Simon", "Marcel", "Walter", "Jesse", "Thomas"]
+var random_f_names = ["John","Manav", "Vallewess", "YI LUNG MA", "Tim", "Jonathan", "Sinan", "Austin", "Simon", "Marcel", "Walter", "Jesse", "Thomas"]
 var random_l_names = ["Travolta", "Lee", "Fox", "Staydr", "McSoba", "Smith", "Eris", "White", "Blueman", "Noodlefield"]
 
 var random_lines = [
@@ -239,11 +239,10 @@ func _physics_process(delta: float) -> void:
 				order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"],generated_order[0], NPC_MAX_WAITING_TIME)
 				Globals.log(str(order_id)+": "+Globals.noodle_types[generated_order[0]]["name"])
 				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
-				if !leaving:
-					$Order/OrderNoodle.NoodleType = generated_order[0]
-					$Order/OrderNoodle.NoodleTopping = generated_order[1]
-					await get_tree().create_timer(2).timeout
-					$Order.show()
+				$Order/OrderNoodle.NoodleType = generated_order[0]
+				$Order/OrderNoodle.NoodleTopping = generated_order[1]
+				await get_tree().create_timer(2).timeout
+				$Order.show()
 
 		elif reached_table and not got_order:
 			wait_time += delta

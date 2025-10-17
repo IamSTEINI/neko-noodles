@@ -427,7 +427,7 @@ Tables = NodePath("../TABLES")
 color = Color(0.369564, 0.346215, 0.445095, 1)
 
 [node name="TRASH" parent="." instance=ExtResource("14_mwfav")]
-position = Vector2(800, 1415)
+position = Vector2(825, 1264)
 metadata/tooltip = "Trash"
 metadata/description = "It is like the first version of my game."
 

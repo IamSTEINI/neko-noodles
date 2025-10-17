@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwm4cbyk2pkah"]
+
+[ext_resource type="Script" uid="uid://c72q7llxk80cy" path="res://SCRIPTS/raw_topping_item.gd" id="1_tuapd"]
+[ext_resource type="Texture2D" uid="uid://buibdhli31ywj" path="res://ASSETS/TEXTURES/FOOD/FOOD.png" id="2_ydwqk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ij3u"]
+size = Vector2(41.000004, 39.000008)
+
+[node name="RawToppingItem" type="Node2D"]
+script = ExtResource("1_tuapd")
+metadata/tooltip = ""
+metadata/description = ""
+metadata/type = "toppingRaw"
+
+[node name="TOPPING" type="Sprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_ydwqk")
+region_enabled = true
+region_rect = Rect2(528, 0, 24, 24)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2.5000005)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_7ij3u")

@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bdpkaiohiqcaj" path="res://SOUNDS/footprint.mp3" id="13_yovmp"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="14_u2uwr"]
 [ext_resource type="Script" uid="uid://idad5m0f3xjw" path="res://SCRIPTS/manage-restaurant.gd" id="15_n38qo"]
-[ext_resource type="Script" uid="uid://ckof7ja42mys6" path="res://scripts/textbook.gd" id="16_gtncy"]
+[ext_resource type="Script" uid="uid://ckof7ja42mys6" path="res://SCRIPTS/textbook.gd" id="16_gtncy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
 atlas = ExtResource("1_5qx4t")

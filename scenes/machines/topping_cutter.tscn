@@ -1,0 +1,149 @@
+[gd_scene load_steps=21 format=3 uid="uid://ddpst3w0pal3m"]
+
+[ext_resource type="Script" uid="uid://r7oqk4p0eue" path="res://scripts/topping_cutter.gd" id="1_58wmr"]
+[ext_resource type="Texture2D" uid="uid://bxih7virswboy" path="res://ASSETS/TEXTURES/FURNITURE/MACHINES.png" id="1_bkacc"]
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_58wmr"]
+[ext_resource type="PackedScene" uid="uid://rjq5kilogbmu" path="res://SCRIPTS/progressbar.tscn" id="3_gljwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkacc"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58wmr"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gljwl"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(350, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x3wo"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(500, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipoos"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(650, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3id2"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(800, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0dip"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(950, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl8tf"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(1100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5o5h"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(1250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n01e2"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(1400, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nll3w"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(1550, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eroc"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(1700, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hugga"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(1850, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80nu6"]
+atlas = ExtResource("1_bkacc")
+region = Rect2(2000, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80oub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkacc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58wmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gljwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x3wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipoos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3id2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0dip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl8tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5o5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n01e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nll3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eroc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hugga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80nu6")
+}],
+"loop": true,
+"name": &"Cut",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipoos"]
+size = Vector2(98, 88)
+
+[node name="MACHINE-TOPPINGCUTTER" type="Node2D"]
+script = ExtResource("1_58wmr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_80oub")
+animation = &"Cut"
+frame_progress = 0.26976925
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_ipoos")
+
+[node name="INTERACTABLE" parent="." instance=ExtResource("2_58wmr")]
+position = Vector2(0, 21)
+text = "Cut"
+border_color = Color(0.452271, 0.447891, 1, 1)
+can_interact = false
+interaction_range = 40
+
+[node name="Product" type="Marker2D" parent="."]
+position = Vector2(0, 21)
+
+[node name="Progressbar" parent="." instance=ExtResource("3_gljwl")]
+position = Vector2(0, -68)
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
+[connection signal="player_entered" from="INTERACTABLE" to="." method="_on_interactable_player_entered"]

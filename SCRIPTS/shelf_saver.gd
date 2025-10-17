@@ -39,6 +39,8 @@ func restore_shelves():
 				item.doughType = item_data.get("dough_type")
 			if item.get_meta("type") == "RawNoodle":
 				item.NoodleType= item_data.get("noodle_type")
+			if item.get_meta("type") == "toppingRaw":
+				item.ToppingType = item_data.get("topping_type")
 			if item.get_meta("type") == "Noodle":
 				item.NoodleType = item_data.get("noodle_type")
 				item.Price = item_data.get("noodle_price")
@@ -104,6 +106,8 @@ func save_shelves():
 					data["dough_type"] = item.doughType
 				if item.get_meta("type") == "RawNoodle":
 					data["noodle_type"] = item.NoodleType
+				if item.get_meta("type") == "toppingRaw":
+					data["topping_type"] = item.ToppingType
 				if item.get_meta("type") == "Noodle":
 					data["noodle_type"] = item.NoodleType
 					data["noodle_price"] = item.Price
