@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=124 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -571,11 +571,6 @@ region = Rect2(0, 0, 1920, 48)
 atlas = ExtResource("4_4ufat")
 region = Rect2(1568, 464, 112, 32)
 
-[sub_resource type="SystemFont" id="SystemFont_4ufat"]
-font_names = PackedStringArray("BoldPixels")
-subpixel_positioning = 0
-oversampling = 8.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pmnk"]
 atlas = ExtResource("4_4ufat")
 region = Rect2(1568, 464, 112, 32)
@@ -654,11 +649,6 @@ bg_color = Color(0, 0, 0, 0.49803922)
 atlas = ExtResource("4_4ufat")
 region = Rect2(1440, 208, 480, 160)
 
-[sub_resource type="SystemFont" id="SystemFont_dd1qt"]
-font_names = PackedStringArray("BoldPixels")
-subpixel_positioning = 0
-oversampling = 8.0
-
 [node name="PLAYER" type="CharacterBody2D"]
 z_index = 93
 scale = Vector2(2, 2)
@@ -728,7 +718,6 @@ offset_top = 8.0
 offset_right = 116.0
 offset_bottom = 33.0
 theme = ExtResource("11_0pmnk")
-theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "1.300.000"
 scroll_active = false
@@ -763,7 +752,6 @@ offset_top = 7.0
 offset_right = 114.0
 offset_bottom = 32.0
 theme = ExtResource("11_0pmnk")
-theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 19
 text = "00:00 PM"
 scroll_active = false
@@ -798,7 +786,6 @@ offset_top = 7.0
 offset_right = 70.354996
 offset_bottom = 32.0
 theme = ExtResource("11_0pmnk")
-theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "1"
 scroll_active = false
@@ -834,7 +821,6 @@ offset_top = 7.0
 offset_right = 70.91
 offset_bottom = 32.0
 theme = ExtResource("11_0pmnk")
-theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "10
 "
@@ -871,7 +857,6 @@ offset_top = 7.0
 offset_right = 70.91
 offset_bottom = 32.0
 theme = ExtResource("11_0pmnk")
-theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "5"
 scroll_active = false
@@ -1308,7 +1293,6 @@ offset_right = 475.395
 offset_bottom = 103.94673
 scale = Vector2(1, 1.465)
 theme = ExtResource("11_0pmnk")
-theme_override_fonts/normal_font = SubResource("SystemFont_dd1qt")
 theme_override_font_sizes/normal_font_size = 18
 text = "ALPHA VERSION: Right now, your job is to distribute noodles to customers. Guests will appear automatically. Ramen are in the supermarket, after buying you have to cut and cook them. Please feel free to suggest improvements and give feedback."
 fit_content = true
