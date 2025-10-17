@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bcdult63ey72v" path="res://scenes/cashier.tscn" id="7_h2doy"]
 [ext_resource type="PackedScene" uid="uid://bio7x6ic1c73c" path="res://scenes/item_giver.tscn" id="8_2c0dq"]
 [ext_resource type="PackedScene" uid="uid://d0eicgcu1ovgc" path="res://scenes/dough_item.tscn" id="9_wu55y"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="10_3obmj"]
 [ext_resource type="PackedScene" uid="uid://dwm4cbyk2pkah" path="res://scenes/raw_topping_item.tscn" id="10_wu55y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07jrh"]
@@ -212,10 +213,6 @@ radius = 36.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc56d"]
 size = Vector2(108, 1111)
 
-[sub_resource type="SystemFont" id="SystemFont_2c0dq"]
-font_names = PackedStringArray("BoldPixels")
-subpixel_positioning = 0
-
 [node name="Supermarket" type="Node2D"]
 script = ExtResource("1_kls3s")
 
@@ -398,7 +395,7 @@ offset_left = 100.0
 offset_top = 295.0
 offset_right = 298.0
 offset_bottom = 386.0
-theme_override_fonts/normal_font = SubResource("SystemFont_2c0dq")
+theme = ExtResource("10_3obmj")
 theme_override_font_sizes/normal_font_size = 21
 text = "Don't forget to pay at the checkout"
 horizontal_alignment = 1

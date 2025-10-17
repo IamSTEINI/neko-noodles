@@ -573,6 +573,7 @@ region = Rect2(1568, 464, 112, 32)
 
 [sub_resource type="SystemFont" id="SystemFont_4ufat"]
 font_names = PackedStringArray("BoldPixels")
+subpixel_positioning = 0
 oversampling = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pmnk"]
@@ -655,6 +656,7 @@ region = Rect2(1440, 208, 480, 160)
 
 [sub_resource type="SystemFont" id="SystemFont_dd1qt"]
 font_names = PackedStringArray("BoldPixels")
+subpixel_positioning = 0
 oversampling = 8.0
 
 [node name="PLAYER" type="CharacterBody2D"]
@@ -725,6 +727,7 @@ offset_left = 31.0
 offset_top = 8.0
 offset_right = 116.0
 offset_bottom = 33.0
+theme = ExtResource("11_0pmnk")
 theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "1.300.000"
@@ -759,6 +762,7 @@ offset_left = 29.0
 offset_top = 7.0
 offset_right = 114.0
 offset_bottom = 32.0
+theme = ExtResource("11_0pmnk")
 theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 19
 text = "00:00 PM"
@@ -793,6 +797,7 @@ offset_left = 32.0
 offset_top = 7.0
 offset_right = 70.354996
 offset_bottom = 32.0
+theme = ExtResource("11_0pmnk")
 theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "1"
@@ -828,6 +833,7 @@ offset_left = 31.0
 offset_top = 7.0
 offset_right = 70.91
 offset_bottom = 32.0
+theme = ExtResource("11_0pmnk")
 theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "10
@@ -864,6 +870,7 @@ offset_left = 31.0
 offset_top = 7.0
 offset_right = 70.91
 offset_bottom = 32.0
+theme = ExtResource("11_0pmnk")
 theme_override_fonts/normal_font = SubResource("SystemFont_4ufat")
 theme_override_font_sizes/normal_font_size = 21
 text = "5"
@@ -1300,6 +1307,7 @@ offset_top = 8.925
 offset_right = 475.395
 offset_bottom = 103.94673
 scale = Vector2(1, 1.465)
+theme = ExtResource("11_0pmnk")
 theme_override_fonts/normal_font = SubResource("SystemFont_dd1qt")
 theme_override_font_sizes/normal_font_size = 18
 text = "ALPHA VERSION: Right now, your job is to distribute noodles to customers. Guests will appear automatically. Ramen are in the supermarket, after buying you have to cut and cook them. Please feel free to suggest improvements and give feedback."
@@ -1324,7 +1332,7 @@ offset_top = 13.095238
 offset_right = 482.28
 offset_bottom = 123.09524
 scale = Vector2(1, 1.195)
-theme_override_fonts/normal_font = SubResource("SystemFont_dd1qt")
+theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 21
 text = "THIS BAR SHOWS
 - TOTAL VISITOR AMOUNT FOR TODAY
