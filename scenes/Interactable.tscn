@@ -1,12 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://wd23pngx08lf"]
 
 [ext_resource type="Script" uid="uid://yvks84cwd5vw" path="res://SCRIPTS/Interactable.gd" id="1_msfch"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="2_0iwdk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6f01"]
 radius = 94.02127
-
-[sub_resource type="SystemFont" id="SystemFont_c6f01"]
-font_names = PackedStringArray("BoldPixels")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msfch"]
 content_margin_left = 5.0
@@ -32,7 +30,7 @@ offset_left = -91.0
 offset_top = -101.0
 offset_right = 109.0
 offset_bottom = -76.0
-theme_override_fonts/normal_font = SubResource("SystemFont_c6f01")
+theme = ExtResource("2_0iwdk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_msfch")
 text = "INTERACT
 "
