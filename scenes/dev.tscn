@@ -1,0 +1,144 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8mji5lptf2ph"]
+
+[ext_resource type="Script" uid="uid://dx0e3afmw43l3" path="res://SCRIPTS/dev_scripts.gd" id="1_wpru5"]
+[ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="2_rs6on"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_rs6on"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpru5"]
+bg_color = Color(0, 0, 0, 0.72156864)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45890838, 0.26862797, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs6on"]
+bg_color = Color(0, 0, 0, 0.5882353)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6622365, 0.4585778, 1, 1)
+
+[node name="Dev" type="Node2D"]
+z_index = 1000
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="DEV" type="Control" parent="CanvasLayer"]
+z_index = 1895
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1907.0
+offset_top = 1045.0
+offset_right = -1407.0
+offset_bottom = 1085.0
+grow_horizontal = 0
+script = ExtResource("1_wpru5")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DEV"]
+z_index = 4095
+layout_mode = 0
+offset_top = -255.0
+offset_right = 745.0
+offset_bottom = -5.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpru5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/DEV/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 745.0
+offset_bottom = 250.0
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 0
+scroll_following = true
+autowrap_mode = 1
+vertical_alignment = 2
+script = ExtResource("2_rs6on")
+metadata/_edit_use_anchors_ = true
+
+[node name="BUILD MODE" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_right = 108.945
+offset_bottom = 30.7
+focus_mode = 0
+theme = ExtResource("3_rs6on")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs6on")
+text = "BUILD MODE"
+
+[node name="Spawn NPC" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 228.0
+offset_bottom = 31.0
+focus_mode = 0
+theme = ExtResource("3_rs6on")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs6on")
+text = "SPAWN NPC
+"
+
+[node name="Clear NPCS" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 239.0
+offset_right = 347.0
+offset_bottom = 31.0
+focus_mode = 0
+theme = ExtResource("3_rs6on")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs6on")
+text = "CLEAR NPCs"
+
+[node name="Restore NPCS" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 356.0
+offset_right = 464.0
+offset_bottom = 31.0
+focus_mode = 0
+theme = ExtResource("3_rs6on")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs6on")
+text = "RESTORE NPCS"
+
+[node name="Save NPCS" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 489.0
+offset_right = 612.0
+offset_bottom = 31.0
+focus_mode = 0
+theme = ExtResource("3_rs6on")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs6on")
+text = "SAVE NPCS"
+
+[node name="Save Shelves" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 622.0
+offset_right = 745.0
+offset_bottom = 31.0
+focus_mode = 0
+theme = ExtResource("3_rs6on")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs6on")
+text = "SAVE SHELVES"
+
+[node name="FPS" type="RichTextLabel" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_top = -296.0
+offset_right = 89.91
+offset_bottom = -256.0
+text = "FPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Carrying" type="RichTextLabel" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = -296.0
+offset_right = 302.28
+offset_bottom = -256.0
+text = "Carrying:"
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/DEV/Clear NPCS" to="CanvasLayer/DEV" method="_on_clear_npcs_pressed"]
+[connection signal="pressed" from="CanvasLayer/DEV/Restore NPCS" to="CanvasLayer/DEV" method="_on_restore_npcs_pressed"]
+[connection signal="pressed" from="CanvasLayer/DEV/Save NPCS" to="CanvasLayer/DEV" method="_on_save_npcs_pressed"]
+[connection signal="pressed" from="CanvasLayer/DEV/Save Shelves" to="CanvasLayer/DEV" method="_on_save_shelves_pressed"]

@@ -243,7 +243,7 @@ tile_set = ExtResource("3_kls3s")
 
 [node name="PLAYER" parent="." instance=ExtResource("2_07jrh")]
 z_index = 91
-position = Vector2(200, 200)
+position = Vector2(200, 269)
 
 [node name="GLASS DOOR" parent="." instance=ExtResource("6_h2doy")]
 position = Vector2(200, 114)
@@ -409,6 +409,7 @@ text = "Ajatama"
 [node name="RawToppingItem" parent="ItemGiver8" instance=ExtResource("10_wu55y")]
 position = Vector2(0, 1)
 ToppingType = 1
+metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [node name="ItemGiver9" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
@@ -419,6 +420,7 @@ text = "Menma"
 [node name="RawToppingItem" parent="ItemGiver9" instance=ExtResource("10_wu55y")]
 position = Vector2(0, 1)
 ToppingType = 2
+metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [node name="ItemGiver10" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
@@ -429,6 +431,7 @@ text = "Negi"
 [node name="RawToppingItem" parent="ItemGiver10" instance=ExtResource("10_wu55y")]
 position = Vector2(0, 1)
 ToppingType = 3
+metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [node name="ItemGiver11" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
@@ -439,6 +442,7 @@ text = "Narutomaki"
 [node name="RawToppingItem" parent="ItemGiver11" instance=ExtResource("10_wu55y")]
 position = Vector2(0, 1)
 ToppingType = 4
+metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [node name="ItemGiver12" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
@@ -449,6 +453,7 @@ text = "Edamame"
 [node name="RawToppingItem" parent="ItemGiver12" instance=ExtResource("10_wu55y")]
 position = Vector2(0, 1)
 ToppingType = 5
+metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [connection signal="interacted" from="GLASS DOOR/INTERACTABLE" to="." method="_on_interactable_interacted"]

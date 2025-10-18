@@ -90,6 +90,18 @@ click on the item you want to get out."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 359.0
+offset_top = 1149.0
+offset_right = 557.0
+offset_bottom = 1240.0
+theme = ExtResource("3_57po2")
+theme_override_fonts/normal_font = SubResource("SystemFont_e03td")
+text = "Items inside machines won't be saved. Save it in the shelf!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 texture_filter = 1
 offset_left = 201.0
@@ -229,11 +241,14 @@ ToppingRaw = NodePath("ToppingItem")
 
 [node name="Side_Table" parent="." instance=ExtResource("14_x51x2")]
 position = Vector2(150, 1349)
+NoodleScene = ExtResource("10_0lfbe")
 
 [node name="Side_Table2" parent="." instance=ExtResource("14_x51x2")]
 position = Vector2(50, 1349)
+NoodleScene = ExtResource("10_0lfbe")
 
 [node name="Side_Table3" parent="." instance=ExtResource("14_x51x2")]
 position = Vector2(250, 1349)
+NoodleScene = ExtResource("10_0lfbe")
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]

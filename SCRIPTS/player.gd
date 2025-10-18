@@ -100,10 +100,8 @@ func _input(event):
 		if $ItemSlot.get_children().size() > 0:
 			PICKUP = true
 			setDir(dir, PICKUP)
-			Globals.log("[PLAYER] Pickup not possible since carrying item: " + str(PICKUP))
 		else:
 			PICKUP = !PICKUP
-			Globals.log("[PLAYER] Pickup triggered: " + str(PICKUP))
 
 
 func _on_area_player_body_entered(body: Node2D) -> void:

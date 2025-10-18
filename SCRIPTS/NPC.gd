@@ -50,8 +50,8 @@ func generate_name() -> String:
 
 func generate_noodle() -> Array[int]:
 	var noodle_index: int = (randi() % (Globals.noodle_types.size() - 1)) + 1
-	# var topping_index: int = (randi() % (Globals.noodle_toppings.size() - 1)) + 1
-	return [noodle_index, 0] # Returning 0 for topping for now
+	var topping_index: int = (randi() % (Globals.noodle_toppings.size() - 1)) + 1
+	return [noodle_index, topping_index] # Returning 0 for topping for now
 	
 func toggle_collider(enable: bool) -> void:
 	if enable:
@@ -236,7 +236,7 @@ func _physics_process(delta: float) -> void:
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_character.play("IDLE_UP")
 			if !got_order:
-				order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"],generated_order[0], NPC_MAX_WAITING_TIME)
+				order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"]+" with "+Globals.noodle_toppings[generated_order[1]]["name"],generated_order[0],generated_order[1], NPC_MAX_WAITING_TIME)
 				Globals.log(str(order_id)+": "+Globals.noodle_types[generated_order[0]]["name"])
 				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
 				$Order/OrderNoodle.NoodleType = generated_order[0]
@@ -278,7 +278,6 @@ func _physics_process(delta: float) -> void:
 		
 		elif got_order:
 			await get_tree().create_timer(3).timeout # Simulating eating
-			Globals.log("NPC FINISHED ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_table.customers -= 1
 			for child in food_slot.get_children():
 				Globals.log("NPC PAID: " + str(child.Price))

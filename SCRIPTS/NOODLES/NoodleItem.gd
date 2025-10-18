@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 	else:
 		$TOPPING.show()
 		$TOPPING.region_rect = Rect2(Globals.noodle_toppings[NoodleTopping]["id"] * 24 + 192 ,0,24,24)
-		
-	self.set_meta("tooltip", Globals.noodle_types[NoodleType]["name"])
-	self.set_meta("description","Tasty noodles! Costs "+str(Globals.noodle_types[NoodleType]["price"]))
+	
+	if !self.has_meta("tooltip"):
+		self.set_meta("tooltip", Globals.noodle_types[NoodleType]["name"])
+		self.set_meta("description","Tasty noodles! Costs "+str(Globals.noodle_types[NoodleType]["price"]))

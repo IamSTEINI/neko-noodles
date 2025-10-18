@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://ddpst3w0pal3m"]
 
-[ext_resource type="Script" uid="uid://r7oqk4p0eue" path="res://scripts/topping_cutter.gd" id="1_58wmr"]
+[ext_resource type="Script" uid="uid://r7oqk4p0eue" path="res://SCRIPTS/topping_cutter.gd" id="1_58wmr"]
 [ext_resource type="Texture2D" uid="uid://bxih7virswboy" path="res://ASSETS/TEXTURES/FURNITURE/MACHINES.png" id="1_bkacc"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_58wmr"]
 [ext_resource type="PackedScene" uid="uid://rjq5kilogbmu" path="res://SCRIPTS/progressbar.tscn" id="3_gljwl"]
@@ -116,6 +116,8 @@ size = Vector2(98, 88)
 
 [node name="MACHINE-TOPPINGCUTTER" type="Node2D"]
 script = ExtResource("1_58wmr")
+metadata/tooltip = "Topping Cutter"
+metadata/description = "Cut your stuff here to put it on your noodles!"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

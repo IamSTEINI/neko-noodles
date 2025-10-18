@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=122 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -9,9 +9,7 @@
 [ext_resource type="Script" uid="uid://dhd5bry7fsr4e" path="res://SCRIPTS/TimeStatusBar.gd" id="5_0xe60"]
 [ext_resource type="Script" uid="uid://p5dg5snkhyph" path="res://SCRIPTS/VisitorStatusBar.gd" id="6_xi7vv"]
 [ext_resource type="Script" uid="uid://bfrm3bj1achr7" path="res://SCRIPTS/daystatusbar.gd" id="7_54cwh"]
-[ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="7_uud0d"]
 [ext_resource type="Script" uid="uid://cb0620vbwnvmd" path="res://SCRIPTS/REMOVEITSELF.gd" id="8_73ffy"]
-[ext_resource type="Script" uid="uid://dx0e3afmw43l3" path="res://SCRIPTS/dev_scripts.gd" id="9_u2uwr"]
 [ext_resource type="Script" uid="uid://dmjhgqovuf5xh" path="res://SCRIPTS/ratingstatus.gd" id="10_0hybe"]
 [ext_resource type="Script" uid="uid://b5os3pfa0wndd" path="res://SCRIPTS/tab.gd" id="10_dd1qt"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="11_0pmnk"]
@@ -1093,6 +1091,7 @@ metadata/tooltip = "Texbook"
 metadata/description = "An ingame FAQ"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/HelpTab"]
+visible = false
 anchors_preset = 0
 offset_left = 0.6666667
 offset_top = 18.0
@@ -1190,88 +1189,6 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Do tutorial"
 
-[node name="DEV" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1920.0
-offset_top = 1037.0
-offset_right = -1420.0
-offset_bottom = 1077.0
-grow_horizontal = 0
-script = ExtResource("9_u2uwr")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/DEV"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = -255.0
-offset_right = 847.0
-offset_bottom = -5.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/DEV/Panel"]
-texture_filter = 1
-layout_mode = 0
-offset_right = 850.0
-offset_bottom = 250.0
-theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 0
-scroll_active = false
-scroll_following = true
-autowrap_mode = 0
-vertical_alignment = 2
-script = ExtResource("7_uud0d")
-metadata/_edit_use_anchors_ = true
-
-[node name="BUILD MODE" type="Button" parent="CanvasLayer/DEV"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-focus_mode = 0
-text = "BUILD MODE"
-
-[node name="Spawn NPC" type="Button" parent="CanvasLayer/DEV"]
-layout_mode = 0
-offset_left = 120.0
-offset_right = 228.0
-offset_bottom = 31.0
-focus_mode = 0
-text = "SPAWN NPC
-"
-
-[node name="Clear NPCS" type="Button" parent="CanvasLayer/DEV"]
-layout_mode = 0
-offset_left = 239.0
-offset_right = 347.0
-offset_bottom = 31.0
-focus_mode = 0
-text = "CLEAR NPCs"
-
-[node name="Restore NPCS" type="Button" parent="CanvasLayer/DEV"]
-layout_mode = 0
-offset_left = 356.0
-offset_right = 464.0
-offset_bottom = 31.0
-focus_mode = 0
-text = "RESTORE NPCS"
-
-[node name="Save NPCS" type="Button" parent="CanvasLayer/DEV"]
-layout_mode = 0
-offset_left = 489.0
-offset_right = 612.0
-offset_bottom = 31.0
-focus_mode = 0
-text = "SAVE NPCS"
-
-[node name="Save Shelves" type="Button" parent="CanvasLayer/DEV"]
-layout_mode = 0
-offset_left = 622.0
-offset_right = 745.0
-offset_bottom = 31.0
-focus_mode = 0
-text = "SAVE SHELVES"
-
 [node name="NEW DAY SCREEN" parent="CanvasLayer" instance=ExtResource("11_4ufat")]
 
 [node name="Card" type="TextureRect" parent="CanvasLayer"]
@@ -1340,7 +1257,3 @@ script = ExtResource("14_u2uwr")
 [connection signal="text_changed" from="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/noodle_base_price/INPUT" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_baseprice_input_text_changed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]
-[connection signal="pressed" from="CanvasLayer/DEV/Clear NPCS" to="CanvasLayer/DEV" method="_on_clear_npcs_pressed"]
-[connection signal="pressed" from="CanvasLayer/DEV/Restore NPCS" to="CanvasLayer/DEV" method="_on_restore_npcs_pressed"]
-[connection signal="pressed" from="CanvasLayer/DEV/Save NPCS" to="CanvasLayer/DEV" method="_on_save_npcs_pressed"]
-[connection signal="pressed" from="CanvasLayer/DEV/Save Shelves" to="CanvasLayer/DEV" method="_on_save_shelves_pressed"]

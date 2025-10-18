@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bh7dolxwkmg0b"]
 
-[ext_resource type="Script" uid="uid://bcokiiqbmqei8" path="res://scripts/side_table.gd" id="1_84q8x"]
+[ext_resource type="Script" uid="uid://bcokiiqbmqei8" path="res://SCRIPTS/side_table.gd" id="1_84q8x"]
 [ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="1_o3vas"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_o280c"]
 
@@ -13,6 +13,8 @@ size = Vector2(98, 88)
 
 [node name="Side_Table" type="Node2D"]
 script = ExtResource("1_84q8x")
+metadata/tooltip = "Kitchen table"
+metadata/description = "Just a regular table where you can put items on"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

@@ -5,13 +5,7 @@ extends Node2D
 @export var food_slots: Array[Marker2D] = []
 
 func update_capacity_text() -> void:
-	var left_slots = 0
-	for slot in food_slots:
-		if slot.get_child_count() <= 0:
-			left_slots += 0
-		else:
-			left_slots += 1
-	$CAPACITY.text = str(left_slots)+"/"+str(food_slots.size())
+	$CAPACITY.text = str(customers)+"/"+str(capacity)
 
 func _on_interactable_interacted(body) -> void:
 	Globals.log(self.name+" | "+body.name+" interacted")
@@ -19,7 +13,7 @@ func _on_interactable_interacted(body) -> void:
 	if empty_slot == null:
 		Globals.log(self.name+" | All foodslots are used ("+str(food_slots.size())+")")
 	else:
-		var player_food_slot = body.get_node("ItemSlot")
+		var player_food_slot = body.get_node("ItemSlot") as Marker2D
 		if player_food_slot.get_child_count() > 0:
 			var noodle = player_food_slot.get_child(0)
 			if noodle.get_meta("type") == "Noodle":
@@ -27,9 +21,9 @@ func _on_interactable_interacted(body) -> void:
 					Globals.log(self.name+" | foodslot is used")
 				else:
 					Globals.log("SERVING TO "+self.name+":" + noodle.name)
-					player_food_slot.remove_child(player_food_slot.get_node("NoodleItem"))
-					noodle.scale = Vector2(5, 5)
-					empty_slot.add_child(noodle)
+					noodle.position = Vector2(0,0)
+					noodle.global_position = empty_slot.global_position
+					noodle.reparent(empty_slot)
 					update_capacity_text()
 		else:
 			Globals.log("Player has no items to serve")

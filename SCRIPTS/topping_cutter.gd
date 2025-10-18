@@ -28,7 +28,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 		if !finished:
 			$AnimatedSprite2D.play("Cut")
 			$INTERACTABLE.can_interact = false
-			if itemslot.get_child(0).get_meta("type") == "toppingRaw":
+			if itemslot.get_child(0).get_meta("type") == "ToppingRaw":
 				current_topping_type = itemslot.get_child(0).ToppingType
 				Globals.log("Current topping: "+str(current_topping_type))
 				itemslot.get_child(0).queue_free()
@@ -63,7 +63,7 @@ func _on_interactable_player_entered(body: Node2D) -> void:
 	if body.has_meta("type") && body.get_meta("type") == "player":
 		var itemslot = body.get_node_or_null("ItemSlot")
 		if itemslot && itemslot.get_child_count() > 0:
-			if !finished && itemslot.get_child(0).get_meta("type", "") == "toppingRaw":
+			if !finished && itemslot.get_child(0).get_meta("type", "") == "ToppingRaw":
 				$INTERACTABLE.can_interact = true
 		if finished && itemslot.get_child_count() == 0:
 			$INTERACTABLE.can_interact = true

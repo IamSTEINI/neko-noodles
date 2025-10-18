@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfj22npmsvjtp"]
 
-[ext_resource type="Script" uid="uid://dqr8rb4u1nyvo" path="res://scripts/shelf_saver.gd" id="1_eowuy"]
+[ext_resource type="Script" uid="uid://dqr8rb4u1nyvo" path="res://SCRIPTS/shelf_saver.gd" id="1_eowuy"]
 
 [node name="ShelfSaver" type="Node"]
 script = ExtResource("1_eowuy")

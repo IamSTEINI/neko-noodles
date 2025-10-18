@@ -1,5 +1,6 @@
 extends Panel
 @export var noodle_type: int
+@export var topping_type: int
 @export var noodle_name: String
 @export var npc_m_w_t: int
 
@@ -7,6 +8,7 @@ var wait_time: float
 
 func _ready() -> void:
 	$NoodleItem.NoodleType = noodle_type
+	$NoodleItem.NoodleTopping = topping_type
 	$NoodleName.text = noodle_name
 	
 func _process(delta: float) -> void:
