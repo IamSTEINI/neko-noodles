@@ -24,6 +24,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			item.process_mode = Node.PROCESS_MODE_DISABLED
 			respawn_item()
 		else:
+			if Globals.bought_backpack:
+				var backpack_slots = body.get_node("BackpackSlot")
+				if backpack_slots.get_child_count() < Globals.backpackCapacity:
+					var item_clone = item.duplicate()
+					get_tree().current_scene.add_child(item_clone)
+					item_clone.reparent(backpack_slots)
+					item_clone.position = Vector2.ZERO
+					item_clone.hide()
+					item.visible = false
+					item.process_mode = Node.PROCESS_MODE_DISABLED
+					respawn_item()
 			Globals.log("Player's Itemslot is full")
 
 

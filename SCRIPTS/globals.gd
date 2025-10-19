@@ -28,6 +28,11 @@ var spawn_accumulator: float = 0.0
 signal npc_spawn
 signal new_day_started(day: int)
 
+# SHOP ITEMS
+
+var bought_backpack = false
+var backpackCapacity = 3
+
 var noodle_types = [
 	{"name": "Empty", "id": 0, "price": 1},
 	{"name": "Udon", "id": 2, "price": 1},

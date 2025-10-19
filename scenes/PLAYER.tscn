@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=130 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="14_u2uwr"]
 [ext_resource type="Script" uid="uid://idad5m0f3xjw" path="res://SCRIPTS/manage-restaurant.gd" id="15_n38qo"]
 [ext_resource type="Script" uid="uid://ckof7ja42mys6" path="res://SCRIPTS/textbook.gd" id="16_gtncy"]
+[ext_resource type="Script" uid="uid://b2e5awdh72k8l" path="res://SCRIPTS/shop.gd" id="16_n38qo"]
+[ext_resource type="Texture2D" uid="uid://bv15sl3vqa5q" path="res://ASSETS/TEXTURES/PLAYER/ITEMS.png" id="17_ehigy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
 atlas = ExtResource("1_5qx4t")
@@ -609,6 +611,30 @@ expand_margin_left = 5.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hybe"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2enu"]
+atlas = ExtResource("4_4logd")
+region = Rect2(144, 32, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt2ka"]
+atlas = ExtResource("4_4logd")
+region = Rect2(144, 48, 15, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtncy"]
+bg_color = Color(0.32659933, 0.5812095, 0.30490065, 1)
+border_width_bottom = 3
+border_color = Color(0.26433107, 0.48067707, 0.24776495, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i10kl"]
+bg_color = Color(0.3254902, 0.5803922, 0.30588236, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx5bl"]
+bg_color = Color(0.34543478, 0.612306, 0.32486358, 1)
+border_width_bottom = 3
+border_color = Color(0.31730965, 0.51770115, 0.19728467, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4asc"]
+bg_color = Color(0.9722535, 0, 0.15121931, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_i10kl"]
 atlas = ExtResource("4_4logd")
 region = Rect2(144, 0, 16, 16)
@@ -655,6 +681,10 @@ script = ExtResource("1_4logd")
 metadata/type = "player"
 
 [node name="ItemSlot" type="Marker2D" parent="."]
+z_index = 3
+position = Vector2(0, 7)
+
+[node name="BackpackSlot" type="Marker2D" parent="."]
 z_index = 3
 position = Vector2(0, 7)
 
@@ -877,6 +907,7 @@ offset_right = 21.0
 offset_bottom = 10.0
 scale = Vector2(3, 3)
 focus_mode = 1
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_n38qo")
 texture_pressed = SubResource("AtlasTexture_n38qo")
 texture_hover = SubResource("AtlasTexture_ehigy")
@@ -968,6 +999,7 @@ offset_right = 76.0
 offset_bottom = 10.0
 scale = Vector2(3, 3)
 focus_mode = 1
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_lx5bl")
 texture_pressed = SubResource("AtlasTexture_lx5bl")
 texture_hover = SubResource("AtlasTexture_gtncy")
@@ -1075,14 +1107,138 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0hybe")
 placeholder_text = "2"
 select_all_on_focus = true
 
-[node name="HelpTab" type="TextureButton" parent="CanvasLayer/StatusBar/TABS"]
+[node name="ShopTab" type="TextureButton" parent="CanvasLayer/StatusBar/TABS"]
 layout_mode = 0
-offset_left = 115.0
+offset_left = 115.00001
 offset_top = -6.0
 offset_right = 131.0
 offset_bottom = 10.0
 scale = Vector2(3, 3)
 focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_r2enu")
+texture_pressed = SubResource("AtlasTexture_r2enu")
+texture_hover = SubResource("AtlasTexture_vt2ka")
+script = ExtResource("10_dd1qt")
+metadata/tooltip = "Texbook"
+metadata/description = "An ingame FAQ"
+
+[node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/ShopTab"]
+anchors_preset = 0
+offset_left = 0.6666667
+offset_top = 18.0
+offset_right = 16.666666
+offset_bottom = 34.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab"]
+layout_mode = 0
+offset_left = 0.33333334
+offset_top = -2.666668
+offset_right = 293.33334
+offset_bottom = 391.33334
+scale = Vector2(0.333, 0.333)
+texture = SubResource("AtlasTexture_0hybe")
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 8.008012
+offset_right = 280.27798
+offset_bottom = 33.753014
+scale = Vector2(1, 1.26)
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 31
+text = "SHOP"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 41.041046
+offset_right = 258.008
+offset_bottom = 57.291046
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+theme_override_font_sizes/normal_font_size = 16
+text = "Buy items here"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 21.02102
+offset_top = 62.062065
+offset_right = 271.021
+offset_bottom = 162.06207
+columns = 2
+script = ExtResource("16_n38qo")
+
+[node name="BACKPACK-ITEM" type="VBoxContainer" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(120, 100)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM/HBoxContainer"]
+position = Vector2(59.05905, 17.017017)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("17_ehigy")
+region_enabled = true
+region_rect = Rect2(16, 28, 18, 18)
+
+[node name="Name" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+text = "Backpack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+theme_override_font_sizes/normal_font_size = 14
+text = "Store items inside"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gtncy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i10kl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lx5bl")
+text = "BUY for 10 c"
+
+[node name="BoughtLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4asc")
+text = "BOUGHT"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpTab" type="TextureButton" parent="CanvasLayer/StatusBar/TABS"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = -6.0
+offset_right = 186.0
+offset_bottom = 10.0
+scale = Vector2(3, 3)
+focus_mode = 0
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_i10kl")
 texture_pressed = SubResource("AtlasTexture_i10kl")
 texture_hover = SubResource("AtlasTexture_s4asc")
@@ -1249,11 +1405,19 @@ pitch_scale = 1.4
 attenuation = 0.0018866
 script = ExtResource("14_u2uwr")
 
+[node name="Backpack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -4)
+texture = ExtResource("17_ehigy")
+
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ExpensesTab" to="CanvasLayer/StatusBar/TABS/ExpensesTab" method="_on_button_down"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ExpensesTab" to="CanvasLayer/StatusBar/TABS/ExpensesTab/Tab/TextureRect/GridContainer" method="_on_expenses_tab_button_down"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ManageTab" to="CanvasLayer/StatusBar/TABS/ManageTab" method="_on_button_down"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ManageTab" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_manage_tab_button_down"]
 [connection signal="text_changed" from="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/restaurant_name/INPUT" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_input_text_changed"]
 [connection signal="text_changed" from="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer/noodle_base_price/INPUT" to="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect/GridContainer" method="_on_baseprice_input_text_changed"]
+[connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ShopTab" to="CanvasLayer/StatusBar/TABS/ShopTab" method="_on_button_down"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/ShopTab" to="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer" method="_on_shop_tab_pressed"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM/BuyButton" to="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer" method="_on_buy_button_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]

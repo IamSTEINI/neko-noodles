@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=21 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://pe74xpdh5ymt" path="res://scenes/Table.tscn" id="5_mwfav"]
 [ext_resource type="PackedScene" uid="uid://smjjt1loro0" path="res://scenes/Table2.tscn" id="6_3p2gp"]
 [ext_resource type="PackedScene" uid="uid://cq2ikcgppht16" path="res://scenes/PLAYER.tscn" id="9_bb450"]
-[ext_resource type="PackedScene" uid="uid://bufma3egs8w2j" path="res://scenes/item_remover.tscn" id="14_mwfav"]
-[ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="15_3p2gp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0k4"]
 texture = ExtResource("2_wp0k4")
@@ -237,9 +235,6 @@ size = Vector2(727.5, 185)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhr70"]
 radius = 10.0499
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2gp"]
-size = Vector2(46, 63)
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lhr70")
 
@@ -425,21 +420,3 @@ Tables = NodePath("../TABLES")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.369564, 0.346215, 0.445095, 1)
-
-[node name="TRASH" parent="." instance=ExtResource("14_mwfav")]
-position = Vector2(825, 1264)
-metadata/tooltip = "Trash"
-metadata/description = "It is like the first version of my game."
-
-[node name="Sprite2D" type="Sprite2D" parent="TRASH"]
-texture_filter = 1
-scale = Vector2(1.48, 1.48)
-texture = ExtResource("15_3p2gp")
-region_enabled = true
-region_rect = Rect2(1.0599365, 50.63266, 47.15735, 48.431877)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TRASH"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TRASH/StaticBody2D"]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_3p2gp")

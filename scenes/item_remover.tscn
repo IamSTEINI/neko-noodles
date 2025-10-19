@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bufma3egs8w2j"]
+[gd_scene load_steps=4 format=3 uid="uid://bufma3egs8w2j"]
 
-[ext_resource type="Script" uid="uid://beudnetm2qg7u" path="res://scripts/item_remover.gd" id="1_6xan1"]
+[ext_resource type="Script" uid="uid://beudnetm2qg7u" path="res://SCRIPTS/item_remover.gd" id="1_6xan1"]
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_x6gbh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r50tu"]
 radius = 39.8121
@@ -25,4 +26,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="INTERACTABLE" parent="." instance=ExtResource("2_x6gbh")]
+text = "Remove items"
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]

@@ -14,12 +14,14 @@ func _ready() -> void:
 
 func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 	var slot = $ItemSlot
-
+	var backpack = $Backpack
+	
 	if pickup:
 		slot.visible = true
 	else:
 		slot.visible = false
-
+		
+	
 	match direction:
 		"up":
 			if moving:
@@ -27,6 +29,8 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 			else:
 				animated_sprite_2d.play("IDLE_UP")
 			slot.visible = false
+			if Globals.bought_backpack:
+				backpack.show()
 
 		"down":
 			self.move_child($ItemSlot, self.get_child_count() - 1)
@@ -35,6 +39,7 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 			else:
 				animated_sprite_2d.play("IDLE_DOWN")
 			slot.position = Vector2(0,10)
+			backpack.hide()
 
 		"left":
 			animated_sprite_2d.flip_h = true
@@ -44,6 +49,7 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 				animated_sprite_2d.play("IDLE_SIDE")
 			self.move_child($ItemSlot, 0)
 			slot.position = Vector2(-3,10)
+			backpack.hide()
 
 		"right":
 			animated_sprite_2d.flip_h = false
@@ -53,6 +59,7 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 				animated_sprite_2d.play("IDLE_SIDE")
 			self.move_child($ItemSlot, 0)
 			slot.position = Vector2(3,10)
+			backpack.hide()
 
 
 func _physics_process(delta: float) -> void:
