@@ -14,7 +14,6 @@ func update() -> void:
 	$RichTextLabel.text = str(inventory.size())+"/"+str(capacity)
 	var needed = inventory.size()
 	
-	# Remove excess slots immediately- fkin bug made me loose an hour
 	while $InventoryUi/GridContainer.get_child_count() > needed:
 		var last_child = $InventoryUi/GridContainer.get_child($InventoryUi/GridContainer.get_child_count() - 1)
 		$InventoryUi/GridContainer.remove_child(last_child)
@@ -26,17 +25,25 @@ func update() -> void:
 		$InventoryUi/GridContainer.add_child(new_slot)
 	
 	for i in range(needed):
-		var entry = inventory[i]
-		var item_node = entry[1] as Node2D
-		if item_node.get_parent():
-			item_node.get_parent().remove_child(item_node)
-		item_node.scale = Vector2(0.75,0.75)
-		item_node.position = Vector2(12.5,12.5)
-		if item_node.get_meta("type") == "Noodle":
-			item_node.scale = Vector2(3,3)
-		if item_node.get_meta("type") == "RawNoodle":
-			item_node.scale = Vector2(0.5,0.5)
-			item_node.position = Vector2(12.5,15)
+		_update_slot_deferred.call_deferred(i)
+
+func _update_slot_deferred(i: int) -> void:
+	if i >= inventory.size():
+		return
+		
+	var entry = inventory[i]
+	var item_node = entry[1] as Node2D
+	if item_node.get_parent():
+		item_node.get_parent().remove_child(item_node)
+	item_node.scale = Vector2(0.75,0.75)
+	item_node.position = Vector2(12.5,12.5)
+	if item_node.get_meta("type") == "Noodle":
+		item_node.scale = Vector2(3,3)
+	if item_node.get_meta("type") == "RawNoodle":
+		item_node.scale = Vector2(0.5,0.5)
+		item_node.position = Vector2(12.5,15)
+	
+	if i < $InventoryUi/GridContainer.get_child_count():
 		var target_slot = $InventoryUi/GridContainer.get_child(i)
 		target_slot.add_child(item_node)
 		

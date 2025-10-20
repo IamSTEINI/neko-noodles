@@ -85,6 +85,7 @@ func _initialize_backpack() -> void:
 		new_slot.slot_clicked.connect(_on_slot_clicked)
 		Globals.log("Connected slot: " + str(index))
 		index += 1
+		backpack_container.show()
 		
 func _physics_process(delta: float) -> void:
 	var input_vec = Vector2.ZERO
@@ -139,6 +140,23 @@ func _input(event):
 		
 func _on_slot_clicked(slot_index: int):
 	Globals.log("Slot pressed: " + str(slot_index))
+	
+	var backpack_slot = $BackpackSlot
+	var item_slot = $ItemSlot
+	
+	if slot_index >= backpack_slot.get_child_count():
+		Globals.log("Invalid slot indx")
+		return
+	
+	if item_slot.get_child_count() > 0:
+		return
+	
+	var item = backpack_slot.get_child(slot_index)
+	backpack_slot.remove_child(item)
+	item_slot.add_child(item)
+	item.position = Vector2.ZERO
+	item.show()
+	_initialize_backpack()
 
 func _on_area_player_body_entered(body: Node2D) -> void:
 	if body.get_meta("type") == "player":
