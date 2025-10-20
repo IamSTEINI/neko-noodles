@@ -88,5 +88,3 @@ func _restore_items() -> void:
 				await get_tree().process_frame
 				if player.has_method("_initialize_backpack"):
 					player._initialize_backpack()
-				else:
-					Globals.refresh_inv = true

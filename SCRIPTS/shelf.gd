@@ -89,8 +89,30 @@ func _on_slot_clicked_slot(index: Variant) -> void:
 		if player_body.has_node("ItemSlot"):
 			var player_item_slot = player_body.get_node("ItemSlot")
 			if player_item_slot.get_child_count() > 0:
-				Globals.log("Playeritemslot are full")
-				return
+				if Globals.bought_backpack:
+					var backpack_slots = player_body.get_node("BackpackSlot")
+					if backpack_slots.get_child_count() < Globals.backpackCapacity:
+						var grid_slot := $InventoryUi/GridContainer.get_child(index)
+						if grid_slot.get_child_count() > 0:
+							var item_node := grid_slot.get_child(0)
+							if is_instance_valid(item_node):
+								if player_body.get_meta("type") == "player":
+									if player_body.get_node("BackpackSlot"):
+										item_node.reparent(player_body.get_node("BackpackSlot"))
+										(item_node as Node2D).position = Vector2(0,0)
+										item_node.scale = Vector2(0.5,0.5)
+										item_node.hide()
+										#item_node.position = Vector2(12.5,12.5)
+										if item_node.get_meta("type") == "Noodle":
+											item_node.scale = Vector2(2.5,2.5)
+										if item_node.get_meta("type") == "RawNoodle":
+											item_node.scale = Vector2(0.5,0.5)
+										$INTERACTABLE.can_interact = true
+										if player_body.has_method("_initialize_backpack"):
+											player_body._initialize_backpack()
+				else:
+					Globals.log("Playeritemslot are full")
+					return
 	var grid_slot := $InventoryUi/GridContainer.get_child(index)
 	if grid_slot.get_child_count() > 0:
 		var item_node := grid_slot.get_child(0)
