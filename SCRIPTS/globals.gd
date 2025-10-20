@@ -25,6 +25,8 @@ var npc_spawned: int = 0
 var spawn_interval: float = 0.0
 var spawn_accumulator: float = 0.0
 
+var refresh_inv: bool = false
+
 signal npc_spawn
 signal new_day_started(day: int)
 

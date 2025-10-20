@@ -6,11 +6,15 @@ const SPEED = 450
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var active_tab: String = ""
+@onready var slot: PackedScene = preload("res://scenes/slot.tscn")
 
 var dir = "down"
+@onready var backpack_container = $CanvasLayer/Backpack/HBoxContainer
 
 func _ready() -> void:
 	$CanvasLayer/StatusBar/Control/VISITORSTATUSBAR.Tables = Tables
+	backpack_container.hide()
+	
 
 func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 	var slot = $ItemSlot
@@ -21,7 +25,6 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 	else:
 		slot.visible = false
 		
-	
 	match direction:
 		"up":
 			if moving:
@@ -31,7 +34,7 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 			slot.visible = false
 			if Globals.bought_backpack:
 				backpack.show()
-
+			
 		"down":
 			self.move_child($ItemSlot, self.get_child_count() - 1)
 			if moving:
@@ -40,7 +43,7 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 				animated_sprite_2d.play("IDLE_DOWN")
 			slot.position = Vector2(0,10)
 			backpack.hide()
-
+		
 		"left":
 			animated_sprite_2d.flip_h = true
 			if moving:
@@ -50,7 +53,7 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 			self.move_child($ItemSlot, 0)
 			slot.position = Vector2(-3,10)
 			backpack.hide()
-
+			
 		"right":
 			animated_sprite_2d.flip_h = false
 			if moving:
@@ -61,7 +64,28 @@ func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
 			slot.position = Vector2(3,10)
 			backpack.hide()
 
-
+func _initialize_backpack() -> void:
+	Globals.log("Refreshed inventory")
+	for item in backpack_container.get_children():
+		item.queue_free()
+		
+	var index := 0
+	for item in $BackpackSlot.get_children():
+		var new_slot = slot.instantiate()
+		var item_copy = item.duplicate() as Node2D
+		
+		backpack_container.add_child(new_slot)
+		new_slot.add_child(item_copy)
+		
+		item_copy.scale = Vector2(1, 1)
+		item_copy.position = Vector2(25, 25)
+		item_copy.show()
+		
+		new_slot.index = index
+		new_slot.slot_clicked.connect(_on_slot_clicked)
+		Globals.log("Connected slot: " + str(index))
+		index += 1
+		
 func _physics_process(delta: float) -> void:
 	var input_vec = Vector2.ZERO
 	
@@ -85,7 +109,10 @@ func _physics_process(delta: float) -> void:
 			$FOOTSTEP.play()
 		input_vec.x -= 1
 		dir = "left"
-	
+		
+	if Globals.bought_backpack == true and Globals.refresh_inv == true:
+		_initialize_backpack()
+		backpack_container.show()
 	if input_vec == Vector2.ZERO and $FOOTSTEP.playing:
 		$FOOTSTEP.stop()
 	if input_vec != Vector2.ZERO:
@@ -100,21 +127,23 @@ func _physics_process(delta: float) -> void:
 		
 func _input(event):
 	var slot = $ItemSlot
-	if $ItemSlot.get_children().size() > 0:
+	if slot.get_children().size() > 0:
 		PICKUP = true
 		setDir(dir, PICKUP)
 	if event.is_action_pressed("player_pickup"):
-		if $ItemSlot.get_children().size() > 0:
+		if slot.get_children().size() > 0:
 			PICKUP = true
 			setDir(dir, PICKUP)
 		else:
 			PICKUP = !PICKUP
-
+		
+func _on_slot_clicked(slot_index: int):
+	Globals.log("Slot pressed: " + str(slot_index))
 
 func _on_area_player_body_entered(body: Node2D) -> void:
 	if body.get_meta("type") == "player":
 		Globals.log("ENTERED AREA: "+body.name)
-
+		
 
 func _on_area_player_body_exited(body: Node2D) -> void:
 	if body.get_meta("type") == "player":

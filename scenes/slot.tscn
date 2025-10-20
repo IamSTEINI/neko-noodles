@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlriqjlpu05i2"]
+
+[ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="1_4v6ba"]
+[ext_resource type="Script" uid="uid://c321fqnwf5xkf" path="res://scripts/slot.gd" id="2_ic0fu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v6ba"]
+atlas = ExtResource("1_4v6ba")
+region = Rect2(1680, 160, 48, 48)
+
+[node name="Slot" type="TextureButton"]
+z_index = 5
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+offset_right = 48.0
+offset_bottom = 48.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_4v6ba")
+texture_pressed = SubResource("AtlasTexture_4v6ba")
+texture_hover = SubResource("AtlasTexture_4v6ba")
+script = ExtResource("2_ic0fu")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
