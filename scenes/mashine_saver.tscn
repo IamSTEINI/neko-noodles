@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b68nkpc3gxdh1"]
+
+[ext_resource type="Script" uid="uid://gy6afbpwwi36" path="res://scripts/mashine_saver.gd" id="1_c1yuh"]
+
+[node name="MashineSaver" type="Node2D"]
+script = ExtResource("1_c1yuh")

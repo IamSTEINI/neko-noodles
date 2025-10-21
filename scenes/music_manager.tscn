@@ -1,24 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwoxibnh4kl0i"]
+[gd_scene load_steps=15 format=3 uid="uid://bwoxibnh4kl0i"]
 
 [ext_resource type="AudioStream" uid="uid://8vkva5751s0k" path="res://SOUNDS/CatSoundTrack.mp3" id="1_hetdf"]
-[ext_resource type="Script" uid="uid://crycsfalvg8xm" path="res://scripts/music_manager.gd" id="1_jd6i5"]
+[ext_resource type="Script" uid="uid://crycsfalvg8xm" path="res://SCRIPTS/music_manager.gd" id="1_jd6i5"]
 [ext_resource type="Script" uid="uid://dedpsgw5mui1f" path="res://SCRIPTS/Audio_music.gd" id="2_jd6i5"]
 [ext_resource type="AudioStream" uid="uid://c2d0kx2d56sbd" path="res://SOUNDS/NN-MAIN_MENU.mp3" id="2_yodp2"]
-
-[sub_resource type="Animation" id="Animation_yodp2"]
-resource_name = "fade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MUSIC:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -80.0]
-}
+[ext_resource type="AudioStream" uid="uid://otkcgqh6bpgm" path="res://SOUNDS/NN-BUSYDAY.mp3" id="4_p07gy"]
+[ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="5_jbem4"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="5_xcw26"]
+[ext_resource type="Texture2D" uid="uid://c3e3btw00bf3v" path="res://ASSETS/TEXTURES/ICONS/ICONS.png" id="7_hu6vc"]
 
 [sub_resource type="Animation" id="Animation_xcw26"]
 length = 0.001
@@ -35,15 +24,43 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_yodp2"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MUSIC:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xcw26"]
 _data = {
 &"RESET": SubResource("Animation_xcw26"),
 &"fade": SubResource("Animation_yodp2")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu6vc"]
+atlas = ExtResource("5_jbem4")
+region = Rect2(1728, 112, 193, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p07gy"]
+atlas = ExtResource("7_hu6vc")
+region = Rect2(49, 17, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb0y8"]
+atlas = ExtResource("7_hu6vc")
+region = Rect2(66, 18, 13, 13)
+
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_jd6i5")
 sounds = Dictionary[String, AudioStreamMP3]({
+"A busy day": ExtResource("4_p07gy"),
 "Main Menu": ExtResource("2_yodp2"),
 "Main Theme": ExtResource("1_hetdf")
 })
@@ -62,3 +79,53 @@ script = ExtResource("2_jd6i5")
 libraries = {
 &"": SubResource("AnimationLibrary_xcw26")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 37.0
+offset_top = 999.0
+offset_right = 197.0
+offset_bottom = 1047.0
+texture = SubResource("AtlasTexture_hu6vc")
+
+[node name="Song" type="RichTextLabel" parent="CanvasLayer/TextureRect"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 37.0
+offset_right = 152.0
+offset_bottom = 48.0
+theme = ExtResource("5_xcw26")
+text = "Playing"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ICON" type="TextureRect" parent="CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 4.9999995
+offset_top = 7.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(2.315, 2.315)
+texture = SubResource("AtlasTexture_p07gy")
+
+[node name="Skipping" type="TextureButton" parent="CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 11.0
+offset_right = 173.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_fb0y8")
+texture_pressed = SubResource("AtlasTexture_fb0y8")
+texture_hover = SubResource("AtlasTexture_fb0y8")
+texture_disabled = SubResource("AtlasTexture_fb0y8")
+
+[connection signal="pressed" from="CanvasLayer/TextureRect/Skipping" to="." method="_on_skipping_pressed"]
