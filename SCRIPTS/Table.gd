@@ -5,6 +5,8 @@ extends Node2D
 @export var food_slots: Array[Marker2D] = []
 
 func update_capacity_text() -> void:
+	if customers < 0:
+		customers = 0
 	$CAPACITY.text = str(customers)+"/"+str(capacity)
 
 func _on_interactable_interacted(body) -> void:
