@@ -14,6 +14,7 @@ var dir = "down"
 func _ready() -> void:
 	$CanvasLayer/StatusBar/Control/VISITORSTATUSBAR.Tables = Tables
 	backpack_container.hide()
+	$CanvasLayer/Backpack/ItemSlot.hide()
 	
 
 func setDir(direction: String, pickup: bool, moving: bool = true) -> void:
@@ -89,6 +90,7 @@ func _initialize_backpack() -> void:
 		
 func _physics_process(delta: float) -> void:
 	var input_vec = Vector2.ZERO
+	var slot = $ItemSlot
 	
 	if Input.is_action_pressed("player_move_up"):
 		if not $FOOTSTEP.playing:
@@ -110,6 +112,22 @@ func _physics_process(delta: float) -> void:
 			$FOOTSTEP.play()
 		input_vec.x -= 1
 		dir = "left"
+	
+	if slot.get_child_count() > 0:
+		var item = slot.get_child(0)
+		$CanvasLayer/Backpack/ItemSlot/name.text = item.get_meta("tooltip")
+		$CanvasLayer/Backpack/ItemSlot.show()
+		var ditem = item.duplicate()
+		for item_td in $CanvasLayer/Backpack/ItemSlot/product.get_children():
+			item_td.queue_free()
+		$CanvasLayer/Backpack/ItemSlot/product.add_child(ditem)
+		if ditem.get_meta("type") == "Noodle":
+			ditem.scale = Vector2(4,4)
+		else:
+			ditem.scale = Vector2(0.85,0.85)
+		ditem.position = Vector2(25,20)
+	else:
+		$CanvasLayer/Backpack/ItemSlot.hide()
 		
 	if Globals.bought_backpack == true and Globals.refresh_inv == true:
 		_initialize_backpack()

@@ -2,13 +2,28 @@ extends Node2D
 
 @export var cuttingDuration: int = 5
 @export var ToppingRaw: Node2D
-var finished = false
+@export var finished = false
+@export var save_finished = false
 @export var current_topping_type = 0
 
 func _ready() -> void:
 	ToppingRaw.hide()
 	$Progressbar.hide()
-	
+	MachineSaver.add(self)
+	if MachineSaver.has_saved(self):
+		Globals.log("MACHINE SAVER: Found saved state for"+self.name)
+		var saved_state = MachineSaver.restore_machine(self)
+		Globals.log(self.name+" HAS TOPPINGTYPE: "+str(saved_state.current_topping_type))
+		Globals.log(self.name+" IS FINISHED: "+str(saved_state.finished))
+		current_topping_type = saved_state.current_topping_type
+		save_finished = saved_state.save_finished
+		finished = save_finished
+		if save_finished:
+			$INTERACTABLE.can_interact = true
+			ToppingRaw.global_position = $Product.global_position
+			$INTERACTABLE.text = "Collect "+Globals.noodle_toppings[current_topping_type]["name"]
+			ToppingRaw.ToppingType = current_topping_type
+			ToppingRaw.show()
 func animate_progress_bar_down(duration: float) -> void:
 	$Progressbar.show()
 	var steps := 50
@@ -32,6 +47,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				current_topping_type = itemslot.get_child(0).ToppingType
 				Globals.log("Current topping: "+str(current_topping_type))
 				itemslot.get_child(0).queue_free()
+				save_finished = true
 				await animate_progress_bar_down(cuttingDuration)
 				$AnimatedSprite2D.stop()
 				$INTERACTABLE.can_interact = true
@@ -53,6 +69,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 					itemslot.add_child(new_topping)
 					Globals.log("Set toppingtype to "+str(new_topping.ToppingType))
 					finished = false
+					save_finished = false
 					$INTERACTABLE.text = "Cut"
 				else:
 					Globals.log("Cant collect topping, itemslot is full")

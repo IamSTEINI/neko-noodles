@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=131 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -672,6 +672,10 @@ bg_color = Color(0, 0, 0, 0.49803922)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua83o"]
 atlas = ExtResource("4_4ufat")
 region = Rect2(1440, 208, 480, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mmrk"]
+atlas = ExtResource("4_4ufat")
+region = Rect2(1568, 112, 160, 48)
 
 [node name="PLAYER" type="CharacterBody2D"]
 z_index = 93
@@ -1403,9 +1407,9 @@ scroll_active = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1856.0
-offset_top = 60.0
+offset_top = 142.0
 offset_right = 1906.0
-offset_bottom = 110.0
+offset_bottom = 192.0
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Backpack"]
@@ -1415,12 +1419,40 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -25.0
-offset_bottom = 25.0
+offset_left = -99.0
+offset_top = -52.0
+offset_right = 5.0
+offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ItemSlot" type="TextureRect" parent="CanvasLayer/Backpack"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -105.0
+offset_top = -82.0
+offset_right = 55.0
+offset_bottom = -34.0
+texture = SubResource("AtlasTexture_4mmrk")
+
+[node name="name" type="RichTextLabel" parent="CanvasLayer/Backpack/ItemSlot"]
+layout_mode = 0
+offset_left = 36.0
+offset_right = 156.0
+offset_bottom = 48.0
+theme = ExtResource("11_0pmnk")
+text = "Carrying"
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="product" type="Control" parent="CanvasLayer/Backpack/ItemSlot"]
+anchors_preset = 0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 44.0
 
 [node name="FOOTSTEP" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_yovmp")

@@ -28,5 +28,6 @@ vertical_alignment = 1
 
 [node name="INTERACTABLE" parent="." instance=ExtResource("2_x6gbh")]
 text = "Remove items"
+interaction_range = 40
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]

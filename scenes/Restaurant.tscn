@@ -257,7 +257,7 @@ position = Vector2(250, 1349)
 NoodleScene = ExtResource("10_0lfbe")
 
 [node name="TRASH" parent="." instance=ExtResource("16_ujk3p")]
-position = Vector2(825, 1264)
+position = Vector2(-25, 1114)
 metadata/tooltip = "Trash"
 metadata/description = "It is like the first version of my game."
 
