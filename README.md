@@ -1,7 +1,6 @@
 WORK IN PROGRESS TODOS:
 
 - NEGATIVE MONEY BUG (IDK WHERE)
-- Putting multiple items into machines bug
 - 2 Cats at one table
 - Cats stuck somewhere
 - Layering issues with assets etc
