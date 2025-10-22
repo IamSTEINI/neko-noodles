@@ -37,3 +37,7 @@ func _on_save_npcs_pressed() -> void:
 
 func _on_save_shelves_pressed() -> void:
 	ShelfSaver.save_shelves()
+
+
+func _on_build_mode_pressed() -> void:
+	Globals.buildMode = !Globals.buildMode

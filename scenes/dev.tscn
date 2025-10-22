@@ -25,7 +25,6 @@ z_index = 1000
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 11
-visible = false
 
 [node name="DEV" type="Control" parent="CanvasLayer"]
 z_index = 1895
@@ -139,6 +138,7 @@ offset_bottom = -256.0
 text = "Carrying:"
 vertical_alignment = 1
 
+[connection signal="pressed" from="CanvasLayer/DEV/BUILD MODE" to="CanvasLayer/DEV" method="_on_build_mode_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Clear NPCS" to="CanvasLayer/DEV" method="_on_clear_npcs_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Restore NPCS" to="CanvasLayer/DEV" method="_on_restore_npcs_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Save NPCS" to="CanvasLayer/DEV" method="_on_save_npcs_pressed"]

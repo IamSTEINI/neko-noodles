@@ -137,9 +137,8 @@ func _physics_process(delta: float) -> void:
 	if input_vec != Vector2.ZERO:
 		input_vec = input_vec.normalized() * SPEED
 		velocity = input_vec
-		if !Globals.buildMode:
-			move_and_slide()
-			setDir(dir, PICKUP, true)
+		move_and_slide()
+		setDir(dir, PICKUP, true)
 	else:
 		velocity = Vector2.ZERO
 		setDir(dir, PICKUP, false)

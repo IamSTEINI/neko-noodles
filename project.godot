@@ -33,6 +33,7 @@ Expenses="*res://SCRIPTS/expenses.gd"
 Speaking="*res://scenes/speaking.tscn"
 Dev="*res://scenes/dev.tscn"
 MachineSaver="*res://scenes/mashine_saver.tscn"
+Buildmode="*res://SCRIPTS/building/buildmode.gd"
 
 [display]
 

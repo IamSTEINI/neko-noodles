@@ -12,6 +12,7 @@ func change_scene(from, to_scene: String) -> void:
 	show()
 	ShelfSaver.clear_shelves()
 	last_scene_name = from.name
+	#Globals.buildMode = false
 	animation.play("TRANSITION")
 	Globals.log(from.name)
 	
@@ -51,6 +52,7 @@ func change_scene(from, to_scene: String) -> void:
 		Npcmanager.restore_npc()
 		Npcmanager.restore_table_states()
 		ShelfSaver.restore_shelves()
+		Buildmode.add_cursor()
 	
 	animation.play_backwards("TRANSITION")
 	if transfer_item != null or trans_backpack.size() > 0:

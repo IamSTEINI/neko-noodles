@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtcpaulkdy0dr"]
+
+[ext_resource type="Script" uid="uid://cnid078dtbq4h" path="res://SCRIPTS/building/buildmode.gd" id="1_c6d6f"]
+
+[node name="BuildMode" type="Node2D"]
+script = ExtResource("1_c6d6f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1780.0
+offset_top = 411.0
+offset_right = 1906.0
+offset_bottom = 442.0
+text = "CHOOSE TABLE"

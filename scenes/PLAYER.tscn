@@ -1,8 +1,7 @@
-[gd_scene load_steps=131 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=130 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
-[ext_resource type="Script" uid="uid://cdgdn60o2xw0w" path="res://SCRIPTS/Camera.gd" id="2_x3g1t"]
 [ext_resource type="Script" uid="uid://bx4ph4uwwm16t" path="res://SCRIPTS/CoinStatusBar.gd" id="3_epph1"]
 [ext_resource type="Texture2D" uid="uid://c3e3btw00bf3v" path="res://ASSETS/TEXTURES/ICONS/ICONS.png" id="4_4logd"]
 [ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="4_4ufat"]
@@ -707,7 +706,6 @@ shape = SubResource("CircleShape2D_5qx4t")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
-script = ExtResource("2_x3g1t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -1128,6 +1126,7 @@ metadata/tooltip = "Shop"
 metadata/description = "You can buy stuff there"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/ShopTab"]
+visible = false
 anchors_preset = 0
 offset_left = 0.6666667
 offset_top = 18.0

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://drcmtqsjrl3bm"]
+
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="1_2uqk7"]
+
+[node name="label" type="RichTextLabel"]
+z_index = 801
+texture_filter = 1
+offset_left = -49.0
+offset_top = -39.0
+offset_right = 51.0
+offset_bottom = -4.0
+theme = ExtResource("1_2uqk7")
+theme_override_colors/default_color = Color(0.9262844, 0, 0.01571777, 1)
+text = "- 100"
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

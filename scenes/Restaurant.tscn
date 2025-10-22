@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c76lcwmwgvfdx"]
+[gd_scene load_steps=27 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="1_551nn"]
 [ext_resource type="Script" uid="uid://da1c5xwmi3o06" path="res://SCRIPTS/restaurant.gd" id="1_mo5rl"]
@@ -33,9 +33,6 @@ size = Vector2(296, 188)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vepkb"]
 size = Vector2(520, 188)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ecg"]
-size = Vector2(174, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7psm"]
 size = Vector2(25.5, 412)
@@ -143,10 +140,6 @@ shape = SubResource("RectangleShape2D_1oedi")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="RestaurantCollisions"]
 position = Vector2(640, 994)
 shape = SubResource("RectangleShape2D_vepkb")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="RestaurantCollisions"]
-position = Vector2(987, 1087)
-shape = SubResource("RectangleShape2D_i2ecg")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="RestaurantCollisions"]
 position = Vector2(887.25, 1294)

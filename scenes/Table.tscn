@@ -12,6 +12,7 @@ radius = 109.041
 
 [sub_resource type="SystemFont" id="SystemFont_1euqw"]
 font_names = PackedStringArray("BoldPixels")
+subpixel_positioning = 0
 oversampling = 8.0
 
 [node name="TABLE" type="Node2D" node_paths=PackedStringArray("food_slots")]
@@ -19,6 +20,7 @@ script = ExtResource("1_561jp")
 food_slots = [null]
 metadata/tooltip = "Table"
 metadata/description = "Customers will order and pay here"
+metadata/building_type = "inner"
 
 [node name="INTERACTABLE" parent="." instance=ExtResource("1_2sdc1")]
 text = "SERVE FOOD"
