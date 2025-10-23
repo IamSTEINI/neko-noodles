@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=24 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://smjjt1loro0" path="res://scenes/Table2.tscn" id="6_3p2gp"]
 [ext_resource type="PackedScene" uid="uid://cq2ikcgppht16" path="res://scenes/PLAYER.tscn" id="9_bb450"]
 [ext_resource type="Script" uid="uid://bllrwvvlripl2" path="res://SCRIPTS/building/building_space.gd" id="10_lhr70"]
+[ext_resource type="Texture2D" uid="uid://clibvyynfvvrt" path="res://ASSETS/TEXTURES/GROUND/RESTAURANT.png" id="10_wp0k4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0k4"]
 texture = ExtResource("2_wp0k4")
@@ -236,6 +237,10 @@ size = Vector2(727.5, 185)
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhr70"]
 radius = 10.0499
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjd11"]
+atlas = ExtResource("10_wp0k4")
+region = Rect2(0, 0, 50, 50)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lhr70")
 
@@ -354,3 +359,9 @@ color = Color(0.369564, 0.346215, 0.445095, 1)
 
 [node name="BuildSpace" type="Node2D" parent="."]
 script = ExtResource("10_lhr70")
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(25, 25)
+texture = SubResource("AtlasTexture_bjd11")

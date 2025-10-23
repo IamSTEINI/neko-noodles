@@ -3,21 +3,67 @@ extends Node2D
 var grid_size = Buildmode.grid_size
 var grid_data = {}
 
+enum BuildingType {
+	GROUND,
+	WALL,
+	FURNITURE
+}
+
+class GridTile:
+	var node: Node
+	var type: BuildingType
+	var grid_pos: Vector2i
+	
+	func _init(n: Node, t: BuildingType, pos: Vector2i):
+		node = n
+		type = t
+		grid_pos = pos
+	
 func grid_occupied(pos: Vector2i) -> bool:
 	return grid_data.has(pos)
 
-func can_place(pos: Vector2i) -> bool:
+func get_tile(pos: Vector2i) -> GridTile:
+	if grid_data.has(pos):
+		return grid_data[pos]
+	return null
+
+func get_tile_type(pos: Vector2i) -> int:
+	var tile = get_tile(pos)
+	if tile != null:
+		return tile.type
+	return -1
+
+func is_ground(pos: Vector2i) -> bool:
+	return get_tile_type(pos) == BuildingType.GROUND
+
+func can_place(pos: Vector2i, building_type: BuildingType) -> bool:
 	if grid_occupied(pos):
 		return false
 	
 	var world_pos = Vector2(pos) * grid_size
-	if world_pos.x < -200 or world_pos.x > 2300:
+	if world_pos.x < -100 or world_pos.x > 2300:
 		return false
-	if world_pos.y < 0 or world_pos.y > 1900:
+	if world_pos.y < 200 or world_pos.y > 1900:
 		return false
 	
-	return true
+	match building_type:
+		BuildingType.GROUND:
+			return true
+		BuildingType.WALL:
+			return is_ground(pos)
+		BuildingType.FURNITURE:
+			return is_ground(pos)
+	
+	return false
 
-func add_to_grid(pos: Vector2i, node: Node):
-	grid_data[pos] = node
-	Globals.log(str(grid_data))
+func add_to_grid(pos: Vector2i, node: Node, building_type: BuildingType):
+	var tile = GridTile.new(node, building_type, pos)
+	grid_data[pos] = tile
+	Globals.log(str(grid_data.size()) + " tiles placed")
+
+func remove_from_grid(pos: Vector2i):
+	if grid_data.has(pos):
+		var tile = grid_data[pos]
+		if is_instance_valid(tile.node):
+			tile.node.queue_free()
+		grid_data.erase(pos)

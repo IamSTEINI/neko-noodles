@@ -125,7 +125,7 @@ func update_time() -> void:
 		calculate_spawn_i()
 
 	var minutes = total_minutes % 60
-
+	
 	var am_pm = "AM"
 	var hours_12 = hours_24
 	if hours_24 >= 12:
