@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=145 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -21,6 +21,9 @@
 [ext_resource type="Script" uid="uid://ckof7ja42mys6" path="res://SCRIPTS/textbook.gd" id="16_gtncy"]
 [ext_resource type="Script" uid="uid://b2e5awdh72k8l" path="res://SCRIPTS/shop.gd" id="16_n38qo"]
 [ext_resource type="Texture2D" uid="uid://bv15sl3vqa5q" path="res://ASSETS/TEXTURES/PLAYER/ITEMS.png" id="17_ehigy"]
+[ext_resource type="Script" uid="uid://c8phmfav4cokx" path="res://scripts/build_tab.gd" id="18_ehigy"]
+[ext_resource type="PackedScene" uid="uid://dk3irm812oyso" path="res://scenes/building_option.tscn" id="19_gtncy"]
+[ext_resource type="TileSet" uid="uid://csgs7ksh138ag" path="res://scenes/buildings/Restaurant-BUILDING.tres" id="20_lx5bl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
 atlas = ExtResource("1_5qx4t")
@@ -668,6 +671,43 @@ bg_color = Color(0, 0, 0, 0.49803922)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1505x"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbr4n"]
+atlas = ExtResource("4_4logd")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1505x"]
+atlas = ExtResource("4_4logd")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="ImageTexture" id="ImageTexture_ehigy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5e30"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imxgk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5jmb6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6dbgp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4ug3"]
+
+[sub_resource type="Theme" id="Theme_yobr8"]
+VScrollBar/icons/decrement = SubResource("ImageTexture_ehigy")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_ehigy")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_ehigy")
+VScrollBar/icons/increment = SubResource("ImageTexture_ehigy")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_ehigy")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_ehigy")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_g5e30")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_imxgk")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_5jmb6")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_6dbgp")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_w4ug3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbr4n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unvn8"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua83o"]
 atlas = ExtResource("4_4ufat")
 region = Rect2(1440, 208, 480, 160)
@@ -675,6 +715,9 @@ region = Rect2(1440, 208, 480, 160)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mmrk"]
 atlas = ExtResource("4_4ufat")
 region = Rect2(1568, 112, 160, 48)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2enu"]
+bg_color = Color(0, 0, 0, 0.2784314)
 
 [node name="PLAYER" type="CharacterBody2D"]
 z_index = 93
@@ -1348,6 +1391,91 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Do tutorial"
 
+[node name="BuildTab" type="TextureButton" parent="CanvasLayer/StatusBar/TABS"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = -3.0
+offset_right = 241.0
+offset_bottom = 13.0
+scale = Vector2(3, 3)
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_xbr4n")
+texture_pressed = SubResource("AtlasTexture_xbr4n")
+texture_hover = SubResource("AtlasTexture_1505x")
+script = ExtResource("10_dd1qt")
+metadata/tooltip = "Build"
+metadata/description = "Make a unique restaurant"
+
+[node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/BuildTab"]
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 16.666666
+offset_right = 17.0
+offset_bottom = 32.666664
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab"]
+layout_mode = 0
+offset_left = 0.33333334
+offset_top = -2.666668
+offset_right = 293.33334
+offset_bottom = 391.33334
+scale = Vector2(0.333, 0.333)
+texture = SubResource("AtlasTexture_0hybe")
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 8.008012
+offset_right = 280.27798
+offset_bottom = 33.753014
+scale = Vector2(1, 1.26)
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 31
+text = "BUILDING TOOL"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 41.041046
+offset_right = 258.008
+offset_bottom = 57.291046
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+theme_override_font_sizes/normal_font_size = 16
+text = "Make your restaurant unique"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Floor" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 0
+offset_left = 7.007007
+offset_top = 65.06506
+offset_right = 283.32703
+offset_bottom = 385.06506
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+title = "Floor"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Floor"]
+layout_mode = 2
+theme = SubResource("Theme_yobr8")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xbr4n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unvn8")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Floor/ScrollContainer"]
+layout_mode = 2
+columns = 2
+script = ExtResource("18_ehigy")
+build_option_scene = ExtResource("19_gtncy")
+tileset = ExtResource("20_lx5bl")
+
 [node name="NEW DAY SCREEN" parent="CanvasLayer" instance=ExtResource("11_4ufat")]
 
 [node name="Card" type="TextureRect" parent="CanvasLayer"]
@@ -1453,6 +1581,31 @@ offset_top = 4.0
 offset_right = 40.0
 offset_bottom = 44.0
 
+[node name="BuildModeInfo" type="RichTextLabel" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -162.0
+offset_top = -183.0
+offset_right = 163.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 0.14999998, 0.14999998, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2enu")
+text = "PRESS [Q] TO EXIT BUILDMODE"
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="FOOTSTEP" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_yovmp")
 pitch_scale = 1.4
@@ -1475,3 +1628,5 @@ texture = ExtResource("17_ehigy")
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM/BuyButton" to="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer" method="_on_buy_button_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]
+[connection signal="button_down" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab" method="_on_button_down"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Floor/ScrollContainer/GridContainer" method="_on_build_tab_pressed"]

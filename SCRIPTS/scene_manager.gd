@@ -12,7 +12,7 @@ func change_scene(from, to_scene: String) -> void:
 	show()
 	ShelfSaver.clear_shelves()
 	last_scene_name = from.name
-	#Globals.buildMode = false
+	Globals.buildMode = false
 	animation.play("TRANSITION")
 	Globals.log(from.name)
 	

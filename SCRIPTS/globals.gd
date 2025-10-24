@@ -8,7 +8,7 @@ var restaurant_name = "Your restaurant"
 var noodle_base_price = 0
 
 var console: RichTextLabel = null
-var buildMode: bool = true
+var buildMode: bool = false
 var tmultiplier: float = 60.0 * 2
 var intime_seconds: int = 17 * 3600
 var day: int = 1

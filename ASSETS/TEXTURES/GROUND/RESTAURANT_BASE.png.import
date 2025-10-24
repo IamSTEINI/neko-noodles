@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clibvyynfvvrt"
-path="res://.godot/imported/RESTAURANT.png-2d9e9952fc005bddbb3c9967ffbb1e6b.ctex"
+uid="uid://weiyn481s26f"
+path="res://.godot/imported/RESTAURANT_BASE.png-8889dfb8363287385ff512ea004409d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ASSETS/TEXTURES/GROUND/RESTAURANT.png"
-dest_files=["res://.godot/imported/RESTAURANT.png-2d9e9952fc005bddbb3c9967ffbb1e6b.ctex"]
+source_file="res://ASSETS/TEXTURES/GROUND/RESTAURANT_BASE.png"
+dest_files=["res://.godot/imported/RESTAURANT_BASE.png-8889dfb8363287385ff512ea004409d8.ctex"]
 
 [params]
 

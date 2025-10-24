@@ -113,6 +113,15 @@ func _physics_process(delta: float) -> void:
 		input_vec.x -= 1
 		dir = "left"
 	
+	if Input.is_action_pressed("exit_build_mode"):
+		Globals.buildMode = false
+		$CanvasLayer/BuildModeInfo.hide()
+	
+	if Globals.buildMode:
+		$CanvasLayer/BuildModeInfo.show()
+	else:
+		$CanvasLayer/BuildModeInfo.hide()
+	
 	if slot.get_child_count() > 0:
 		var item = slot.get_child(0)
 		$CanvasLayer/Backpack/ItemSlot/name.text = item.get_meta("tooltip")

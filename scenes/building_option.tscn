@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk3irm812oyso"]
+
+[ext_resource type="Texture2D" uid="uid://clibvyynfvvrt" path="res://ASSETS/TEXTURES/GROUND/RESTAURANT.png" id="1_n4o1p"]
+[ext_resource type="Script" uid="uid://dt4qrl3phru0u" path="res://scripts/building/building_option.gd" id="1_ygxxf"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="2_ygxxf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unvn8"]
+atlas = ExtResource("1_n4o1p")
+region = Rect2(0, 0, 50, 50)
+
+[node name="building_option" type="TextureButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(125, 100)
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 101.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_ygxxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(62.06206, 35.035034)
+texture = SubResource("AtlasTexture_unvn8")
+
+[node name="Name" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 0
+offset_left = 1.001001
+offset_top = 63.063065
+offset_right = 126.001
+offset_bottom = 79.76807
+mouse_filter = 1
+theme = ExtResource("2_ygxxf")
+text = "Restaurant floor"
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 80.0
+offset_right = 126.0
+offset_bottom = 96.705
+mouse_filter = 1
+theme = ExtResource("2_ygxxf")
+theme_override_colors/default_color = Color(0.86947393, 0, 0.21602905, 1)
+text = "1c"
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
