@@ -722,7 +722,7 @@ bg_color = Color(0, 0, 0, 0.2784314)
 [node name="PLAYER" type="CharacterBody2D"]
 z_index = 93
 scale = Vector2(2, 2)
-collision_mask = 2
+collision_mask = 4098
 script = ExtResource("1_4logd")
 metadata/type = "player"
 
@@ -1450,7 +1450,7 @@ text = "Make your restaurant unique"
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Floor" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect"]
+[node name="Restaurant" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 0
 offset_left = 7.007007
@@ -1461,15 +1461,15 @@ theme = ExtResource("11_0pmnk")
 theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
-title = "Floor"
+title = "Restaurant"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Floor"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Restaurant"]
 layout_mode = 2
 theme = SubResource("Theme_yobr8")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_xbr4n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_unvn8")
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Floor/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Restaurant/ScrollContainer"]
 layout_mode = 2
 columns = 2
 script = ExtResource("18_ehigy")
@@ -1591,14 +1591,16 @@ anchor_bottom = 1.0
 offset_left = -162.0
 offset_top = -183.0
 offset_right = 163.0
-offset_bottom = -143.0
+offset_bottom = -103.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 0.14999998, 0.14999998, 1)
 theme_override_font_sizes/normal_font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_r2enu")
-text = "PRESS [Q] TO EXIT BUILDMODE"
+text = "PRESS [Q] TO EXIT BUILDMODE
+LEFT CLICK TO PLACE
+RIGHT CLICK TO REMOVE"
 scroll_active = false
 autowrap_mode = 0
 autowrap_trim_flags = 0
@@ -1629,4 +1631,4 @@ texture = ExtResource("17_ehigy")
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab" method="_on_button_down"]
-[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Floor/ScrollContainer/GridContainer" method="_on_build_tab_pressed"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Restaurant/ScrollContainer/GridContainer" method="_on_build_tab_pressed"]

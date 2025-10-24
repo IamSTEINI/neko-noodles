@@ -11,10 +11,9 @@ func update_build_options():
 	for key in Buildmode.building_parts:
 		var option = Buildmode.building_parts[key]
 		Globals.log(key + " loaded from build option")
-		
 		var new_build_option = build_option_scene.instantiate()
 		new_build_option.building_price = option["price"]
-		new_build_option.building_name = key
+		new_build_option.building_name = option["name"]
 		
 		if option["type"] == 0 or option["type"] == 1:
 			if tileset == null:
@@ -32,21 +31,47 @@ func update_build_options():
 				var atlas_texture = atlas_source.texture
 				if atlas_texture == null:
 					continue
+				
 				var tile_size = atlas_source.texture_region_size
 				var separation = atlas_source.separation
 				var margin = atlas_source.margins
+				
 				var region = Rect2(
 					margin.x + atlas_coords.x * (tile_size.x + separation.x),
 					margin.y + atlas_coords.y * (tile_size.y + separation.y),
 					tile_size.x,
 					tile_size.y
 				)
+				
 				var tile_texture = AtlasTexture.new()
 				tile_texture.atlas = atlas_texture
 				tile_texture.region = region
 				new_build_option.building_sprite = tile_texture
+		
 		elif option["type"] == 2:
-			pass
+			if option["path"] is PackedScene:
+				var scene = option["path"] as PackedScene
+				var instance = scene.instantiate()
+				if instance.has_node("Sprite2D"):
+					var sprite = instance.get_node("Sprite2D") as Sprite2D
+					if sprite != null and sprite.texture != null:
+						var texture = sprite.texture
+						
+						if sprite.region_enabled:
+							var new_atlas = AtlasTexture.new()
+							new_atlas.atlas = texture
+							new_atlas.region = sprite.region_rect
+							new_build_option.building_sprite = new_atlas
+						elif texture is AtlasTexture:
+							var atlas_tex = texture as AtlasTexture
+							var new_atlas = AtlasTexture.new()
+							new_atlas.atlas = atlas_tex.atlas
+							new_atlas.region = atlas_tex.region
+							new_build_option.building_sprite = new_atlas
+						else:
+							new_build_option.building_sprite = texture
+				instance.queue_free()
+		
 		new_build_option.index = indx
 		(new_build_option as TextureButton).option_clicked.connect(_on_build_option_pressed)
 		add_child(new_build_option)
@@ -58,4 +83,12 @@ func _on_build_tab_pressed() -> void:
 func _on_build_option_pressed(index: int):
 	$"../../../..".hide()
 	Globals.buildMode = true
-	Globals.log("BUILDING Choosed "+str(index))
+	var building_keys = Buildmode.building_parts.keys()
+	if index < 0 or index >= building_keys.size():
+		return
+	var key = building_keys[index]
+	var selected_building = Buildmode.building_parts[key]
+	Buildmode.active_building_type = selected_building["type"]
+	Buildmode.active_tile = key
+	Globals.log("SET BUILDING TILE TO: " + str(key))
+	Globals.log("SET BUILDING TYPE TO: " + str(selected_building["type"]))

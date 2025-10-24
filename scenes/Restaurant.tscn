@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://c76lcwmwgvfdx"]
+[gd_scene load_steps=20 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="Script" uid="uid://da1c5xwmi3o06" path="res://SCRIPTS/restaurant.gd" id="1_mo5rl"]
 [ext_resource type="TileSet" uid="uid://csgs7ksh138ag" path="res://scenes/buildings/Restaurant-BUILDING.tres" id="2_ujk3p"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_57po2"]
-[ext_resource type="Texture2D" uid="uid://dad641m8euv03" path="res://ASSETS/TEXTURES/LIGHT/LIGHT_SQUARE.png" id="4_pwytl"]
 [ext_resource type="PackedScene" uid="uid://dr5pljjtjbjxm" path="res://scenes/machines/noodle_maker.tscn" id="5_08he2"]
 [ext_resource type="PackedScene" uid="uid://ckx7ll1bsgulx" path="res://scenes/Door.tscn" id="5_l5eli"]
 [ext_resource type="Texture2D" uid="uid://blhu67kexv6uh" path="res://ASSETS/TEXTURES/FURNITURE/IMAGE_CAT.png" id="6_8rxlq"]
@@ -79,14 +78,6 @@ text = "Wait for NPCs or
 Enter the Supermarket"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="RESTAURANT2" type="PointLight2D" parent="."]
-texture_filter = 1
-position = Vector2(675.99994, 720.00006)
-scale = Vector2(2.6, 3.1608465)
-color = Color(0.667988, 0.767558, 0.525566, 1)
-texture = ExtResource("4_pwytl")
-texture_scale = 18.9
 
 [node name="DOOR2" parent="." instance=ExtResource("5_l5eli")]
 position = Vector2(300, 810.00006)

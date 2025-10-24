@@ -2,6 +2,7 @@ WORK IN PROGRESS TODOS:
 
 - Adding y sort
 - Astar2D grid movement npcs
+- DUMPLINGS!!!
 - NEGATIVE MONEY BUG (IDK WHERE)
 - 2 Cats at one table
 - Cats stuck somewhere

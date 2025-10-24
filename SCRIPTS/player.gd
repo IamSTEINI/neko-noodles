@@ -115,6 +115,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("exit_build_mode"):
 		Globals.buildMode = false
+		Buildmode.active_tile = ""
 		$CanvasLayer/BuildModeInfo.hide()
 	
 	if Globals.buildMode:

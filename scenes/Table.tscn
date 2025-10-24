@@ -17,7 +17,7 @@ oversampling = 8.0
 
 [node name="TABLE" type="Node2D" node_paths=PackedStringArray("food_slots")]
 script = ExtResource("1_561jp")
-food_slots = [null]
+food_slots = [NodePath("FoodSlot")]
 metadata/tooltip = "Table"
 metadata/description = "Customers will order and pay here"
 metadata/building_type = "inner"
@@ -62,6 +62,9 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FoodSlot" type="Marker2D" parent="."]
+position = Vector2(0, -17)
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
 [connection signal="body_entered" from="PLAYERCHECK" to="." method="_on_playercheck_body_entered"]

@@ -226,7 +226,7 @@ func _physics_process(delta: float) -> void:
 				reached_entry = true
 			else:
 				Globals.log("No table available. Leaving")
-				say("Seems full :(")
+				say("No table :(")
 				leave()
 		elif reached_entry and not reached_table and chosen_table != null:
 			Globals.log("Table claimed: " + str(chosen_table.name))

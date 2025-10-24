@@ -32,43 +32,64 @@ func load_existing_tilemap():
 	
 	var used_cells = base_layer.get_used_cells()
 	for cell_pos in used_cells:
-		if not grid_data.has(cell_pos):
-			grid_data[cell_pos] = GridTile.new(null, BuildingType.GROUND, cell_pos)
+		var atlas_coords = base_layer.get_cell_atlas_coords(cell_pos)
+		var tile_type = get_type_from_atlas_coords(atlas_coords)
+		
+		grid_data[cell_pos] = GridTile.new(null, tile_type, cell_pos)
 	
-	Globals.log("got " + str(grid_data.size()) + " tils from tilemap")
+	Globals.log("got " + str(grid_data.size()) + " tiles from tilemap")
+
+func get_type_from_atlas_coords(coords: Vector2i) -> BuildingType:
+	for key in Buildmode.building_parts:
+		var part = Buildmode.building_parts[key]
+		if part["type"] == 0 or part["type"] == 1:
+			if part["path"] == coords:
+				return part["type"] as BuildingType
 	
+	return BuildingType.GROUND
+
+func update_tile_from_tilemap(pos: Vector2i, tile_type: int):
+	grid_data[pos] = GridTile.new(null, tile_type as BuildingType, pos)
+	Globals.log("Updated grid at " + str(pos) + " to type " + str(tile_type))
+
 func grid_occupied(pos: Vector2i) -> bool:
 	return grid_data.has(pos)
+
 func get_tile(pos: Vector2i) -> GridTile:
 	if grid_data.has(pos):
 		return grid_data[pos]
 	return null
+
 func get_tile_type(pos: Vector2i) -> int:
 	var tile = get_tile(pos)
 	if tile != null:
 		return tile.type
 	return -1
+
 func is_ground(pos: Vector2i) -> bool:
 	return get_tile_type(pos) == BuildingType.GROUND
+
 func can_place(pos: Vector2i, building_type: BuildingType) -> bool:
-	if grid_occupied(pos):
-		return false
-	
 	var world_pos = Vector2(pos) * grid_size
-	if world_pos.x < -100 or world_pos.x > 2300:
+	
+	if world_pos.x < -200 or world_pos.x > 2500:
 		return false
-	if world_pos.y < 200 or world_pos.y > 1900:
+	if world_pos.y < 0 or world_pos.y > 1700:
 		return false
 	
 	match building_type:
 		BuildingType.GROUND:
-			return true
+			return not grid_occupied(pos)
 		BuildingType.WALL:
 			return is_ground(pos)
 		BuildingType.FURNITURE:
-			return is_ground(pos)
+			if not grid_occupied(pos):
+				return false
+			var tile = get_tile(pos)
+			return tile.type == BuildingType.GROUND
 	
 	return false
+
 func add_to_grid(pos: Vector2i, node: Node, building_type: BuildingType):
 	var tile = GridTile.new(node, building_type, pos)
 	grid_data[pos] = tile
