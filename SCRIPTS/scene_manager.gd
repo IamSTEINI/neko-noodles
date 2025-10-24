@@ -16,6 +16,9 @@ func change_scene(from, to_scene: String) -> void:
 	animation.play("TRANSITION")
 	Globals.log(from.name)
 	
+	if from.name == "Main":
+		save_building_data_from_scene(from)
+	
 	if from.get_node("PLAYER"):
 		Globals.log("Playerobj found, saving items")
 		var player = from.get_node("PLAYER")
@@ -49,6 +52,7 @@ func change_scene(from, to_scene: String) -> void:
 	await get_tree().process_frame
 	
 	if to_scene == "Main":
+		restore_building_data_to_scene()
 		Npcmanager.restore_npc()
 		Npcmanager.restore_table_states()
 		ShelfSaver.restore_shelves()
@@ -57,6 +61,44 @@ func change_scene(from, to_scene: String) -> void:
 	animation.play_backwards("TRANSITION")
 	if transfer_item != null or trans_backpack.size() > 0:
 		call_deferred("_restore_items")
+
+func save_building_data_from_scene(scene: Node):
+	var build_space = scene.get_node_or_null("BuildSpace")
+	var restaurant = scene.get_node_or_null("RESTAURANT")
+	
+	if build_space == null or restaurant == null:
+		Globals.log("BuildSpace or RESTAURANT not found, skipping building save")
+		return
+	
+	var tilemap = restaurant.get_node_or_null("Restaurant-base") as TileMapLayer
+	if tilemap == null:
+		Globals.log("TileMap not found!")
+		return
+	
+	TileSaver.save_building_data(build_space.grid_data, tilemap)
+
+
+func restore_building_data_to_scene():
+	if not TileSaver.has_saved_data():
+		Globals.log("No saved building data")
+		return
+	
+	var scene = get_tree().current_scene
+	var build_space = scene.get_node_or_null("BuildSpace")
+	var restaurant = scene.get_node_or_null("RESTAURANT")
+	
+	if build_space == null or restaurant == null:
+		Globals.log("BuildSpace or RESTAURANT not found, skipping building restore")
+		return
+	
+	var tilemap = restaurant.get_node_or_null("Restaurant-base") as TileMapLayer
+	var tables_node = scene.get_node_or_null("TABLES")
+	
+	if tilemap == null:
+		Globals.log("TileMap not found!")
+		return
+	
+	TileSaver.restore_building_data(build_space, tilemap, tables_node)
 
 func _restore_items() -> void:
 	var new_scene = get_tree().current_scene

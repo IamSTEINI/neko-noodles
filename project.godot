@@ -34,6 +34,7 @@ Speaking="*res://scenes/speaking.tscn"
 Dev="*res://scenes/dev.tscn"
 MachineSaver="*res://scenes/mashine_saver.tscn"
 Buildmode="*res://SCRIPTS/building/buildmode.gd"
+TileSaver="*res://SCRIPTS/tile_saver.gd"
 
 [display]
 

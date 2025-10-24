@@ -20,7 +20,12 @@ class GridTile:
 		grid_pos = pos
 
 func _ready():
-	load_existing_tilemap()
+	if TileSaver.has_saved_data():
+		Globals.log("Found saved data in tiles")
+		await get_tree().process_frame
+	else:
+		Globals.log("No saved data")
+		load_existing_tilemap()
 
 func load_existing_tilemap():
 	var tilemap = get_tree().current_scene.get_node_or_null("RESTAURANT")
@@ -37,7 +42,7 @@ func load_existing_tilemap():
 		
 		grid_data[cell_pos] = GridTile.new(null, tile_type, cell_pos)
 	
-	Globals.log("got " + str(grid_data.size()) + " tiles from tilemap")
+	Globals.log("Loaded " + str(grid_data.size()) + " tiles from tilemap")
 
 func get_type_from_atlas_coords(coords: Vector2i) -> BuildingType:
 	for key in Buildmode.building_parts:
@@ -93,7 +98,7 @@ func can_place(pos: Vector2i, building_type: BuildingType) -> bool:
 func add_to_grid(pos: Vector2i, node: Node, building_type: BuildingType):
 	var tile = GridTile.new(node, building_type, pos)
 	grid_data[pos] = tile
-	Globals.log(str(grid_data.size()) + " tiles placed")
+	Globals.log(str(grid_data.size()) + " tiles in grid")
 
 func remove_from_grid(pos: Vector2i):
 	if grid_data.has(pos):

@@ -15,7 +15,7 @@ func _on_interactable_interacted(body) -> void:
 	if empty_slot == null:
 		Globals.log(self.name+" | All foodslots are used ("+str(food_slots.size())+")")
 	else:
-		var player_food_slot = body.get_node("ItemSlo.lt") as Marker2D
+		var player_food_slot = body.get_node("ItemSlot") as Marker2D
 		if player_food_slot.get_child_count() > 0:
 			var noodle = player_food_slot.get_child(0)
 			if noodle.get_meta("type") == "Noodle":

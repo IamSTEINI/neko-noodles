@@ -21,7 +21,7 @@
 [ext_resource type="Script" uid="uid://ckof7ja42mys6" path="res://SCRIPTS/textbook.gd" id="16_gtncy"]
 [ext_resource type="Script" uid="uid://b2e5awdh72k8l" path="res://SCRIPTS/shop.gd" id="16_n38qo"]
 [ext_resource type="Texture2D" uid="uid://bv15sl3vqa5q" path="res://ASSETS/TEXTURES/PLAYER/ITEMS.png" id="17_ehigy"]
-[ext_resource type="Script" uid="uid://c8phmfav4cokx" path="res://scripts/build_tab.gd" id="18_ehigy"]
+[ext_resource type="Script" uid="uid://c8phmfav4cokx" path="res://SCRIPTS/build_tab.gd" id="18_ehigy"]
 [ext_resource type="PackedScene" uid="uid://dk3irm812oyso" path="res://scenes/building_option.tscn" id="19_gtncy"]
 [ext_resource type="TileSet" uid="uid://csgs7ksh138ag" path="res://scenes/buildings/Restaurant-BUILDING.tres" id="20_lx5bl"]
 
