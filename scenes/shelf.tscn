@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cwsupyn3qsq8i" path="res://SCRIPTS/shelf.gd" id="1_xj574"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="3_00mi8"]
 [ext_resource type="PackedScene" uid="uid://1h5mwjlljbea" path="res://scenes/shelf-slot.tscn" id="4_viw0s"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="5_7q781"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xj574"]
 atlas = ExtResource("1_eyi4x")
@@ -72,10 +73,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyi4x"]
 size = Vector2(92, 86)
 
-[sub_resource type="SystemFont" id="SystemFont_viw0s"]
-font_names = PackedStringArray("BoldPixels")
-oversampling = 8.0
-
 [node name="Shelf" type="Node2D"]
 script = ExtResource("1_xj574")
 slot = ExtResource("4_viw0s")
@@ -116,7 +113,7 @@ offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.65, 0.795)
-theme_override_fonts/normal_font = SubResource("SystemFont_viw0s")
+theme = ExtResource("5_7q781")
 theme_override_font_sizes/normal_font_size = 20
 text = "0/0"
 scroll_active = false

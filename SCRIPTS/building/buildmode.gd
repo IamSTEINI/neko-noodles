@@ -10,6 +10,18 @@ var selected_grids: Array[Vector2i] = []
 var active_markers: Array[Node] = []
 
 @export var building_parts: Dictionary[String, Dictionary] = {
+	"table": {
+		"path": preload("res://scenes/Table.tscn"),
+		"type": 2,
+		"price": 2,
+		"name": "Table"
+	},
+	"lamp": {
+		"path": preload("res://scenes/buildings/lamp.tscn"),
+		"type": 2,
+		"price": 5,
+		"name": "Lamp"
+	},
 	"floor": {
 		"path": Vector2i(0, 0),
 		"type": 0,
@@ -93,12 +105,6 @@ var active_markers: Array[Node] = []
 		"type": 1,
 		"price": 2,
 		"name": "WALL CORNER"
-	},
-	"table": {
-		"path": preload("res://scenes/Table.tscn"),
-		"type": 2,
-		"price": 2,
-		"name": "Table"
 	}
 }
 
@@ -320,9 +326,9 @@ func handle_click(grid: Vector2i) -> void:
 					building.capacity = 1
 					tables_node.add_child(building)
 				else:
-					get_tree().current_scene.add_child(building)
+					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 			else:	
-				get_tree().current_scene.add_child(building)
+				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 			build_space.add_to_grid(grid, building, active_building_type)
 
 func handle_selection(grids: Array[Vector2i]) -> void:
@@ -347,9 +353,9 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 						building.capacity = 1
 						tables_node.add_child(building)
 					else:
-						get_tree().current_scene.add_child(building)
+						get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				else:	
-					get_tree().current_scene.add_child(building)
+					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				build_space.add_to_grid(grid, building, active_building_type)
 
 func handle_delete_click(grid: Vector2i) -> void:

@@ -22,10 +22,10 @@ border_color = Color(0.6622365, 0.4585778, 1, 1)
 
 [node name="Dev" type="Node2D"]
 z_index = 1000
+position = Vector2(13, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 11
-visible = false
 
 [node name="DEV" type="Control" parent="CanvasLayer"]
 z_index = 1895

@@ -50,8 +50,6 @@ func save_building_data(grid_data: Dictionary, tilemap: TileMapLayer):
 					furniture_data["properties"]["capacity"] = tile.node.get("capacity")
 				else:
 					furniture_data["properties"]["capacity"] = 1
-				if "customer" in tile.node:
-					furniture_data["properties"]["has_customer"] = tile.node.get("customer") != null
 			
 			saved_furniture.append(furniture_data)
 	

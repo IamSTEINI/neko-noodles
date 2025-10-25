@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://crt5l3kt22ui1"]
+
+[ext_resource type="Shader" uid="uid://by0usr4bq3vcl" path="res://Shader/gaussian_glow.gdshader" id="1_abopq"]
+[ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="2_cqd5f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8wtqc"]
+shader = ExtResource("1_abopq")
+shader_parameter/BLOOM_THRESHOLD = 0.7
+shader_parameter/BLOOM_INTENSITY = 1.5
+shader_parameter/BLUR_ITERATIONS = 3
+shader_parameter/BLUR_SIZE = 0.005
+shader_parameter/BLUR_SUBDIVISIONS = 10
+
+[node name="Lamp" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_8wtqc")
+position = Vector2(0, -50)
+scale = Vector2(2, 2)
+texture = ExtResource("2_cqd5f")
+region_enabled = true
+region_rect = Rect2(250, 100, 50, 100)
