@@ -3,12 +3,18 @@ extends GridContainer
 @export var build_option_scene: PackedScene = null
 @export var tileset: TileSet = null
 
+var ordered_keys: Array[String] = []
+
 func update_build_options():
 	for child in get_children():
 		child.queue_free()
 	
+	ordered_keys.clear()
+	for key in Buildmode.building_parts.keys():
+		ordered_keys.append(key)
+	
 	var indx = 0
-	for key in Buildmode.building_parts:
+	for key in ordered_keys:
 		var option = Buildmode.building_parts[key]
 		Globals.log(key + " loaded from build option")
 		var new_build_option = build_option_scene.instantiate()
@@ -83,12 +89,20 @@ func _on_build_tab_pressed() -> void:
 func _on_build_option_pressed(index: int):
 	$"../../../..".hide()
 	Globals.buildMode = true
-	var building_keys = Buildmode.building_parts.keys()
-	if index < 0 or index >= building_keys.size():
+	
+	if index < 0 or index >= ordered_keys.size():
+		Globals.log("ERROR: Invalid index " + str(index))
 		return
-	var key = building_keys[index]
+	
+	var key = ordered_keys[index]
+	
+	if not key in Buildmode.building_parts:
+		Globals.log("ERROR: Key not found: " + str(key))
+		return
+	
 	var selected_building = Buildmode.building_parts[key]
 	Buildmode.active_building_type = selected_building["type"]
 	Buildmode.active_tile = key
+	
 	Globals.log("SET BUILDING TILE TO: " + str(key))
 	Globals.log("SET BUILDING TYPE TO: " + str(selected_building["type"]))

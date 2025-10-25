@@ -25,6 +25,7 @@ z_index = 1000
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 11
+visible = false
 
 [node name="DEV" type="Control" parent="CanvasLayer"]
 z_index = 1895
