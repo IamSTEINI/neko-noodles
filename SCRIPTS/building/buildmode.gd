@@ -251,13 +251,13 @@ func _process(delta: float) -> void:
 			active_markers.clear()
 			
 			for grid in selected_grids:
+				var building_data = building_parts[active_tile]
 				if active_building_type == 0:
 					continue
 				elif active_building_type == 1:
 					pass
 				elif active_building_type == 2:
 					if active_tile in building_parts:
-						var building_data = building_parts[active_tile]
 						if building_data["path"] is PackedScene:
 							var pm = (building_data["path"] as PackedScene).instantiate()
 							if pm.has_node("Sprite2D") and build_space.can_place(grid, active_building_type):
@@ -266,14 +266,14 @@ func _process(delta: float) -> void:
 								preview_marker.global_position = Vector2(grid) * grid_size + Vector2(grid_size / 2, grid_size / 2)
 								preview_marker.offset = Vector2.ZERO
 								
-								var text_label = label.instantiate()
-								text_label.global_position = Vector2(grid) * grid_size + Vector2(0, -15)
-								
 								get_tree().current_scene.add_child(preview_marker)
-								get_tree().current_scene.add_child(text_label)
 								active_markers.append(preview_marker)
-								active_markers.append(text_label)
 							pm.queue_free()
+				var text_label = label.instantiate()
+				text_label.text = "-"+str(building_data["price"])
+				text_label.global_position = Vector2(grid) * grid_size + Vector2(0, -15)
+				get_tree().current_scene.add_child(text_label)
+				active_markers.append(text_label)
 		
 		elif is_deleting:
 			for marker in active_markers:
@@ -312,6 +312,9 @@ func handle_click(grid: Vector2i) -> void:
 	
 	var building_data = building_parts[active_tile]
 	
+	if building_data["price"] > Globals.money:
+		#Globals.log("Player has not enough money")
+		return
 	if active_building_type == 0 or active_building_type == 1:
 		place_ground_tile(grid, active_tile)
 		build_space.update_tile_from_tilemap(grid, active_building_type)
@@ -330,6 +333,12 @@ func handle_click(grid: Vector2i) -> void:
 			else:	
 				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 			build_space.add_to_grid(grid, building, active_building_type)
+	pay_building(building_data["price"])
+
+func pay_building(price: int) -> void:
+	Expenses.add_transaction("Building", price)
+	Globals.money -= price
+	pass
 
 func handle_selection(grids: Array[Vector2i]) -> void:
 	var build_space = get_tree().current_scene.get_node_or_null("BuildSpace")
@@ -339,6 +348,9 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 		if not build_space.can_place(grid, active_building_type):
 			continue
 		var building_data = building_parts[active_tile]
+		if building_data["price"] > Globals.money:
+			#Globals.log("Player has not enough money")
+			return
 		if active_building_type == 0 or active_building_type == 1:
 			place_ground_tile(grid, active_tile)
 			build_space.update_tile_from_tilemap(grid, active_building_type)
@@ -357,6 +369,7 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 				else:	
 					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				build_space.add_to_grid(grid, building, active_building_type)
+		pay_building(building_data["price"])
 
 func handle_delete_click(grid: Vector2i) -> void:
 	delete_tile(grid)

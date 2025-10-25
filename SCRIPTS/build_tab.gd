@@ -16,7 +16,7 @@ func update_build_options():
 	var indx = 0
 	for key in ordered_keys:
 		var option = Buildmode.building_parts[key]
-		Globals.log(key + " loaded from build option")
+		#Globals.log(key + " loaded from build option")
 		var new_build_option = build_option_scene.instantiate()
 		new_build_option.building_price = option["price"]
 		new_build_option.building_name = option["name"]

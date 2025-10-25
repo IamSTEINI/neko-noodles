@@ -21,7 +21,7 @@ class GridTile:
 
 func _ready():
 	if TileSaver.has_saved_data():
-		Globals.log("Found saved data in tiles")
+		#Globals.log("Found saved data in tiles")
 		await get_tree().process_frame
 	else:
 		Globals.log("No saved data")
@@ -98,7 +98,10 @@ func can_place(pos: Vector2i, building_type: BuildingType) -> bool:
 func add_to_grid(pos: Vector2i, node: Node, building_type: BuildingType):
 	var tile = GridTile.new(node, building_type, pos)
 	grid_data[pos] = tile
-	Globals.log(str(grid_data.size()) + " tiles in grid")
+	var navreg =  (self.get_parent().get_node("NavigationRegion2D") as NavigationRegion2D)
+	navreg.enabled = false
+	navreg.enabled = true # RELOADING
+	#Globals.log(str(grid_data.size()) + " tiles in grid")
 
 func remove_from_grid(pos: Vector2i):
 	if grid_data.has(pos):

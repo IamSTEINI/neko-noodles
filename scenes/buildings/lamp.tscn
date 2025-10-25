@@ -12,6 +12,7 @@ shader_parameter/BLUR_SIZE = 0.005
 shader_parameter/BLUR_SUBDIVISIONS = 10
 
 [node name="Lamp" type="Node2D"]
+z_index = 1
 y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
