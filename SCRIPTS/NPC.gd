@@ -50,8 +50,8 @@ func generate_name() -> String:
 
 func generate_noodle() -> Array[int]:
 	var noodle_index: int = (randi() % (Globals.noodle_types.size() - 1)) + 1
-	var topping_index: int = (randi() % (Globals.noodle_toppings.size() - 1)) + 1
-	return [noodle_index, topping_index] # Returning 0 for topping for now
+	var topping_index: int = randi() % Globals.noodle_toppings.size()
+	return [noodle_index, topping_index]
 	
 func toggle_collider(enable: bool) -> void:
 	if enable:
@@ -66,6 +66,12 @@ func apply_restore(state: Dictionary) -> void:
 		if state.get("generated_order", null):
 			$Order/OrderNoodle.NoodleType = state["generated_order"][0]
 			$Order/OrderNoodle.NoodleTopping = state["generated_order"][1]
+			if generated_order[1] != 0:
+				$Order/OrderNoodle.set_meta("tooltip", Globals.noodle_types[generated_order[0]]["name"] + " with " + Globals.noodle_toppings[generated_order[1]]["name"])
+				$Order/OrderNoodle.set_meta("description","Tasty noodles! Costs "+str(Globals.noodle_types[generated_order[0]]["price"] + Globals.noodle_types[generated_order[1]]["price"]))
+			else:
+				$Order/OrderNoodle.set_meta("tooltip", Globals.noodle_types[generated_order[0]]["name"])
+				$Order/OrderNoodle.set_meta("description","Tasty noodles! Costs "+str(Globals.noodle_types[generated_order[0]]["price"]))
 			$Order.show()
 			$Order/Progress.size = Vector2(((NPC_MAX_WAITING_TIME - state.get("wait_time", 0.0)) / NPC_MAX_WAITING_TIME) * 50, 5)
 
@@ -97,6 +103,12 @@ func _ready() -> void:
 			if generated_order:
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
+				if generated_order[1] != 0:
+					$Order/OrderNoodle.set_meta("tooltip", Globals.noodle_types[generated_order[0]]["name"] + " with " + Globals.noodle_toppings[generated_order[1]]["name"])
+					$Order/OrderNoodle.set_meta("description","Tasty noodles! Costs "+str(Globals.noodle_types[generated_order[0]]["price"] + Globals.noodle_types[generated_order[1]]["price"]))
+				else:
+					$Order/OrderNoodle.set_meta("tooltip", Globals.noodle_types[generated_order[0]]["name"])
+					$Order/OrderNoodle.set_meta("description","Tasty noodles! Costs "+str(Globals.noodle_types[generated_order[0]]["price"]))
 				$Order.show()
 				$Order/Progress.size = Vector2(((NPC_MAX_WAITING_TIME - wait_time) / NPC_MAX_WAITING_TIME) * 50, 5)
 		return
@@ -236,11 +248,20 @@ func _physics_process(delta: float) -> void:
 			Globals.log("NPC WAITING FOR ORDER AT TABLE: " + str(chosen_table.name))
 			chosen_character.play("IDLE_UP")
 			if !got_order:
-				order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"]+" with "+Globals.noodle_toppings[generated_order[1]]["name"],generated_order[0],generated_order[1], NPC_MAX_WAITING_TIME)
+				if generated_order[1] == 0:
+					order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"],generated_order[0],0, NPC_MAX_WAITING_TIME)
+				else:
+					order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"]+" with "+Globals.noodle_toppings[generated_order[1]]["name"],generated_order[0],generated_order[1], NPC_MAX_WAITING_TIME)
 				Globals.log(str(order_id)+": "+Globals.noodle_types[generated_order[0]]["name"])
 				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
+				if generated_order[1] != 0:
+					$Order/OrderNoodle.set_meta("tooltip", Globals.noodle_types[generated_order[0]]["name"] + " with " + Globals.noodle_toppings[generated_order[1]]["name"])
+					$Order/OrderNoodle.set_meta("description","Tasty noodles! Costs "+str(Globals.noodle_types[generated_order[0]]["price"] + Globals.noodle_types[generated_order[1]]["price"]))
+				else:
+					$Order/OrderNoodle.set_meta("tooltip", Globals.noodle_types[generated_order[0]]["name"])
+					$Order/OrderNoodle.set_meta("description","Tasty noodles! Costs "+str(Globals.noodle_types[generated_order[0]]["price"]))
 				await get_tree().create_timer(2).timeout
 				$Order.show()
 

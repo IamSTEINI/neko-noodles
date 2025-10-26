@@ -7,7 +7,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjd11"]
 atlas = ExtResource("2_bedda")
-region = Rect2(82.367, 4.112, 11.783, 16)
+region = Rect2(82.367, 1, 11.782997, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5dih"]
 radius = 62.5859

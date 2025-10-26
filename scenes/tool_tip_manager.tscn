@@ -15,11 +15,11 @@ script = ExtResource("1_xirlj")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 1628.9999
-offset_top = 998.0
-offset_right = 1820.9999
-offset_bottom = 1046.0
-scale = Vector2(1.47, 1.47)
+offset_left = 1521.0
+offset_top = 968.0
+offset_right = 1713.0
+offset_bottom = 1016.0
+scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_xirlj")
 
 [node name="Title" type="RichTextLabel" parent="CanvasLayer/TextureRect"]

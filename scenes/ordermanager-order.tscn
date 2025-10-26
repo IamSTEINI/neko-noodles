@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxi2a12ntqa10"]
+[gd_scene load_steps=6 format=3 uid="uid://cxi2a12ntqa10"]
 
 [ext_resource type="PackedScene" uid="uid://btdy4yx2urpem" path="res://scenes/NoodleItem.tscn" id="1_aean8"]
 [ext_resource type="Script" uid="uid://yldrscwhl1l4" path="res://SCRIPTS/ordermanager_order.gd" id="1_fxa0w"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_8rnm0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxa0w"]
 bg_color = Color(0, 0, 0, 0.5647059)
@@ -15,6 +16,7 @@ bg_color = Color(0.43226767, 0.68532324, 0, 1)
 corner_radius_bottom_left = 4
 
 [node name="ORDER" type="Panel"]
+texture_filter = 1
 custom_minimum_size = Vector2(325, 50)
 theme_override_styles/panel = SubResource("StyleBoxFlat_fxa0w")
 script = ExtResource("1_fxa0w")
@@ -25,8 +27,11 @@ position = Vector2(30, 28)
 [node name="NoodleName" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 60.0
-offset_right = 260.0
-offset_bottom = 50.0
+offset_right = 2060.0
+offset_bottom = 500.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_8rnm0")
+theme_override_font_sizes/normal_font_size = 160
 text = "Noodle name"
 scroll_active = false
 autowrap_mode = 0
@@ -35,10 +40,12 @@ vertical_alignment = 1
 [node name="Time" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 275.0
-offset_top = 12.0
-offset_right = 320.0
-offset_bottom = 37.665
+offset_right = 775.0
+offset_bottom = 500.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_8rnm0")
 theme_override_colors/default_color = Color(0.50928617, 0.50928617, 0.50928617, 1)
+theme_override_font_sizes/normal_font_size = 160
 text = "56:50"
 scroll_active = false
 autowrap_mode = 0
@@ -46,6 +53,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Progressbar" type="Panel" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_top = 44.0
 offset_right = 325.0

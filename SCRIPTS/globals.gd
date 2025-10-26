@@ -16,7 +16,7 @@ var music_volume: int = 0
 var sfx_volume: int = 0
 var ingtime: String = "12:00 AM"
 var restaurant_rating: float = 5
-@export var money: int = 30
+@export var money: int = 120
 
 var time_accumulator: float = 0.0
 
