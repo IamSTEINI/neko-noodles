@@ -70,6 +70,8 @@ func tutorial():
 	Speaking.say("Hello, is that Timmy? I just wanted to wish you good luck again with the restaurant.")
 	Speaking.say("Ensure that guests are satisfied and get what they want for a good price!")
 	Speaking.say("Also place some tables for your customers to order noodles! Just press on the build tab in the menu bar and select the table!")
+	Speaking.say("Once you've done that, you should buy a noodle cutter, oven and so on! So that you can work properly!")
+	Speaking.say("To mix toppings with cooked noodles, you must place the noodles on a side table and then interact with the topping.")
 	Speaking.say("Oh and... Thank you for buying the restaurant from my parents. I think it's better if someone younger does the work now.")
 	Speaking.say("But maybe you'll get rich with it, Timmy... Can't wait to come visit you! See you then!")
 	
