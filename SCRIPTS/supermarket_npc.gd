@@ -49,7 +49,7 @@ func wait_say() -> void:
 func start_movement_cycle() -> void:
 	while true:
 		direction = -1 if randf() < 0.5 else 1
-		update_animation()
+		update_animation(false)
 
 		var move_time = randf_range(3.0, 16.0)
 		var timer = get_tree().create_timer(move_time)
@@ -65,7 +65,7 @@ func start_movement_cycle() -> void:
 				move_and_slide()
 				if get_slide_collision_count() > 0:
 					direction *= -1
-					update_animation()
+					update_animation(false)
 			await get_tree().process_frame
 
 

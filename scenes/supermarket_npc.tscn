@@ -918,7 +918,6 @@ y_sort_enabled = true
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("1_5s7s7")
-speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 39)
