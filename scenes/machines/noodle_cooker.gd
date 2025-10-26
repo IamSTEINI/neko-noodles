@@ -1,13 +1,17 @@
 extends Node2D
 @export var cookingDuration: int = 5
-@export var NoodleCooked: Node2D
+var noodle_obj: PackedScene = preload("res://scenes/NoodleItem.tscn")
+var NoodleCooked: Node2D
 @export var finished = false
 @export var save_finished = false
 @export var current_noodle_type = 0
 var cooking = false
 
 func _ready() -> void:
-	NoodleCooked.hide()
+	NoodleCooked = noodle_obj.instantiate()
+	self.add_child(NoodleCooked)
+	if NoodleCooked:
+		NoodleCooked.hide()
 	$Progressbar.hide()
 	MachineSaver.add(self)
 	if MachineSaver.has_saved(self):

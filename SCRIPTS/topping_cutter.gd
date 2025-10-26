@@ -1,14 +1,18 @@
 extends Node2D
 
 @export var cuttingDuration: int = 5
-@export var ToppingRaw: Node2D
+var topping_obj: PackedScene = preload("res://scenes/raw_topping_item.tscn")
+var ToppingRaw: Node2D
 @export var finished = false
 @export var save_finished = false
 @export var current_topping_type = 0
 var cutting = false
 
 func _ready() -> void:
-	ToppingRaw.hide()
+	ToppingRaw = topping_obj.instantiate()
+	self.add_child(ToppingRaw)
+	if ToppingRaw:
+		ToppingRaw.hide()
 	$Progressbar.hide()
 	MachineSaver.add(self)
 	if MachineSaver.has_saved(self):

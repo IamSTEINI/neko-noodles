@@ -8,6 +8,7 @@ var selecting := false
 var start_grid: Vector2i
 var selected_grids: Array[Vector2i] = []
 var active_markers: Array[Node] = []
+var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.tscn")
 
 @export var building_parts: Dictionary[String, Dictionary] = {
 	"table": {
@@ -23,6 +24,27 @@ var active_markers: Array[Node] = []
 		"price": 5,
 		"tag": "restaurant",
 		"name": "Lamp"
+	},
+	"stove": {
+		"path": preload("res://scenes/machines/noodle_cooker.tscn"),
+		"type": 2,
+		"price": 25,
+		"tag": "machines",
+		"name": "Stove"
+	},
+	"ncutter": {
+		"path": preload("res://scenes/machines/noodle_maker.tscn"),
+		"type": 2,
+		"price": 18,
+		"tag": "machines",
+		"name": "Noodle Cutter"
+	},
+	"tcutter": {
+		"path": preload("res://scenes/machines/topping_cutter.tscn"),
+		"type": 2,
+		"price": 30,
+		"tag": "machines",
+		"name": "Topping Cutter"
 	},
 	"floor": {
 		"path": Vector2i(0, 0),
@@ -403,6 +425,7 @@ func handle_click(grid: Vector2i) -> void:
 			else:	
 				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 			build_space.add_to_grid(grid, building, active_building_type)
+				
 	pay_building(building_data["price"])
 
 func pay_building(price: int) -> void:

@@ -254,6 +254,8 @@ tile_set = ExtResource("3_kls3s")
 position = Vector2(200, 269)
 
 [node name="GLASS DOOR" parent="." instance=ExtResource("6_h2doy")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(200, 114)
 
 [node name="INTERACTABLE" parent="GLASS DOOR" instance=ExtResource("5_h2doy")]

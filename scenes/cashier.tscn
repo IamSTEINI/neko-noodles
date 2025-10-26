@@ -132,6 +132,7 @@ sprite_frames = SubResource("SpriteFrames_1g83a")
 frame_progress = 0.4818861
 
 [node name="BUYTRIGGER" type="Area2D" parent="."]
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BUYTRIGGER"]
 position = Vector2(-68.75, 63)

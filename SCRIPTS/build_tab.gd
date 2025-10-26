@@ -83,6 +83,16 @@ func update_build_options():
 							new_build_option.building_sprite = new_atlas
 						else:
 							new_build_option.building_sprite = texture
+				elif instance.has_node("AnimatedSprite2D"):
+					var anim_sprite = instance.get_node("AnimatedSprite2D") as AnimatedSprite2D
+					if anim_sprite != null and anim_sprite.sprite_frames != null:
+						var animation_name = anim_sprite.animation if anim_sprite.animation != "" else "default"
+						if anim_sprite.sprite_frames.has_animation(animation_name):
+							var frame_count = anim_sprite.sprite_frames.get_frame_count(animation_name)
+							if frame_count > 0:
+								var texture = anim_sprite.sprite_frames.get_frame_texture(animation_name, 0)
+								if texture != null:
+									new_build_option.building_sprite = texture
 				instance.queue_free()
 		
 		new_build_option.index = indx
@@ -102,7 +112,7 @@ func _on_build_tab_pressed() -> void:
 	update_build_options()
 
 func _on_build_option_pressed(index: int):
-	$"../../../..".hide()
+	$".".hide()
 	Globals.buildMode = true
 	
 	if index < 0 or index >= ordered_keys.size():
