@@ -27,13 +27,19 @@ func say(text: String) -> void:
 	queue.append(text)
 	if not speaking:
 		_process_queue()
-		
+	await _wait_until_done()
+
+func _wait_until_done() -> void:
+	while speaking:
+		await get_tree().process_frame
+
 func _process_queue() -> void:
 	speaking = true
 	var bubble = $CanvasLayer/Speakbubble
 	var orig_pos = 870
 	bubble.show()
 	var tween_in = create_tween()
+	$CanvasLayer/Speakbubble/Text.text = ""
 	bubble.modulate.a = 0.5
 	bubble.position.y = orig_pos + 120
 	tween_in.tween_property(bubble, "modulate:a", 1.0, 0.1)
@@ -55,7 +61,7 @@ func _process_queue() -> void:
 		
 	var tween_out = create_tween()
 	tween_out.tween_property(bubble, "modulate:a", 0.0, 0.1)
-	tween_out.tween_property(bubble, "position:y", orig_pos + 150, 0.65).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween_out.tween_property(bubble, "position:y", orig_pos + 150, 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	await tween_out.finished
 	$CanvasLayer/Speakbubble.hide()
 	speaking = false

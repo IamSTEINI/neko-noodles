@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=149 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -23,9 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://bv15sl3vqa5q" path="res://ASSETS/TEXTURES/PLAYER/ITEMS.png" id="17_ehigy"]
 [ext_resource type="Script" uid="uid://c8phmfav4cokx" path="res://SCRIPTS/build_tab.gd" id="18_ehigy"]
 [ext_resource type="PackedScene" uid="uid://dk3irm812oyso" path="res://scenes/building_option.tscn" id="19_gtncy"]
-[ext_resource type="Script" uid="uid://d4h78feyd523l" path="res://scripts/foldable_overwrite.gd" id="19_lx5bl"]
-[ext_resource type="Script" uid="uid://d4h78feyd523l" path="res://SCRIPTS/foldable_overwrite.gd" id="20_i10kl"]
+[ext_resource type="Script" uid="uid://d4h78feyd523l" path="res://scripts/foldable_overwrite.gd" id="20_i10kl"]
 [ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="20_r2enu"]
+[ext_resource type="Script" uid="uid://dfvnyxyioja7w" path="res://scripts/tutorial_arrow.gd" id="24_r2enu"]
 [ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="25_i10kl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
@@ -721,6 +721,10 @@ region = Rect2(1568, 112, 160, 48)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2enu"]
 bg_color = Color(0, 0, 0, 0.2784314)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unvn8"]
+atlas = ExtResource("4_4logd")
+region = Rect2(48, 0, 16, 16)
 
 [node name="PLAYER" type="CharacterBody2D"]
 z_index = 1
@@ -1476,7 +1480,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Restaurant"
 title_text_overrun_behavior = 3
-script = ExtResource("19_lx5bl")
+script = ExtResource("20_i10kl")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Restaurant"]
 visible = false
@@ -1694,6 +1698,16 @@ autowrap_trim_flags = 0
 shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TutorialArrow" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 1396.0
+offset_top = 48.0
+offset_right = 1436.0
+offset_bottom = 87.99994
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_unvn8")
+script = ExtResource("24_r2enu")
 
 [node name="FOOTSTEP" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_yovmp")
