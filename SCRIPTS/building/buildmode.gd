@@ -14,7 +14,7 @@ var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.t
 	"table": {
 		"path": preload("res://scenes/Table.tscn"),
 		"type": 2,
-		"price": 2,
+		"price": 8,
 		"tag": "restaurant",
 		"name": "Table"
 	},
