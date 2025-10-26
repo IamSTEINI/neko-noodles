@@ -7,6 +7,7 @@ var player_body: Node2D = null
 func _ready() -> void:
 	$InventoryUi.hide()
 	ShelfSaver.shelves.append(self)
+	Globals.log("Added shelf to saving")
 	update()
 
 func update() -> void:

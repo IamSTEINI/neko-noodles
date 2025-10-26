@@ -323,6 +323,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_g7kua")
 [node name="FURNITURE" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="SHELVES" type="Node2D" parent="."]
+y_sort_enabled = true
+
 [node name="ENTRY" type="Marker2D" parent="."]
 position = Vector2(295, 194)
 

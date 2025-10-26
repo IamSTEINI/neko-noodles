@@ -46,6 +46,13 @@ var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.t
 		"tag": "machines",
 		"name": "Topping Cutter"
 	},
+	"shelf": {
+		"path": preload("res://scenes/shelf.tscn"),
+		"type": 2,
+		"price": 15,
+		"tag": "restaurant",
+		"name": "Shelf"
+	},
 	"floor": {
 		"path": Vector2i(0, 0),
 		"type": 0,
@@ -422,10 +429,14 @@ func handle_click(grid: Vector2i) -> void:
 					tables_node.add_child(building)
 				else:
 					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
+			elif building_data["name"] == "Shelf":
+				var uid = randi() % 1000000
+				building.name = "Shelf_%d" % uid
+				get_tree().current_scene.get_node_or_null("SHELVES").add_child(building)
 			else:	
 				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
-			build_space.add_to_grid(grid, building, active_building_type)
 				
+			build_space.add_to_grid(grid, building, active_building_type)
 	pay_building(building_data["price"])
 
 func pay_building(price: int) -> void:
@@ -458,6 +469,10 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 						tables_node.add_child(building)
 					else:
 						get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
+				elif building_data["name"] == "Shelf":
+					var uid = randi() % 1000000
+					building.name = "Shelf_%d" % uid
+					get_tree().current_scene.get_node_or_null("SHELVES").add_child(building)
 				else:	
 					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				build_space.add_to_grid(grid, building, active_building_type)
