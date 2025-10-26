@@ -51,6 +51,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				$AnimatedSprite2D.play("Cut")
 				$INTERACTABLE.can_interact = false
 				cutting = true
+				$sound.play()
 				current_noodle_type = itemslot.get_child(0).doughType
 				Globals.log("Current noodletype: "+str(current_noodle_type))
 				itemslot.get_child(0).queue_free()
@@ -63,6 +64,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				NoodleRaw.NoodleType = current_noodle_type
 				NoodleRaw.show()
 				finished = true
+				$sound.stop()
 				cutting = false
 		else:
 			if body.has_meta("type") && body.get_meta("type") == "player":

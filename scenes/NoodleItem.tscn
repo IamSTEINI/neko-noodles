@@ -15,7 +15,7 @@ region = Rect2(24, 0, 24, 24)
 size = Vector2(7.1000004, 5.4000006)
 
 [node name="NoodleItem" type="Node2D"]
-z_index = 2
+z_index = 1
 scale = Vector2(5, 5)
 script = ExtResource("1_dmpbm")
 metadata/type = "Noodle"

@@ -50,6 +50,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				$AnimatedSprite2D.play("Cook")
 				$INTERACTABLE.can_interact = false
 				cooking = true
+				$sound.play()
 				current_noodle_type = itemslot.get_child(0).NoodleType
 				itemslot.get_child(0).queue_free()
 				save_finished = true
@@ -62,6 +63,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				$INTERACTABLE.text = "Collect Noodles"
 				finished = true
 				cooking = false
+				$sound.stop()
 		else:
 			if itemslot && itemslot.get_child_count() == 0 && finished:
 				NoodleCooked.hide()

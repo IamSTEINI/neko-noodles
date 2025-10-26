@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://dr5pljjtjbjxm"]
+[gd_scene load_steps=22 format=3 uid="uid://dr5pljjtjbjxm"]
 
 [ext_resource type="Script" uid="uid://dia0ctqf6rrrt" path="res://scenes/machines/noodle_maker.gd" id="1_wmyro"]
 [ext_resource type="Texture2D" uid="uid://bxih7virswboy" path="res://ASSETS/TEXTURES/FURNITURE/MACHINES.png" id="1_xif08"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_q28g8"]
 [ext_resource type="PackedScene" uid="uid://rjq5kilogbmu" path="res://SCRIPTS/progressbar.tscn" id="4_0rw86"]
+[ext_resource type="AudioStream" uid="uid://c6ft0n7mdksb8" path="res://SOUNDS/noodle_cutting.mp3" id="5_t1gyo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q28g8"]
 atlas = ExtResource("1_xif08")
@@ -146,6 +147,13 @@ position = Vector2(0, 21)
 
 [node name="Progressbar" parent="." instance=ExtResource("4_0rw86")]
 position = Vector2(0, -68)
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_t1gyo")
+volume_db = 10.0
+max_distance = 881.0
+attenuation = 0.14358737
+parameters/looping = true
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
 [connection signal="player_entered" from="INTERACTABLE" to="." method="_on_interactable_player_entered"]
