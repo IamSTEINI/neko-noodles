@@ -100,6 +100,7 @@ func add_to_grid(pos: Vector2i, node: Node, building_type: BuildingType):
 	grid_data[pos] = tile
 	var navreg =  (self.get_parent().get_node("NavigationRegion2D") as NavigationRegion2D)
 	navreg.enabled = false
+	$PlaceSound.play()
 	navreg.enabled = true # RELOADING
 	#Globals.log(str(grid_data.size()) + " tiles in grid")
 

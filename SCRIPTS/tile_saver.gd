@@ -28,6 +28,7 @@ func save_building_data(grid_data: Dictionary, tilemap: TileMapLayer):
 				"grid_pos": grid_pos,
 				"position": tile.node.global_position,
 				"type": tile.type,
+				"node_name": tile.node.name,
 				"properties": {}
 			}
 			
@@ -88,16 +89,20 @@ func restore_building_data(build_space: Node2D, tilemap: TileMapLayer, tables_no
 		var furniture = (building_part["path"] as PackedScene).instantiate()
 		furniture.global_position = furniture_data["position"]
 		
+		if furniture_data.has("node_name"):
+			furniture.name = furniture_data["node_name"]
+		
 		var props = furniture_data.get("properties", {})
 		if "capacity" in props:
 			furniture.set("capacity", props["capacity"])
 		
 		var scene_name = furniture_data.get("scene_name", "")
-		if scene_name != "":
-			furniture.name = scene_name
 		
 		if scene_name == "Table" and tables_node != null:
 			tables_node.add_child(furniture)
+			Globals.log(str(building_part))
+			if furniture.has_method("update_capacity_text"):
+				furniture.update_capacity_text()
 		else:
 			build_space.get_tree().current_scene.add_child(furniture)
 		
@@ -108,7 +113,7 @@ func restore_building_data(build_space: Node2D, tilemap: TileMapLayer, tables_no
 			grid_pos
 		)
 	
-	Globals.log("Restored " + str(saved_furniture.size()))
+	Globals.log("Restored " + str(saved_furniture.size()) + " furnitures")
 
 func has_saved_data() -> bool:
 	return saved_tilemap_cells.size() > 0 or saved_furniture.size() > 0

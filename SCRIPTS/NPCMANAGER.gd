@@ -61,6 +61,8 @@ func save_table_state(table: Node2D):
 		"customers": table.customers,
 	}
 	
+	Globals.log(str(state))
+	
 	table_states.append(state)
 	
 func save_npc_state(npc: Node2D):

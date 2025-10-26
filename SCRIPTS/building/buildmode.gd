@@ -133,6 +133,14 @@ func place_ground_tile(grid: Vector2i, tile_name: String):
 	var atlas_coords: Vector2i = tile_data["path"]
 	tilemap.set_cell(grid, 0, atlas_coords)
 
+func get_tile_name_from_atlas(atlas_coords: Vector2i) -> String:
+	for key in building_parts:
+		var part = building_parts[key]
+		if part["type"] == 0 or part["type"] == 1:
+			if part["path"] == atlas_coords:
+				return key
+	return ""
+
 func delete_tile(grid: Vector2i):
 	var build_space = get_tree().current_scene.get_node_or_null("BuildSpace")
 	if build_space == null:
@@ -143,9 +151,37 @@ func delete_tile(grid: Vector2i):
 		return
 	
 	if tile.type == 2:
-		build_space.remove_from_grid(grid)
+		var refund_amount = 0
+		for key in building_parts:
+			var part = building_parts[key]
+			if part["type"] == 2 and is_instance_valid(tile.node):
+				if part["name"] == tile.node.name or key in tile.node.name.to_lower():
+					refund_amount = part["price"]
+					break
+		if refund_amount > 0:
+			refund_building(refund_amount)
+		if is_instance_valid(tile.node):
+			tile.node.queue_free()
+		
+		var tilemap = (get_tree().current_scene.get_node("RESTAURANT").get_node("Restaurant-base") as TileMapLayer)
+		var atlas_coords = tilemap.get_cell_atlas_coords(grid)
+		if atlas_coords != Vector2i(-1, -1):
+			build_space.update_tile_from_tilemap(grid, 0)
+		else:
+			build_space.remove_from_grid(grid)
+		
 	elif tile.type == 1:
 		var tilemap = (get_tree().current_scene.get_node("RESTAURANT").get_node("Restaurant-base") as TileMapLayer)
+		var atlas_coords = tilemap.get_cell_atlas_coords(grid)
+		var tile_name = get_tile_name_from_atlas(atlas_coords)
+		
+		var refund_amount = 0
+		if tile_name != "" and tile_name in building_parts:
+			refund_amount = building_parts[tile_name]["price"]
+		
+		if refund_amount > 0:
+			refund_building(refund_amount)
+		
 		var ground_coords = Vector2i(0, 0)
 		for key in building_parts:
 			if building_parts[key]["type"] == 0:
@@ -153,12 +189,30 @@ func delete_tile(grid: Vector2i):
 				break
 		tilemap.set_cell(grid, 0, ground_coords)
 		build_space.update_tile_from_tilemap(grid, 0)
+		
 	elif tile.type == 0:
+		var refund_amount = 0
+		for key in building_parts:
+			var part = building_parts[key]
+			if part["type"] == 0:
+				refund_amount = part["price"]
+				break
+		if refund_amount > 0:
+			refund_building(refund_amount)
+		
 		var tilemap = (get_tree().current_scene.get_node("RESTAURANT").get_node("Restaurant-base") as TileMapLayer)
 		tilemap.erase_cell(grid)
 		build_space.remove_from_grid(grid)
 
+func refund_building(price: int) -> void:
+	Expenses.add_transaction("Build refund", price)
+	Globals.money += price
+
 func _unhandled_input(event):
+	# CHECK IF BUILD MODE IS ACTIVE
+	if not Globals.buildMode:
+		return
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -313,7 +367,6 @@ func handle_click(grid: Vector2i) -> void:
 	var building_data = building_parts[active_tile]
 	
 	if building_data["price"] > Globals.money:
-		#Globals.log("Player has not enough money")
 		return
 	if active_building_type == 0 or active_building_type == 1:
 		place_ground_tile(grid, active_tile)
@@ -325,7 +378,8 @@ func handle_click(grid: Vector2i) -> void:
 			if building_data["name"] == "Table":
 				var tables_node = get_tree().current_scene.get_node_or_null("TABLES")
 				if tables_node != null:
-					building.name = "Table"
+					var uid = randi() % 1000000
+					building.name = "Table_%d" % uid
 					building.capacity = 1
 					tables_node.add_child(building)
 				else:
@@ -336,9 +390,8 @@ func handle_click(grid: Vector2i) -> void:
 	pay_building(building_data["price"])
 
 func pay_building(price: int) -> void:
-	Expenses.add_transaction("Building", price)
+	Expenses.add_transaction("Building", -price)
 	Globals.money -= price
-	pass
 
 func handle_selection(grids: Array[Vector2i]) -> void:
 	var build_space = get_tree().current_scene.get_node_or_null("BuildSpace")
@@ -349,7 +402,6 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 			continue
 		var building_data = building_parts[active_tile]
 		if building_data["price"] > Globals.money:
-			#Globals.log("Player has not enough money")
 			return
 		if active_building_type == 0 or active_building_type == 1:
 			place_ground_tile(grid, active_tile)
@@ -361,7 +413,8 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 				if building_data["name"] == "Table":
 					var tables_node = get_tree().current_scene.get_node_or_null("TABLES")
 					if tables_node != null:
-						building.name = "Table"
+						var uid = randi() % 1000000
+						building.name = "Table_%d" % uid
 						building.capacity = 1
 						tables_node.add_child(building)
 					else:

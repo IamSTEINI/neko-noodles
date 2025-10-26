@@ -1481,6 +1481,7 @@ tileset = ExtResource("20_lx5bl")
 [node name="NEW DAY SCREEN" parent="CanvasLayer" instance=ExtResource("11_4ufat")]
 
 [node name="Card" type="TextureRect" parent="CanvasLayer"]
+visible = false
 texture_filter = 1
 offset_left = 32.0
 offset_top = 944.0
@@ -1505,6 +1506,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Card2" type="TextureRect" parent="CanvasLayer"]
+visible = false
 texture_filter = 1
 offset_left = 1414.0
 offset_top = 60.0

@@ -106,13 +106,15 @@ size = Vector2(193.5, 80)
 size = Vector2(181, 220)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvugg"]
-size = Vector2(32, 100)
+size = Vector2(32, 70)
 
 [sub_resource type="SystemFont" id="SystemFont_yvugg"]
 font_names = PackedStringArray("BoldPixels")
 subpixel_positioning = 0
 
 [node name="Cashier" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_yvugg")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -143,7 +145,7 @@ position = Vector2(118.5, 110)
 shape = SubResource("RectangleShape2D_qxk7m")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-155, 52)
+position = Vector2(-155, 67)
 shape = SubResource("RectangleShape2D_yvugg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]

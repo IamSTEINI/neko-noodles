@@ -22,7 +22,6 @@ border_color = Color(0.6622365, 0.4585778, 1, 1)
 
 [node name="Dev" type="Node2D"]
 z_index = 1000
-position = Vector2(13, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 11
@@ -33,9 +32,9 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1907.0
+offset_left = -1920.0
 offset_top = 1045.0
-offset_right = -1407.0
+offset_right = -1420.0
 offset_bottom = 1085.0
 grow_horizontal = 0
 script = ExtResource("1_wpru5")

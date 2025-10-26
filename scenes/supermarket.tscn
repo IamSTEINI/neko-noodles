@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://qqwbl5phxpdw"]
+[gd_scene load_steps=26 format=4 uid="uid://qqwbl5phxpdw"]
 
 [ext_resource type="Script" uid="uid://d02er2tdb32s1" path="res://SCRIPTS/supermarket.gd" id="1_kls3s"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="1_vi15o"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dwm4cbyk2pkah" path="res://scenes/raw_topping_item.tscn" id="10_wu55y"]
 [ext_resource type="PackedScene" uid="uid://bufma3egs8w2j" path="res://scenes/item_remover.tscn" id="12_ljydn"]
 [ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="13_twprl"]
+[ext_resource type="PackedScene" uid="uid://ynuiw244nh02" path="res://scenes/supermarket_npc.tscn" id="14_twprl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07jrh"]
 texture = ExtResource("1_vi15o")
@@ -210,7 +211,7 @@ size = Vector2(2440, 28)
 size = Vector2(170, 30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2c0dq"]
-radius = 36.0
+radius = 23.537205
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc56d"]
 size = Vector2(108, 1111)
@@ -219,6 +220,7 @@ size = Vector2(108, 1111)
 size = Vector2(46, 63)
 
 [node name="Supermarket" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_kls3s")
 
 [node name="GROUND" type="TileMapLayer" parent="."]
@@ -241,13 +243,14 @@ tile_map_data = PackedByteArray("AAABAAAAAAADAAIAAAACAAAAAAAEAAIAAAA=")
 tile_set = ExtResource("3_kls3s")
 
 [node name="SM-BASE" type="TileMapLayer" parent="."]
+z_index = 1
+y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAABAAAAAAADAAIAAAACAAAAAAAEAAIAAAABAAgAAAABAAQAAAABAAkAAAABAAQAAAABAAoAAAABAAQAAAABAAsAAAABAAQAAAABAAwAAAABAAQAAAABAA0AAAABAAQAAAABAA4AAAABAAQAAAABAA8AAAABAAQAAAABABAAAAABAAQAAAABABEAAAABAAQAAAACABEAAAABAAQAADACABAAAAABAAQAADACAA8AAAABAAQAADACAA4AAAABAAQAADACAA0AAAABAAQAADACAAwAAAABAAQAADACAAsAAAABAAQAADACAAoAAAABAAQAADACAAkAAAABAAQAADACAAgAAAABAAQAADABABIAAAABAAUAAAACABIAAAABAAUAAGACAAcAAAABAAUAADABAAcAAAABAAUAAFAEAAgAAAABAAQAAAAEAAkAAAABAAQAAAAEAAoAAAABAAQAAAAEAAsAAAABAAQAAAAEAAwAAAABAAQAAAAEAA0AAAABAAQAAAAEAA4AAAABAAQAAAAEAA8AAAABAAQAAAAEABAAAAABAAQAAAAEABEAAAABAAQAAAAFAAgAAAABAAQAADAFAAkAAAABAAQAADAFAAoAAAABAAQAADAFAAsAAAABAAQAADAFAAwAAAABAAQAADAFAA0AAAABAAQAADAFAA4AAAABAAQAADAFAA8AAAABAAQAADAFABAAAAABAAQAADAFABEAAAABAAQAADAEABIAAAABAAUAAAAFABIAAAABAAUAAGAEAAcAAAABAAUAAFAFAAcAAAABAAUAADAHAAgAAAABAAQAAAAHAAkAAAABAAQAAAAHAAoAAAABAAQAAAAHAAsAAAABAAQAAAAHAAwAAAABAAQAAAAHAA0AAAABAAQAAAAHAA4AAAABAAQAAAAHAA8AAAABAAQAAAAHABAAAAABAAQAAAAHABEAAAABAAQAAAAIAAgAAAABAAQAADAIAAkAAAABAAQAADAIAAoAAAABAAQAADAIAAsAAAABAAQAADAIAAwAAAABAAQAADAIAA0AAAABAAQAADAIAA4AAAABAAQAADAIAA8AAAABAAQAADAIABAAAAABAAQAADAIABEAAAABAAQAADAHAAcAAAABAAUAAFAIAAcAAAABAAUAADAIABIAAAABAAUAAGAHABIAAAABAAUAAAD9/wgAAAAAAAUAAAALAAwAAAAAAAUAAAD5/wwAAAAAAAQAAGD5/w0AAAAAAAQAAGD5/w4AAAAAAAQAAGD5/w8AAAAAAAQAAGD5/xAAAAAAAAQAAGD5/xEAAAAAAAQAAGD5/xIAAAAAAAQAAGAOAAgAAAAAAAQAAGAOAAkAAAAAAAQAAGAOAAoAAAAAAAQAAGAOAAsAAAAAAAQAAGAOAAwAAAAAAAQAAGAOAA0AAAAAAAQAAGAOAA4AAAAAAAQAAGAOAA8AAAAAAAQAAGAOABAAAAAAAAQAAGAOABEAAAAAAAQAAGAOABIAAAAAAAQAAGD+/wYAAAAAAAYAAAD+/wcAAAAAAAcAAAAKAAoAAAAAAAYAABAKAAsAAAAAAAcAABD5/wsAAAAAAAQAAGD5/woAAAAAAAQAAGD5/wkAAAAAAAQAAGD5/wgAAAAAAAQAAGD5/wcAAAAAAAQAAGA=")
 tile_set = ExtResource("3_kls3s")
 
 [node name="PLAYER" parent="." instance=ExtResource("2_07jrh")]
-z_index = 91
 position = Vector2(200, 269)
 
 [node name="GLASS DOOR" parent="." instance=ExtResource("6_h2doy")]
@@ -295,7 +298,7 @@ position = Vector2(1585, 315)
 shape = SubResource("RectangleShape2D_3obmj")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Supermarketcollisions"]
-position = Vector2(-251, 868)
+position = Vector2(-251, 873)
 shape = SubResource("CircleShape2D_2c0dq")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Supermarketcollisions"]
@@ -332,6 +335,7 @@ position = Vector2(1196, 417)
 position = Vector2(357, 417)
 
 [node name="ItemGiver" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1847)
 item = NodePath("DoughItem")
 text = "Soba"
@@ -341,6 +345,7 @@ doughType = 2
 metadata/buy_price = 2
 
 [node name="ItemGiver2" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1748)
 item = NodePath("DoughItem")
 text = "Udon"
@@ -350,6 +355,7 @@ doughType = 1
 metadata/buy_price = 2
 
 [node name="ItemGiver3" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1644)
 item = NodePath("DoughItem")
 text = "Somen"
@@ -359,6 +365,7 @@ doughType = 3
 metadata/buy_price = 2
 
 [node name="ItemGiver4" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1549)
 item = NodePath("DoughItem")
 text = "Hiyamugi"
@@ -368,6 +375,7 @@ doughType = 4
 metadata/buy_price = 2
 
 [node name="ItemGiver5" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1448)
 item = NodePath("DoughItem")
 text = "Shirataki"
@@ -377,6 +385,7 @@ doughType = 5
 metadata/buy_price = 2
 
 [node name="ItemGiver6" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1348)
 item = NodePath("DoughItem")
 text = "Yakisoba"
@@ -386,6 +395,7 @@ doughType = 6
 metadata/buy_price = 2
 
 [node name="ItemGiver7" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1252)
 item = NodePath("DoughItem")
 text = "Harusame"
@@ -407,6 +417,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ItemGiver8" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 750)
 item = NodePath("RawToppingItem")
 text = "Ajatama"
@@ -418,6 +429,7 @@ metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [node name="ItemGiver9" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 848)
 item = NodePath("RawToppingItem")
 text = "Menma"
@@ -429,6 +441,7 @@ metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [node name="ItemGiver10" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 944)
 item = NodePath("RawToppingItem")
 text = "Negi"
@@ -440,6 +453,7 @@ metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [node name="ItemGiver11" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1044)
 item = NodePath("RawToppingItem")
 text = "Narutomaki"
@@ -451,6 +465,7 @@ metadata/type = "ToppingRaw"
 metadata/buy_price = 1
 
 [node name="ItemGiver12" parent="." node_paths=PackedStringArray("item") instance=ExtResource("8_2c0dq")]
+z_index = 5
 position = Vector2(-643, 1148)
 item = NodePath("RawToppingItem")
 text = "Edamame"
@@ -496,5 +511,32 @@ region_rect = Rect2(1.0599365, 50.63266, 47.15735, 48.431877)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TRASH2/StaticBody2D2"]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_1nq08")
+
+[node name="SupermarketNPC" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(0, 1921)
+
+[node name="SupermarketNPC2" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(357, 1921)
+
+[node name="SupermarketNPC3" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(1196, 1921)
+
+[node name="SupermarketNPC4" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(941, 1921)
+
+[node name="SupermarketNPC5" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(675, 1448)
+
+[node name="SupermarketNPC6" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(343, 1224)
+
+[node name="SupermarketNPC7" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(-279, 1302)
+
+[node name="SupermarketNPC8" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(-479, 1819)
+
+[node name="SupermarketNPC9" parent="." instance=ExtResource("14_twprl")]
+position = Vector2(1123, 315)
 
 [connection signal="interacted" from="GLASS DOOR/INTERACTABLE" to="." method="_on_interactable_interacted"]
