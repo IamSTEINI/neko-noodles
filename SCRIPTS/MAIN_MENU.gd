@@ -18,7 +18,7 @@ func _on_texture_button_pressed() -> void:
 	await get_tree().create_timer(1).timeout
 	Globals.tutorial()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	Globals.music_volume = $SETTINGS/HSlider.value - 40
 	Globals.sfx_volume = $SETTINGS/HSlider2.value - 40
 	$SETTINGS/HSlider/RichTextLabel.text = str((Globals.music_volume + 40) * 2)

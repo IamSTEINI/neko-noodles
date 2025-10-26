@@ -28,7 +28,7 @@ func interact():
 	)
 	emit_signal("interacted", player_body)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if can_interact && player_body != null:
 		var key_is_pressed = Input.is_physical_key_pressed(interact_key)
 		

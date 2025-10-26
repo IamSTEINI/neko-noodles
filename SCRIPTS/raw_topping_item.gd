@@ -2,7 +2,7 @@ extends Node2D
 
 @export var ToppingType: int
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(ToppingType == 0):
 		$TOPPING.hide()
 	else:
