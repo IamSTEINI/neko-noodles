@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var NoodleScene: PackedScene = null
+var NoodleScene: PackedScene = preload("res://scenes/NoodleItem.tscn")
 
 func _on_interactable_interacted(body: Node2D) -> void:
 	if body.get_meta("type") == "player":

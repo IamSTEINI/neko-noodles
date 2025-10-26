@@ -53,6 +53,13 @@ var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.t
 		"tag": "restaurant",
 		"name": "Shelf"
 	},
+	"sidetable": {
+		"path": preload("res://scenes/side_table.tscn"),
+		"type": 2,
+		"price": 10,
+		"tag": "restaurant",
+		"name": "Side Table"
+	},
 	"floor": {
 		"path": Vector2i(0, 0),
 		"type": 0,
