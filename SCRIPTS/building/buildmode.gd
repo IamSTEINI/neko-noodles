@@ -14,96 +14,112 @@ var active_markers: Array[Node] = []
 		"path": preload("res://scenes/Table.tscn"),
 		"type": 2,
 		"price": 2,
+		"tag": "restaurant",
 		"name": "Table"
 	},
 	"lamp": {
 		"path": preload("res://scenes/buildings/lamp.tscn"),
 		"type": 2,
 		"price": 5,
+		"tag": "restaurant",
 		"name": "Lamp"
 	},
 	"floor": {
 		"path": Vector2i(0, 0),
 		"type": 0,
 		"price": 1,
+		"tag": "tiles",
 		"name": "FLOOR"
 	},
 	"wall-l": {
 		"path": Vector2i(0, 1),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "LEFT WALL"
 	},
 	"wall-r": {
 		"path": Vector2i(1, 0),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "RIGHT WALL"
 	},
 	"wall-b": {
 		"path": Vector2i(1, 1),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "BOTTOM WALL"
 	},
 	"wall-t": {
 		"path": Vector2i(1, 3),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "TOP WALL"
 	},
 	"wall-tt": {
 		"path": Vector2i(1, 2),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "TOP WALL"
 	},
 	"corner-wall-r": {
 		"path": Vector2i(2, 1),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "RIGHT CORNER"
 	},
 	"corner-wall-l": {
 		"path": Vector2i(3, 1),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "LEFT CORNER"
 	},
 	"corner-small-l": {
 		"path": Vector2i(3, 0),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "SMALL CORNER"
 	},
 	"corner-small-r": {
 		"path": Vector2i(2, 0),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "SMALL CORNER"
 	},
 	"corner-t-r": {
 		"path": Vector2i(2, 3),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "WALL CORNER"
 	},
 	"corner-t-l": {
 		"path": Vector2i(0, 3),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "WALL CORNER"
 	},
 	"corner-tt-r": {
 		"path": Vector2i(2, 2),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "WALL CORNER"
 	},
 	"corner-tt-l": {
 		"path": Vector2i(0, 2),
 		"type": 1,
 		"price": 2,
+		"tag": "tiles",
 		"name": "WALL CORNER"
 	}
 }

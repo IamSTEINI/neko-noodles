@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=148 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -23,7 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://bv15sl3vqa5q" path="res://ASSETS/TEXTURES/PLAYER/ITEMS.png" id="17_ehigy"]
 [ext_resource type="Script" uid="uid://c8phmfav4cokx" path="res://SCRIPTS/build_tab.gd" id="18_ehigy"]
 [ext_resource type="PackedScene" uid="uid://dk3irm812oyso" path="res://scenes/building_option.tscn" id="19_gtncy"]
-[ext_resource type="TileSet" uid="uid://csgs7ksh138ag" path="res://scenes/buildings/Restaurant-BUILDING.tres" id="20_lx5bl"]
+[ext_resource type="Script" uid="uid://d4h78feyd523l" path="res://scripts/foldable_overwrite.gd" id="19_lx5bl"]
+[ext_resource type="Script" uid="uid://d4h78feyd523l" path="res://SCRIPTS/foldable_overwrite.gd" id="20_i10kl"]
+[ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="20_r2enu"]
+[ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="25_i10kl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
 atlas = ExtResource("1_5qx4t")
@@ -1045,7 +1048,7 @@ offset_top = -6.0
 offset_right = 76.0
 offset_bottom = 10.0
 scale = Vector2(3, 3)
-focus_mode = 1
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_lx5bl")
 texture_pressed = SubResource("AtlasTexture_lx5bl")
@@ -1415,6 +1418,9 @@ offset_left = 1.0
 offset_top = 16.666666
 offset_right = 17.0
 offset_bottom = 32.666664
+script = ExtResource("18_ehigy")
+build_option_scene = ExtResource("19_gtncy")
+tileset = ExtResource("20_r2enu")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab"]
 layout_mode = 0
@@ -1452,31 +1458,108 @@ text = "Make your restaurant unique"
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Restaurant" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect"]
-custom_minimum_size = Vector2(269.13, 0)
+[node name="GridContainer" type="VBoxContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect"]
 layout_mode = 0
-offset_left = 7.007007
-offset_top = 65.06506
-offset_right = 283.32703
-offset_bottom = 385.06506
+offset_left = 4.004004
+offset_top = 63.06307
+offset_right = 273.004
+offset_bottom = 388.06308
+
+[node name="Restaurant" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
 theme = ExtResource("11_0pmnk")
 theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
 title = "Restaurant"
+title_text_overrun_behavior = 3
+script = ExtResource("19_lx5bl")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Restaurant"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Restaurant"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_yobr8")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_xbr4n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_unvn8")
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Restaurant/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Restaurant/ScrollContainer"]
 layout_mode = 2
 columns = 2
-script = ExtResource("18_ehigy")
-build_option_scene = ExtResource("19_gtncy")
-tileset = ExtResource("20_lx5bl")
+
+[node name="Tiles" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Tiles"
+title_text_overrun_behavior = 3
+script = ExtResource("20_i10kl")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Tiles"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_yobr8")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xbr4n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unvn8")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Tiles/ScrollContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Machines" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Machines"
+title_text_overrun_behavior = 3
+script = ExtResource("20_i10kl")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Machines"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_yobr8")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xbr4n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unvn8")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Machines/ScrollContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Other" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Other"
+title_text_overrun_behavior = 3
+script = ExtResource("20_i10kl")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Other"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_yobr8")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xbr4n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unvn8")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/GridContainer/Other/ScrollContainer"]
+layout_mode = 2
+columns = 2
 
 [node name="NEW DAY SCREEN" parent="CanvasLayer" instance=ExtResource("11_4ufat")]
 
@@ -1623,6 +1706,12 @@ texture_filter = 1
 position = Vector2(0, -4)
 texture = ExtResource("17_ehigy")
 
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_i10kl")
+pitch_scale = 3.0
+max_distance = 4096.0
+attenuation = 8.337663e-05
+
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ExpensesTab" to="CanvasLayer/StatusBar/TABS/ExpensesTab" method="_on_button_down"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ExpensesTab" to="CanvasLayer/StatusBar/TABS/ExpensesTab/Tab/TextureRect/GridContainer" method="_on_expenses_tab_button_down"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ManageTab" to="CanvasLayer/StatusBar/TABS/ManageTab" method="_on_button_down"]
@@ -1635,4 +1724,4 @@ texture = ExtResource("17_ehigy")
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab" method="_on_button_down"]
-[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab/Tab/TextureRect/Restaurant/ScrollContainer/GridContainer" method="_on_build_tab_pressed"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab/Tab" method="_on_build_tab_pressed"]

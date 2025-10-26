@@ -1,4 +1,4 @@
-extends GridContainer
+extends Control
 
 @export var build_option_scene: PackedScene = null
 @export var tileset: TileSet = null
@@ -6,7 +6,13 @@ extends GridContainer
 var ordered_keys: Array[String] = []
 
 func update_build_options():
-	for child in get_children():
+	for child in $TextureRect/GridContainer/Restaurant/ScrollContainer/GridContainer.get_children():
+		child.queue_free()
+	for child in $TextureRect/GridContainer/Tiles/ScrollContainer/GridContainer.get_children():
+		child.queue_free()
+	for child in $TextureRect/GridContainer/Other/ScrollContainer/GridContainer.get_children():
+		child.queue_free()
+	for child in $TextureRect/GridContainer/Machines/ScrollContainer/GridContainer.get_children():
 		child.queue_free()
 	
 	ordered_keys.clear()
@@ -20,6 +26,7 @@ func update_build_options():
 		var new_build_option = build_option_scene.instantiate()
 		new_build_option.building_price = option["price"]
 		new_build_option.building_name = option["name"]
+		new_build_option.tag = option["tag"]
 		
 		if option["type"] == 0 or option["type"] == 1:
 			if tileset == null:
@@ -80,7 +87,15 @@ func update_build_options():
 		
 		new_build_option.index = indx
 		(new_build_option as TextureButton).option_clicked.connect(_on_build_option_pressed)
-		add_child(new_build_option)
+		if new_build_option.tag == "restaurant":
+			$TextureRect/GridContainer/Restaurant/ScrollContainer/GridContainer.add_child(new_build_option)
+		elif new_build_option.tag == "tiles":
+			$TextureRect/GridContainer/Tiles/ScrollContainer/GridContainer.add_child(new_build_option)
+		elif new_build_option.tag == "machines":
+			$TextureRect/GridContainer/Machines/ScrollContainer/GridContainer.add_child(new_build_option)
+		else:
+			$TextureRect/GridContainer/Other/ScrollContainer/GridContainer.add_child(new_build_option)
+			
 		indx += 1
 
 func _on_build_tab_pressed() -> void: 

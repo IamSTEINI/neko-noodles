@@ -1,6 +1,42 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://gb11unwscbj2"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://gb11unwscbj2"]
 
 [ext_resource type="FontFile" uid="uid://irf44j3ifgne" path="res://BoldPixels.ttf" id="1_12lif"]
 
+[sub_resource type="DPITexture" id="DPITexture_12lif"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".45\" stroke-width=\"2\" d=\"m5 7 3 3 3-3\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_jqf54"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".45\" stroke-width=\"2\" d=\"m11.011063 9.9776246-3.0222094-2.9776246-2.9776247 3.02221\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_e3do2"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".45\" stroke-width=\"2\" d=\"m6 11 3-3-3-3\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_j7b23"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".45\" stroke-width=\"2\" d=\"m9 11-3-3 3-3\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7b23"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [resource]
 default_font = ExtResource("1_12lif")
+FoldableContainer/colors/collapsed_font_color = Color(1, 1, 1, 1)
+FoldableContainer/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+FoldableContainer/colors/font_outline_color = Color(1, 1, 1, 1)
+FoldableContainer/colors/hover_font_color = Color(0.95, 0.95, 0.95, 1)
+FoldableContainer/constants/h_separation = 2
+FoldableContainer/constants/outline_size = 0
+FoldableContainer/font_sizes/font_size = 18
+FoldableContainer/icons/expanded_arrow = SubResource("DPITexture_12lif")
+FoldableContainer/icons/expanded_arrow_mirrored = SubResource("DPITexture_jqf54")
+FoldableContainer/icons/folded_arrow = SubResource("DPITexture_e3do2")
+FoldableContainer/icons/folded_arrow_mirrored = SubResource("DPITexture_j7b23")
+FoldableContainer/styles/focus = SubResource("StyleBoxFlat_j7b23")
+FoldableContainer/styles/panel = SubResource("StyleBoxFlat_j7b23")
+FoldableContainer/styles/title_collapsed_hover_panel = SubResource("StyleBoxFlat_j7b23")
+FoldableContainer/styles/title_collapsed_panel = SubResource("StyleBoxFlat_j7b23")
+FoldableContainer/styles/title_hover_panel = SubResource("StyleBoxFlat_j7b23")
+FoldableContainer/styles/title_panel = SubResource("StyleBoxFlat_j7b23")

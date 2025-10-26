@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cld5xtwr1yq5i"]
+[gd_scene load_steps=43 format=3 uid="uid://cld5xtwr1yq5i"]
 
 [ext_resource type="Script" uid="uid://bul7fr50u68xc" path="res://SCRIPTS/MAIN_MENU.gd" id="1_v0qjw"]
 [ext_resource type="Shader" uid="uid://by0usr4bq3vcl" path="res://Shader/gaussian_glow.gdshader" id="2_7260r"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="8_skpiv"]
 [ext_resource type="Script" uid="uid://bgvlsw3pcmv1r" path="res://SCRIPTS/Main_menu_player.gd" id="9_mwmg2"]
 [ext_resource type="Texture2D" uid="uid://cjrgfvtcn6hom" path="res://ASSETS/TEXTURES/ICONS/UI.png" id="10_7260r"]
+[ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="11_l3124"]
 [ext_resource type="Texture2D" uid="uid://cqhddm1yhpbfm" path="res://ASSETS/TEXTURES/PLAYER/p_f_idle_holding.png" id="12_kiw3d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5cvai"]
@@ -382,6 +383,12 @@ offset_bottom = 67.0
 texture_normal = SubResource("AtlasTexture_8wqjl")
 texture_pressed = SubResource("AtlasTexture_kiw3d")
 stretch_mode = 0
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_l3124")
+pitch_scale = 3.0
+max_distance = 4096.0
+attenuation = 8.337663e-05
 
 [connection signal="pressed" from="Camera2D/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Camera2D/TextureButton2" to="." method="_on_settings_button_pressed"]

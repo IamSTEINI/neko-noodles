@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgao84v33wejx"]
+[gd_scene load_steps=16 format=3 uid="uid://dgao84v33wejx"]
 
-[ext_resource type="Script" uid="uid://72h6uv0mv5fu" path="res://scripts/speaking.gd" id="1_ex73r"]
+[ext_resource type="Script" uid="uid://72h6uv0mv5fu" path="res://SCRIPTS/speaking.gd" id="1_ex73r"]
 [ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="1_yka5h"]
 [ext_resource type="Texture2D" uid="uid://b80b5blddsbj7" path="res://ASSETS/TEXTURES/ICONS/Talking_cat.png" id="2_ex73r"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_nqak2"]
 [ext_resource type="AudioStream" uid="uid://b2bvyjrqfg7dv" path="res://SOUNDS/cat_talking.mp3" id="5_nqak2"]
+[ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="6_3obln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2enu"]
 atlas = ExtResource("1_yka5h")
@@ -148,5 +149,11 @@ stream = ExtResource("5_nqak2")
 volume_db = 13.465
 max_distance = 4096.0
 attenuation = 1e-05
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3obln")
+pitch_scale = 3.0
+max_distance = 4096.0
+attenuation = 8.337663e-05
 
 [connection signal="pressed" from="CanvasLayer/Speakbubble/SKIP" to="." method="_on_skip_pressed"]

@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b2bvyjrqfg7dv" path="res://SOUNDS/cat_talking.mp3" id="3_h6uj1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twprl"]
-radius = 15.811388
+radius = 32.01562
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rv78h"]
 atlas = ExtResource("2_h6uj1")

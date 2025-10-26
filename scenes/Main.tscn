@@ -384,5 +384,7 @@ script = ExtResource("10_lhr70")
 
 [node name="PlaceSound" type="AudioStreamPlayer2D" parent="BuildSpace"]
 stream = ExtResource("9_q8u5g")
+volume_db = 10.0
+pitch_scale = 0.89
 max_distance = 4096.0
 attenuation = 4.168829e-05

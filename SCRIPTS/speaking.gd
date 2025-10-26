@@ -61,6 +61,7 @@ func _process_queue() -> void:
 	speaking = false
 	
 func _on_skip_pressed() -> void:
+	$Click.play()
 	if typing:
 		skip = true
 	else:

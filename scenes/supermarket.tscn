@@ -214,7 +214,7 @@ size = Vector2(170, 30)
 radius = 23.537205
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc56d"]
-size = Vector2(108, 1111)
+size = Vector2(121, 1111)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1nq08"]
 size = Vector2(46, 63)
@@ -263,7 +263,8 @@ text = "Enter Restaurant"
 border_color = Color(0.636823, 0.33841, 1, 1)
 
 [node name="Supermarketcollisions" type="StaticBody2D" parent="."]
-collision_layer = 2
+collision_layer = 66
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Supermarketcollisions"]
 position = Vector2(-785, 1200)
@@ -322,7 +323,7 @@ position = Vector2(500, 1302)
 shape = SubResource("RectangleShape2D_gc56d")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="Supermarketcollisions"]
-position = Vector2(799, 1302)
+position = Vector2(800.5, 1302)
 shape = SubResource("RectangleShape2D_gc56d")
 
 [node name="Cashier" parent="." instance=ExtResource("7_h2doy")]
@@ -513,30 +514,30 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_1nq08")
 
 [node name="SupermarketNPC" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(0, 1921)
+position = Vector2(-442, 727)
 
 [node name="SupermarketNPC2" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(357, 1921)
+position = Vector2(32, 1921)
 
 [node name="SupermarketNPC3" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(1196, 1921)
+position = Vector2(1317, 1583)
 
 [node name="SupermarketNPC4" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(941, 1921)
+position = Vector2(941, 1993)
 
 [node name="SupermarketNPC5" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(675, 1448)
+position = Vector2(627, 1468)
 
 [node name="SupermarketNPC6" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(343, 1224)
+position = Vector2(343, 1051)
 
 [node name="SupermarketNPC7" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(-279, 1302)
+position = Vector2(-229, 1375)
 
 [node name="SupermarketNPC8" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(-479, 1819)
+position = Vector2(-479, 1881)
 
 [node name="SupermarketNPC9" parent="." instance=ExtResource("14_twprl")]
-position = Vector2(1123, 315)
+position = Vector2(1123, 677)
 
 [connection signal="interacted" from="GLASS DOOR/INTERACTABLE" to="." method="_on_interactable_interacted"]

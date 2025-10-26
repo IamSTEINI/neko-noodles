@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dk3irm812oyso"]
 
 [ext_resource type="Texture2D" uid="uid://clibvyynfvvrt" path="res://ASSETS/TEXTURES/GROUND/RESTAURANT.png" id="1_n4o1p"]
-[ext_resource type="Script" uid="uid://dt4qrl3phru0u" path="res://scripts/building/building_option.gd" id="1_ygxxf"]
+[ext_resource type="Script" uid="uid://dt4qrl3phru0u" path="res://SCRIPTS/building/building_option.gd" id="1_ygxxf"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="2_ygxxf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_unvn8"]

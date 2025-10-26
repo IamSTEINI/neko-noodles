@@ -12,6 +12,7 @@ func _ready() -> void:
 		#await anim.animation_finished
 		
 func _on_texture_button_pressed() -> void:
+	$Click.play()
 	MusicManager.call_sound_with_fade("Main Theme")
 	Scenemanager.change_scene(self, "Main")
 	await get_tree().create_timer(1).timeout
@@ -24,10 +25,12 @@ func _process(delta: float) -> void:
 	$SETTINGS/HSlider2/RichTextLabel.text = str((Globals.sfx_volume + 40) * 2)
 
 func _on_settings_closed_button_pressed() -> void:
+	$Click.play()
 	$SETTINGS.hide()
 
 
 func _on_settings_button_pressed() -> void:
+	$Click.play()
 	if $SETTINGS.visible :
 		$SETTINGS.hide()
 	else: $SETTINGS.show()

@@ -105,6 +105,7 @@ func add_to_grid(pos: Vector2i, node: Node, building_type: BuildingType):
 	#Globals.log(str(grid_data.size()) + " tiles in grid")
 
 func remove_from_grid(pos: Vector2i):
+	$PlaceSound.play()
 	if grid_data.has(pos):
 		var tile = grid_data[pos]
 		if is_instance_valid(tile.node):

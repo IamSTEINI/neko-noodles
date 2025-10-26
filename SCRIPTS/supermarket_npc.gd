@@ -1,73 +1,97 @@
 extends CharacterBody2D
-
 @export var speed := 100.0
+
 var direction := 1
 var cat_sprite: AnimatedSprite2D
 var is_speaking = false
-
+var is_paused = false
+var next_tt := 0.0
+var move_until := 0.0
+var pause_until := 0.0
 var sentences = [
 	"Meow!",
 	"I'm hungry...",
-	"God where can I buy rice",
+	"God, where can I buy rice?",
 	"Purr..."
 ]
 
 func _ready() -> void:
 	randomize()
 	speed = randf_range(85, 115)
-
+	$RichTextLabel.hide()
 	if randf() < 0.5:
 		cat_sprite = $BROWN_CAT
 		$WHITE_CAT.hide()
 	else:
 		cat_sprite = $WHITE_CAT
 		$BROWN_CAT.hide()
+	
+	direction = -1 if randf() < 0.5 else 1
+	schedule_next_pause()
+	schedule_next_talk()
+	update_animation(false)
 
-	start_movement_cycle()
+func _physics_process(_delta: float) -> void:
+	var current_time = Time.get_unix_time_from_system()
+	
+	if current_time >= next_tt and not is_speaking and not is_paused:
+		start_talking()
+		return
+	
+	if current_time >= pause_until and is_paused:
+		is_paused = false
+		direction = -1 if randf() < 0.5 else 1
+		schedule_next_pause()
+		update_animation(false)
+	
+	if current_time >= move_until and not is_paused and not is_speaking:
+		is_paused = true
+		pause_until = current_time + randf_range(1.0, 4.0)
+		velocity.y = 0
+		update_animation(true)
+		return
+	
+	if not is_paused and not is_speaking:
+		velocity.y = speed * direction
+		move_and_slide()
+		
+		if get_slide_collision_count() > 0:
+			direction *= -1
+			update_animation(false)
+	else:
+		velocity.y = 0
 
+func schedule_next_pause() -> void:
+	var current_time = Time.get_unix_time_from_system()
+	move_until = current_time + randf_range(3.0, 8.0)
+
+func schedule_next_talk() -> void:
+	var current_time = Time.get_unix_time_from_system()
+	next_tt = current_time + randf_range(15.0, 45.0)
+
+func start_talking() -> void:
+	is_speaking = true
+	velocity.y = 0
+	update_animation(true)
+	say(sentences[randi() % sentences.size()])
 
 func say(text: String) -> void:
-	await wait_say()
-	is_speaking = true
+	update_animation(true)
 	$RichTextLabel.show()
 	$Talking.play()
 	$RichTextLabel.text = ""
+	
 	for i in range(text.length()):
 		$RichTextLabel.text += text[i]
 		await get_tree().create_timer(0.05).timeout
-
+	
 	await get_tree().create_timer(2.0).timeout
 	$RichTextLabel.hide()
 	$Talking.stop()
 	is_speaking = false
-
-func wait_say() -> void:
-	while is_speaking:
-		await get_tree().process_frame
-
-
-func start_movement_cycle() -> void:
-	while true:
-		direction = -1 if randf() < 0.5 else 1
-		update_animation(false)
-
-		var move_time = randf_range(3.0, 16.0)
-		var timer = get_tree().create_timer(move_time)
-
-		while timer.time_left > 0.0:
-			if randf() < 0.01 and not is_speaking:
-				velocity.y = 0
-				update_animation(true)
-				await say(sentences[randi() % sentences.size()])
-				timer = get_tree().create_timer(randf_range(1.0, 3.0))  # kurze Pause
-			else:
-				velocity.y = speed * direction
-				move_and_slide()
-				if get_slide_collision_count() > 0:
-					direction *= -1
-					update_animation(false)
-			await get_tree().process_frame
-
+	is_paused = true
+	pause_until = Time.get_unix_time_from_system() + randf_range(2.0, 5.0)
+	schedule_next_talk()
 
 func update_animation(idle: bool) -> void:
 	if idle:

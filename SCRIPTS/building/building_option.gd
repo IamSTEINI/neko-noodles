@@ -3,6 +3,7 @@ extends TextureButton
 @export var building_price: int = 1
 @export var index: int = 0
 @export var building_name: String = ""
+@export var tag: String = ""
 @export var building_sprite: Texture2D = null
 
 signal option_clicked(index: int)
