@@ -27,3 +27,6 @@ func remove_transaction(reason: String) -> void:
 			transactions.remove_at(i)
 			return
 	Globals.log("Reason not found: " + reason)
+
+func clear_transactions() -> void:
+	transactions.clear()

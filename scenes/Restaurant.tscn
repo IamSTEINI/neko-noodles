@@ -98,6 +98,8 @@ region_enabled = true
 region_rect = Rect2(1.0599365, 50.63266, 47.15735, 48.431877)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="TRASH"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TRASH/StaticBody2D2"]
 position = Vector2(0, 2.5)

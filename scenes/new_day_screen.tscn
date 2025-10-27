@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6gmlrwn22rta"]
+[gd_scene load_steps=11 format=3 uid="uid://b6gmlrwn22rta"]
 
 [ext_resource type="Script" uid="uid://b5yqr3goj0hcy" path="res://SCRIPTS/new_day_handler.gd" id="1_31ivg"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="2_eskku"]
+[ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="3_drgtq"]
+[ext_resource type="AudioStream" uid="uid://dqhx7x0uull8q" path="res://SOUNDS/money_count.mp3" id="4_5mi11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eskku"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drgtq"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_drgtq"]
+color = Color(1, 1, 1, 0.73333335)
+thickness = 4
 
 [sub_resource type="Animation" id="Animation_u2uwr"]
 resource_name = "NEW_DAY"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.34151, 1),
 "update": 0,
-"values": [Vector2(0, -1113), Vector2(3, 0)]
+"values": [Vector2(0, -1113), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -24,10 +35,46 @@ tracks/1/path = NodePath("BG/DAY COUNT:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.482968, 1),
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.482968, 1, 0.1435874),
 "update": 0,
-"values": [Vector2(565, 2385), Vector2(565, 384)]
+"values": [Vector2(565, 2385), Vector2(565, 192.2), Vector2(5, 192.20001)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/Continue:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.49999997),
+"update": 0,
+"values": [Vector2(869.5, 3401), Vector2(869.5, 888)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BG/RichTextLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 0.032352),
+"update": 0,
+"values": [Vector2(460, -255), Vector2(460, 240), Vector2(-91, 240)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BG/MoneyCounted:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.01, 1.3333334),
+"transitions": PackedFloat32Array(1, 0.73204285, 1),
+"update": 0,
+"values": [Vector2(1096, 57), Vector2(1096, -72), Vector2(1096, 280)]
 }
 
 [sub_resource type="Animation" id="Animation_4ufat"]
@@ -56,6 +103,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(900, 1152)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/Continue:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(869.5, 3401)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BG/RichTextLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(460, -255)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BG/MoneyCounted:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1096, 57)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ufat"]
 _data = {
@@ -67,6 +150,7 @@ _data = {
 script = ExtResource("1_31ivg")
 
 [node name="BG" type="ColorRect" parent="."]
+z_index = 2
 offset_top = -1113.0
 offset_right = 1920.0
 offset_bottom = -33.0
@@ -81,8 +165,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -60.0
 offset_top = 612.0
-offset_right = 440.0
-offset_bottom = 1111.9995
+offset_right = 439.9934
+offset_bottom = 1111.9973
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.44)
@@ -102,9 +186,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -500.0
-offset_top = -315.0
-offset_right = 500.0
-offset_bottom = -165.0
+offset_top = -795.0
+offset_right = 499.969
+offset_bottom = -645.00183
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_eskku")
@@ -114,7 +198,83 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Continue" type="Button" parent="BG"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.5
+offset_top = 2321.0
+offset_right = 90.5
+offset_bottom = 2372.002
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("2_eskku")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eskku")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_drgtq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_drgtq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_drgtq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_drgtq")
+text = "Continue"
+
+[node name="MoneyCounted" type="Control" parent="BG"]
+texture_filter = 1
+anchors_preset = 0
+offset_left = 1096.0
+offset_top = 57.0
+offset_right = 1646.0
+offset_bottom = 97.0002
+
+[node name="GridContainer" type="GridContainer" parent="BG/MoneyCounted"]
+layout_mode = 0
+offset_right = 563.75
+offset_bottom = 41.0
+
+[node name="sum" type="RichTextLabel" parent="BG/MoneyCounted/GridContainer"]
+custom_minimum_size = Vector2(644.75, 45)
+layout_mode = 2
+theme = ExtResource("2_eskku")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxLine_drgtq")
+text = "SUM"
+fit_content = true
+scroll_active = false
+
+[node name="reason" type="RichTextLabel" parent="BG/MoneyCounted/GridContainer/sum"]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 8.0
+offset_right = 641.0
+offset_bottom = 47.27
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+theme_override_font_sizes/normal_font_size = 40
+text = "Total amount"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_4ufat")
 }
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_drgtq")
+pitch_scale = 3.0
+max_distance = 4096.0
+attenuation = 8.337663e-05
+
+[node name="CountMoney" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5mi11")
+volume_db = 4.0
+max_distance = 4096.0
+attenuation = 8.337663e-05
+
+[connection signal="pressed" from="BG/Continue" to="." method="_on_continue_pressed"]

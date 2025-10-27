@@ -22,4 +22,5 @@ func render_expenses(transactions):
 		$sum.add_theme_color_override("default_color", Color("7aba00"))
 
 func _on_expenses_tab_button_down() -> void:
+	$"../Title".text = "EXPENSES #"+str(Globals.day)
 	render_expenses(Expenses.transactions)

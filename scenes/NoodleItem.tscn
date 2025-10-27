@@ -16,6 +16,7 @@ size = Vector2(7.1000004, 5.4000006)
 
 [node name="NoodleItem" type="Node2D"]
 z_index = 1
+y_sort_enabled = true
 scale = Vector2(5, 5)
 script = ExtResource("1_dmpbm")
 metadata/type = "Noodle"

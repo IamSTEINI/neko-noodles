@@ -8,11 +8,33 @@ var is_paused = false
 var next_tt := 0.0
 var move_until := 0.0
 var pause_until := 0.0
+
 var sentences = [
 	"Meow!",
 	"I'm hungry...",
 	"God, where can I buy rice?",
-	"Purr..."
+	"Purr...",
+	"These prices are outrageous!",
+	"Do they have tuna on sale?",
+	"I swear I saw a mouse here once...",
+	"My paws are killing me.",
+	"Why is everything so far away?",
+	"I need more fish... always more fish.",
+	"Should I get milk or cream?",
+	"Shopping again... sigh.",
+	"Don't stare, I'm just browsing!",
+	"Where's the seafood aisle?",
+	"I forgot my wallet again, great.",
+	"These humans have no taste.",
+	"This basket’s heavier than it looks.",
+	"Can’t shop on an empty stomach.",
+	"Maybe I’ll just nap in aisle three.",
+	"Ugh, fur everywhere again...",
+	"Do I look like I can carry all this?",
+	"I only came for one thing!",
+	"Why is there no catnip section?",
+	"Everything smells weird here.",
+	"I need a bigger bag... or smaller paws."
 ]
 
 func _ready() -> void:
@@ -62,12 +84,14 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = 0
 
 func schedule_next_pause() -> void:
+	randomize()
 	var current_time = Time.get_unix_time_from_system()
-	move_until = current_time + randf_range(3.0, 8.0)
+	move_until = current_time + randf_range(3.0, 15.0)
 
 func schedule_next_talk() -> void:
+	randomize()
 	var current_time = Time.get_unix_time_from_system()
-	next_tt = current_time + randf_range(15.0, 45.0)
+	next_tt = current_time + randf_range(10.0, 45.0)
 
 func start_talking() -> void:
 	is_speaking = true

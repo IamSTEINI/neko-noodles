@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr63khp7f54cn"]
 
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="1_m72iw"]
-[ext_resource type="Script" uid="uid://mhl8omegopgh" path="res://scripts/expense_entry.gd" id="2_ri56w"]
+[ext_resource type="Script" uid="uid://mhl8omegopgh" path="res://SCRIPTS/expense_entry.gd" id="2_ri56w"]
 
 [node name="entry" type="RichTextLabel"]
+texture_filter = 1
 custom_minimum_size = Vector2(275, 0)
 theme = ExtResource("1_m72iw")
 theme_override_colors/default_color = Color(0.892238, 0, 0.19172645, 1)

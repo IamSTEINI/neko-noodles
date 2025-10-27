@@ -10,7 +10,7 @@ var noodle_base_price = 0
 var console: RichTextLabel = null
 var buildMode: bool = false
 var tmultiplier: float = 60.0 * 2
-var intime_seconds: int = 17 * 3600
+var intime_seconds: int = 24 * 3600 # 17
 var day: int = 1
 var music_volume: int = 0
 var sfx_volume: int = 0
@@ -108,10 +108,11 @@ func _process(delta: float) -> void:
 		calculate_spawn_i()
 
 func kill_all_npcs():
-	var children = get_tree().get_root().get_children()
+	var children = get_tree().current_scene.get_children()
 	for child in children:
-		if child.get_meta("type") == "NPC":
-			child.queue_free()
+		if child.has_meta("type"):
+			if child.get_meta("type") == "NPC":
+				child.queue_free()
 
 func update_time() -> void:
 	intime_seconds += 1

@@ -207,7 +207,9 @@ func delete_tile(grid: Vector2i):
 		for key in building_parts:
 			var part = building_parts[key]
 			if part["type"] == 2 and is_instance_valid(tile.node):
-				if part["name"] == tile.node.name or key in tile.node.name.to_lower():
+				var nnlower = tile.node.name.to_lower()
+				var pnlower = part["name"].to_lower().replace(" ", "")
+				if nnlower.begins_with(pnlower + "_"):
 					refund_amount = part["price"]
 					break
 		if refund_amount > 0:
@@ -436,10 +438,30 @@ func handle_click(grid: Vector2i) -> void:
 					tables_node.add_child(building)
 				else:
 					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
+			elif building_data["name"] == "Lamp":
+				var uid = randi() % 1000000
+				building.name = "Lamp_%d" % uid
+				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 			elif building_data["name"] == "Shelf":
 				var uid = randi() % 1000000
 				building.name = "Shelf_%d" % uid
 				get_tree().current_scene.get_node_or_null("SHELVES").add_child(building)
+			elif building_data["name"] == "Side Table":
+				var uid = randi() % 1000000
+				building.name = "SideTable_%d" % uid
+				get_tree().current_scene.get_node_or_null("SIDETABLES").add_child(building)
+			elif building_data["name"] == "Stove":
+				var uid = randi() % 1000000
+				building.name = "Stove_%d" % uid
+				get_tree().current_scene.get_node_or_null("MACHINES").add_child(building)
+			elif building_data["name"] == "Noodle Cutter":
+				var uid = randi() % 1000000
+				building.name = "NoodleCutter_%d" % uid
+				get_tree().current_scene.get_node_or_null("MACHINES").add_child(building)
+			elif building_data["name"] == "Topping Cutter":
+				var uid = randi() % 1000000
+				building.name = "ToppingCutter_%d" % uid
+				get_tree().current_scene.get_node_or_null("MACHINES").add_child(building)
 			else:	
 				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				
@@ -476,10 +498,30 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 						tables_node.add_child(building)
 					else:
 						get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
+				elif building_data["name"] == "Lamp":
+					var uid = randi() % 1000000
+					building.name = "Lamp_%d" % uid
+					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				elif building_data["name"] == "Shelf":
 					var uid = randi() % 1000000
 					building.name = "Shelf_%d" % uid
 					get_tree().current_scene.get_node_or_null("SHELVES").add_child(building)
+				elif building_data["name"] == "Side Table":
+					var uid = randi() % 1000000
+					building.name = "SideTable_%d" % uid
+					get_tree().current_scene.get_node_or_null("SIDETABLES").add_child(building)
+				elif building_data["name"] == "Stove":
+					var uid = randi() % 1000000
+					building.name = "Stove_%d" % uid
+					get_tree().current_scene.get_node_or_null("MACHINES").add_child(building)
+				elif building_data["name"] == "Noodle Cutter":
+					var uid = randi() % 1000000
+					building.name = "NoodleCutter_%d" % uid
+					get_tree().current_scene.get_node_or_null("MACHINES").add_child(building)
+				elif building_data["name"] == "Topping Cutter":
+					var uid = randi() % 1000000
+					building.name = "ToppingCutter_%d" % uid
+					get_tree().current_scene.get_node_or_null("MACHINES").add_child(building)
 				else:	
 					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				build_space.add_to_grid(grid, building, active_building_type)

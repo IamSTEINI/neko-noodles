@@ -720,6 +720,8 @@ atlas = ExtResource("4_4ufat")
 region = Rect2(1568, 112, 160, 48)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2enu"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 bg_color = Color(0, 0, 0, 0.2784314)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_unvn8"]
@@ -735,11 +737,9 @@ script = ExtResource("1_4logd")
 metadata/type = "player"
 
 [node name="ItemSlot" type="Marker2D" parent="."]
-z_index = 3
 position = Vector2(0, 7)
 
 [node name="BackpackSlot" type="Marker2D" parent="."]
-z_index = 3
 position = Vector2(0, 7)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -1660,6 +1660,7 @@ offset_left = 36.0
 offset_right = 156.0
 offset_bottom = 48.0
 theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 20
 text = "Carrying"
 scroll_active = false
 autowrap_mode = 2
@@ -1679,10 +1680,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -162.0
-offset_top = -183.0
-offset_right = 163.0
-offset_bottom = -103.0
+offset_left = -171.0
+offset_top = -130.0
+offset_right = 173.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("11_0pmnk")
@@ -1700,12 +1701,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TutorialArrow" type="TextureRect" parent="CanvasLayer"]
+visible = false
+z_index = 1
 texture_filter = 1
 offset_left = 1396.0
 offset_top = 48.0
 offset_right = 1436.0
 offset_bottom = 87.99994
 scale = Vector2(2, 2)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_unvn8")
 script = ExtResource("24_r2enu")
 

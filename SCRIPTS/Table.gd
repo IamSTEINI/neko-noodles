@@ -26,6 +26,7 @@ func _on_interactable_interacted(body) -> void:
 					noodle.position = Vector2(0,0)
 					noodle.global_position = empty_slot.global_position
 					noodle.reparent(empty_slot)
+					$Placing.play()
 					update_capacity_text()
 		else:
 			Globals.log("Player has no items to serve")

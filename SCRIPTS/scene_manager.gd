@@ -19,10 +19,10 @@ func change_scene(from, to_scene: String) -> void:
 	if from.name == "Main":
 		save_building_data_from_scene(from)
 	
-	if from.get_node("PLAYER"):
+	if from.get_node_or_null("PLAYER") != null:
 		Globals.log("Playerobj found, saving items")
 		var player = from.get_node("PLAYER")
-		if player.get_node("ItemSlot"):
+		if player.get_node_or_null("ItemSlot") != null:
 			var slot = player.get_node("ItemSlot") as Node2D
 			if slot.get_child_count() > 0:
 				var item = slot.get_child(0)
@@ -32,7 +32,7 @@ func change_scene(from, to_scene: String) -> void:
 				transfer_item.hide()
 				Globals.log("Saved ItemSlot: " + str(transfer_item.name))
 		
-		if player.get_node("BackpackSlot"):
+		if player.get_node_or_null("BackpackSlot") != null:
 			var backpack_slot = player.get_node("BackpackSlot") as Node2D
 			Globals.log("Found BackpackSlot with " + str(backpack_slot.get_child_count()) + " items")
 			trans_backpack.clear()

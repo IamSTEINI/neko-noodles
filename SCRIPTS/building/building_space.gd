@@ -54,6 +54,7 @@ func get_type_from_atlas_coords(coords: Vector2i) -> BuildingType:
 	return BuildingType.GROUND
 
 func update_tile_from_tilemap(pos: Vector2i, tile_type: int):
+	$PlaceSound.play()
 	grid_data[pos] = GridTile.new(null, tile_type as BuildingType, pos)
 	Globals.log("Updated grid at " + str(pos) + " to type " + str(tile_type))
 

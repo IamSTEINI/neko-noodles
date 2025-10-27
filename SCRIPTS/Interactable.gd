@@ -49,14 +49,15 @@ func _ready() -> void:
 	$RichTextLabel.add_theme_stylebox_override("normal", stylebox)
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.get_meta("type") == "player":
-		player_body = body
-		emit_signal("player_entered", body)
-		var key_name = OS.get_keycode_string(interact_key)
-		$RichTextLabel.text = " [" + key_name + "] " + text
-		if(can_interact):
-			$RichTextLabel.visible = true
-		pass
+	if body.has_meta("type"):
+		if body.get_meta("type") == "player":
+			player_body = body
+			emit_signal("player_entered", body)
+			var key_name = OS.get_keycode_string(interact_key)
+			$RichTextLabel.text = " [" + key_name + "] " + text
+			if(can_interact):
+				$RichTextLabel.visible = true
+			pass
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:

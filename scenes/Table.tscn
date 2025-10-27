@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://pe74xpdh5ymt"]
+[gd_scene load_steps=9 format=3 uid="uid://pe74xpdh5ymt"]
 
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="1_2sdc1"]
 [ext_resource type="Script" uid="uid://datmtggct7nhv" path="res://SCRIPTS/Table.gd" id="1_561jp"]
 [ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="2_muxx0"]
+[ext_resource type="AudioStream" uid="uid://dbare5j68vclk" path="res://SOUNDS/noodle_place.mp3" id="4_7e6ia"]
+[ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="5_7q8ky"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1euqw"]
 radius = 6.000007
@@ -66,6 +68,14 @@ vertical_alignment = 1
 
 [node name="FoodSlot" type="Marker2D" parent="."]
 position = Vector2(0, -17)
+
+[node name="Placing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7e6ia")
+volume_db = -1.0
+pitch_scale = 1.23
+max_distance = 411.0
+attenuation = 0.101531684
+script = ExtResource("5_7q8ky")
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
 [connection signal="body_entered" from="PLAYERCHECK" to="." method="_on_playercheck_body_entered"]
