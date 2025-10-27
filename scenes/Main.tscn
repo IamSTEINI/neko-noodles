@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://1bmo1e0xlrp5"]
+[gd_scene load_steps=27 format=4 uid="uid://1bmo1e0xlrp5"]
 
 [ext_resource type="Script" uid="uid://cmxulpwoc1crk" path="res://SCRIPTS/GAME.gd" id="1_lhr70"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="2_wp0k4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cq2ikcgppht16" path="res://scenes/PLAYER.tscn" id="9_bb450"]
 [ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="9_q8u5g"]
 [ext_resource type="Script" uid="uid://bllrwvvlripl2" path="res://SCRIPTS/building/building_space.gd" id="10_lhr70"]
+[ext_resource type="PackedScene" uid="uid://ynuiw244nh02" path="res://scenes/supermarket_npc.tscn" id="10_wp0k4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp0k4"]
 texture = ExtResource("2_wp0k4")
@@ -34,8 +35,10 @@ texture_region_size = Vector2i(50, 50)
 3:2/0/y_sort_origin = 25
 4:2/0 = 0
 4:2/0/y_sort_origin = -12
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -25, 25, -25, 25, 25, -25, 25)
 0:3/0 = 0
 1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -25, 25, -25, 25, 25, -25, 25)
 2:3/0 = 0
 3:3/0 = 0
 4:3/0 = 0
@@ -47,6 +50,8 @@ texture_region_size = Vector2i(50, 50)
 
 [sub_resource type="TileSet" id="TileSet_rstr5"]
 tile_size = Vector2i(50, 50)
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 64
 sources/0 = SubResource("TileSetAtlasSource_wp0k4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wp0k4"]
@@ -256,3 +261,30 @@ volume_db = 10.0
 pitch_scale = 0.89
 max_distance = 4096.0
 attenuation = 4.168829e-05
+
+[node name="OUTSIDE NPC7" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(-836, 1248)
+
+[node name="OUTSIDE NPC6" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(-836, 2057)
+
+[node name="OUTSIDE NPC5" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(3343, -40)
+
+[node name="OUTSIDE NPC4" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(3234, -398)
+
+[node name="OUTSIDE NPC3" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(3343, 1608)
+
+[node name="OUTSIDE NPC2" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(3234, 1248)
+
+[node name="OUTSIDE NPC" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(2653, 1198)
+
+[node name="SupermarketNPC3" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(-836, 10)
+
+[node name="SupermarketNPC4" parent="." instance=ExtResource("10_wp0k4")]
+position = Vector2(-836, -652)

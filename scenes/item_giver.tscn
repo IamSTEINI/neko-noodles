@@ -21,7 +21,7 @@ shape = SubResource("CircleShape2D_2w3e0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-48, -56.000004)
+position = Vector2(-63.20307, -6.203068)
 rotation = -0.261799
 scale = Vector2(2.595, 2.595)
 texture = SubResource("AtlasTexture_5fjo5")
@@ -35,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -101.0
-offset_top = -82.00001
-offset_right = -12.889999
-offset_bottom = -42.000008
+offset_left = -116.20307
+offset_top = -32.20308
+offset_right = -28.093071
+offset_bottom = 7.796921
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.261799
