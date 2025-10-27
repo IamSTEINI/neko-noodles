@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 450
+var SPEED = 450
 @export var PICKUP = false
 @export var Tables: Node2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -152,6 +152,9 @@ func _physics_process(delta: float) -> void:
 		backpack_container.show()
 	if input_vec == Vector2.ZERO and $FOOTSTEP.playing:
 		$FOOTSTEP.stop()
+	
+	if Globals.bought_speed:
+		SPEED = 600
 	
 	if !arcade_locked:
 		if input_vec != Vector2.ZERO:

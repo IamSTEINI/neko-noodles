@@ -1187,7 +1187,6 @@ metadata/tooltip = "Shop"
 metadata/description = "You can buy stuff there"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/ShopTab"]
-visible = false
 anchors_preset = 0
 offset_left = 0.6666667
 offset_top = 18.0
@@ -1284,6 +1283,61 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lx5bl")
 text = "BUY for 10 c"
 
 [node name="BoughtLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4asc")
+text = "BOUGHT"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SPEED" type="VBoxContainer" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(120, 100)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED/HBoxContainer"]
+position = Vector2(59.05905, 17.017017)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_4logd")
+region_enabled = true
+region_rect = Rect2(32, 17, 16, 16)
+
+[node name="Name" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+text = "Speed boost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+theme_override_font_sizes/normal_font_size = 14
+text = "Get faster"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gtncy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i10kl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lx5bl")
+text = "BUY for 10 c"
+
+[node name="BoughtLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED"]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -1824,6 +1878,7 @@ metadata/tooltip = "Bank"
 metadata/description = "Are you in debt? Get a loan!"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/BankTab"]
+visible = false
 anchors_preset = 0
 offset_left = 0.6666667
 offset_top = 18.0
@@ -2207,6 +2262,7 @@ attenuation = 8.337663e-05
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/ShopTab" to="CanvasLayer/StatusBar/TABS/ShopTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/ShopTab" to="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer" method="_on_shop_tab_pressed"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM/BuyButton" to="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED/BuyButton" to="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer" method="_on_speed_buy_button_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab" method="_on_button_down"]

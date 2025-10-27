@@ -39,6 +39,7 @@ signal game_lost
 # SHOP ITEMS
 
 var bought_backpack = false
+var bought_speed = false
 var backpackCapacity = 3
 
 var noodle_types = [
