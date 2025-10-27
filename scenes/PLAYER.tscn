@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=3 uid="uid://cq2ikcgppht16"]
+[gd_scene load_steps=152 format=3 uid="uid://cq2ikcgppht16"]
 
 [ext_resource type="Script" uid="uid://u2afxj3o86lj" path="res://SCRIPTS/player.gd" id="1_4logd"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="1_5qx4t"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dk3irm812oyso" path="res://scenes/building_option.tscn" id="19_gtncy"]
 [ext_resource type="Script" uid="uid://d4h78feyd523l" path="res://SCRIPTS/foldable_overwrite.gd" id="20_i10kl"]
 [ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="20_r2enu"]
+[ext_resource type="Script" uid="uid://da4v7phpb64t4" path="res://SCRIPTS/banktab.gd" id="22_vt2ka"]
 [ext_resource type="Script" uid="uid://dfvnyxyioja7w" path="res://SCRIPTS/tutorial_arrow.gd" id="24_r2enu"]
 [ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="25_i10kl"]
 
@@ -711,6 +712,14 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_w4ug3")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unvn8"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5e30"]
+atlas = ExtResource("4_4logd")
+region = Rect2(129, 32, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imxgk"]
+atlas = ExtResource("4_4logd")
+region = Rect2(129, 48, 14, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ua83o"]
 atlas = ExtResource("4_4ufat")
 region = Rect2(1440, 208, 480, 160)
@@ -960,7 +969,7 @@ offset_top = -6.0
 offset_right = 21.0
 offset_bottom = 10.0
 scale = Vector2(3, 3)
-focus_mode = 1
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_n38qo")
 texture_pressed = SubResource("AtlasTexture_n38qo")
@@ -1356,6 +1365,7 @@ script = ExtResource("16_gtncy")
 [node name="MenuBar" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("11_0pmnk")
 theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
@@ -1367,6 +1377,7 @@ title = "Menu bar"
 visible = false
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("11_0pmnk")
 theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
@@ -1379,6 +1390,57 @@ visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "If you deliver no food or the wrong food to customers, your rating will drop, but so will it if the base price is too high."
+fit_content = true
+scroll_active = false
+
+[node name="Building" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+title = "Building"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building"]
+layout_mode = 2
+
+[node name="Place" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "How do I place stuff"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer/Place"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "If you want to place stuff, press the thing you want to place in the Build tab and click on the desired location!"
+fit_content = true
+scroll_active = false
+
+[node name="Delete" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "How do I delete stuff"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer/Delete"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "If you want to remove placed stuff, press any build object, then right-click on the thing you want to get rid off, and you will receive a refund!"
 fit_content = true
 scroll_active = false
 
@@ -1417,6 +1479,7 @@ metadata/tooltip = "Build"
 metadata/description = "Make a unique restaurant"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/BuildTab"]
+visible = false
 anchors_preset = 0
 offset_left = 1.0
 offset_top = 16.666666
@@ -1565,6 +1628,164 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_unvn8")
 layout_mode = 2
 columns = 2
 
+[node name="BankTab" type="TextureButton" parent="CanvasLayer/StatusBar/TABS"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = -6.0
+offset_right = 296.0
+offset_bottom = 10.0
+scale = Vector2(3, 3)
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_g5e30")
+texture_pressed = SubResource("AtlasTexture_g5e30")
+texture_hover = SubResource("AtlasTexture_imxgk")
+script = ExtResource("10_dd1qt")
+metadata/tooltip = "Bank"
+metadata/description = "Are you in debt? Get a loan!"
+
+[node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/BankTab"]
+anchors_preset = 0
+offset_left = 0.6666667
+offset_top = 18.0
+offset_right = 16.666666
+offset_bottom = 34.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab"]
+layout_mode = 0
+offset_left = 0.33333334
+offset_top = -2.666668
+offset_right = 293.33334
+offset_bottom = 391.33334
+scale = Vector2(0.333, 0.333)
+texture = SubResource("AtlasTexture_0hybe")
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 8.008012
+offset_right = 280.27798
+offset_bottom = 33.753014
+scale = Vector2(1, 1.26)
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 31
+text = "BANK OF SHIBA"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 41.041046
+offset_right = 258.008
+offset_bottom = 57.291046
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+theme_override_font_sizes/normal_font_size = 16
+text = "Are you broke? Get a loan!"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect"]
+layout_mode = 0
+offset_left = 8.008008
+offset_top = 67.06707
+offset_right = 283.008
+offset_bottom = 107.06707
+script = ExtResource("22_vt2ka")
+
+[node name="currentplan" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
+text = "Current plan: 100c / day (days left)"
+scroll_active = false
+autowrap_mode = 2
+autowrap_trim_flags = 0
+vertical_alignment = 1
+
+[node name="loan_request" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+columns = 2
+
+[node name="name" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer/loan_request"]
+custom_minimum_size = Vector2(191.005, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 26
+text = "Loan request"
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="INPUT" type="LineEdit" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer/loan_request"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_0hybe")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0hybe")
+placeholder_text = "200c"
+select_all_on_focus = true
+
+[node name="loan_duration" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+columns = 2
+
+[node name="name" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer/loan_duration"]
+custom_minimum_size = Vector2(191.005, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 26
+text = "Loan duration"
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="INPUT" type="LineEdit" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer/loan_duration"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_0hybe")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0hybe")
+placeholder_text = "30"
+context_menu_enabled = false
+select_all_on_focus = true
+
+[node name="info" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 0.18, 0.18, 1)
+text = "You need at least 25% of the loan amount."
+scroll_active = false
+autowrap_mode = 2
+autowrap_trim_flags = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="getLoan" type="Button" parent="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer"]
+custom_minimum_size = Vector2(0, 26.085)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ehigy")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_vt2ka")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gtncy")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_s4asc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lx5bl")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_r2enu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_i10kl")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_4mmrk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1505x")
+disabled = true
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Request loan (5% interest)"
+
 [node name="NEW DAY SCREEN" parent="CanvasLayer" instance=ExtResource("11_4ufat")]
 
 [node name="Card" type="TextureRect" parent="CanvasLayer"]
@@ -1704,9 +1925,9 @@ vertical_alignment = 1
 visible = false
 z_index = 1
 texture_filter = 1
-offset_left = 1396.0
+offset_left = 154.0
 offset_top = 48.0
-offset_right = 1436.0
+offset_right = 194.0
 offset_bottom = 87.99994
 scale = Vector2(2, 2)
 mouse_filter = 2
@@ -1743,3 +1964,6 @@ attenuation = 8.337663e-05
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab/Tab" method="_on_build_tab_pressed"]
+[connection signal="button_down" from="CanvasLayer/StatusBar/TABS/BankTab" to="CanvasLayer/StatusBar/TABS/BankTab" method="_on_button_down"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BankTab" to="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer" method="_on_bank_tab_pressed"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer/getLoan" to="CanvasLayer/StatusBar/TABS/BankTab/Tab/TextureRect/GridContainer" method="_on_get_loan_pressed"]

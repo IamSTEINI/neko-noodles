@@ -18,6 +18,9 @@ var ingtime: String = "12:00 AM"
 var restaurant_rating: float = 5
 var restaurant_rating_min: float = 0.1
 @export var money: int = 120
+@export var debt: int = 0
+var debt_duration: int = 0
+var debt_init_duration: int = 0
 
 var time_accumulator: float = 0.0
 
@@ -80,7 +83,9 @@ func tutorial():
 	await Speaking.say("Once you've done that, you should buy a noodle cutter, oven and so on! So that you can work properly!")
 	tutarrow_pos = Vector2(0,42)
 	await Speaking.say("To mix toppings with cooked noodles, you must place the noodles on a side table and then interact with the topping.")
-	await Speaking.say("Oh and... Thank you for buying the restaurant from my parents. I think it's better if someone younger does the work now.")
+	tutarrow_pos = Vector2(154,42)
+	await Speaking.say("Oh and... Thank you for buying the restaurant from my parents. I think it's better if someone younger does the work now. I also wrote you a book, if you have any questions!")
+	tutarrow_pos = Vector2(0,42)
 	await Speaking.say("But maybe you'll get rich with it, Timmy... Can't wait to come visit you! See you then!")
 	tutarrow_pos = Vector2(0,42)
 	
@@ -144,6 +149,13 @@ func update_time() -> void:
 		_update_npc_count()
 		spawn_accumulator = 0.0
 		calculate_spawn_i()
+		if debt != 0 and debt_duration != 0:
+			Globals.money -= int(debt / debt_init_duration)
+			debt_duration -= 1
+			Expenses.add_transaction("Bank repayment", -int(debt / debt_init_duration))
+			if debt_duration <= 0:
+				debt = 0
+				debt_duration = 0
 
 	var minutes = total_minutes % 60
 	

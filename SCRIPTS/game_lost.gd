@@ -14,6 +14,9 @@ func _on_retry_pressed() -> void:
 	Globals.log("GAME RESET")
 	Globals.log("======================================")
 	Globals.money = 120
+	Globals.debt = 0
+	Globals.debt_init_duration = 0
+	Globals.debt_duration = 0
 	Globals.bought_backpack = false
 	Globals.day = 1
 	Globals.noodle_base_price = 0
