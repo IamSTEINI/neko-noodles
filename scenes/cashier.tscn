@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bcdult63ey72v"]
+[gd_scene load_steps=27 format=4 uid="uid://bcdult63ey72v"]
 
 [ext_resource type="TileSet" uid="uid://dhopuw17uvtvq" path="res://TILESETS/supermarket.tres" id="1_qxk7m"]
 [ext_resource type="Script" uid="uid://d3dyjy00bc85m" path="res://SCRIPTS/cashier.gd" id="1_yvugg"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ct7uccsd824hx" path="res://SOUNDS/coin_collect.mp3" id="4_lbl8i"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="4_x20w8"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="5_x20w8"]
+[ext_resource type="AudioStream" uid="uid://b2bvyjrqfg7dv" path="res://SOUNDS/cat_talking.mp3" id="7_oa8ao"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkob8"]
 atlas = ExtResource("2_yvugg")
@@ -112,6 +113,15 @@ size = Vector2(32, 70)
 font_names = PackedStringArray("BoldPixels")
 subpixel_positioning = 0
 
+[sub_resource type="SystemFont" id="SystemFont_x20w8"]
+font_names = PackedStringArray("BoldPixels")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa8ao"]
+bg_color = Color(0.103744, 0.103744, 0.103744, 1)
+border_width_left = 3
+border_color = Color(0.460975, 0.802037, 3.85046e-07, 1)
+
 [node name="Cashier" type="Node2D"]
 z_index = 1
 y_sort_enabled = true
@@ -172,5 +182,25 @@ stream = ExtResource("4_lbl8i")
 volume_db = 1.335
 attenuation = 2.75041e-05
 script = ExtResource("5_x20w8")
+
+[node name="text" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 119.0
+offset_top = -45.0
+offset_right = 219.0
+offset_bottom = -18.0
+theme_override_fonts/normal_font = SubResource("SystemFont_x20w8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_oa8ao")
+text = "TEXT"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Talking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_oa8ao")
+volume_db = 12.0
+max_distance = 1097.0
 
 [connection signal="body_entered" from="BUYTRIGGER" to="." method="_on_buytrigger_body_entered"]

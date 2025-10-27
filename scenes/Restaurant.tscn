@@ -39,8 +39,8 @@ offset_right = 399.0
 offset_bottom = 285.0
 theme = ExtResource("3_57po2")
 theme_override_fonts/normal_font = SubResource("SystemFont_e03td")
-text = "Wait for NPCs or
-Enter the Supermarket"
+theme_override_font_sizes/normal_font_size = 31
+text = "NPC ENTRY"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dok4r4o5fsqtf"]
+[gd_scene load_steps=9 format=3 uid="uid://dok4r4o5fsqtf"]
 
 [ext_resource type="Script" uid="uid://vd12c6vcfoqh" path="res://SCRIPTS/coin.gd" id="1_5twpi"]
 [ext_resource type="Texture2D" uid="uid://c3e3btw00bf3v" path="res://ASSETS/TEXTURES/ICONS/ICONS.png" id="2_bedda"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="3_2du1a"]
 [ext_resource type="AudioStream" uid="uid://ct7uccsd824hx" path="res://SOUNDS/coin_collect.mp3" id="3_bedda"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="5_2du1a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjd11"]
 atlas = ExtResource("2_bedda")
@@ -47,6 +48,7 @@ offset_left = -52.0
 offset_top = -95.0
 offset_right = 52.0
 offset_bottom = -55.0
+theme = ExtResource("5_2du1a")
 theme_override_colors/default_color = Color(0.662019, 0.791329, 0.383643, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = SubResource("SystemFont_bedda")

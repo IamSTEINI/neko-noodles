@@ -4,7 +4,21 @@ var start_pos: Vector2
 
 func _ready() -> void:
 	$RichTextLabel.visible = false
+	$text.hide()
 	start_pos = $RichTextLabel.position
+
+func say(text: String) -> void:
+	$text.show()
+	$Talking.play()
+	$text.text = ""
+	
+	for i in range(text.length()):
+		$text.text += text[i]
+		await get_tree().create_timer(0.05).timeout
+	
+	await get_tree().create_timer(2.0).timeout
+	$text.hide()
+	$Talking.stop()
 
 
 func _on_buytrigger_body_entered(body: Node2D) -> void:
@@ -29,6 +43,7 @@ func _on_buytrigger_body_entered(body: Node2D) -> void:
 	if Globals.money<price:
 		return
 	$RichTextLabel.visible = true
+	say("Thanks for shopping!")
 	$RichTextLabel.text = "- " + str(price)
 	$Collect_Sound.play(0.07)
 	Globals.money = Globals.money - price
