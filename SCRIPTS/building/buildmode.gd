@@ -32,6 +32,13 @@ var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.t
 		"tag": "other",
 		"name": "Trash"
 	},
+	"door": {
+		"path": preload("res://scenes/Door.tscn"),
+		"type": 2,
+		"price": 7,
+		"tag": "restaurant",
+		"name": "Door"
+	},
 	"catimage": {
 		"path": preload("res://scenes/buildings/decoration/cat-image.tscn"),
 		"type": 3,

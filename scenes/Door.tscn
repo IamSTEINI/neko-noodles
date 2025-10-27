@@ -190,13 +190,15 @@ animations = [{
 size = Vector2(112, 150)
 
 [node name="DOOR" type="Node2D"]
-z_index = 90
+z_index = 1
+y_sort_enabled = true
 scale = Vector2(1.98, 1.8)
 script = ExtResource("1_iu8q0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
+position = Vector2(25.505, -25)
 scale = Vector2(1.01, 1)
 sprite_frames = SubResource("SpriteFrames_h81jx")
 animation = &"DOOR CLOSE"
@@ -204,6 +206,7 @@ frame = 11
 frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(25.252527, -28.333334)
 collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

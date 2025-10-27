@@ -218,6 +218,7 @@ func hide_arcade() -> void:
 	var viewport = $CanvasLayer/ArcadeScreen/SubViewport
 	$CanvasLayer/ArcadeBackground.hide()
 	if viewport.get_child_count() > 0:
-		viewport.get_child(0).queue_free()
+		for child in viewport.get_children():
+			child.queue_free()
 	arcade_locked = false
 	$CanvasLayer/ArcadeScreen.hide()

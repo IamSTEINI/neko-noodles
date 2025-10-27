@@ -11,6 +11,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 				body.show_arcade()
 				$AudioStreamPlayer2D.play()
 				$AnimatedSprite2D.play()
+				$INTERACTABLE.can_interact = false
 
 func _on_interactable_player_exited(body: Node2D) -> void:
 	if body.has_meta("type"):
@@ -20,3 +21,4 @@ func _on_interactable_player_exited(body: Node2D) -> void:
 				$AnimatedSprite2D.stop()
 				$AudioStreamPlayer2D.stop()
 				$AnimatedSprite2D.frame = 0
+				$INTERACTABLE.can_interact = true

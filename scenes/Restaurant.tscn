@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://c76lcwmwgvfdx"]
+[gd_scene load_steps=6 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="Script" uid="uid://da1c5xwmi3o06" path="res://SCRIPTS/restaurant.gd" id="1_mo5rl"]
 [ext_resource type="TileSet" uid="uid://csgs7ksh138ag" path="res://scenes/buildings/Restaurant-BUILDING.tres" id="2_ujk3p"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_57po2"]
-[ext_resource type="PackedScene" uid="uid://ckx7ll1bsgulx" path="res://scenes/Door.tscn" id="5_l5eli"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="6_46urj"]
 
 [sub_resource type="SystemFont" id="SystemFont_e03td"]
@@ -44,15 +43,5 @@ text = "Wait for NPCs or
 Enter the Supermarket"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="DOOR2" parent="." instance=ExtResource("5_l5eli")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(300, 796)
-
-[node name="DOOR3" parent="." instance=ExtResource("5_l5eli")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(300, 111)
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
