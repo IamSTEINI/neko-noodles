@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwoxibnh4kl0i"]
+[gd_scene load_steps=16 format=3 uid="uid://bwoxibnh4kl0i"]
 
 [ext_resource type="AudioStream" uid="uid://8vkva5751s0k" path="res://SOUNDS/CatSoundTrack.mp3" id="1_hetdf"]
 [ext_resource type="Script" uid="uid://crycsfalvg8xm" path="res://SCRIPTS/music_manager.gd" id="1_jd6i5"]
 [ext_resource type="Script" uid="uid://dedpsgw5mui1f" path="res://SCRIPTS/Audio_music.gd" id="2_jd6i5"]
 [ext_resource type="AudioStream" uid="uid://c2d0kx2d56sbd" path="res://SOUNDS/NN-MAIN_MENU.mp3" id="2_yodp2"]
 [ext_resource type="AudioStream" uid="uid://otkcgqh6bpgm" path="res://SOUNDS/NN-BUSYDAY.mp3" id="4_p07gy"]
+[ext_resource type="AudioStream" uid="uid://bedxcd3yvfgn4" path="res://SOUNDS/SUNDAY.mp3" id="5_fb0y8"]
 [ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="5_jbem4"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="5_xcw26"]
 [ext_resource type="Texture2D" uid="uid://c3e3btw00bf3v" path="res://ASSETS/TEXTURES/ICONS/ICONS.png" id="7_hu6vc"]
@@ -62,7 +63,8 @@ script = ExtResource("1_jd6i5")
 sounds = Dictionary[String, AudioStreamMP3]({
 "A busy day": ExtResource("4_p07gy"),
 "Main Menu": ExtResource("2_yodp2"),
-"Main Theme": ExtResource("1_hetdf")
+"Main Theme": ExtResource("1_hetdf"),
+"SUNDAY": ExtResource("5_fb0y8")
 })
 
 [node name="MUSIC" type="AudioStreamPlayer2D" parent="."]
