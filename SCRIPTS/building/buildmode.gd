@@ -39,6 +39,13 @@ var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.t
 		"tag": "other",
 		"name": "Cat Image"
 	},
+	"arcade": {
+		"path": preload("res://scenes/buildings/decoration/arcade_machine.tscn"),
+		"type": 2,
+		"price": 50,
+		"tag": "other",
+		"name": "Arcade"
+	},
 	"stove": {
 		"path": preload("res://scenes/machines/noodle_cooker.tscn"),
 		"type": 2,
@@ -365,6 +372,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if not Globals.buildMode:
+		selected_grids.clear()
+		selecting = false
+		is_deleting = false
+		for marker in active_markers:
+			if is_instance_valid(marker):
+				marker.queue_free()
+		active_markers.clear()
 		return
 		
 	if cursor == null or not is_instance_valid(cursor):
@@ -410,12 +424,22 @@ func _process(delta: float) -> void:
 								
 								get_tree().current_scene.add_child(preview_marker)
 								active_markers.append(preview_marker)
+							elif pm.has_node("AnimatedSprite2D") and build_space.can_place(grid, active_building_type):
+								var preview_marker = pm.get_node("AnimatedSprite2D").duplicate()
+								preview_marker.visible = true
+								preview_marker.global_position = Vector2(grid) * grid_size + Vector2(grid_size / 2, grid_size / 2)
+								preview_marker.offset = Vector2.ZERO
+								
+								get_tree().current_scene.add_child(preview_marker)
+								active_markers.append(preview_marker)
+								
 							pm.queue_free()
-				var text_label = label.instantiate()
-				text_label.text = "-"+str(building_data["price"])
-				text_label.global_position = Vector2(grid) * grid_size + Vector2(0, -15)
-				get_tree().current_scene.add_child(text_label)
-				active_markers.append(text_label)
+				if build_space.can_place(grid, active_building_type):
+					var text_label = label.instantiate()
+					text_label.text = "-"+str(building_data["price"])+"c"
+					text_label.global_position = Vector2(grid) * grid_size + Vector2(0, -15)
+					get_tree().current_scene.add_child(text_label)
+					active_markers.append(text_label)
 		
 		elif is_deleting:
 			for marker in active_markers:
@@ -501,6 +525,10 @@ func handle_click(grid: Vector2i) -> void:
 				var uid = randi() % 1000000
 				building.name = "Trash_%d" % uid
 				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
+			elif building_data["name"] == "Arcade":
+				var uid = randi() % 1000000
+				building.name = "Arcade_%d" % uid
+				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 			else:	
 				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				
@@ -573,6 +601,10 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 				elif building_data["name"] == "Trash":
 					var uid = randi() % 1000000
 					building.name = "Trash_%d" % uid
+					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
+				elif building_data["name"] == "Arcade":
+					var uid = randi() % 1000000
+					building.name = "Arcade_%d" % uid
 					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				else:	
 					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)

@@ -8,12 +8,17 @@ const SPEED = 450
 @export var active_tab: String = ""
 @onready var slot: PackedScene = preload("res://scenes/slot.tscn")
 
+var arcade_locked: bool = false
 var dir = "down"
 @onready var backpack_container = $CanvasLayer/Backpack/HBoxContainer
+var scene = preload("res://scenes/arcade/arcade_game.tscn")
 
 func _ready() -> void:
 	$CanvasLayer/StatusBar/Control/VISITORSTATUSBAR.Tables = Tables
 	backpack_container.hide()
+	$CanvasLayer/ArcadeScreen.hide()
+	$CanvasLayer/ArcadeInfo.hide()
+	$CanvasLayer/ArcadeBackground.hide()
 	$CanvasLayer/Backpack/ItemSlot.hide()
 	
 
@@ -92,26 +97,29 @@ func _physics_process(delta: float) -> void:
 	var input_vec = Vector2.ZERO
 	var slot = $ItemSlot
 	
-	if Input.is_action_pressed("player_move_up"):
+	if Input.is_action_pressed("player_move_up") and !arcade_locked:
 		if not $FOOTSTEP.playing:
 			$FOOTSTEP.play()
 		input_vec.y -= 1
 		dir = "up"
-	elif Input.is_action_pressed("player_move_down"):
+	elif Input.is_action_pressed("player_move_down") and !arcade_locked:
 		if not $FOOTSTEP.playing:
 			$FOOTSTEP.play()
 		input_vec.y += 1
 		dir = "down"
-	if Input.is_action_pressed("player_move_right"):
+	if Input.is_action_pressed("player_move_right") and !arcade_locked:
 		if not $FOOTSTEP.playing:
 			$FOOTSTEP.play()
 		input_vec.x += 1
 		dir = "right"
-	if Input.is_action_pressed("player_move_left"):
+	if Input.is_action_pressed("player_move_left") and !arcade_locked:
 		if not $FOOTSTEP.playing:
 			$FOOTSTEP.play()
 		input_vec.x -= 1
 		dir = "left"
+	
+	if Input.is_action_just_pressed("exit_arcade") and arcade_locked:
+		hide_arcade()
 	
 	if Input.is_action_pressed("exit_build_mode"):
 		Globals.buildMode = false
@@ -144,14 +152,16 @@ func _physics_process(delta: float) -> void:
 		backpack_container.show()
 	if input_vec == Vector2.ZERO and $FOOTSTEP.playing:
 		$FOOTSTEP.stop()
-	if input_vec != Vector2.ZERO:
-		input_vec = input_vec.normalized() * SPEED
-		velocity = input_vec
-		move_and_slide()
-		setDir(dir, PICKUP, true)
-	else:
-		velocity = Vector2.ZERO
-		setDir(dir, PICKUP, false)
+	
+	if !arcade_locked:
+		if input_vec != Vector2.ZERO:
+			input_vec = input_vec.normalized() * SPEED
+			velocity = input_vec
+			move_and_slide()
+			setDir(dir, PICKUP, true)
+		else:
+			velocity = Vector2.ZERO
+			setDir(dir, PICKUP, false)
 		
 func _input(event):
 	var slot = $ItemSlot
@@ -193,3 +203,21 @@ func _on_area_player_body_entered(body: Node2D) -> void:
 func _on_area_player_body_exited(body: Node2D) -> void:
 	if body.get_meta("type") == "player":
 		Globals.log("LEFT AREA: "+body.name)
+
+func show_arcade() -> void:
+	$CanvasLayer/ArcadeInfo.show()
+	var viewport = $CanvasLayer/ArcadeScreen/SubViewport
+	$CanvasLayer/ArcadeBackground.show()
+	var new_scene = scene.instantiate()
+	viewport.add_child(new_scene)
+	arcade_locked = true
+	$CanvasLayer/ArcadeScreen.show()
+
+func hide_arcade() -> void:
+	$CanvasLayer/ArcadeInfo.hide()
+	var viewport = $CanvasLayer/ArcadeScreen/SubViewport
+	$CanvasLayer/ArcadeBackground.hide()
+	if viewport.get_child_count() > 0:
+		viewport.get_child(0).queue_free()
+	arcade_locked = false
+	$CanvasLayer/ArcadeScreen.hide()

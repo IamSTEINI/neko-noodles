@@ -1934,6 +1934,72 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_unvn8")
 script = ExtResource("24_r2enu")
 
+[node name="ArcadeInfo" type="RichTextLabel" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = -130.0
+offset_right = 173.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_0pmnk")
+theme_override_colors/default_color = Color(1, 0.14999998, 0.14999998, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2enu")
+text = "PRESS [X] TO EXIT ARCADE"
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArcadeBackground" type="ColorRect" parent="CanvasLayer"]
+offset_left = 453.0
+offset_top = 102.0
+offset_right = 1467.0
+offset_bottom = 899.29065
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ArcadeBackground"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 5.0
+offset_right = 1014.0
+offset_bottom = 84.0
+theme = ExtResource("11_0pmnk")
+theme_override_font_sizes/normal_font_size = 76
+text = "SHIBARCADE"
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArcadeScreen" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -350.0
+offset_right = 500.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/ArcadeScreen"]
+handle_input_locally = false
+size = Vector2i(1000, 700)
+render_target_update_mode = 4
+
 [node name="FOOTSTEP" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_yovmp")
 pitch_scale = 1.4
