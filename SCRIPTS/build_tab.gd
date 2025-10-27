@@ -94,6 +94,17 @@ func update_build_options():
 								if texture != null:
 									new_build_option.building_sprite = texture
 				instance.queue_free()
+		elif option["type"] == 3:
+			if option["path"] is PackedScene:
+				var scene = option["path"] as PackedScene
+				var instance = scene.instantiate()
+				if instance.has_node("Sprite2D"):
+					var sprite = instance.get_node("Sprite2D") as Sprite2D
+					if sprite != null and sprite.texture != null:
+						var texture = sprite.texture
+						var orig_scale = sprite.scale
+						new_build_option.building_sprite = texture
+						new_build_option.texture_scale = orig_scale
 		
 		new_build_option.index = indx
 		(new_build_option as TextureButton).option_clicked.connect(_on_build_option_pressed)

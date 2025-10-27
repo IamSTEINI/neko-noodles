@@ -144,3 +144,7 @@ func restore_npc():
 				npc.set_target_position(npc.Entry.global_position)
 				
 		Globals.log("Restored NPC #"+state["npc_name"])
+
+func clear():
+	npc_states.clear()
+	table_states.clear()

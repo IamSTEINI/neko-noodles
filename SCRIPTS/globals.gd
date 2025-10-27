@@ -10,12 +10,13 @@ var noodle_base_price = 0
 var console: RichTextLabel = null
 var buildMode: bool = false
 var tmultiplier: float = 60.0 * 2
-var intime_seconds: int = 24 * 3600 # 17
+var intime_seconds: int = 17 * 3600 # 17
 var day: int = 1
 var music_volume: int = 0
 var sfx_volume: int = 0
 var ingtime: String = "12:00 AM"
 var restaurant_rating: float = 5
+var restaurant_rating_min: float = 0.1
 @export var money: int = 120
 
 var time_accumulator: float = 0.0
@@ -26,10 +27,11 @@ var spawn_interval: float = 0.0
 var spawn_accumulator: float = 0.0
 
 var refresh_inv: bool = false
-var tutarrow_pos: Vector2 = Vector2(0,0)
+var tutarrow_pos: Vector2 = Vector2(0,42)
 
 signal npc_spawn
 signal new_day_started(day: int)
+signal game_lost
 
 # SHOP ITEMS
 
@@ -83,6 +85,9 @@ func tutorial():
 	tutarrow_pos = Vector2(0,42)
 	
 func _process(delta: float) -> void:
+	if get_tree().current_scene == null:
+		return
+		
 	var is_main_scene := get_tree().current_scene.name == "Main"
 	if not is_main_scene:
 		return
@@ -106,6 +111,11 @@ func _process(delta: float) -> void:
 		emit_signal("npc_spawn")
 		npc_spawned += 1
 		calculate_spawn_i()
+
+func check_rating() -> void:
+	if restaurant_rating < restaurant_rating_min:
+		emit_signal("game_lost")
+	pass
 
 func kill_all_npcs():
 	var children = get_tree().current_scene.get_children()
@@ -145,7 +155,8 @@ func update_time() -> void:
 			hours_12 = hours_24 - 12
 	if hours_12 == 0:
 		hours_12 = 12
-
+	
+	check_rating()
 	ingtime = "%02d:%02d %s" % [hours_12, minutes, am_pm]
 
 func _update_npc_count() -> void:

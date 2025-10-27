@@ -1,23 +1,14 @@
-[gd_scene load_steps=12 format=4 uid="uid://c76lcwmwgvfdx"]
+[gd_scene load_steps=7 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="Script" uid="uid://da1c5xwmi3o06" path="res://SCRIPTS/restaurant.gd" id="1_mo5rl"]
 [ext_resource type="TileSet" uid="uid://csgs7ksh138ag" path="res://scenes/buildings/Restaurant-BUILDING.tres" id="2_ujk3p"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_57po2"]
 [ext_resource type="PackedScene" uid="uid://ckx7ll1bsgulx" path="res://scenes/Door.tscn" id="5_l5eli"]
-[ext_resource type="Texture2D" uid="uid://blhu67kexv6uh" path="res://ASSETS/TEXTURES/FURNITURE/IMAGE_CAT.png" id="6_8rxlq"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="6_46urj"]
-[ext_resource type="PackedScene" uid="uid://bufma3egs8w2j" path="res://scenes/item_remover.tscn" id="16_ujk3p"]
-[ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="17_8wtqc"]
 
 [sub_resource type="SystemFont" id="SystemFont_e03td"]
 font_names = PackedStringArray("BoldPixels")
 subpixel_positioning = 0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e03td"]
-size = Vector2(56, 44)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow2qv"]
-size = Vector2(46, 63)
 
 [node name="RESTAURANT" type="Node2D"]
 y_sort_enabled = true
@@ -63,46 +54,5 @@ position = Vector2(300, 796)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(300, 111)
-
-[node name="DECO" type="Node2D" parent="."]
-z_index = 101
-position = Vector2(38, 685)
-metadata/tooltip = "Julian's cat"
-metadata/description = "Mysterious, right...?"
-
-[node name="ImageCat" type="Sprite2D" parent="DECO"]
-position = Vector2(-0.20358658, 122)
-rotation = 0.14215599
-scale = Vector2(0.12300001, 0.12300001)
-texture = ExtResource("6_8rxlq")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="DECO"]
-position = Vector2(-17.203587, -893)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DECO/StaticBody2D"]
-position = Vector2(19, 1017)
-shape = SubResource("RectangleShape2D_e03td")
-
-[node name="TRASH" parent="." instance=ExtResource("16_ujk3p")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(-41, 922)
-metadata/tooltip = "Trash"
-metadata/description = "It is like the first version of my game."
-
-[node name="Sprite2D" type="Sprite2D" parent="TRASH"]
-texture_filter = 1
-scale = Vector2(1.48, 1.48)
-texture = ExtResource("17_8wtqc")
-region_enabled = true
-region_rect = Rect2(1.0599365, 50.63266, 47.15735, 48.431877)
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="TRASH"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TRASH/StaticBody2D2"]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_ow2qv")
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]

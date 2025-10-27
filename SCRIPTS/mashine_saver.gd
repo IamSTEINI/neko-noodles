@@ -33,3 +33,7 @@ func restore_machine(machine: Node) -> Node:
 
 func has_saved(machine: Node) -> bool:
 	return saved_machines.has(machine.name)
+	
+func clear_saved() -> void:
+	machines.clear()
+	saved_machines.clear()

@@ -1,0 +1,185 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccvunvxjxju8c"]
+
+[ext_resource type="Script" uid="uid://cdbwkaxk5pjam" path="res://SCRIPTS/game_lost.gd" id="1_k0tqk"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="2_fhetd"]
+[ext_resource type="Texture2D" uid="uid://bx8ln1y2t5f0m" path="res://BUILDS/index.png" id="2_lff48"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0tqk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lff48"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_26cyf"]
+
+[sub_resource type="Animation" id="Animation_k0tqk"]
+resource_name = "LOST"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.37892953, 0.17677675),
+"update": 0,
+"values": [Vector2(0, -1087), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LOST:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.29730183, 1),
+"update": 0,
+"values": [Vector2(360, 1875), Vector2(360, 474)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/BG/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(939, -601), Vector2(939, 378)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Retry:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(869.5, 3195.0015), Vector2(869.5, 874)]
+}
+
+[sub_resource type="Animation" id="Animation_fhetd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1087)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LOST:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(360, 1875)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/BG/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(939, 378)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Retry:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(869.5, 3195.0015)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhetd"]
+_data = {
+&"LOST": SubResource("Animation_k0tqk"),
+&"RESET": SubResource("Animation_fhetd")
+}
+
+[node name="GameLost" type="Node2D"]
+script = ExtResource("1_k0tqk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="BG" type="Panel" parent="CanvasLayer"]
+offset_top = -1087.0
+offset_right = 1920.0
+offset_bottom = -7.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k0tqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/BG"]
+position = Vector2(939, 378)
+texture = ExtResource("2_lff48")
+
+[node name="LOST" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = 1335.0
+offset_right = 600.0
+offset_bottom = 1735.0024
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fhetd")
+theme_override_colors/default_color = Color(1, 0.18, 0.18, 1)
+theme_override_font_sizes/normal_font_size = 235
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retry" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.5
+offset_top = 2115.0015
+offset_right = 90.5
+offset_bottom = 2166.0034
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("2_fhetd")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lff48")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_26cyf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_26cyf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_26cyf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_26cyf")
+text = "Retry"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fhetd")
+}
+
+[connection signal="pressed" from="CanvasLayer/Retry" to="." method="_on_retry_pressed"]

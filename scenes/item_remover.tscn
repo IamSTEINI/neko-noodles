@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bufma3egs8w2j"]
+[gd_scene load_steps=6 format=3 uid="uid://bufma3egs8w2j"]
 
 [ext_resource type="Script" uid="uid://beudnetm2qg7u" path="res://SCRIPTS/item_remover.gd" id="1_6xan1"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="2_x6gbh"]
+[ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="3_0tpiw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r50tu"]
 radius = 39.8121
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irkiv"]
+size = Vector2(46, 63)
 
 [node name="ItemRemover" type="Node2D"]
 script = ExtResource("1_6xan1")
@@ -29,5 +33,20 @@ vertical_alignment = 1
 [node name="INTERACTABLE" parent="." instance=ExtResource("2_x6gbh")]
 text = "Remove items"
 interaction_range = 40
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.48, 1.48)
+texture = ExtResource("3_0tpiw")
+region_enabled = true
+region_rect = Rect2(1.0599365, 50.63266, 47.15735, 48.431877)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_irkiv")
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]

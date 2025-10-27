@@ -7,7 +7,7 @@ func _ready():
 	$CursorDisabled.hide()
 	
 func _process(_delta: float) -> void:
-	if Globals.buildMode or Buildmode.active_tile != "":
+	if Globals.buildMode and Buildmode.active_tile != "":
 		if can:
 			$Cursor.show()
 			$CursorDisabled.hide()

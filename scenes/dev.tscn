@@ -71,6 +71,16 @@ theme = ExtResource("3_rs6on")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rs6on")
 text = "NEW DAY"
 
+[node name="Game Lost" type="Button" parent="CanvasLayer/DEV"]
+layout_mode = 0
+offset_left = 758.0
+offset_right = 866.945
+offset_bottom = 30.7
+focus_mode = 0
+theme = ExtResource("3_rs6on")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs6on")
+text = "LOST GAME"
+
 [node name="Time Skip" type="Button" parent="CanvasLayer/DEV"]
 layout_mode = 0
 offset_left = 120.0
@@ -140,6 +150,7 @@ text = "Carrying:"
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/DEV/New day" to="." method="_on_new_day_pressed"]
+[connection signal="pressed" from="CanvasLayer/DEV/Game Lost" to="." method="_on_game_lost_pressed"]
 [connection signal="button_down" from="CanvasLayer/DEV/Time Skip" to="." method="_on_time_skip_button_down"]
 [connection signal="button_up" from="CanvasLayer/DEV/Time Skip" to="." method="_on_time_skip_button_up"]
 [connection signal="pressed" from="CanvasLayer/DEV/Clear NPCS" to="CanvasLayer/DEV" method="_on_clear_npcs_pressed"]

@@ -185,6 +185,9 @@ y_sort_enabled = true
 [node name="SIDETABLES" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="DECORATION" type="Node2D" parent="."]
+y_sort_enabled = true
+
 [node name="MACHINES" type="Node2D" parent="."]
 y_sort_enabled = true
 

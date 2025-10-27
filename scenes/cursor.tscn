@@ -17,6 +17,7 @@ z_index = 999
 script = ExtResource("1_s0nli")
 
 [node name="Cursor" type="TextureRect" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 25.0
 offset_top = 25.0
@@ -26,6 +27,7 @@ texture = SubResource("AtlasTexture_c6d6f")
 metadata/_edit_use_anchors_ = true
 
 [node name="CursorDisabled" type="TextureRect" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 25.0
 offset_top = 25.0

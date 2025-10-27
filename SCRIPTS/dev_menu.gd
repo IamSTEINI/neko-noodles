@@ -1,6 +1,7 @@
 extends Node2D
 
 signal new_day_started(day: int)
+signal game_lost
 
 func _ready() -> void:
 	$CanvasLayer.hide()
@@ -20,3 +21,8 @@ func _on_time_skip_button_up() -> void:
 
 func _on_new_day_pressed() -> void:
 	emit_signal("new_day_started", Globals.day)
+
+
+func _on_game_lost_pressed() -> void:
+	emit_signal("game_lost")
+	pass

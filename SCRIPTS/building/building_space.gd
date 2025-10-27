@@ -6,7 +6,8 @@ var grid_data = {}
 enum BuildingType {
 	GROUND,
 	WALL,
-	FURNITURE
+	FURNITURE,
+	DECORATION
 }
 
 class GridTile:
@@ -93,6 +94,11 @@ func can_place(pos: Vector2i, building_type: BuildingType) -> bool:
 				return false
 			var tile = get_tile(pos)
 			return tile.type == BuildingType.GROUND
+		BuildingType.DECORATION:
+			if not grid_occupied(pos):
+				return false
+			var tile = get_tile(pos)
+			return tile.type == BuildingType.WALL
 	
 	return false
 

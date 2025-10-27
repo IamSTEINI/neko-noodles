@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://qqwbl5phxpdw"]
+[gd_scene load_steps=24 format=4 uid="uid://qqwbl5phxpdw"]
 
 [ext_resource type="Script" uid="uid://d02er2tdb32s1" path="res://SCRIPTS/supermarket.gd" id="1_kls3s"]
 [ext_resource type="Texture2D" uid="uid://cnyanj228wm1p" path="res://ASSETS/TEXTURES/GROUND/OUTSIDE.png" id="1_vi15o"]
@@ -12,7 +12,6 @@
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="10_3obmj"]
 [ext_resource type="PackedScene" uid="uid://dwm4cbyk2pkah" path="res://scenes/raw_topping_item.tscn" id="10_wu55y"]
 [ext_resource type="PackedScene" uid="uid://bufma3egs8w2j" path="res://scenes/item_remover.tscn" id="12_ljydn"]
-[ext_resource type="Texture2D" uid="uid://dc6nddm23asqu" path="res://ASSETS/TEXTURES/FURNITURE/FURNITURE.png" id="13_twprl"]
 [ext_resource type="PackedScene" uid="uid://ynuiw244nh02" path="res://scenes/supermarket_npc.tscn" id="14_twprl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07jrh"]
@@ -71,9 +70,6 @@ radius = 23.537205
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc56d"]
 size = Vector2(121, 1111)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nq08"]
-size = Vector2(46, 63)
 
 [node name="Supermarket" type="Node2D"]
 y_sort_enabled = true
@@ -349,36 +345,10 @@ position = Vector2(-650, 536)
 metadata/tooltip = "Trash"
 metadata/description = "It is like the first version of my game."
 
-[node name="Sprite2D" type="Sprite2D" parent="TRASH"]
-texture_filter = 1
-scale = Vector2(1.48, 1.48)
-texture = ExtResource("13_twprl")
-region_enabled = true
-region_rect = Rect2(1.0599365, 50.63266, 47.15735, 48.431877)
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="TRASH"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TRASH/StaticBody2D2"]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_1nq08")
-
 [node name="TRASH2" parent="." instance=ExtResource("12_ljydn")]
 position = Vector2(1450, 1957)
 metadata/tooltip = "Trash"
 metadata/description = "It is like the first version of my game."
-
-[node name="Sprite2D" type="Sprite2D" parent="TRASH2"]
-texture_filter = 1
-scale = Vector2(1.48, 1.48)
-texture = ExtResource("13_twprl")
-region_enabled = true
-region_rect = Rect2(1.0599365, 50.63266, 47.15735, 48.431877)
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="TRASH2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TRASH2/StaticBody2D2"]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_1nq08")
 
 [node name="SupermarketNPC" parent="." instance=ExtResource("14_twprl")]
 position = Vector2(-442, 727)

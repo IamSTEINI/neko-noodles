@@ -25,6 +25,20 @@ var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.t
 		"tag": "restaurant",
 		"name": "Lamp"
 	},
+	"trash": {
+		"path": preload("res://scenes/item_remover.tscn"),
+		"type": 2,
+		"price": 5,
+		"tag": "other",
+		"name": "Trash"
+	},
+	"catimage": {
+		"path": preload("res://scenes/buildings/decoration/cat-image.tscn"),
+		"type": 3,
+		"price": 1,
+		"tag": "other",
+		"name": "Cat Image"
+	},
 	"stove": {
 		"path": preload("res://scenes/machines/noodle_cooker.tscn"),
 		"type": 2,
@@ -223,7 +237,6 @@ func delete_tile(grid: Vector2i):
 			build_space.update_tile_from_tilemap(grid, 0)
 		else:
 			build_space.remove_from_grid(grid)
-		
 	elif tile.type == 1:
 		var tilemap = (get_tree().current_scene.get_node("RESTAURANT").get_node("Restaurant-base") as TileMapLayer)
 		var atlas_coords = tilemap.get_cell_atlas_coords(grid)
@@ -257,6 +270,27 @@ func delete_tile(grid: Vector2i):
 		var tilemap = (get_tree().current_scene.get_node("RESTAURANT").get_node("Restaurant-base") as TileMapLayer)
 		tilemap.erase_cell(grid)
 		build_space.remove_from_grid(grid)
+	elif tile.type == 3:
+		var refund_amount = 0
+		for key in building_parts:
+			var part = building_parts[key]
+			if part["type"] == 3 and is_instance_valid(tile.node):
+				var nnlower = tile.node.name.to_lower()
+				var pnlower = part["name"].to_lower().replace(" ", "")
+				if nnlower.begins_with(pnlower + "_"):
+					refund_amount = part["price"]
+					break
+		if refund_amount > 0:
+			refund_building(refund_amount)
+		if is_instance_valid(tile.node):
+			tile.node.queue_free()
+		
+		var tilemap = (get_tree().current_scene.get_node("RESTAURANT").get_node("Restaurant-base") as TileMapLayer)
+		var atlas_coords = tilemap.get_cell_atlas_coords(grid)
+		if atlas_coords != Vector2i(-1, -1):
+			build_space.update_tile_from_tilemap(grid, 1)
+		else:
+			build_space.remove_from_grid(grid)
 
 func refund_building(price: int) -> void:
 	Expenses.add_transaction("Build refund", price)
@@ -408,6 +442,7 @@ func get_type_name(type: int) -> String:
 		0: return "GROUND"
 		1: return "WALL"
 		2: return "FURNITURE"
+		3: return "DECORATION"
 		_: return "UNKNOWN"
 
 func handle_click(grid: Vector2i) -> void:
@@ -462,10 +497,23 @@ func handle_click(grid: Vector2i) -> void:
 				var uid = randi() % 1000000
 				building.name = "ToppingCutter_%d" % uid
 				get_tree().current_scene.get_node_or_null("MACHINES").add_child(building)
+			elif building_data["name"] == "Trash":
+				var uid = randi() % 1000000
+				building.name = "Trash_%d" % uid
+				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 			else:	
 				get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				
 			build_space.add_to_grid(grid, building, active_building_type)
+	elif active_building_type == 3:
+			if building_data["path"] is PackedScene:
+				var building = (building_data["path"] as PackedScene).instantiate()
+				building.global_position = Vector2(grid) * grid_size + Vector2(grid_size / 2, grid_size / 2)
+				if building_data["name"] == "Cat Image":
+					var uid = randi() % 1000000
+					building.name = "CatImage_%d" % uid
+					get_tree().current_scene.get_node_or_null("DECORATION").add_child(building)
+				build_space.add_to_grid(grid, building, active_building_type)
 	pay_building(building_data["price"])
 
 func pay_building(price: int) -> void:
@@ -522,8 +570,21 @@ func handle_selection(grids: Array[Vector2i]) -> void:
 					var uid = randi() % 1000000
 					building.name = "ToppingCutter_%d" % uid
 					get_tree().current_scene.get_node_or_null("MACHINES").add_child(building)
+				elif building_data["name"] == "Trash":
+					var uid = randi() % 1000000
+					building.name = "Trash_%d" % uid
+					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
 				else:	
 					get_tree().current_scene.get_node_or_null("FURNITURE").add_child(building)
+				build_space.add_to_grid(grid, building, active_building_type)
+		elif active_building_type == 3:
+			if building_data["path"] is PackedScene:
+				var building = (building_data["path"] as PackedScene).instantiate()
+				building.global_position = Vector2(grid) * grid_size + Vector2(grid_size / 2, grid_size / 2)
+				if building_data["name"] == "Cat Image":
+					var uid = randi() % 1000000
+					building.name = "CatImage_%d" % uid
+					get_tree().current_scene.get_node_or_null("DECORATION").add_child(building)
 				build_space.add_to_grid(grid, building, active_building_type)
 		pay_building(building_data["price"])
 

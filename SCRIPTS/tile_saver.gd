@@ -18,12 +18,12 @@ func save_building_data(grid_data: Dictionary, tilemap: TileMapLayer):
 	var furniture_count = 0
 	for grid_pos in grid_data:
 		var tile = grid_data[grid_pos]
-		if tile.type == 2 and is_instance_valid(tile.node):
+		if (tile.type == 2 or tile.type == 3) and is_instance_valid(tile.node):
 			furniture_count += 1
 	
 	for grid_pos in grid_data:
 		var tile = grid_data[grid_pos]
-		if tile.type == 2 and is_instance_valid(tile.node):
+		if (tile.type == 2 or tile.type == 3) and is_instance_valid(tile.node):
 			var furniture_data = {
 				"grid_pos": grid_pos,
 				"position": tile.node.global_position,
@@ -35,7 +35,7 @@ func save_building_data(grid_data: Dictionary, tilemap: TileMapLayer):
 			var found_key = false
 			for key in Buildmode.building_parts:
 				var part = Buildmode.building_parts[key]
-				if part["type"] == 2 and part["path"] is PackedScene:
+				if (part["type"] == 2 or part["type"] == 3) and part["path"] is PackedScene:
 					var node_scene = tile.node.scene_file_path
 					var part_scene = (part["path"] as PackedScene).resource_path
 					
@@ -63,7 +63,7 @@ func restore_building_data(build_space: Node2D, tilemap: TileMapLayer, tables_no
 	
 	for grid_pos in build_space.grid_data.keys():
 		var tile = build_space.grid_data[grid_pos]
-		if tile.type == 2 and is_instance_valid(tile.node):
+		if (tile.type == 2 or tile.type == 3) and is_instance_valid(tile.node):
 			tile.node.queue_free()
 	
 	build_space.grid_data.clear()
@@ -105,11 +105,11 @@ func restore_building_data(build_space: Node2D, tilemap: TileMapLayer, tables_no
 				furniture.update_capacity_text()
 		else:
 			build_space.get_tree().current_scene.add_child(furniture)
-		
+	
 		var grid_pos = furniture_data["grid_pos"]
 		build_space.grid_data[grid_pos] = build_space.GridTile.new(
-			furniture, 
-			furniture_data["type"], 
+			furniture,
+			furniture_data["type"],
 			grid_pos
 		)
 	

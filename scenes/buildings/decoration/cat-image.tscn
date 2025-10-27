@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnmihqck4e3i4"]
+
+[ext_resource type="Texture2D" uid="uid://blhu67kexv6uh" path="res://ASSETS/TEXTURES/FURNITURE/IMAGE_CAT.png" id="1_o6ibc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e03td"]
+size = Vector2(56, 44)
+
+[node name="DECO" type="Node2D"]
+z_index = 101
+metadata/tooltip = "Julian's cat"
+metadata/description = "Mysterious, right...?"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.20358658, -2)
+rotation = 0.14215599
+scale = Vector2(0.12300001, 0.12300001)
+texture = ExtResource("1_o6ibc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-17.203587, -1017)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(19, 1017)
+shape = SubResource("RectangleShape2D_e03td")

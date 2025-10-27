@@ -4,6 +4,7 @@ var skip: bool = false
 var typing: bool = false
 var queue: Array[String] = []
 var speaking: bool = false
+
 func _ready() -> void:
 	$CanvasLayer/Speakbubble.hide()
 	
