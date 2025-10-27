@@ -128,6 +128,9 @@ func kill_all_npcs():
 		if child.has_meta("type"):
 			if child.get_meta("type") == "NPC":
 				child.queue_free()
+	if get_tree().current_scene.get_node_or_null("TABLES") != null:
+		for child in get_tree().current_scene.get_node("TABLES").get_children():
+			child.customers = 0
 
 func update_time() -> void:
 	intime_seconds += 1
