@@ -1,6 +1,6 @@
 [gd_scene load_steps=129 format=3 uid="uid://ynuiw244nh02"]
 
-[ext_resource type="Script" uid="uid://dc07au4hj7f6h" path="res://scripts/supermarket_npc.gd" id="1_5s7s7"]
+[ext_resource type="Script" uid="uid://dc07au4hj7f6h" path="res://SCRIPTS/supermarket_npc.gd" id="1_5s7s7"]
 [ext_resource type="Texture2D" uid="uid://bctb3q1rfg0l0" path="res://ASSETS/TEXTURES/PLAYER/NPCS.png" id="2_h6uj1"]
 [ext_resource type="AudioStream" uid="uid://b2bvyjrqfg7dv" path="res://SOUNDS/cat_talking.mp3" id="3_h6uj1"]
 

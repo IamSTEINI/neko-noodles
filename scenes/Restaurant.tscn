@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://c76lcwmwgvfdx"]
+[gd_scene load_steps=5 format=4 uid="uid://c76lcwmwgvfdx"]
 
 [ext_resource type="Script" uid="uid://da1c5xwmi3o06" path="res://SCRIPTS/restaurant.gd" id="1_mo5rl"]
 [ext_resource type="TileSet" uid="uid://csgs7ksh138ag" path="res://scenes/buildings/Restaurant-BUILDING.tres" id="2_ujk3p"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_57po2"]
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="6_46urj"]
-
-[sub_resource type="SystemFont" id="SystemFont_e03td"]
-font_names = PackedStringArray("BoldPixels")
-subpixel_positioning = 0
 
 [node name="RESTAURANT" type="Node2D"]
 y_sort_enabled = true
@@ -38,7 +34,6 @@ offset_top = 194.0
 offset_right = 399.0
 offset_bottom = 285.0
 theme = ExtResource("3_57po2")
-theme_override_fonts/normal_font = SubResource("SystemFont_e03td")
 theme_override_font_sizes/normal_font_size = 31
 text = "NPC ENTRY"
 horizontal_alignment = 1

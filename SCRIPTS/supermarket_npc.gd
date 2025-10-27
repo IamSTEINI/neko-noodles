@@ -119,7 +119,7 @@ func say(text: String) -> void:
 
 func update_animation(idle: bool) -> void:
 	if idle:
-		cat_sprite.play("IDLE")
+		cat_sprite.play("IDLE_DOWN")
 	elif direction == -1:
 		cat_sprite.play("WALK_UP")
 	else:
