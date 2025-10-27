@@ -74,7 +74,7 @@ func _ready() -> void:
 
 func tutorial():
 	tutarrow_pos = Vector2(0,42)
-	await Speaking.say("Hello, is that Timmy? I just wanted to wish you good luck again with the restaurant.")
+	await Speaking.say("Hello, is that Timmy? I just wanted to wish you good luck again with the restaurant here in SHIBATOWN.")
 	tutarrow_pos = Vector2(1396.0,48)
 	await Speaking.say("Ensure that guests are satisfied and get what they want for a good price!")
 	tutarrow_pos = Vector2(208,42)

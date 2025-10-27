@@ -1393,6 +1393,166 @@ text = "If you deliver no food or the wrong food to customers, your rating will 
 fit_content = true
 scroll_active = false
 
+[node name="Expenses" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Expenses"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Expenses"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "A smart restaurant owner needs smart indicators! At the expenses menu you can see all the expenses and income from the current day!"
+fit_content = true
+scroll_active = false
+
+[node name="Manage" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Manage Restaurant"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Manage"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Here you can rename your restaurant and even set a base price! The base price will be applied on top of the initial price!"
+fit_content = true
+scroll_active = false
+
+[node name="Shop" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Shop"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Shop"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "At the shop you can buy different items! Such as backpacks! I'll add more later"
+fit_content = true
+scroll_active = false
+
+[node name="Build" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Build"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Build"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Here you can find teh different categories of stuff to place. Also you can play the Arcade machine by YOURSELF!"
+fit_content = true
+scroll_active = false
+
+[node name="Bank" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Build"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Bank"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "At the banking you can get loans if you're broke! You can only have one at a time!"
+fit_content = true
+scroll_active = false
+
+[node name="Money" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Money"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Money"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Money is really important in this game. If you're broke, you should consider taking a loan! Money is the only currency here in SHIBATOWN!"
+fit_content = true
+scroll_active = false
+
+[node name="Expected" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Expected Customers"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Expected"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "To prepare for the day, you can see how many visitiors you'll get today! All NPCs will go away after a new day started!"
+fit_content = true
+scroll_active = false
+
+[node name="Day" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+visible = false
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "Day count"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Day"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "This shows the current day. Send me a screenshot when you reached day 1K and you get implemented into the game!"
+fit_content = true
+scroll_active = false
+
 [node name="Building" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
@@ -1421,7 +1581,7 @@ title = "How do I place stuff"
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "If you want to place stuff, press the thing you want to place in the Build tab and click on the desired location!"
+text = "If you want to place stuff, press the thing you want to place in the Build tab and click on the desired location! Keep in mind: Walls need a ground, Deco need walls."
 fit_content = true
 scroll_active = false
 
@@ -1441,6 +1601,25 @@ visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "If you want to remove placed stuff, press any build object, then right-click on the thing you want to get rid off, and you will receive a refund!"
+fit_content = true
+scroll_active = false
+
+[node name="Combine" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "How to combine stuff?"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer/Combine"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "To combine noodles with a topping, you have to place the cooked noodles on a SIDETABLE and then interact with the SIDETABLE while carrying a topping to add."
 fit_content = true
 scroll_active = false
 
@@ -1960,6 +2139,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ArcadeBackground" type="ColorRect" parent="CanvasLayer"]
+visible = false
 offset_left = 453.0
 offset_top = 102.0
 offset_right = 1467.0
@@ -1982,6 +2162,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ArcadeScreen" type="SubViewportContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1998,7 +2179,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/ArcadeScreen"]
 handle_input_locally = false
 size = Vector2i(1000, 700)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="FOOTSTEP" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_yovmp")
