@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bio7x6ic1c73c"]
+[gd_scene load_steps=6 format=3 uid="uid://bio7x6ic1c73c"]
 
 [ext_resource type="Script" uid="uid://bjws2d0m21m5r" path="res://SCRIPTS/item_giver.gd" id="1_2w3e0"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="2_5fjo5"]
+[ext_resource type="Texture2D" uid="uid://ddufwphpmt7tf" path="res://ASSETS/TEXTURES/GROUND/SUPERMARKET.png" id="2_truk3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2w3e0"]
 radius = 25.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fjo5"]
+atlas = ExtResource("2_truk3")
+region = Rect2(56, 363, 37, 37)
 
 [node name="ItemGiver" type="Node2D"]
 script = ExtResource("1_2w3e0")
@@ -13,20 +19,33 @@ script = ExtResource("1_2w3e0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_2w3e0")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-48, -56.000004)
+rotation = -0.261799
+scale = Vector2(2.595, 2.595)
+texture = SubResource("AtlasTexture_5fjo5")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 2
+y_sort_enabled = true
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = 6.999996
-offset_right = 67.0
-offset_bottom = 46.999996
+offset_left = -101.0
+offset_top = -82.00001
+offset_right = -12.889999
+offset_bottom = -42.000008
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.68, 0.68)
+rotation = -0.261799
+theme = ExtResource("2_5fjo5")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
 text = "ITEMGIVER"
 scroll_active = false
 horizontal_alignment = 1
