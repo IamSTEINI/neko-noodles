@@ -23,9 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://bv15sl3vqa5q" path="res://ASSETS/TEXTURES/PLAYER/ITEMS.png" id="17_ehigy"]
 [ext_resource type="Script" uid="uid://c8phmfav4cokx" path="res://SCRIPTS/build_tab.gd" id="18_ehigy"]
 [ext_resource type="PackedScene" uid="uid://dk3irm812oyso" path="res://scenes/building_option.tscn" id="19_gtncy"]
-[ext_resource type="Script" uid="uid://d4h78feyd523l" path="res://scripts/foldable_overwrite.gd" id="20_i10kl"]
+[ext_resource type="Script" uid="uid://d4h78feyd523l" path="res://SCRIPTS/foldable_overwrite.gd" id="20_i10kl"]
 [ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="20_r2enu"]
-[ext_resource type="Script" uid="uid://dfvnyxyioja7w" path="res://scripts/tutorial_arrow.gd" id="24_r2enu"]
+[ext_resource type="Script" uid="uid://dfvnyxyioja7w" path="res://SCRIPTS/tutorial_arrow.gd" id="24_r2enu"]
 [ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="25_i10kl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm7vs"]
