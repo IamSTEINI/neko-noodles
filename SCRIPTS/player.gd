@@ -11,7 +11,8 @@ var SPEED = 450
 var arcade_locked: bool = false
 var dir = "down"
 @onready var backpack_container = $CanvasLayer/Backpack/HBoxContainer
-var scene = preload("res://scenes/arcade/arcade_game.tscn")
+var arcade_scene_1 = preload("res://scenes/arcade/arcade_game.tscn")
+var arcade_scene_2 = preload("res://scenes/arcade/arcade_game_2.tscn")
 
 func _ready() -> void:
 	$CanvasLayer/StatusBar/Control/VISITORSTATUSBAR.Tables = Tables
@@ -207,11 +208,15 @@ func _on_area_player_body_exited(body: Node2D) -> void:
 	if body.get_meta("type") == "player":
 		Globals.log("LEFT AREA: "+body.name)
 
-func show_arcade() -> void:
+func show_arcade(id: int) -> void:
 	$CanvasLayer/ArcadeInfo.show()
 	var viewport = $CanvasLayer/ArcadeScreen/SubViewport
 	$CanvasLayer/ArcadeBackground.show()
-	var new_scene = scene.instantiate()
+	var new_scene = null
+	if id == 1:
+		new_scene = arcade_scene_1.instantiate()
+	else:
+		new_scene = arcade_scene_2.instantiate()
 	viewport.add_child(new_scene)
 	arcade_locked = true
 	$CanvasLayer/ArcadeScreen.show()

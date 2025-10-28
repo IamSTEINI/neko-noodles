@@ -1187,6 +1187,7 @@ metadata/tooltip = "Shop"
 metadata/description = "You can buy stuff there"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/ShopTab"]
+visible = false
 anchors_preset = 0
 offset_left = 0.6666667
 offset_top = 18.0
@@ -1365,7 +1366,6 @@ metadata/tooltip = "Texbook"
 metadata/description = "An ingame FAQ"
 
 [node name="Tab" type="Control" parent="CanvasLayer/StatusBar/TABS/HelpTab"]
-visible = false
 anchors_preset = 0
 offset_left = 0.6666667
 offset_top = 18.0
@@ -1427,8 +1427,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Menu bar"
 
-[node name="Ratings" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
 visible = false
+layout_mode = 2
+
+[node name="Ratings" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1439,7 +1442,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Ratings"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Ratings"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Ratings"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1447,8 +1450,7 @@ text = "If you deliver no food or the wrong food to customers, your rating will 
 fit_content = true
 scroll_active = false
 
-[node name="Expenses" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
-visible = false
+[node name="Expenses" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1459,7 +1461,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Expenses"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Expenses"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Expenses"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1467,8 +1469,7 @@ text = "A smart restaurant owner needs smart indicators! At the expenses menu yo
 fit_content = true
 scroll_active = false
 
-[node name="Manage" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
-visible = false
+[node name="Manage" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1479,7 +1480,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Manage Restaurant"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Manage"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Manage"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1487,8 +1488,7 @@ text = "Here you can rename your restaurant and even set a base price! The base 
 fit_content = true
 scroll_active = false
 
-[node name="Shop" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
-visible = false
+[node name="Shop" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1499,7 +1499,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Shop"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Shop"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Shop"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1507,8 +1507,7 @@ text = "At the shop you can buy different items! Such as backpacks! I'll add mor
 fit_content = true
 scroll_active = false
 
-[node name="Build" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
-visible = false
+[node name="Build" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1519,7 +1518,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Build"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Build"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Build"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1527,8 +1526,7 @@ text = "Here you can find teh different categories of stuff to place. Also you c
 fit_content = true
 scroll_active = false
 
-[node name="Bank" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
-visible = false
+[node name="Bank" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1539,7 +1537,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Build"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Bank"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Bank"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1547,8 +1545,7 @@ text = "At the banking you can get loans if you're broke! You can only have one 
 fit_content = true
 scroll_active = false
 
-[node name="Money" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
-visible = false
+[node name="Money" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1559,7 +1556,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Money"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Money"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Money"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1567,8 +1564,7 @@ text = "Money is really important in this game. If you're broke, you should cons
 fit_content = true
 scroll_active = false
 
-[node name="Expected" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
-visible = false
+[node name="Expected" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1579,7 +1575,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Expected Customers"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Expected"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Expected"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1587,8 +1583,7 @@ text = "To prepare for the day, you can see how many visitiors you'll get today!
 fit_content = true
 scroll_active = false
 
-[node name="Day" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
-visible = false
+[node name="Day" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1599,7 +1594,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
 title = "Day count"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/Day"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Day"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -1615,9 +1610,11 @@ theme = ExtResource("11_0pmnk")
 theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
 title = "Building"
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building"]
+visible = false
 layout_mode = 2
 
 [node name="Place" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer"]

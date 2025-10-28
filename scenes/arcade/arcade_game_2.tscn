@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://8cdwnogbctro"]
+
+[ext_resource type="Script" uid="uid://ci6iyixwg67dm" path="res://ASSETS/arcade_game_assets/main.gd" id="1_jvtmr"]
+[ext_resource type="PackedScene" uid="uid://d3s7o0ya8pv42" path="res://ASSETS/arcade_game_assets/ground.tscn" id="3_3rd3a"]
+[ext_resource type="PackedScene" uid="uid://cpqrnewyiut7q" path="res://ASSETS/arcade_game_assets/zombie.tscn" id="4_chtdd"]
+[ext_resource type="Texture2D" uid="uid://fr7i17jlhqen" path="res://ASSETS/arcade_game_assets/forest_long.png" id="4_jvtmr"]
+[ext_resource type="PackedScene" uid="uid://budkbgl33l736" path="res://ASSETS/arcade_game_assets/player.tscn" id="4_n0bd8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rd3a"]
+bg_color = Color(0.006224865, 0.007225343, 0.02039832, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvtmr"]
+size = Vector2(302, 471)
+
+[node name="ArcadeGame" type="Node2D" node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("1_jvtmr")
+zombie_s = ExtResource("4_chtdd")
+zombie2_s = ExtResource("4_chtdd")
+spawn_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
+
+[node name="BG" type="Panel" parent="."]
+offset_left = -4260.0
+offset_top = -2967.0
+offset_right = -2340.0
+offset_bottom = -1887.0
+scale = Vector2(4.585, 4.585)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3rd3a")
+
+[node name="ForestLong" type="Sprite2D" parent="."]
+modulate = Color(0.15127608, 0.15127608, 0.15127605, 1)
+position = Vector2(951, -585)
+texture = ExtResource("4_jvtmr")
+
+[node name="Player" parent="." instance=ExtResource("4_n0bd8")]
+position = Vector2(1049, -13)
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" parent="Player" index="0"]
+position = Vector2(1.4999999, -9)
+scale = Vector2(0.7, 0.7)
+animation = &"idle"
+
+[node name="CollisionShape2D" parent="Player" index="1"]
+position = Vector2(1.5, -4.5)
+
+[node name="Camera2D" parent="Player" index="2"]
+position = Vector2(0, -17.5)
+
+[node name="Zombies" type="Node2D" parent="."]
+
+[node name="Ground" parent="." instance=ExtResource("3_3rd3a")]
+position = Vector2(1079, -13)
+
+[node name="Ground2" parent="." instance=ExtResource("3_3rd3a")]
+position = Vector2(2677, -13)
+
+[node name="Ground3" parent="." instance=ExtResource("3_3rd3a")]
+position = Vector2(-521, -13)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -37)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(1920, -37)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-746, -130)
+shape = SubResource("RectangleShape2D_jvtmr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2632, -130)
+shape = SubResource("RectangleShape2D_jvtmr")
+
+[editable path="Player"]

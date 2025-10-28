@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=3 uid="uid://de1ku73w71ije"]
+
+[ext_resource type="Script" uid="uid://byd02nenrokh5" path="res://SCRIPTS/building/arcade_machine.gd" id="1_boiu1"]
+[ext_resource type="Texture2D" uid="uid://b7p455xie0i1n" path="res://ASSETS/TEXTURES/FURNITURE/Decoration.png" id="2_oau2t"]
+[ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="3_8mlln"]
+[ext_resource type="AudioStream" uid="uid://bnuidp2eo5v0" path="res://ASSETS/arcade_game_assets/soundtrack.mp3" id="4_boiu1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q3d3"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33ukh"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu7qt"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2q4k"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t160"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itcv2"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6gqw"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(300, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn44c"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(350, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndmpn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q3d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33ukh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu7qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2q4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5t160")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itcv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6gqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn44c")
+}],
+"loop": true,
+"name": &"Play",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46urj"]
+size = Vector2(68, 28)
+
+[node name="ArcadeMachine" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("1_boiu1")
+id = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ndmpn")
+animation = &"Play"
+frame_progress = 0.52070874
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 1
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 30)
+shape = SubResource("RectangleShape2D_46urj")
+
+[node name="INTERACTABLE" parent="." instance=ExtResource("3_8mlln")]
+position = Vector2(0, 18)
+scale = Vector2(0.9999998, 1)
+text = "Play arcade"
+border_color = Color(1, 1, 1, 1)
+interaction_range = 40
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_boiu1")
+volume_db = 5.0
+max_distance = 370.0
+attenuation = 0.6372805
+parameters/looping = true
+
+[connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
+[connection signal="player_exited" from="INTERACTABLE" to="." method="_on_interactable_player_exited"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3s7o0ya8pv42"]
+
+[ext_resource type="Texture2D" uid="uid://b7jyxfje7sjln" path="res://ASSETS/arcade_game_assets/background.png" id="1_yh8r4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glv2v"]
+size = Vector2(1600, 40)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fos0i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu6xs"]
+atlas = ExtResource("1_yh8r4")
+region = Rect2(0, 158, 400, 43)
+
+[node name="Ground" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_glv2v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.45452422, 0.45452428, 0.45452422, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_fos0i")
+offset_top = 2.0
+offset_right = 400.0
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_uu6xs")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(0.45452422, 0.45452428, 0.45452422, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_fos0i")
+offset_left = -400.0
+offset_top = 2.0
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_uu6xs")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+modulate = Color(0.45452422, 0.45452428, 0.45452422, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_fos0i")
+offset_left = -800.0
+offset_top = 2.0
+offset_right = -400.0
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_uu6xs")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.45452422, 0.45452428, 0.45452422, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_fos0i")
+offset_left = 400.0
+offset_top = 2.0
+offset_right = 800.0
+offset_bottom = 43.0
+texture = SubResource("AtlasTexture_uu6xs")

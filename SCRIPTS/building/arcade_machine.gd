@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var id = 1
+
 func _ready() -> void:
 	$AnimatedSprite2D.frame = 0
 
@@ -8,7 +10,7 @@ func _on_interactable_interacted(body: Node2D) -> void:
 	if body.has_meta("type"):
 		if body.get_meta("type") == "player":
 			if body.has_method("show_arcade"):
-				body.show_arcade()
+				body.show_arcade(id)
 				$AudioStreamPlayer2D.play()
 				$AnimatedSprite2D.play()
 				$INTERACTABLE.can_interact = false

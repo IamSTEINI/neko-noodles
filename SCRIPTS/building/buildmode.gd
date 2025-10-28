@@ -53,6 +53,13 @@ var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.t
 		"tag": "other",
 		"name": "Arcade"
 	},
+	"arcade-2": {
+		"path": preload("res://scenes/buildings/decoration/arcade_machine_2.tscn"),
+		"type": 2,
+		"price": 55,
+		"tag": "other",
+		"name": "Arcade 2"
+	},
 	"stove": {
 		"path": preload("res://scenes/machines/noodle_cooker.tscn"),
 		"type": 2,
