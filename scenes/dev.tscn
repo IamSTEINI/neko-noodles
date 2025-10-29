@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8mji5lptf2ph"]
+[gd_scene load_steps=14 format=3 uid="uid://c8mji5lptf2ph"]
 
 [ext_resource type="Script" uid="uid://buh6gpcxc1chx" path="res://SCRIPTS/dev_menu.gd" id="1_rm1js"]
 [ext_resource type="Script" uid="uid://dx0e3afmw43l3" path="res://SCRIPTS/dev_scripts.gd" id="1_wpru5"]
 [ext_resource type="Script" uid="uid://cygh5i15iy1wi" path="res://SCRIPTS/CONSOLE.gd" id="2_rs6on"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_rs6on"]
+[ext_resource type="Texture2D" uid="uid://dhy4xstfgek1o" path="res://ASSETS/TEXTURES/Arcade/JoyStickSimulator.png" id="5_0eiw2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpru5"]
 bg_color = Color(0, 0, 0, 0.72156864)
@@ -20,6 +21,69 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.6622365, 0.4585778, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7nro"]
+atlas = ExtResource("5_0eiw2")
+region = Rect2(192, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eiw2"]
+atlas = ExtResource("5_0eiw2")
+region = Rect2(0, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4te8u"]
+atlas = ExtResource("5_0eiw2")
+region = Rect2(288, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsggt"]
+atlas = ExtResource("5_0eiw2")
+region = Rect2(384, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gqh4"]
+atlas = ExtResource("5_0eiw2")
+region = Rect2(96, 0, 96, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rm1js"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7nro")
+}],
+"loop": true,
+"name": &"DOWN",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eiw2")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4te8u")
+}],
+"loop": true,
+"name": &"LEFT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsggt")
+}],
+"loop": true,
+"name": &"RIGHT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gqh4")
+}],
+"loop": true,
+"name": &"UP",
+"speed": 5.0
+}]
 
 [node name="Dev" type="Node2D"]
 z_index = 1000
@@ -148,6 +212,13 @@ offset_right = 302.28
 offset_bottom = -256.0
 text = "Carrying:"
 vertical_alignment = 1
+
+[node name="JoyStick" type="AnimatedSprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(853.99994, 922.99994)
+scale = Vector2(2.4875, 2.4875)
+sprite_frames = SubResource("SpriteFrames_rm1js")
+animation = &"LEFT"
 
 [connection signal="pressed" from="CanvasLayer/DEV/New day" to="." method="_on_new_day_pressed"]
 [connection signal="pressed" from="CanvasLayer/DEV/Game Lost" to="." method="_on_game_lost_pressed"]

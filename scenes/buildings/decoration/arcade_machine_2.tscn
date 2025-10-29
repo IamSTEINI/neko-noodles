@@ -5,64 +5,64 @@
 [ext_resource type="PackedScene" uid="uid://wd23pngx08lf" path="res://scenes/Interactable.tscn" id="3_8mlln"]
 [ext_resource type="AudioStream" uid="uid://bnuidp2eo5v0" path="res://ASSETS/arcade_game_assets/soundtrack.mp3" id="4_boiu1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7q3d3"]
-atlas = ExtResource("2_oau2t")
-region = Rect2(0, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_33ukh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_boiu1"]
 atlas = ExtResource("2_oau2t")
 region = Rect2(50, 0, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tu7qt"]
-atlas = ExtResource("2_oau2t")
-region = Rect2(100, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2q4k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oau2t"]
 atlas = ExtResource("2_oau2t")
 region = Rect2(150, 0, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5t160"]
-atlas = ExtResource("2_oau2t")
-region = Rect2(200, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_itcv2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mlln"]
 atlas = ExtResource("2_oau2t")
 region = Rect2(250, 0, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t6gqw"]
-atlas = ExtResource("2_oau2t")
-region = Rect2(300, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gn44c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dka2a"]
 atlas = ExtResource("2_oau2t")
 region = Rect2(350, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quepj"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(450, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xm17"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(550, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugqbo"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(650, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rb6a"]
+atlas = ExtResource("2_oau2t")
+region = Rect2(750, 0, 50, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ndmpn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7q3d3")
+"texture": SubResource("AtlasTexture_boiu1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_33ukh")
+"texture": SubResource("AtlasTexture_oau2t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tu7qt")
+"texture": SubResource("AtlasTexture_8mlln")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w2q4k")
+"texture": SubResource("AtlasTexture_dka2a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5t160")
+"texture": SubResource("AtlasTexture_quepj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_itcv2")
+"texture": SubResource("AtlasTexture_1xm17")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t6gqw")
+"texture": SubResource("AtlasTexture_ugqbo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gn44c")
+"texture": SubResource("AtlasTexture_5rb6a")
 }],
 "loop": true,
 "name": &"Play",
@@ -83,7 +83,7 @@ id = 2
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ndmpn")
 animation = &"Play"
-frame_progress = 0.52070874
+frame_progress = 0.7851863
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 z_index = 1

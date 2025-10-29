@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cld5xtwr1yq5i"]
+[gd_scene load_steps=44 format=3 uid="uid://cld5xtwr1yq5i"]
 
 [ext_resource type="Script" uid="uid://bul7fr50u68xc" path="res://SCRIPTS/MAIN_MENU.gd" id="1_v0qjw"]
 [ext_resource type="Shader" uid="uid://by0usr4bq3vcl" path="res://Shader/gaussian_glow.gdshader" id="2_7260r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://4b40sxylb46j" path="res://Shader/Vignette.gdshader" id="4_ecnfn"]
 [ext_resource type="Texture2D" uid="uid://oqy587xryi4r" path="res://ASSETS/TEXTURES/ICONS/BANNER.png" id="5_kiw3d"]
 [ext_resource type="Texture2D" uid="uid://cxmpgdgq7lq10" path="res://ASSETS/TEXTURES/ICONS/BUTTONS.png" id="6_8wqjl"]
+[ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="7_ecnfn"]
 [ext_resource type="Texture2D" uid="uid://bo1xhrcopr11j" path="res://ASSETS/TEXTURES/PLAYER/PLAYER_ANIMATIONS.png" id="8_skpiv"]
 [ext_resource type="Script" uid="uid://bgvlsw3pcmv1r" path="res://SCRIPTS/Main_menu_player.gd" id="9_mwmg2"]
 [ext_resource type="Texture2D" uid="uid://cjrgfvtcn6hom" path="res://ASSETS/TEXTURES/ICONS/UI.png" id="10_7260r"]
@@ -260,11 +261,14 @@ texture_pressed = SubResource("AtlasTexture_dnfjo")
 texture_hover = SubResource("AtlasTexture_gtid3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D"]
-offset_left = -998.0
-offset_top = 441.0
-offset_right = -798.0
-offset_bottom = 533.0
-text = "ALPHA VERSION"
+offset_left = -225.0
+offset_top = 415.0
+offset_right = 191.0
+offset_bottom = 507.0
+theme = ExtResource("7_ecnfn")
+text = "ALPHA VERSION | A HACKCLUB SHIBA PROJECT
+
+BY STEIN | dc: @dxby | tg: @dxbyte"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
