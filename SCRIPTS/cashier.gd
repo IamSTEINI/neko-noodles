@@ -1,6 +1,7 @@
 extends Node2D
 
 var start_pos: Vector2
+var processing_purchase: bool = false
 
 func _ready() -> void:
 	$RichTextLabel.visible = false
@@ -20,8 +21,9 @@ func say(text: String) -> void:
 	$text.hide()
 	$Talking.stop()
 
-
 func _on_buytrigger_body_entered(body: Node2D) -> void:
+	if processing_purchase:
+		return
 	if not body.has_node("ItemSlot"):
 		return
 	var item_slot = body.get_node("ItemSlot")
@@ -42,6 +44,11 @@ func _on_buytrigger_body_entered(body: Node2D) -> void:
 	
 	if Globals.money<price:
 		return
+	processing_purchase = true
+	main_item.remove_meta("buy_price")
+	for item in backpack_items:
+		item.remove_meta("buy_price")
+	
 	$RichTextLabel.visible = true
 	say("Thanks for shopping!")
 	$RichTextLabel.text = "- " + str(price)
@@ -56,7 +63,5 @@ func _on_buytrigger_body_entered(body: Node2D) -> void:
 		$RichTextLabel.hide()
 		$RichTextLabel.position = start_pos
 		$RichTextLabel.modulate.a = 1.0
-		main_item.remove_meta("buy_price")
-		for item in backpack_items:
-			item.remove_meta("buy_price")
+		processing_purchase = false
 	)

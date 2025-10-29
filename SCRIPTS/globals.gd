@@ -76,10 +76,11 @@ func _ready() -> void:
 func tutorial():
 	tutarrow_pos = Vector2(0,42)
 	await Speaking.say("Hello, is that Timmy? I just wanted to wish you good luck again with the restaurant here in SHIBATOWN.")
+	await Speaking.say("I'm going to tell you a few important things! So listen up!")
 	tutarrow_pos = Vector2(1396.0,48)
 	await Speaking.say("Ensure that guests are satisfied and get what they want for a good price!")
 	tutarrow_pos = Vector2(208,42)
-	await Speaking.say("Also place some tables for your customers to order noodles! Just press on the build tab in the menu bar and select the table!")
+	await Speaking.say("You should place some tables for your customers to order noodles! Just press on the build tab in the menu bar and select the table!")
 	tutarrow_pos = Vector2(208,165)
 	await Speaking.say("Once you've done that, you should buy a noodle cutter, oven and so on! So that you can work properly!")
 	tutarrow_pos = Vector2(0,42)
