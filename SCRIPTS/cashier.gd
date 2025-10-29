@@ -27,20 +27,26 @@ func _on_buytrigger_body_entered(body: Node2D) -> void:
 	if not body.has_node("ItemSlot"):
 		return
 	var item_slot = body.get_node("ItemSlot")
-	if item_slot.get_child_count() == 0:
+	var back_slot = body.get_node("BackpackSlot")
+	if item_slot.get_child_count() == 0 and back_slot.get_child_count() == 0:
 		return
 	var main_item = item_slot.get_child(0)
-	if not main_item.has_meta("buy_price"):
+	if not main_item.has_meta("buy_price") and back_slot.get_child_count() == 0:
 		return
 	
-	var price = main_item.get_meta("buy_price")
+	var price = 0
+	if main_item.get_meta("buy_price") != null:
+		price = int(main_item.get_meta("buy_price"))
 	var backpack_items = []
 	
 	if Globals.bought_backpack and body.has_node("BackpackSlot"):
 		for item in body.get_node("BackpackSlot").get_children():
 			if item.has_meta("buy_price"):
-				price += item.get_meta("buy_price")
+				price += int(item.get_meta("buy_price"))
 				backpack_items.append(item)
+	
+	if price == 0:
+		return
 	
 	if Globals.money<price:
 		return
