@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://ckx7ll1bsgulx"]
+[gd_scene load_steps=32 format=3 uid="uid://ckx7ll1bsgulx"]
 
 [ext_resource type="Texture2D" uid="uid://drsmms261icpm" path="res://ASSETS/TEXTURES/GROUND/DOORS.png" id="1_1vvux"]
 [ext_resource type="Script" uid="uid://b3refbf2abe3f" path="res://SCRIPTS/door.gd" id="1_iu8q0"]
 [ext_resource type="AudioStream" uid="uid://dhgq7yfcahgcq" path="res://SOUNDS/DOOR_CLOSE.mp3" id="3_mg2as"]
 [ext_resource type="Script" uid="uid://2x7xdbbweqox" path="res://SCRIPTS/Audio_sfx.gd" id="4_1ebfc"]
+[ext_resource type="TileSet" uid="uid://dll1c05rudyek" path="res://TILESETS/Restaurant.tres" id="5_ao1jx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ebfc"]
 atlas = ExtResource("1_1vvux")
@@ -218,6 +219,13 @@ debug_color = Color(0.665292, 0.511862, 0, 0.42)
 [node name="DOOR_SOUND" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_mg2as")
 script = ExtResource("4_1ebfc")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+position = Vector2(25.453, 16.886)
+scale = Vector2(1.011, 1)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 254, 255, 0, 0, 3, 0, 2, 0, 0, 0, 0, 0, 254, 255, 0, 0, 4, 0, 2, 0, 0, 0)
+tile_set = ExtResource("5_ao1jx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

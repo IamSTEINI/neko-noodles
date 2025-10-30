@@ -77,19 +77,23 @@ func tutorial():
 	tutarrow_pos = Vector2(0,42)
 	await Speaking.say("Hello, is that Timmy? I just wanted to wish you good luck again with the restaurant here in SHIBATOWN.")
 	await Speaking.say("I'm going to tell you a few important things! So listen up!")
+	Speaking.show_tip(1)
 	tutarrow_pos = Vector2(1396.0,48)
 	await Speaking.say("Ensure that guests are satisfied and get what they want for a good price!")
 	tutarrow_pos = Vector2(208,42)
 	await Speaking.say("You should place some tables for your customers to order noodles! Just press on the build tab in the menu bar and select the table!")
 	tutarrow_pos = Vector2(208,165)
+	Speaking.show_tip(2)
 	await Speaking.say("Once you've done that, you should buy a noodle cutter, oven and so on! So that you can work properly!")
 	tutarrow_pos = Vector2(0,42)
 	await Speaking.say("To mix toppings with cooked noodles, you must place the noodles on a side table and then interact with the topping.")
 	tutarrow_pos = Vector2(154,42)
+	Speaking.show_tip(3)
 	await Speaking.say("Oh and... Thank you for buying the restaurant from my parents. I think it's better if someone younger does the work now. I also wrote you a book, if you have any questions!")
 	tutarrow_pos = Vector2(0,42)
 	await Speaking.say("But maybe you'll get rich with it, Timmy... Can't wait to come visit you! See you then!")
 	tutarrow_pos = Vector2(0,42)
+	Speaking.show_tip(99)
 	
 func _process(delta: float) -> void:
 	if get_tree().current_scene == null:

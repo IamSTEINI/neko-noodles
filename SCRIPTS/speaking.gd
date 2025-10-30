@@ -73,3 +73,12 @@ func _on_skip_pressed() -> void:
 		skip = true
 	else:
 		skip = true
+		
+func show_tip(indx: int) -> void:
+	$CanvasLayer/TipBar.show()
+	for child in $CanvasLayer/TipBar.get_children():
+		child.hide()
+	if $CanvasLayer/TipBar.find_child("Tip"+str(indx)) != null:
+		$CanvasLayer/TipBar.find_child("Tip"+str(indx)).show()
+	else:
+		$CanvasLayer/TipBar.hide()

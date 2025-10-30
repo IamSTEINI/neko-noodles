@@ -102,6 +102,20 @@ var depending_item_noodle_item: PackedScene = preload("res://scenes/NoodleItem.t
 		"tag": "tiles",
 		"name": "FLOOR"
 	},
+	"wall-t-l": {
+		"path": Vector2i(3, 2),
+		"type": 1,
+		"price": 2,
+		"tag": "tiles",
+		"name": "TOP WALL"
+	},
+	"wall-t-r": {
+		"path": Vector2i(4,2),
+		"type": 1,
+		"price": 2,
+		"tag": "tiles",
+		"name": "TOP WALL"
+	},
 	"wall-l": {
 		"path": Vector2i(0, 1),
 		"type": 1,

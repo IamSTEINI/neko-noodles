@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgao84v33wejx"]
+[gd_scene load_steps=20 format=3 uid="uid://dgao84v33wejx"]
 
 [ext_resource type="Script" uid="uid://72h6uv0mv5fu" path="res://SCRIPTS/speaking.gd" id="1_ex73r"]
 [ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="1_yka5h"]
 [ext_resource type="Texture2D" uid="uid://b80b5blddsbj7" path="res://ASSETS/TEXTURES/ICONS/Talking_cat.png" id="2_ex73r"]
 [ext_resource type="Theme" uid="uid://gb11unwscbj2" path="res://textfont.tres" id="3_nqak2"]
 [ext_resource type="AudioStream" uid="uid://b2bvyjrqfg7dv" path="res://SOUNDS/cat_talking.mp3" id="5_nqak2"]
+[ext_resource type="Texture2D" uid="uid://chygfl0vsvhbs" path="res://tips/tip_1.png" id="5_xbkbu"]
+[ext_resource type="Texture2D" uid="uid://5f8clksu5x4l" path="res://tips/tip_2.png" id="6_1oloo"]
 [ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="6_3obln"]
+[ext_resource type="Texture2D" uid="uid://dwylomvcv2bos" path="res://tips/tip_3.png" id="7_ejofx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2enu"]
 atlas = ExtResource("1_yka5h")
@@ -70,6 +73,10 @@ events = [SubResource("InputEventKey_ehigy")]
 [sub_resource type="AtlasTexture" id="AtlasTexture_unvn8"]
 atlas = ExtResource("1_yka5h")
 region = Rect2(1728, 112, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3obln"]
+atlas = ExtResource("1_yka5h")
+region = Rect2(1328, 208, 112, 160)
 
 [node name="Speaking" type="Node2D"]
 script = ExtResource("1_ex73r")
@@ -143,6 +150,66 @@ text = "[SPACE] SKIP"
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TipBar" type="TextureRect" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+offset_left = 1552.0
+offset_top = 252.0
+offset_right = 1888.0
+offset_bottom = 732.0
+texture = SubResource("AtlasTexture_3obln")
+
+[node name="Tip1" type="Sprite2D" parent="CanvasLayer/TipBar"]
+visible = false
+position = Vector2(166, 196)
+texture = ExtResource("5_xbkbu")
+
+[node name="Label" type="Label" parent="CanvasLayer/TipBar/Tip1"]
+offset_left = -153.0
+offset_top = 182.0
+offset_right = -113.0
+offset_bottom = 205.0
+theme = ExtResource("3_nqak2")
+text = "A good restaurant needs proper doors! 
+So place some by going into build mode by
+clicking on the wrench and hammer icon in
+the menu bar!"
+
+[node name="Tip2" type="Sprite2D" parent="CanvasLayer/TipBar"]
+visible = false
+position = Vector2(167, 186)
+scale = Vector2(1.075, 1.075)
+texture = ExtResource("6_1oloo")
+
+[node name="Label" type="Label" parent="CanvasLayer/TipBar/Tip2"]
+offset_left = -134.88376
+offset_top = 169.30235
+offset_right = 166.11624
+offset_bottom = 242.30235
+theme = ExtResource("3_nqak2")
+text = "Make sure you buy the right thing! 
+The signs tell you what it is!
+And remember to prepare the food 
+when you're back at the restaurant!"
+
+[node name="Tip3" type="Sprite2D" parent="CanvasLayer/TipBar"]
+visible = false
+position = Vector2(168, 187)
+scale = Vector2(1.095, 1.095)
+texture = ExtResource("7_ejofx")
+
+[node name="Label" type="Label" parent="CanvasLayer/TipBar/Tip3"]
+offset_left = -133.3333
+offset_top = 165.29677
+offset_right = 167.6667
+offset_bottom = 238.29677
+theme = ExtResource("3_nqak2")
+text = "Do you have too many items? Or would
+you like to get rid of something at
+the supermarket? Then go to the
+rubbish bin, which will remove the
+item you are holding!"
 
 [node name="Talking" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_nqak2")
