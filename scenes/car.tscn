@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://covacsx30iopd"]
+
+[ext_resource type="Script" uid="uid://daq3nboicbxbu" path="res://SCRIPTS/car.gd" id="1_50v30"]
+[ext_resource type="Texture2D" uid="uid://c8ksaxrrfn6nw" path="res://ASSETS/TEXTURES/OUTSIDE/cars.png" id="2_jtldb"]
+[ext_resource type="Texture2D" uid="uid://5a763ixmolgv" path="res://ASSETS/TEXTURES/LIGHT/light.webp" id="3_3mrxu"]
+
+[node name="Car" type="Node2D"]
+z_index = 4
+texture_filter = 1
+rotation = 1.5707941
+script = ExtResource("1_50v30")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_jtldb")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 50)
+
+[node name="CarLight" type="PointLight2D" parent="."]
+position = Vector2(32.400024, 67.4)
+color = Color(0.96307665, 0.33193505, 0, 1)
+energy = 0.89
+texture = ExtResource("3_3mrxu")
+texture_scale = 0.3
+
+[node name="CarLight2" type="PointLight2D" parent="."]
+position = Vector2(-32.599976, 67.4)
+color = Color(0.96307665, 0.33193505, 0, 1)
+energy = 0.89
+texture = ExtResource("3_3mrxu")
+texture_scale = 0.3
