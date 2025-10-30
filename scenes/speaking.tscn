@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgao84v33wejx"]
+[gd_scene load_steps=21 format=3 uid="uid://dgao84v33wejx"]
 
 [ext_resource type="Script" uid="uid://72h6uv0mv5fu" path="res://SCRIPTS/speaking.gd" id="1_ex73r"]
 [ext_resource type="Texture2D" uid="uid://ccfsjy8rxgfsp" path="res://ASSETS/TEXTURES/ICONS/BAR.png" id="1_yka5h"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://5f8clksu5x4l" path="res://tips/tip_2.png" id="6_1oloo"]
 [ext_resource type="AudioStream" uid="uid://ceihd22ddsg1i" path="res://SOUNDS/Place.mp3" id="6_3obln"]
 [ext_resource type="Texture2D" uid="uid://dwylomvcv2bos" path="res://tips/tip_3.png" id="7_ejofx"]
+[ext_resource type="Texture2D" uid="uid://lktfbuv6e8h1" path="res://tips/tip_4.png" id="8_1oloo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2enu"]
 atlas = ExtResource("1_yka5h")
@@ -210,6 +211,22 @@ you like to get rid of something at
 the supermarket? Then go to the
 rubbish bin, which will remove the
 item you are holding!"
+
+[node name="Tip4" type="Sprite2D" parent="CanvasLayer/TipBar"]
+visible = false
+position = Vector2(168, 187)
+scale = Vector2(1.095, 1.095)
+texture = ExtResource("8_1oloo")
+
+[node name="Label" type="Label" parent="CanvasLayer/TipBar/Tip4"]
+offset_left = -133.3333
+offset_top = 165.29677
+offset_right = 167.6667
+offset_bottom = 238.29677
+theme = ExtResource("3_nqak2")
+text = "There is a supermarket where you 
+should buy your things! It is located
+ right above the sign!"
 
 [node name="Talking" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_nqak2")

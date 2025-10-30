@@ -91,8 +91,10 @@ func tutorial():
 	Speaking.show_tip(3)
 	await Speaking.say("Oh and... Thank you for buying the restaurant from my parents. I think it's better if someone younger does the work now. I also wrote you a book, if you have any questions!")
 	tutarrow_pos = Vector2(0,42)
-	await Speaking.say("But maybe you'll get rich with it, Timmy... Can't wait to come visit you! See you then!")
+	await Speaking.say("But maybe you'll get rich with it, Timmy... Can't wait to come visit you! See you then! You should propably go buying stuff now!")
+	Speaking.show_tip(4)
 	tutarrow_pos = Vector2(0,42)
+	await Speaking.say("See you!")
 	Speaking.show_tip(99)
 	
 func _process(delta: float) -> void:
