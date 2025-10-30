@@ -8,7 +8,7 @@
 radius = 39.8121
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irkiv"]
-size = Vector2(46, 63)
+size = Vector2(29, 44)
 
 [node name="ItemRemover" type="Node2D"]
 script = ExtResource("1_6xan1")
@@ -31,6 +31,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="INTERACTABLE" parent="." instance=ExtResource("2_x6gbh")]
+rotation = -0.048873525
 text = "Remove items"
 interaction_range = 40
 
@@ -46,7 +47,6 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_irkiv")
 
 [connection signal="interacted" from="INTERACTABLE" to="." method="_on_interactable_interacted"]
