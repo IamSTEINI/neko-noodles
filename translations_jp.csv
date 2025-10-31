@@ -1,0 +1,89 @@
+key,en,jp
+SETTINGS_MUSIC_LABEL,MUSIC,音楽
+SETTINGS_SFX_LABEL,SFX,効果音
+INFO_MAIN_MENU,"ALPHA VERSION | A HACKCLUB SHIBA PROJECT
+
+BY STEIN | dc: @dxby | tg: @dxbyte","アルファ版 | ハッククラブ・シバプロジェクト
+
+BY STEIN | dc: @dxby | tg: @dxbyte"
+,,
+CONTINUE,Continue,続行
+DAY,DAY,日
+TOTAL_AMOUNT,Total amount,総額
+SUM,SUM,合計
+MENU_TEXTBOOK,TEXTBOOK,教科書
+MENU_GET_HELP,Get help,ここでヘルプを見つける
+MENU_TEXTBOOK_MENU,Menu,メニュー
+MENU_TEXTBOOK_BUILDING,Building,建物
+MENU_TEXTBOOK_TUTORIAL,Do tutorial again,チュートリアルをもう一度やり直す
+MENU_TEXTBOOK_RATINGS,Ratings,星評価
+MENU_TEXTBOOK_EXPENSES,Expenses,経費
+MENU_TEXTBOOK_MANAGE,Manage restaurant,レストランを管理する
+MENU_TEXTBOOK_SHOP,Shop,ショップ
+MENU_TEXTBOOK_BUILD,Build,構築
+MENU_TEXTBOOK_BANK,Bank,銀行
+MENU_TEXTBOOK_MONEY,Money,お金
+MENU_TEXTBOOK_EXPECTED,Expected customers,ターゲット顧客
+MENU_TEXTBOOK_DAY,Day count,日数
+MENU_TEXTBOOK_PLACE,How do I place stuff,どうやって物を置くのですか？
+MENU_TEXTBOOK_DELETE,How do I delete stuff,どうすれば削除できますか？
+MENU_TEXTBOOK_COMBINE,How to combine stuff?,どうやって組み合わせる？
+TEXTBOOK_RATING,"If you deliver no food or the wrong food to customers, your rating will drop, but so will it if the base price is too high.",お客様への配達が遅れたり、間違った注文を配達したりすると、評価が下がります。同様に、基本価格を高く設定しすぎても評価が下がります。
+TEXTBOOK_EXPENSES,A smart restaurant owner needs smart indicators! At the expenses menu you can see all the expenses and income from the current day!,賢いレストラン経営者には賢い指標が必要！経費メニューでは、当日のすべての支出と収入を確認できます！
+TEXTBOOK_MANAGE,Here you can rename your restaurant and even set a base price! The base price will be applied on top of the initial price!,ここでレストランの名前を変更したり、基本価格を設定することもできます！基本価格は初期価格に上乗せされます！
+TEXTBOOK_SHOP,At the shop you can buy different items! Such as backpacks!,お店では様々なアイテムが買えます！例えばリュックサック！
+TEXTBOOK_BUILD,Here you can find the different categories of stuff to place. Also you can play the Arcade machine by YOURSELF!,ここに配置できるアイテムのカテゴリーが並んでいます。さらに、アーケードゲーム機を一人でプレイすることもできます！
+TEXTBOOK_BANK,At the banking you can get loans if you're broke! You can only have one at a time!,銀行では、お金がなくてもローンが組めます！ただし、一度に一つだけしか利用できません！
+TEXTBOOK_MONEY,"Money is really important in this game. If you're broke, you should consider taking a loan! Money is the only currency here in SHIBATOWN!",このゲームではお金が本当に重要です。お金が底をついたら、ローンを組むことを検討しましょう！SHIBATOWNではお金が唯一の通貨です！
+TEXTBOOK_EXPECTED,"To prepare for the day, you can see how many visitiors you'll get today! All NPCs will go away after a new day started!",その日の準備として、今日訪れる訪問者の数を確認できます！新しい一日が始まると、すべてのNPCは消えてしまいます！
+TEXTBOOK_DAY,This shows the current day. Send me a screenshot when you reached day 1K and you get implemented into the game!,これは現在の日数を表示しています。1000日目に到達したらスクリーンショットを送ってください。ゲームに実装されます！
+TEXTBOOK_PLACE,"If you want to place stuff, press the thing you want to place in the Build tab and click on the desired location! Keep in mind: Walls need a ground, Deco need walls.",物を配置したい場合は、ビルドタブで配置したいアイテムを選択し、目的の場所をクリックしてください！注意点：壁は地面が必要、デコは壁が必要です。
+TEXTBOOK_DELETE,"If you want to remove placed stuff, press any build object, then right-click on the thing you want to get rid off, and you will receive a refund!",配置したアイテムを削除したい場合は、ビルドオブジェクトを1つ押した後、削除したいアイテムを右クリックすると、返金されます！
+TEXTBOOK_COMBINE,"To combine noodles with a topping, you have to place the cooked noodles on a SIDETABLE and then interact with the SIDETABLE while carrying a topping to add.",麺とトッピングを組み合わせるには、まず茹でた麺をサイドテーブルに置き、トッピングを持ちながらサイドテーブルを操作する必要があります。
+,,
+BUILD_MODE_INFO,"PRESS [Q] TO EXIT BUILDMODE
+LEFT CLICK TO PLACE
+RIGHT CLICK TO REMOVE","[Q]を押してビルドモードを終了
+左クリックで配置
+右クリックで削除"
+ARCADE_INFO,PRESS [X] TO EXIT ARCADE,[X]を押してアーケードを終了
+SHIBARCADE,SHIBARCADE,芝アーケード
+,,
+EXPENSES,Expenses,経費
+EXPENSES_DESCRIPTION,This indicates your expenses,これはあなたの支出を示しています
+,,
+YOUR_RESTAURANT,YOUR RESTAURANT,あなたのレストラン
+YOUR_RESTAURANT_DESCRIPTION,Manage your restaurant here,ここでレストランを管理する
+,,
+SHOP,SHOP,ショップ
+SHOP_DESCRIPTION,Buy items here,ここで商品を購入する
+SHOP_BACKPACK,Backpack,リュックサック
+SHOP_BACKPACK_DESCRIPTION,Store items inside,商品を中に保管してください
+SHOP_SPEED_BOOTS,Speed boost,スピードブースト
+SHOP_SPEED_BOOTS_DESCRIPTION,Become way faster,はるかに速くなる
+BOUGHT,BOUGHT,購入済み
+BUY_FOR,Buy for 10c,10セントで購入
+,,
+NAME,Name,名前
+BASE_PRICE,Base price,基本価格
+,,
+BUILD_RESTAURANT,Restaurant,レストラン
+BUILD_TILES,Tiles,タイル
+BUILD_MACHINES,Machines,機械
+BUILD_OTHER,Other,その他
+BUILDING_TOOL,BUILDING TOOL,ビルディングツール
+BUILDING_DESCRIPTION,Make your restaurant unique,あなたのレストランをユニークにしましょう
+,,
+,,
+,,
+BANK_TITLE,BANK OF SHIBA,シバ銀行
+BANK_DESCRIPTION,Are you broke? Get a loan!,お金がない？ ローンを組もう！
+LOAN_REQUEST,Loan request,融資の申し込み
+LOAN_DURATION,Loan duration,融資期間
+LOAN_REQUEST_TEXT,Request loan (5% interest),融資の申し込み（金利5％）
+,,
+,,
+RESTAURANT_INFO_TEXT,"NPC ENTRY &
+SUPERMARKET","NPC エントリー＆
+スーパーマーケット"
+GO_TO_SUPERMARKET,Go to supermarket,スーパーマーケットへ行く

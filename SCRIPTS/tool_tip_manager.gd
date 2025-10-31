@@ -43,8 +43,8 @@ func _process(_delta: float) -> void:
 		
 	if tooltips.size() > 0:
 		$CanvasLayer.show()
-		tooltip_text.text = tooltips[0]
-		tooltip_desc.text = descriptions[0]
+		tooltip_text.text = tr(tooltips[0])
+		tooltip_desc.text = tr(descriptions[0])
 	else:
 		tooltip_text.text = ""
 		tooltip_desc.text = ""

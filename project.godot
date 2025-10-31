@@ -138,6 +138,10 @@ left_mouse_button={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations_jp_file.jp.translation", "res://translations_jp_file.en.translation")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

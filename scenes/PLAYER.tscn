@@ -1000,13 +1000,14 @@ layout_mode = 0
 offset_left = 8.008008
 offset_top = 8.008012
 offset_right = 258.008
-offset_bottom = 32.788013
+offset_bottom = 33.18301
 scale = Vector2(1, 1.26)
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 31
 text = "EXPENSES"
 scroll_active = false
 shortcut_keys_enabled = false
+vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ExpensesTab/Tab/TextureRect"]
 layout_mode = 0
@@ -1017,7 +1018,7 @@ offset_bottom = 57.291046
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 theme_override_font_sizes/normal_font_size = 16
-text = "This indicates your expenses"
+text = "EXPENSES_DESCRIPTION"
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -1048,7 +1049,7 @@ offset_left = 175.17517
 offset_right = 275.17517
 offset_bottom = 17.0
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
-text = "Total amount"
+text = "TOTAL_AMOUNT"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 2
@@ -1092,14 +1093,15 @@ layout_mode = 0
 offset_left = 8.008008
 offset_top = 8.008012
 offset_right = 280.27798
-offset_bottom = 37.033012
+offset_bottom = 39.513012
 scale = Vector2(1, 1.26)
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 31
-text = "YOUR RESTAURANT"
+text = "YOUR_RESTAURANT"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
+vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ManageTab/Tab/TextureRect"]
 layout_mode = 0
@@ -1110,7 +1112,7 @@ offset_bottom = 57.291046
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 theme_override_font_sizes/normal_font_size = 16
-text = "Manage your restaurant here"
+text = "YOUR_RESTAURANT_DESCRIPTION"
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -1132,7 +1134,7 @@ custom_minimum_size = Vector2(108.205, 0)
 layout_mode = 2
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 26
-text = "Name"
+text = "NAME"
 autowrap_mode = 0
 vertical_alignment = 1
 
@@ -1156,7 +1158,7 @@ custom_minimum_size = Vector2(191.005, 0)
 layout_mode = 2
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 26
-text = "Base Price"
+text = "BASE_PRICE"
 autowrap_mode = 0
 vertical_alignment = 1
 
@@ -1208,7 +1210,7 @@ layout_mode = 0
 offset_left = 8.008008
 offset_top = 8.008012
 offset_right = 280.27798
-offset_bottom = 33.753014
+offset_bottom = 35.68301
 scale = Vector2(1, 1.26)
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 31
@@ -1216,6 +1218,7 @@ text = "SHOP"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
+vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect"]
 layout_mode = 0
@@ -1226,7 +1229,7 @@ offset_bottom = 57.291046
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 theme_override_font_sizes/normal_font_size = 16
-text = "Buy items here"
+text = "SHOP_DESCRIPTION"
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -1258,7 +1261,7 @@ region_rect = Rect2(16, 28, 18, 18)
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme = ExtResource("11_0pmnk")
-text = "Backpack"
+text = "SHOP_BACKPACK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1268,7 +1271,7 @@ layout_mode = 2
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 theme_override_font_sizes/normal_font_size = 14
-text = "Store items inside"
+text = "SHOP_BACKPACK_DESCRIPTION"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
@@ -1281,7 +1284,7 @@ theme = ExtResource("11_0pmnk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gtncy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i10kl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lx5bl")
-text = "BUY for 10 c"
+text = "BUY_FOR"
 
 [node name="BoughtLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM"]
 visible = false
@@ -1313,7 +1316,7 @@ region_rect = Rect2(32, 17, 16, 16)
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme = ExtResource("11_0pmnk")
-text = "Speed boost"
+text = "SHOP_SPEED_BOOTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1323,7 +1326,7 @@ layout_mode = 2
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 theme_override_font_sizes/normal_font_size = 14
-text = "Get faster"
+text = "SHOP_SPEED_BOOTS_DESCRIPTION"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
@@ -1336,7 +1339,7 @@ theme = ExtResource("11_0pmnk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gtncy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i10kl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lx5bl")
-text = "BUY for 10 c"
+text = "BUY_FOR"
 
 [node name="BoughtLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED"]
 visible = false
@@ -1390,7 +1393,7 @@ offset_bottom = 33.753014
 scale = Vector2(1, 1.26)
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 31
-text = "TEXTBOOK"
+text = "MENU_TEXTBOOK"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
@@ -1398,25 +1401,29 @@ shortcut_keys_enabled = false
 [node name="Description" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect"]
 layout_mode = 0
 offset_left = 8.008008
-offset_top = 41.041046
+offset_top = 39.039047
 offset_right = 258.008
-offset_bottom = 57.291046
+offset_bottom = 59.059067
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 theme_override_font_sizes/normal_font_size = 16
-text = "Get help quick"
+text = "MENU_GET_HELP"
 scroll_active = false
 shortcut_keys_enabled = false
+vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect"]
 layout_mode = 0
-offset_left = 8.008008
-offset_top = 67.06707
-offset_right = 283.008
-offset_bottom = 107.06707
+offset_left = 8.008001
+offset_top = 59.059063
+offset_right = 280.28027
+offset_bottom = 387.3874
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer"]
+layout_mode = 2
 script = ExtResource("16_gtncy")
 
-[node name="MenuBar" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
+[node name="MenuBar" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1425,13 +1432,13 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Menu bar"
+title = "MENU_TEXTBOOK_MENU"
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar"]
 visible = false
 layout_mode = 2
 
-[node name="Ratings" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
+[node name="Ratings" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1440,36 +1447,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Ratings"
+title = "MENU_TEXTBOOK_RATINGS"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Ratings"]
-visible = false
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "If you deliver no food or the wrong food to customers, your rating will drop, but so will it if the base price is too high."
-fit_content = true
-scroll_active = false
-
-[node name="Expenses" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
-custom_minimum_size = Vector2(269.13, 0)
-layout_mode = 2
-focus_mode = 0
-theme = ExtResource("11_0pmnk")
-theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
-theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
-folded = true
-title = "Expenses"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Expenses"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Ratings"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "A smart restaurant owner needs smart indicators! At the expenses menu you can see all the expenses and income from the current day!"
+text = "TEXTBOOK_RATING"
 fit_content = true
 scroll_active = false
 
-[node name="Manage" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
+[node name="Expenses" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1478,17 +1466,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Manage Restaurant"
+title = "MENU_TEXTBOOK_EXPENSES"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Manage"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Expenses"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Here you can rename your restaurant and even set a base price! The base price will be applied on top of the initial price!"
+text = "TEXTBOOK_EXPENSES"
 fit_content = true
 scroll_active = false
 
-[node name="Shop" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
+[node name="Manage" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1497,17 +1485,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Shop"
+title = "MENU_TEXTBOOK_MANAGE"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Shop"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Manage"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "At the shop you can buy different items! Such as backpacks! I'll add more later"
+text = "TEXTBOOK_MANAGE"
 fit_content = true
 scroll_active = false
 
-[node name="Build" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
+[node name="Shop" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1516,17 +1504,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Build"
+title = "MENU_TEXTBOOK_SHOP"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Build"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Shop"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Here you can find teh different categories of stuff to place. Also you can play the Arcade machine by YOURSELF!"
+text = "TEXTBOOK_SHOP"
 fit_content = true
 scroll_active = false
 
-[node name="Bank" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
+[node name="Build" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1535,17 +1523,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Build"
+title = "MENU_TEXTBOOK_BUILD"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Bank"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Build"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "At the banking you can get loans if you're broke! You can only have one at a time!"
+text = "TEXTBOOK_BUILD"
 fit_content = true
 scroll_active = false
 
-[node name="Money" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
+[node name="Bank" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1554,17 +1542,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Money"
+title = "MENU_TEXTBOOK_BANK"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Money"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Bank"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Money is really important in this game. If you're broke, you should consider taking a loan! Money is the only currency here in SHIBATOWN!"
+text = "TEXTBOOK_BANK"
 fit_content = true
 scroll_active = false
 
-[node name="Expected" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
+[node name="Money" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1573,17 +1561,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Expected Customers"
+title = "MENU_TEXTBOOK_MONEY"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Expected"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Money"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "To prepare for the day, you can see how many visitiors you'll get today! All NPCs will go away after a new day started!"
+text = "TEXTBOOK_MONEY"
 fit_content = true
 scroll_active = false
 
-[node name="Day" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer"]
+[node name="Expected" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1592,17 +1580,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Day count"
+title = "MENU_TEXTBOOK_EXPECTED"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/MenuBar/GridContainer/Day"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Expected"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "This shows the current day. Send me a screenshot when you reached day 1K and you get implemented into the game!"
+text = "TEXTBOOK_EXPECTED"
 fit_content = true
 scroll_active = false
 
-[node name="Building" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
+[node name="Day" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1611,32 +1599,17 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Building"
+title = "MENU_TEXTBOOK_DAY"
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building"]
-visible = false
-layout_mode = 2
-
-[node name="Place" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer"]
-custom_minimum_size = Vector2(269.13, 0)
-layout_mode = 2
-focus_mode = 0
-theme = ExtResource("11_0pmnk")
-theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
-theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
-folded = true
-title = "How do I place stuff"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer/Place"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/MenuBar/GridContainer/Day"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "If you want to place stuff, press the thing you want to place in the Build tab and click on the desired location! Keep in mind: Walls need a ground, Deco need walls."
+text = "TEXTBOOK_DAY"
 fit_content = true
 scroll_active = false
 
-[node name="Delete" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer"]
+[node name="Building" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1645,17 +1618,13 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "How do I delete stuff"
+title = "MENU_TEXTBOOK_BUILDING"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer/Delete"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/Building"]
 visible = false
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "If you want to remove placed stuff, press any build object, then right-click on the thing you want to get rid off, and you will receive a refund!"
-fit_content = true
-scroll_active = false
 
-[node name="Combine" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer"]
+[node name="Place" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/Building/GridContainer"]
 custom_minimum_size = Vector2(269.13, 0)
 layout_mode = 2
 focus_mode = 0
@@ -1664,17 +1633,55 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "How to combine stuff?"
+title = "MENU_TEXTBOOK_PLACE"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Building/GridContainer/Combine"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/Building/GridContainer/Place"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "To combine noodles with a topping, you have to place the cooked noodles on a SIDETABLE and then interact with the SIDETABLE while carrying a topping to add."
+text = "TEXTBOOK_PLACE"
 fit_content = true
 scroll_active = false
 
-[node name="Tutorial" type="Button" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer"]
+[node name="Delete" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/Building/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "MENU_TEXTBOOK_DELETE"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/Building/GridContainer/Delete"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "TEXTBOOK_DELETE"
+fit_content = true
+scroll_active = false
+
+[node name="Combine" type="FoldableContainer" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/Building/GridContainer"]
+custom_minimum_size = Vector2(269.13, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("11_0pmnk")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
+folded = true
+title = "MENU_TEXTBOOK_COMBINE"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/Building/GridContainer/Combine"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "TEXTBOOK_COMBINE"
+fit_content = true
+scroll_active = false
+
+[node name="Tutorial" type="Button" parent="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 26.085)
 layout_mode = 2
 focus_mode = 0
@@ -1690,7 +1697,7 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_4mmrk"
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1505x")
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "Do tutorial"
+text = "MENU_TEXTBOOK_TUTORIAL"
 
 [node name="BuildTab" type="TextureButton" parent="CanvasLayer/StatusBar/TABS"]
 layout_mode = 0
@@ -1737,7 +1744,7 @@ offset_bottom = 33.753014
 scale = Vector2(1, 1.26)
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 31
-text = "BUILDING TOOL"
+text = "BUILDING_TOOL"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
@@ -1751,7 +1758,7 @@ offset_bottom = 57.291046
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 theme_override_font_sizes/normal_font_size = 16
-text = "Make your restaurant unique"
+text = "BUILDING_DESCRIPTION"
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -1771,7 +1778,7 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Restaurant"
+title = "BUILD_RESTAURANT"
 title_text_overrun_behavior = 3
 script = ExtResource("20_i10kl")
 
@@ -1795,7 +1802,7 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Tiles"
+title = "BUILD_TILES"
 title_text_overrun_behavior = 3
 script = ExtResource("20_i10kl")
 
@@ -1819,7 +1826,7 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Machines"
+title = "BUILD_MACHINES"
 title_text_overrun_behavior = 3
 script = ExtResource("20_i10kl")
 
@@ -1843,7 +1850,7 @@ theme_override_styles/title_panel = SubResource("StyleBoxFlat_n38qo")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxEmpty_ehigy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_n38qo")
 folded = true
-title = "Other"
+title = "BUILD_OTHER"
 title_text_overrun_behavior = 3
 script = ExtResource("20_i10kl")
 
@@ -1900,7 +1907,7 @@ offset_bottom = 33.753014
 scale = Vector2(1, 1.26)
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 31
-text = "BANK OF SHIBA"
+text = "BANK_TITLE"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
@@ -1914,7 +1921,7 @@ offset_bottom = 57.291046
 theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 1, 1, 0.49803922)
 theme_override_font_sizes/normal_font_size = 16
-text = "Are you broke? Get a loan!"
+text = "BANK_DESCRIPTION"
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -1947,7 +1954,7 @@ custom_minimum_size = Vector2(191.005, 0)
 layout_mode = 2
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 26
-text = "Loan request"
+text = "LOAN_REQUEST"
 autowrap_mode = 0
 vertical_alignment = 1
 
@@ -1971,7 +1978,7 @@ custom_minimum_size = Vector2(191.005, 0)
 layout_mode = 2
 theme = ExtResource("11_0pmnk")
 theme_override_font_sizes/normal_font_size = 26
-text = "Loan duration"
+text = "LOAN_DURATION"
 autowrap_mode = 0
 vertical_alignment = 1
 
@@ -2015,9 +2022,10 @@ theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1505x")
 disabled = true
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "Request loan (5% interest)"
+text = "LOAN_REQUEST_TEXT"
 
 [node name="NEW DAY SCREEN" parent="CanvasLayer" instance=ExtResource("11_4ufat")]
+position = Vector2(266, -132)
 
 [node name="Card" type="TextureRect" parent="CanvasLayer"]
 visible = false
@@ -2142,9 +2150,7 @@ theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 0.14999998, 0.14999998, 1)
 theme_override_font_sizes/normal_font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_r2enu")
-text = "PRESS [Q] TO EXIT BUILDMODE
-LEFT CLICK TO PLACE
-RIGHT CLICK TO REMOVE"
+text = "BUILD_MODE_INFO"
 scroll_active = false
 autowrap_mode = 0
 autowrap_trim_flags = 0
@@ -2182,7 +2188,7 @@ theme = ExtResource("11_0pmnk")
 theme_override_colors/default_color = Color(1, 0.14999998, 0.14999998, 1)
 theme_override_font_sizes/normal_font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_r2enu")
-text = "PRESS [X] TO EXIT ARCADE"
+text = "ARCADE_INFO"
 scroll_active = false
 autowrap_mode = 0
 autowrap_trim_flags = 0
@@ -2261,7 +2267,7 @@ attenuation = 8.337663e-05
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/BACKPACK-ITEM/BuyButton" to="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer/SPEED/BuyButton" to="CanvasLayer/StatusBar/TABS/ShopTab/Tab/TextureRect/GridContainer" method="_on_speed_buy_button_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/HelpTab" to="CanvasLayer/StatusBar/TABS/HelpTab" method="_on_button_down"]
-[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/GridContainer" method="_on_tutorial_pressed"]
+[connection signal="pressed" from="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer/Tutorial" to="CanvasLayer/StatusBar/TABS/HelpTab/Tab/TextureRect/ScrollContainer/GridContainer" method="_on_tutorial_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/StatusBar/TABS/BuildTab" to="CanvasLayer/StatusBar/TABS/BuildTab/Tab" method="_on_build_tab_pressed"]
 [connection signal="button_down" from="CanvasLayer/StatusBar/TABS/BankTab" to="CanvasLayer/StatusBar/TABS/BankTab" method="_on_button_down"]

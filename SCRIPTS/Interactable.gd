@@ -54,7 +54,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			player_body = body
 			emit_signal("player_entered", body)
 			var key_name = OS.get_keycode_string(interact_key)
-			$RichTextLabel.text = " [" + key_name + "] " + text
+			$RichTextLabel.text = " [" + key_name + "] " + tr(text)
 			if(can_interact):
 				$RichTextLabel.visible = true
 			pass
