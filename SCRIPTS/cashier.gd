@@ -56,7 +56,7 @@ func _on_buytrigger_body_entered(body: Node2D) -> void:
 		item.remove_meta("buy_price")
 	
 	$RichTextLabel.visible = true
-	say("Thanks for shopping!")
+	say(tr("THANKS_FOR_SHOPPING"))
 	$RichTextLabel.text = "- " + str(price)
 	$Collect_Sound.play(0.07)
 	Globals.money = Globals.money - price

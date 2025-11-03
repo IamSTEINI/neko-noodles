@@ -87,3 +87,49 @@ RESTAURANT_INFO_TEXT,"NPC ENTRY &
 SUPERMARKET","NPC エントリー＆
 スーパーマーケット"
 GO_TO_SUPERMARKET,Go to supermarket,スーパーマーケットへ行く
+CHECKOUT_REMINDER,Don't forget to pay at the checkout,お会計をお忘れなく！
+ENTER_RESTAURANT,Enter Restaurant,レストランへ入る
+,,
+TUTORIAL_1,"Hello, is that Timmy? I just wanted to wish you good luck again with the restaurant here in SHIBATOWN.",もしもし、ティミーさんですか？SHIBATOWNのレストラン、改めてご成功をお祈りしています。
+TUTORIAL_2,I'm going to tell you a few important things! So listen up!,いくつか大事なことを言うから！ちゃんと聞いてね！
+TUTORIAL_3,Ensure that guests are satisfied and get what they want for a good price!,お客様が満足し、良心的な価格で望むものを得られるようにしましょう！
+TUTORIAL_4,You should place some tables for your customers to order noodles! Just press on the build tab in the menu bar and select the table!,お客様が麺を注文できるよう、テーブルを設置してください！メニューバーの「建設」タブを押して、テーブルを選択するだけです！
+TUTORIAL_5,"Once you've done that, you should buy a noodle cutter, oven and so on! So that you can work properly!",それさえ済ませたら、麺切り機やオーブンなどを買うべきです！そうすればきちんと作業できますから！
+TUTORIAL_6,"To mix toppings with cooked noodles, you must place the noodles on a side table and then interact with the topping.",調理済みの麺にトッピングを混ぜるには、まず麺をサイドテーブルに置き、その後トッピングを操作する必要があります。
+TUTORIAL_7,"Oh and... Thank you for buying the restaurant from my parents. I think it's better if someone younger does the work now. I also wrote you a book, if you have any questions!",ああ、それと…両親からレストランを買ってくれてありがとう。今は若い人がやる方がいいと思うんだ。質問があれば、本も書いたから！
+TUTORIAL_8,"But maybe you'll get rich with it, Timmy... Can't wait to come visit you! See you then! You should propably go buying stuff now!",でもティミー、これで金持ちになれるかもよ…早く遊びに行くのが待ちきれない！じゃあまたね！そろそろ買い物に行くべきかもね！
+TUTORIAL_9,See you!,じゃあね！
+,,
+TIP_1,"A good restaurant needs proper doors! 
+So place some by going into build mode by
+clicking on the wrench and hammer icon in
+the menu bar!","良いレストランにはきちんとしたドアが必要です！
+メニューバーのレンチとハンマーのアイコンをクリックして
+ビルドモードに入り、ドアを設置しましょう！"
+TIP_2,"Make sure you buy the right thing! 
+The signs tell you what it is!
+And remember to prepare the food 
+when you're back at the restaurant!","正しい商品を購入してください！
+表示看板に商品名が記載されています！
+そしてレストランに戻ったら
+必ず調理の準備をしてください！"
+TIP_3,"Do you have too many items? Or would
+you like to get rid of something at
+the supermarket? Then go to the
+rubbish bin, which will remove the
+item you are holding!","アイテムが多すぎませんか？
+それともスーパーで何か処分したいですか？
+それならゴミ箱へ行きましょう。
+持っているアイテムを処分してくれます！"
+TIP_4,"There is a supermarket where you 
+should buy your things! It is located
+ right above the sign!","買い物をするべきスーパーマーケットが
+あります！看板の真上に位置しています！"
+,,
+THANKS_FOR_SHOPPING,Thanks for shopping!,お買い上げありがとうございます！
+NO_TABLE,No table :(,表がありません :(
+WANT_TO_ORDER,I want to order,注文したいのは:
+NOT_ORDERED,GRRR! That's not what I ordered,グゥゥゥ！そんなの注文してないぞ！
+TOO_EXPENSIVE,GOD it's expensive!,なんて高いんだ！
+IM_LEAVING,GRRR! I'm leaving!,グゥゥゥ！出て行く！
+NPC_YUMMY,Yummy. Thank you!,おいしそう。ありがとう！

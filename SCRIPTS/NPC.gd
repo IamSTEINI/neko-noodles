@@ -238,7 +238,7 @@ func _physics_process(delta: float) -> void:
 				reached_entry = true
 			else:
 				Globals.log("No table available. Leaving")
-				say("No table :(")
+				say(tr("NO_TABLE"))
 				leave()
 		elif reached_entry and not reached_table and chosen_table != null:
 			Globals.log("Table claimed: " + str(chosen_table.name))
@@ -253,7 +253,7 @@ func _physics_process(delta: float) -> void:
 				else:
 					order_id = OrderManager.add_order(Globals.noodle_types[generated_order[0]]["name"]+" with "+Globals.noodle_toppings[generated_order[1]]["name"],generated_order[0],generated_order[1], NPC_MAX_WAITING_TIME)
 				Globals.log(str(order_id)+": "+Globals.noodle_types[generated_order[0]]["name"])
-				say("I want to order "+str(Globals.noodle_types[generated_order[0]]["name"]))
+				say(tr("WANT_TO_ORDER")+" "+str(Globals.noodle_types[generated_order[0]]["name"]))
 				$Order/OrderNoodle.NoodleType = generated_order[0]
 				$Order/OrderNoodle.NoodleTopping = generated_order[1]
 				if generated_order[1] != 0:
@@ -277,13 +277,13 @@ func _physics_process(delta: float) -> void:
 						got_order = true
 						OrderManager.rem_order(order_id)
 					else:
-						say("GRRR! That's not what I ordered")
+						say(tr("NOT_ORDERED"))
 						Globals.restaurant_rating = Globals.restaurant_rating - 0.1
 						OrderManager.rem_order(order_id)
 						(food as Node2D).queue_free()
 						leave()
 			elif Globals.noodle_base_price > randi_range(3, 10):
-				say("GOD it's expensive!")
+				say(tr("TOO_EXPENSIVE"))
 				if order_id:
 					OrderManager.rem_order(order_id)
 				Globals.restaurant_rating = Globals.restaurant_rating - 0.1
@@ -291,7 +291,7 @@ func _physics_process(delta: float) -> void:
 				leave()
 			elif wait_time >= NPC_MAX_WAITING_TIME:
 				OrderManager.rem_order(order_id)
-				say("GRRR! I'm leaving!")
+				say(tr("IM_LEAVING"))
 				Globals.restaurant_rating = Globals.restaurant_rating - 0.1
 				Globals.log("NPC LEFT ANGRY (timeout) at table: " + str(chosen_table.name))
 				chosen_table.customers -= 1
@@ -304,7 +304,7 @@ func _physics_process(delta: float) -> void:
 				Globals.log("NPC PAID: " + str(child.Price))
 				pay(child.Price, chosen_table)
 				child.queue_free()
-				say("Yummy. Thank you!")
+				say(tr("NPC_YUMMY"))
 				if Globals.restaurant_rating < 5:
 					Globals.restaurant_rating = Globals.restaurant_rating + 0.1
 			leave()

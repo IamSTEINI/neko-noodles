@@ -110,7 +110,7 @@ position = Vector2(200, 114)
 [node name="INTERACTABLE" parent="GLASS DOOR" instance=ExtResource("5_h2doy")]
 position = Vector2(0, 18.888885)
 scale = Vector2(0.49999997, 0.5)
-text = "Enter Restaurant"
+text = "ENTER_RESTAURANT"
 border_color = Color(0.636823, 0.33841, 1, 1)
 
 [node name="Supermarketcollisions" type="StaticBody2D" parent="."]
@@ -271,7 +271,7 @@ offset_right = 298.0
 offset_bottom = 386.0
 theme = ExtResource("10_3obmj")
 theme_override_font_sizes/normal_font_size = 21
-text = "Don't forget to pay at the checkout"
+text = "CHECKOUT_REMINDER"
 horizontal_alignment = 1
 vertical_alignment = 1
 

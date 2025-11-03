@@ -172,10 +172,7 @@ offset_top = 182.0
 offset_right = -113.0
 offset_bottom = 205.0
 theme = ExtResource("3_nqak2")
-text = "A good restaurant needs proper doors! 
-So place some by going into build mode by
-clicking on the wrench and hammer icon in
-the menu bar!"
+text = "TIP_1"
 
 [node name="Tip2" type="Sprite2D" parent="CanvasLayer/TipBar"]
 visible = false
@@ -189,10 +186,7 @@ offset_top = 169.30235
 offset_right = 166.11624
 offset_bottom = 242.30235
 theme = ExtResource("3_nqak2")
-text = "Make sure you buy the right thing! 
-The signs tell you what it is!
-And remember to prepare the food 
-when you're back at the restaurant!"
+text = "TIP_2"
 
 [node name="Tip3" type="Sprite2D" parent="CanvasLayer/TipBar"]
 visible = false
@@ -206,11 +200,7 @@ offset_top = 165.29677
 offset_right = 167.6667
 offset_bottom = 238.29677
 theme = ExtResource("3_nqak2")
-text = "Do you have too many items? Or would
-you like to get rid of something at
-the supermarket? Then go to the
-rubbish bin, which will remove the
-item you are holding!"
+text = "TIP_3"
 
 [node name="Tip4" type="Sprite2D" parent="CanvasLayer/TipBar"]
 visible = false
@@ -224,9 +214,7 @@ offset_top = 165.29677
 offset_right = 167.6667
 offset_bottom = 238.29677
 theme = ExtResource("3_nqak2")
-text = "There is a supermarket where you 
-should buy your things! It is located
- right above the sign!"
+text = "TIP_4"
 
 [node name="Talking" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_nqak2")
