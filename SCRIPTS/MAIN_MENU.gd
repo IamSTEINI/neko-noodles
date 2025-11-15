@@ -4,7 +4,7 @@ extends Control
 func _ready() -> void:
 	#loop_background()
 	$SETTINGS.hide()
-	TranslationServer.set_locale("jp")
+	TranslationServer.set_locale("en")
 #func loop_background() -> void:
 	#var anim = $AnimationPlayer
 	#while true:
